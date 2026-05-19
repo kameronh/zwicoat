@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { About, Contact, HomeLayout, Landing, Technology } from './pages';
+import { About, Contact, HomeLayout, Landing, Technology, FCOI } from './pages';
 
 // Git w/ AWS
 
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/technology',
         element: <Technology />,
+      },
+      {
+        path: '/fcoi',
+        element: <FCOI />,
       },
       {
         index: true,

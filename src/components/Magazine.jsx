@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { NavLink } from 'react-router-dom';
-import { BsArrowRight } from 'react-icons/bs';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
 
 const Magazine = ({
@@ -14,9 +14,16 @@ const Magazine = ({
   summary,
   link,
 }) => {
+  const bookRef = useRef();
+
+  const handleClose = () => {
+    bookRef.current.pageFlip().flipPrev();
+  };
+
   return (
     <div className="magazine-center">
       <HTMLFlipBook
+        ref={bookRef}
         className="appear-up"
         showCover={true}
         width={350}
@@ -30,6 +37,24 @@ const Magazine = ({
           <img src={img} alt={'Inside cover image taken from ' + journal} className="magazine-inside-img" />
         </div>
         <div className="content-page">
+          <button
+            onClick={handleClose}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--primary-1)',
+              fontSize: '14px',
+              padding: '4px 0',
+              alignSelf: 'flex-start',
+            }}
+          >
+            <BsArrowLeft style={{ fontSize: '18px' }} />
+            Close
+          </button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 48 48"

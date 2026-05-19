@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo *)",
+      "PowerShell(gh repo view notacoham/zwicoat 2>&1)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:notacoham.github.io)",
+      "WebFetch(domain:zwicoat.com)",
+      "Skill(anthropic-skills:pdf)",
+      "Skill(anthropic-skills:pdf:*)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer"
+    ]
+  }
+}

@@ -19,10 +19,6 @@ const Footer = () => {
             </NavLink>
           </div>
           <div className="footer-info">
-            <p className="footer-contacts">admin@zwicoat.com</p>
-            <p className="footer-contacts">(917) 609-4598</p>
-            <p className="footer-contacts">205 N Madison St. Room #220</p>
-            <p className="footer-contacts">Iowa City, Iowa 52242</p>
           </div>
         </div>
       </footer>

@@ -21,6 +21,9 @@ const Navbar = () => {
             <NavLink to="/contact" className="nav-link">
               Contact
             </NavLink>
+            <NavLink to="/fcoi" className="nav-link">
+              FCOI Policy
+            </NavLink>
           </div>
         </div>
       </nav>
