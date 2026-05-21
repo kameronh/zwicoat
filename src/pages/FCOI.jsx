@@ -1,106 +1,211 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FCOI = () => {
+  const [openToc, setOpenToc] = useState(false);
+
+  const sections = [
+    { id: 's1', title: '1) Introduction' },
+    { id: 's2', title: '2) Applicability' },
+    { id: 's3', title: '3) Definitions' },
+    { id: 's4', title: '4) SFI Disclosure Requirements' },
+    { id: 's5', title: '5) Review of SFI Disclosures' },
+    { id: 's6', title: '6) Relatedness of SFIs and FCOI' },
+    { id: 's7', title: '7) Management of SFIs that Pose an FCOI' },
+    { id: 's8', title: '8) Monitoring Investigator Compliance' },
+    { id: 's9', title: '9) Public Accessibility' },
+    { id: 's10', title: '10) Reporting Identified FCOIs' },
+    { id: 's11', title: '11) Training Requirements' },
+    { id: 's12', title: '12) Noncompliance & Corrective Actions' },
+    { id: 's13', title: '13) Clinical Research Requirements' },
+    { id: 's14', title: '14) Subrecipient Requirements' },
+    { id: 's15', title: '15) Maintenance of Records' },
+    { id: 's16', title: '16) Enforcement Actions' },
+    { id: 's17', title: '17) Useful Resources' },
+    { id: 's18', title: '18) Point of Contact' },
+  ];
+
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto', padding: '3rem 2rem 5rem' }}>
-      <h1 style={{ fontSize: '1.75rem', fontWeight: '700', marginBottom: '0.5rem', color: 'var(--grey-darkest)' }}>
+    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 2rem 5rem', fontFamily: 'system-ui, sans-serif' }}>
+
+      {/* Header */}
+      <h1 style={{ fontSize: '1.75rem', fontWeight: '700', marginBottom: '0.25rem', color: 'var(--grey-darkest)' }}>
         Financial Conflict of Interest (FCOI) Policy
       </h1>
-      <p style={{ color: 'var(--grey-darker)', marginBottom: '0.25rem' }}>
-        ZwiCoat Materials Innovations, LLC
-      </p>
-      <p style={{ color: 'var(--grey-darker)', marginBottom: '0.25rem' }}>
-        Pursuant to 42 CFR Part 50, Subpart F
-      </p>
-      <p style={{ color: 'var(--grey-darker)', marginBottom: '2.5rem' }}>
-        <strong>Effective Date:</strong> May 1, 2026
-      </p>
+      <p style={{ color: 'var(--grey-darker)', marginBottom: '0.15rem' }}>ZwiCoat Materials Innovations, LLC</p>
+      <p style={{ color: 'var(--grey-darker)', marginBottom: '2rem' }}><strong>Effective:</strong> May 21, 2026</p>
 
-      <Section title="1. Purpose">
+      {/* Table of Contents */}
+      <div style={{
+        background: '#f8fafc',
+        border: '1px solid var(--grey-light)',
+        borderRadius: '0.5rem',
+        marginBottom: '2.5rem',
+        overflow: 'hidden',
+      }}>
+        <button
+          onClick={() => setOpenToc(!openToc)}
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '0.85rem 1.25rem',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            fontWeight: '600',
+            color: 'var(--grey-darkest)',
+            fontSize: '0.95rem',
+          }}
+        >
+          <span>Table of Contents</span>
+          <span style={{ fontSize: '0.8rem', color: 'var(--grey-darker)' }}>{openToc ? '▲ Hide' : '▼ Show'}</span>
+        </button>
+        {openToc && (
+          <ol style={{ margin: '0', padding: '0 1.25rem 1rem 2.5rem', lineHeight: '2' }}>
+            {sections.map(s => (
+              <li key={s.id}>
+                <a href={`#${s.id}`} style={{ color: 'var(--primary-1)', textDecoration: 'none' }}
+                  onClick={() => setOpenToc(false)}>
+                  {s.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        )}
+      </div>
+
+      {/* Section 1 */}
+      <Section id="s1" title="1) Introduction">
         <p>
-          This Financial Conflict of Interest (FCOI) Policy of ZwiCoat Materials Innovations, LLC ("the Company" or
-          "ZCMI") is established to comply with the requirements of the 2011 revised regulation, 42 CFR Part 50,
-          Subpart F, "Promoting Objectivity in Research," as applicable to National Institutes of Health (NIH) grants
-          and cooperative agreements. This Policy promotes objectivity in research by establishing standards that
-          provide a reasonable expectation that the design, conduct, and reporting of research funded by the Public
-          Health Service (PHS), including NIH, will be free from bias resulting from Investigator financial conflicts
-          of interest.
+          The purpose of this policy is to ensure that research funded by the National Institutes of Health (NIH) is
+          designed, conducted, and reported objectively and without bias resulting from Investigator financial conflicts
+          of interest (FCOI). The 2011 revised regulations are 42 CFR Part 50 Subpart F, "Promoting Objectivity in
+          Research" and 45 CFR Part 94, "Responsible Prospective Contractors", which set requirements for promoting
+          objectivity in Public Health Service (PHS)-funded research for grants, cooperative agreements, and research
+          contracts, respectively. The regulations do not apply to SBIR or STTR Phase I applications or awards. This
+          policy implements the regulatory requirements for PHS/NIH grants and cooperative agreements.
         </p>
         <p>
-          This Policy applies to all NIH-funded grants and cooperative agreements, excluding Phase I Small Business
-          Innovation Research (SBIR) and Small Business Technology Transfer (STTR) applications and awards.
+          ZwiCoat Materials Innovations, LLC ("ZCMI," "the Company," "the Institution") adopts this policy for all
+          Investigators (as defined below) engaged in PHS/NIH-funded research. It establishes processes to identify,
+          disclose, and manage Investigator financial conflicts of interest to protect research integrity, ensure the
+          safety of human and animal subjects, and maintain public trust in PHS/NIH-supported research.
         </p>
       </Section>
 
-      <Section title="2. Scope and Applicability">
+      {/* Section 2 */}
+      <Section id="s2" title="2) Applicability">
         <p>
-          This Policy applies to all Investigators, as defined in Section 3, who are planning to participate in or
-          are participating in PHS-funded research conducted by or through the Company. This includes, but is not
-          limited to, the Principal Investigator (PI), Co-Principal Investigators (Co-PIs), and any other person
-          regardless of title or position who is responsible for the design, conduct, or reporting of PHS-funded
-          research, which may include collaborators, consultants, and subrecipient investigators subject to this
-          Policy.
+          This policy implements the regulatory requirements provided in 42 CFR Part 50 Subpart F for grants and
+          cooperative agreements issued by the NIH. This policy applies to individuals who meet the regulatory
+          definition of "Investigator" (as defined below) who are planning to participate in or who participate in
+          PHS/NIH-funded research.
         </p>
       </Section>
 
-      <Section title="3. Definitions">
+      {/* Section 3 */}
+      <Section id="s3" title="3) Definitions">
         <DefinitionItem term="Financial Conflict of Interest (FCOI)">
-          A Significant Financial Interest (SFI) that the Company reasonably determines could directly and
-          significantly affect the design, conduct, or reporting of PHS-funded research.
+          A significant financial interest that is related to the PHS/NIH-funded research (i.e., the SFI could be
+          affected by the research or the SFI is in an entity whose financial interest could be affected by the
+          research) and could directly and significantly affect the design, conduct, or reporting of PHS-funded research.
         </DefinitionItem>
         <DefinitionItem term="Financial Interest">
-          Anything of monetary value, whether or not the value is readily ascertainable.
-        </DefinitionItem>
-        <DefinitionItem term="Institutional Official">
-          The President and Chief Technology Officer of ZwiCoat Materials Innovations, LLC, or his/her designee,
-          who is responsible for the implementation and oversight of this Policy.
+          Anything of monetary value, whether or not its value is readily ascertainable.
         </DefinitionItem>
         <DefinitionItem term="Institutional Responsibilities">
-          An Investigator's professional responsibilities on behalf of the Company, including but not limited to
-          activities such as research, research consultation, teaching, professional practice, institutional
-          committee memberships, and service on panels such as Institutional Review Boards or Data and Safety
-          Monitoring Boards.
+          The professional responsibilities of an Investigator on behalf of ZCMI, which may include activities such
+          as research, research consultation and collaboration, coatings formulation, materials characterization,
+          substrate testing, product development, product testing and validation, manufacturing process development,
+          development of datasets, models, or systems, customer technical support, collaboration with device
+          manufacturers, intellectual property and patent development, fundraising, publication and communication of
+          research results, and other professional services performed on behalf of ZCMI.
+        </DefinitionItem>
+        <DefinitionItem term="Designated Official (DO)">
+          The individual appointed by ZCMI to solicit and review disclosures of significant financial interests,
+          determine FCOIs in accordance with 42 CFR 50.604(f) and this policy, and develop management plans for
+          identified FCOIs. The President and Chief Technology Officer serves as the Designated Official. In cases
+          where the DO has a disclosed SFI related to the research under review, or where additional independence is
+          warranted, the DO will recuse themselves and an alternate qualified designee or external advisor may be
+          appointed. The use of such alternative review arrangements will be documented.
+        </DefinitionItem>
+        <DefinitionItem term="Institution">
+          Any public or private organization, domestic or foreign (excluding a federal agency) that is applying for
+          or receives PHS/NIH research funding.
         </DefinitionItem>
         <DefinitionItem term="Investigator">
-          The project director or principal investigator and any other person, regardless of title or position,
-          who is responsible for the design, conduct, or reporting of research funded by the PHS, or proposed for
-          such funding. This may include, for example, collaborators or consultants.
+          The Project Director (PD) or Principal Investigator (PI), and any other person, regardless of title or
+          position, who is responsible for the design, conduct, or reporting of research funded by PHS/NIH or
+          proposed for such funding, which may include, for example, collaborators or consultants. The Institution
+          will consider the individual's role, rather than their title, and degree of independence in carrying out
+          the work when making this determination.
+        </DefinitionItem>
+        <DefinitionItem term="Manage">
+          Taking action to address a financial conflict of interest, which can include reducing or eliminating the
+          financial conflict of interest, to ensure, to the extent possible, that the design, conduct, and reporting
+          of research will be free from bias.
+        </DefinitionItem>
+        <DefinitionItem term="Research">
+          A systematic investigation, study, or experiment designed to develop or contribute to generalizable
+          knowledge relating broadly to public health, including behavioral and social-sciences research. The term
+          encompasses basic and applied research and product development, and includes any such activity for which
+          research funding is available from a PHS Awarding Component through a grant, cooperative agreement, or
+          other statutory authority.
         </DefinitionItem>
         <DefinitionItem term="PHS-Funded Research">
-          Research funded by the Public Health Service (e.g., NIH) by means of a grant or cooperative agreement,
-          excluding Phase I SBIR/STTR applications and awards.
+          Any activity supported by a Public Health Service (PHS) Awarding Component through a grant, cooperative
+          agreement, or contract, whether funded under the PHS Act or other statutory authority.
+        </DefinitionItem>
+        <DefinitionItem term="PHS">
+          The Public Health Service of the U.S. Department of Health and Human Services, and any components of the
+          PHS to which the authority involved may be delegated, including the National Institutes of Health (NIH).
+        </DefinitionItem>
+        <DefinitionItem term="NIH">
+          The biomedical research agency within the Public Health Service (PHS) that funds and conducts research to
+          improve health and advance scientific knowledge.
         </DefinitionItem>
         <DefinitionItem term="Senior/Key Personnel">
-          The PD/PI and any other person identified as senior/key personnel by the Company in the grant
-          application, progress report, or any other report submitted to NIH by the Company under this regulation.
+          The PD/PI and any other individual identified as senior/key personnel by the Institution in a grant
+          application, progress report, or other submission to PHS/NIH. For this policy, the term applies
+          specifically to the public accessibility requirement described in Section 9.
         </DefinitionItem>
-        <DefinitionItem term="Significant Financial Interest (SFI)">
-          A financial interest consisting of one or more of the following interests of the Investigator (and those
-          of the Investigator's spouse and dependent children) that reasonably appears to be related to the
-          Investigator's institutional responsibilities:
-        </DefinitionItem>
-        <ul style={{ paddingLeft: '2rem', marginBottom: '1rem', lineHeight: '1.8' }}>
-          <li>
-            With regard to any <strong>publicly traded entity</strong>, an SFI exists if the value of any
-            remuneration received from the entity in the twelve months preceding the disclosure and the value of
-            any equity interest in the entity as of the date of disclosure, when aggregated, exceeds $5,000.
-          </li>
-          <li>
-            With regard to any <strong>non-publicly traded entity</strong>, an SFI exists if the value of any
-            remuneration received from the entity in the twelve months preceding the disclosure, when aggregated,
-            exceeds $5,000, or when the Investigator (or the Investigator's spouse or dependent children) holds
-            any equity interest (e.g., stock, stock option, or other ownership interest).
-          </li>
-          <li>
-            Intellectual property rights and interests (e.g., patents, copyrights), upon receipt of income related
-            to such rights and interests.
-          </li>
-          <li>
-            Any reimbursed or sponsored travel related to the Investigator's institutional responsibilities,
-            excluding travel reimbursed or sponsored by a U.S. federal, state, or local government agency, a U.S.
-            institution of higher education as defined at 20 U.S.C. 1001(a), an academic teaching hospital, a
-            medical center, or a research institute that is affiliated with a U.S. institution of higher education.
-          </li>
+
+        <p style={{ fontWeight: '600', marginTop: '0.5rem' }}>Significant Financial Interest (SFI):</p>
+        <p><strong>1)</strong> A domestic or foreign financial interest of the Investigator (and those of the
+          Investigator's spouse, domestic partner, and dependent children) that reasonably appears to be related to
+          the Investigator's institutional responsibilities, consisting of one or more of the following:</p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li><strong>Publicly traded entity:</strong> An SFI exists if the total of remuneration received in the
+            previous 12 months and the value of any equity interest on the disclosure date exceeds $5,000.
+            Remuneration includes salary and payments for services (e.g., consulting fees, honoraria, paid
+            authorship). Equity interest includes stock, stock options, or other ownership interests.</li>
+          <li><strong>Non-publicly traded entity:</strong> An SFI exists if the aggregated value of remuneration
+            received in the 12 months preceding disclosure exceeds $5,000, or if the Investigator (or their spouse
+            or dependent children) holds any equity interest.</li>
+          <li><strong>Intellectual property:</strong> An SFI exists if receipt of income related to intellectual
+            property rights or interests (e.g., patents, copyrights) exceeds $5,000 during the 12 months preceding
+            disclosure.</li>
+        </ul>
+        <p><strong>2)</strong> Investigators must disclose any reimbursed or sponsored travel related to their
+          institutional responsibilities in excess of $5,000 in the previous 12 months, including at minimum the
+          purpose, sponsor or organizer, destination, and duration of each trip. This requirement does not apply to
+          travel reimbursed or sponsored by a U.S. federal, state, or local government agency; a U.S. Institution
+          of Higher Education; an academic teaching hospital; a medical center; or a research institute affiliated
+          with a U.S. Institution of Higher Education.</p>
+        <p><strong>3)</strong> SFI does <em>not</em> include, and investigators are not required to disclose:</p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>Salary, royalties, or other remuneration paid by ZCMI to the Investigator if currently employed or
+            appointed by ZCMI, including intellectual property rights assigned to ZCMI and agreements to share
+            royalties related to those rights.</li>
+          <li>Any ownership interest in ZCMI held by the Investigator, since ZCMI is a commercial or for-profit
+            organization.</li>
+          <li>Income from investment vehicles such as mutual funds and retirement accounts, provided the Investigator
+            does not directly control the investment decisions for those vehicles.</li>
+          <li>Income from seminars, lectures, or teaching engagements, or service on advisory committees or review
+            panels, sponsored by a U.S. federal, state, or local government agency, a U.S. institution of higher
+            education, an academic teaching hospital, a medical center, or a research institute affiliated with a
+            U.S. institution of higher education.</li>
         </ul>
 
         <div style={{
@@ -108,339 +213,434 @@ const FCOI = () => {
           border: '1px solid var(--primary-3)',
           borderRadius: '0.4rem',
           padding: '1rem 1.25rem',
-          marginBottom: '1rem',
         }}>
-          <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>
-            Important Note Regarding Foreign Financial Interests:
-          </p>
+          <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Foreign Financial Interests:</p>
           <p>
-            The exclusions listed above for income from government agencies, institutions of higher education,
-            academic teaching hospitals, medical centers, and affiliated research institutes apply only to United
-            States entities. Investigators must disclose all financial interests received from foreign institutions
-            of higher education or the government of another country (including any local, provincial, or
-            equivalent government of another country) when such income meets the applicable threshold for
-            disclosure (e.g., remuneration in excess of $5,000). This includes, but is not limited to, income from
-            foreign seminars, lectures, teaching engagements, advisory committees, review panels, and reimbursed
-            or sponsored travel paid by or on behalf of a foreign entity. See NIH FAQs E.9., E.20., E.21., E.24.,
-            E.36., and E.37. for further guidance.
+            Investigators must disclose all financial interests originating outside the United States, including
+            income from seminars, lectures, teaching engagements, service on advisory committees or review panels,
+            and reimbursed or sponsored travel, received from any foreign entity — including foreign institutions
+            of higher education and foreign governments (including local or provincial governments). Disclosure is
+            required when the aggregated amount of such income meets the threshold (e.g., income in excess of $5,000).
           </p>
         </div>
+      </Section>
 
-        <p style={{ marginBottom: '0.5rem' }}><strong>SFI does not include:</strong></p>
-        <ul style={{ paddingLeft: '2rem', marginBottom: '1rem', lineHeight: '1.8' }}>
-          <li>Salary, royalties, or other remuneration paid by the Company to the Investigator if the Investigator is currently employed or otherwise appointed by the Company;</li>
-          <li>Intellectual property rights assigned to the Company and agreements to share in royalties related to such rights;</li>
-          <li>Any ownership interest in the Company held by the Investigator, if the Company is an applicant under the SBIR/STTR programs;</li>
-          <li>Income from investment vehicles such as mutual funds and retirement accounts, as long as the Investigator does not directly control the investment decisions made in these vehicles;</li>
-          <li>Income from seminars, lectures, or teaching engagements sponsored by, or from advisory committees or review panels for, a U.S. federal, state, or local government agency, a U.S. institution of higher education as defined at 20 U.S.C. 1001(a), an academic teaching hospital, a medical center, or a research institute affiliated with a U.S. institution of higher education. <em>Note: This exclusion does not apply to income received from foreign entities (see note above).</em></li>
+      {/* Section 4 */}
+      <Section id="s4" title="4) Significant Financial Interest (SFI) Disclosure Requirements">
+        <p>
+          Investigators will disclose their SFIs that are related to their institutional responsibilities as defined
+          in this policy. The disclosure will not be limited to an Investigator's research responsibilities or their
+          funded research, as this is too narrow in scope and not consistent with the 2011 regulation. Investigator
+          SFI Disclosures will be retained by the Institution as part of the record maintenance requirements.
+        </p>
+        <p>Investigators are required to disclose SFIs at the following times:</p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li><strong>At the time of application:</strong> The PI and all other Investigators must disclose their
+            SFIs to the DO. Any new Investigator who joins the project after the NIH application has been submitted
+            or during the course of the research must also disclose promptly and before participating, using the SFI
+            Disclosure Form.</li>
+          <li><strong>Annual disclosure during the award:</strong> Each Investigator must submit an updated SFI
+            disclosure at least annually (on or before May 1) during the award period, including any new information
+            not previously disclosed and updated details for any previously disclosed SFI.</li>
+          <li><strong>Ad hoc during the award:</strong> Each Investigator must submit an updated SFI disclosure
+            within 30 days of discovering or acquiring a new SFI (e.g., through purchase, marriage, or inheritance).
+            Updated disclosure of reimbursed or sponsored travel must also be submitted within 30 days of each
+            occurrence.</li>
         </ul>
       </Section>
 
-      <Section title="4. Institutional Official">
+      {/* Section 5 */}
+      <Section id="s5" title="5) Review of SFI Disclosures">
         <p>
-          The President and Chief Technology Officer of ZwiCoat Materials Innovations, LLC serves as the
-          Institutional Official and is responsible for the implementation, oversight, and enforcement of this
-          Policy. The Institutional Official's responsibilities include, but are not limited to:
+          The President and Chief Technology Officer serves as the Designated Official (DO) responsible for reviewing
+          all SFI disclosures. In cases where the DO has a disclosed SFI related to the research under review, the
+          DO will recuse themselves, and an alternate qualified designee or external advisor may be appointed. Each
+          SFI will be evaluated in relation to every PHS/NIH research application or award on which the Investigator
+          is responsible.
         </p>
-        <ul style={{ paddingLeft: '2rem', marginTop: '0.75rem', lineHeight: '1.8' }}>
-          <li>Informing each Investigator of this Policy, the Investigator's disclosure obligations regarding all foreign and domestic significant financial interests, and the federal regulation (42 CFR Part 50, Subpart F);</li>
-          <li>Soliciting and reviewing Investigator SFI disclosures;</li>
-          <li>Determining whether disclosed SFIs are related to PHS-funded research and whether they constitute FCOIs;</li>
-          <li>Developing and implementing management plans for identified FCOIs;</li>
-          <li>Reporting identified FCOIs to the NIH through the eRA Commons FCOI Module;</li>
-          <li>Ensuring Investigator compliance with this Policy and applicable management plans;</li>
-          <li>Maintaining records of all disclosures and actions taken;</li>
-          <li>Ensuring that training requirements are met; and</li>
-          <li>Making FCOI and SFI information, including related institutional reviews and determinations, available to the NIH promptly upon request.</li>
+        <p>SFI disclosures will be reviewed at the following times:</p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li><strong>Prior to a new award (e.g., Just-in-Time stage):</strong> The DO will review Investigator SFIs
+            before NIH issues a new award. If an FCOI is identified, an FCOI report will be submitted to NIH via the
+            eRA Commons FCOI Module prior to any expenditure of funds.</li>
+          <li><strong>Annual SFI disclosure:</strong> The DO will review annual updates to determine whether changes
+            to an existing management plan are needed. Any modifications will be reflected in the next Annual FCOI
+            report submitted to NIH.</li>
+          <li><strong>Ad hoc basis during the award:</strong> If a new Investigator joins a project or an existing
+            Investigator acquires a new SFI, the DO will, within 60 days: (1) review the disclosure; (2) determine
+            whether it is related to the PHS/NIH-funded research; (3) determine whether an FCOI exists; and if so,
+            (4) implement at least an interim management plan. An FCOI report will be submitted to NIH within 60
+            days of identifying the FCOI.</li>
         </ul>
       </Section>
 
-      <Section title="5. Investigator Training">
+      {/* Section 6 */}
+      <Section id="s6" title="6) Relatedness of SFIs to PHS/NIH-Funded Research and FCOI">
         <p>
-          Each Investigator must complete FCOI training before engaging in PHS-funded research and at least every
-          four years thereafter. Training must also be completed:
+          The DO is responsible for assessing the relatedness of SFIs to NIH-funded research and determining when
+          they constitute an FCOI.
         </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>When the Company revises this FCOI Policy in any manner that affects the requirements of Investigators;</li>
-          <li>When an Investigator is new to the Company; and</li>
-          <li>When the Company finds that an Investigator is not in compliance with this Policy or a management plan.</li>
+        <p>
+          <strong>Relatedness Test:</strong> An SFI is considered "related" when the DO reasonably determines that
+          the SFI could be affected by the PHS/NIH-funded research, or the SFI is in an entity whose financial
+          interests could be affected by the PHS/NIH-funded research. The DO may consult with the Investigator when
+          making this assessment.
+        </p>
+        <p>
+          <strong>FCOI Determination:</strong> An FCOI exists when the DO reasonably determines that the SFI could
+          directly and significantly affect the design, conduct, or reporting of the PHS/NIH-funded research
+          ("significantly" meaning that the financial interest would have a material effect on the research).
+        </p>
+      </Section>
+
+      {/* Section 7 */}
+      <Section id="s7" title="7) Management of SFIs that Pose an FCOI">
+        <p>
+          When an FCOI is identified, the DO will determine and implement management strategies to ensure the
+          research is conducted objectively. Examples of management conditions include, but are not limited to:
+        </p>
+        <ol style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>Public disclosure of the FCOI (e.g., in publications, presentations, to study personnel, to the IRB,
+            IACUC, or Data Safety Monitoring Board). While public posting of FCOIs is required only for senior/key
+            personnel, the DO may require disclosure of any Investigator's FCOI as a condition of a management plan.</li>
+          <li>For human subjects research, disclosure of the FCOI to participants in the informed consent document.</li>
+          <li>Appointment of an independent monitor to protect against bias in the design, conduct, and reporting of
+            the research.</li>
+          <li>Modification of the research plan.</li>
+          <li>Change of personnel roles or removal from portions of the research.</li>
+          <li>Reduction or elimination of the financial interest (e.g., divesting equity).</li>
+          <li>Severance of relationships creating the conflict.</li>
+        </ol>
+        <p>
+          The DO will communicate the determination and the management plan in writing to the Investigator and the
+          appropriate supervisor. No expenditures on an NIH award may occur until the Investigator has met all
+          disclosure requirements and agreed in writing to comply with the management plan. The DO will submit an
+          FCOI report to NIH via the eRA Commons FCOI Module.
+        </p>
+        <p>
+          In addition to Investigator FCOIs, ZCMI recognizes that certain financial interests at the institutional
+          level — including company equity, intellectual property interests, or financial relationships of senior
+          leadership — may present potential conflicts related to PHS/NIH-funded research. Such interests will be
+          evaluated and managed as appropriate to ensure the objectivity of the research.
+        </p>
+      </Section>
+
+      {/* Section 8 */}
+      <Section id="s8" title="8) Monitoring Investigator Compliance">
+        <p>
+          ZCMI will monitor Investigator compliance with the management plan for the duration of the NIH award.
+          FCOIs must be disclosed in publications, presentations, and other communications. Investigators must also
+          disclose the FCOI in writing to study personnel and provide a copy of this disclosure to the DO for
+          recordkeeping.
+        </p>
+      </Section>
+
+      {/* Section 9 */}
+      <Section id="s9" title="9) Public Accessibility of the FCOI Policy and FCOIs Held by Senior/Key Personnel">
+        <p>
+          <strong>FCOI Policy:</strong> A copy of this FCOI policy is available on ZCMI's public website at{' '}
+          <a href="https://zwicoat.com/fcoi" style={{ color: 'var(--primary-1)' }}>zwicoat.com/fcoi</a>, as
+          required by Section 4.1.10 of the NIH Grants Policy Statement. A copy of this policy has also been
+          submitted to the NIH via the eRA Commons Institution Profile (IPF) Module.
+        </p>
+        <p>
+          <strong>Identified FCOIs held by Senior/Key Personnel:</strong> Before any funds are spent under an NIH
+          award, ZCMI will ensure public accessibility by providing a written response within five business days to
+          requests for information about any SFI that meets all three of the following criteria:
+        </p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>The SFI was disclosed and is still held by Senior/Key Personnel.</li>
+          <li>ZCMI has determined that the SFI is related to the NIH-funded research.</li>
+          <li>ZCMI has determined that the SFI constitutes an FCOI.</li>
+        </ul>
+        <p>When applicable, ZCMI will make available at minimum:</p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>Investigator's name, title, and role with respect to the research project</li>
+          <li>Name of the entity in which the SFI is held</li>
+          <li>Nature of the SFI</li>
+          <li>Approximate dollar value of the SFI in the following ranges: $0–$4,999; $5,000–$9,999;
+            $10,000–$19,999; amounts between $20,000–$100,000 by increments of $20,000; amounts above $100,000 by
+            increments of $50,000; or a statement that the value cannot be readily determined.</li>
         </ul>
         <p>
-          Training shall cover the federal FCOI regulation (42 CFR Part 50, Subpart F), this Policy, and the
-          Investigator's responsibilities regarding disclosure of all foreign and domestic SFIs. The{' '}
-          <a
-            href="https://grants.nih.gov/grants/policy/coi/tutorial2011/fcoi.htm"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'var(--primary-1)' }}
-          >
-            NIH FCOI Training Module
-          </a>{' '}
-          may be used to satisfy the regulatory training requirement. Upon completion, certificates of completion
-          must be provided to the Institutional Official. The Company will also provide training on this Policy
-          and the Investigator's disclosure requirements.
+          This information will be updated at least annually and within 60 days of the institution's identification
+          of a new FCOI, and will remain available for at least three years from the most recent update.
         </p>
       </Section>
 
-      <Section title="6. Disclosure of Significant Financial Interests">
+      {/* Section 10 */}
+      <Section id="s10" title="10) Reporting Identified Financial Conflicts of Interest">
         <p>
-          Each Investigator must disclose to the Institutional Official all Significant Financial Interests, both
-          foreign and domestic (and those of the Investigator's spouse and dependent children), related to the
-          Investigator's institutional responsibilities. Disclosures must be made using the Company's SFI Disclosure
-          Form and are required at the following times:
+          Prior to spending any funds under an NIH-funded award, ZCMI will submit an identified FCOI report to NIH
+          for any Investigator's SFI determined to be an FCOI, and will ensure that the Investigator has agreed to
+          and begun implementing the associated management plan.
         </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>No later than at the time of application for PHS-funded research;</li>
-          <li>At least annually during the period of an award (within 30 days of the anniversary of the initial disclosure); and</li>
-          <li>Within 30 days of discovering or acquiring (e.g., through purchase, marriage, or inheritance) a new SFI.</li>
+        <p>
+          ZCMI will designate an institutional official to act as the FCOI Signing Official (FCOI SO) in the eRA
+          Commons FCOI Module. FCOI reports are submitted only when an award is active and an FCOI has been
+          identified. Instructions for preparing and submitting FCOI reports are available in the{' '}
+          <a href="https://www.era.nih.gov/files/fcoi_user_guide.pdf" target="_blank" rel="noopener noreferrer"
+            style={{ color: 'var(--primary-1)' }}>NIH eRA Commons FCOI Module User Guide</a>.
+        </p>
+
+        {/* Summary chart */}
+        <div style={{ overflowX: 'auto', marginTop: '1rem' }}>
+          <table style={{
+            width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem',
+            border: '1px solid var(--grey-light)',
+          }}>
+            <thead>
+              <tr style={{ background: 'var(--primary-1)', color: 'white' }}>
+                <th style={th}>Report Type</th>
+                <th style={th}>Content Required</th>
+                <th style={th}>When Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={td}><strong>New FCOI Report</strong> (Initial)</td>
+                <td style={td}>Grant number; PI; name of entity with FCOI; nature of FCOI; value of financial
+                  interest (in required increments); description of how the interest relates to the research; key
+                  elements of the management plan.</td>
+                <td style={td}>Prior to expenditure of funds on a new award; within 60 days of identifying any new
+                  FCOI during the award period.</td>
+              </tr>
+              <tr style={{ background: '#f8fafc' }}>
+                <td style={td}><strong>Annual FCOI Report</strong></td>
+                <td style={td}>Status of the FCOI (whether still being managed or no longer exists) and any changes
+                  to the management plan.</td>
+                <td style={td}>Submitted annually at the same time as the annual progress report, multi-year
+                  progress report, or at the time of a grant extension.</td>
+              </tr>
+              <tr>
+                <td style={td}><strong>Revised FCOI Report</strong></td>
+                <td style={td}>Updates to a previously submitted FCOI report describing actions to manage the FCOI
+                  going forward or revisions to the original report.</td>
+                <td style={td}>Following a retrospective review when noncompliance with the regulation is identified,
+                  if applicable.</td>
+              </tr>
+              <tr style={{ background: '#f8fafc' }}>
+                <td style={td}><strong>Mitigation Report</strong></td>
+                <td style={td}>Project number; project title; contact PI/PD; name of Investigator with FCOI; name
+                  of entity with FCOI; reason for review; detailed methodology, findings, and conclusions.</td>
+                <td style={td}>After a retrospective review when bias is found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Section 11 */}
+      <Section id="s11" title="11) Training Requirements for Investigators">
+        <p>
+          Each Investigator will be informed of ZCMI's FCOI Policy and trained on their responsibility to disclose
+          foreign and domestic SFIs. Training must be completed before an Investigator engages in PHS/NIH-funded
+          research, at least once every four years, and promptly when any of the following occur:
+        </p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>ZCMI revises this policy or related procedures in a way that affects Investigator requirements.</li>
+          <li>An Investigator is new to ZCMI research under an NIH award (training must be completed before
+            participating).</li>
+          <li>ZCMI determines that an Investigator has not complied with this policy or with a management plan
+            (training must be completed within 30 days as directed by the DO).</li>
         </ul>
         <p>
-          Investigators must also disclose the occurrence of any reimbursed or sponsored travel related to their
-          institutional responsibilities (as defined in Section 3), including the purpose of the trip, the identity
-          of the sponsor/organizer, the destination, and the duration. This includes travel reimbursed or sponsored
-          by foreign entities, foreign institutions of higher education, and foreign governments.
+          To meet the NIH training requirement, ZCMI requires Investigators to complete the{' '}
+          <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/fcoi/fcoi-training"
+            target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-1)' }}>
+            NIH FCOI Training Tutorial
+          </a>. ZCMI also requires Investigators to review the{' '}
+          <a href="https://www.youtube.com/watch?v=D292YZ6BX24" target="_blank" rel="noopener noreferrer"
+            style={{ color: 'var(--primary-1)' }}>
+            NIH Virtual Seminar on FCOI compliance
+          </a>. Send the DO the date of completion by email for audit purposes.
         </p>
       </Section>
 
-      <Section title="7. Review and Determination of FCOI">
-        <p>The Institutional Official will review each Investigator's SFI disclosure to determine:</p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>Whether an Investigator's SFI is related to PHS-funded research (i.e., whether the SFI could be affected by the research, or is in an entity whose financial interest could be affected by the research); and</li>
-          <li>If so related, whether the SFI constitutes a Financial Conflict of Interest (i.e., whether the SFI could directly and significantly affect the design, conduct, or reporting of the PHS-funded research).</li>
+      {/* Section 12 */}
+      <Section id="s12" title="12) Noncompliance With FCOI Policy and Corrective Actions">
+        <p>
+          If ZCMI identifies an SFI that was not disclosed, reviewed, or managed in a timely manner, the DO will,
+          within 60 days: review the SFI; determine whether it is related to NIH-funded research; determine whether
+          it constitutes an FCOI; and, if so, implement an interim management plan. ZCMI will also submit an FCOI
+          report to NIH via the eRA Commons FCOI Module.
+        </p>
+        <p>In cases of noncompliance, including:</p>
+        <ul style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>Failure by the Investigator to disclose an SFI later determined to constitute an FCOI,</li>
+          <li>Failure by the institution to review or manage an FCOI, or</li>
+          <li>Failure by the Investigator to comply with an established management plan,</li>
         </ul>
+        <p>ZCMI will, within 120 days of identifying noncompliance:</p>
+        <ol style={{ paddingLeft: '2rem', margin: '0.5rem 0', lineHeight: '1.9' }}>
+          <li>Conduct a retrospective review of the Investigator's activities and the NIH-funded research to
+            determine whether the research, or any part of it, was biased in the design, conduct, or reporting.</li>
+          <li>Document the retrospective review in accordance with 42 CFR 50.605(a)(3)(ii)(B) or NIH's FAQ I.2.</li>
+        </ol>
         <p>
-          The Institutional Official will complete this review and any resulting determination prior to the
-          expenditure of any PHS funds for the applicable research project. For any SFI that the Investigator did
-          not disclose timely or that the Company did not review timely, the Institutional Official will review the
-          SFI within 60 days and implement, on at least an interim basis, a management plan.
+          If bias is found, ZCMI will promptly notify NIH and submit a mitigation report as required by 42 CFR
+          50.605(a)(3)(iii), including the impact of the bias on the research project and the plan of action or
+          corrective steps taken to eliminate or mitigate the effect of the bias.
+        </p>
+        <p>
+          If bias is not found following completion of the retrospective review, no further action will be taken
+          unless new information is discovered. If the failure of an Investigator to comply with this policy or a
+          management plan appears to have biased the design, conduct, or reporting of PHS/NIH-funded research, the
+          Institution shall promptly notify the PHS/NIH Awarding Component of the corrective action taken or to be
+          taken.
         </p>
       </Section>
 
-      <Section title="8. Management of Financial Conflicts of Interest">
+      {/* Section 13 */}
+      <Section id="s13" title="13) Clinical Research Requirements">
         <p>
-          If the Institutional Official determines that a Financial Conflict of Interest exists, the Institutional
-          Official will develop and implement a management plan that specifies the actions to be taken to manage
-          the FCOI. Examples of management plan conditions may include, but are not limited to:
-        </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>Public disclosure of the FCOI (e.g., when presenting or publishing the research);</li>
-          <li>Appointment of an independent monitor capable of taking measures to protect the design, conduct, and reporting of the research against bias;</li>
-          <li>Modification of the research plan;</li>
-          <li>Change of personnel or personnel responsibilities, or disqualification of Investigators from participation in all or a portion of the research;</li>
-          <li>Reduction or elimination of the financial interest; and/or</li>
-          <li>Severance of relationships that create the conflict.</li>
-        </ul>
-        <p>
-          The affected Investigator must formally agree to the management plan in writing before participating or
-          continuing to participate in the related PHS-funded research. The Institutional Official will monitor
-          Investigator compliance with the management plan on an ongoing basis until the completion of the project.
+          If HHS determines that a PHS-funded clinical research project evaluating the safety or effectiveness of a
+          drug, medical device, or treatment was designed, conducted, or reported by an Investigator with an
+          unmanaged or unreported FCOI, ZCMI will require the Investigator to disclose the conflict in every public
+          presentation of the research results and to request an addendum to previously published presentations.
         </p>
       </Section>
 
-      <Section title="9. Reporting to NIH">
-        <h3 style={{ fontWeight: '600', marginBottom: '0.5rem', marginTop: '1rem' }}>9.1 Initial FCOI Report</h3>
+      {/* Section 14 */}
+      <Section id="s14" title="14) Subrecipient Requirements">
         <p>
-          Prior to the expenditure of any funds under a PHS-funded research project, the Company will submit an
-          FCOI report to the NIH through the eRA Commons FCOI Module for each identified FCOI. The report will
-          include:
+          A subrecipient relationship exists when federal funds flow from or through ZCMI to another individual or
+          entity that will carry out a substantive portion of a PHS-funded research project and is accountable to
+          ZCMI for programmatic outcomes and compliance. Subrecipients (e.g., collaborators, consortium members,
+          consultants, contractors, subcontractors, and sub-awardees) are subject to ZCMI's terms and conditions.
+          ZCMI will include in each written agreement with a subrecipient terms specifying whether ZCMI's FCOI
+          Policy or the subrecipient's own FCOI policy will apply.
         </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>Grant number and project title;</li>
-          <li>PD/PI name;</li>
-          <li>Name of the Investigator with the FCOI;</li>
-          <li>Name of the entity with which the Investigator has an FCOI;</li>
-          <li>Nature of the financial interest (e.g., equity, consulting fees, intellectual property);</li>
-          <li>Value of the financial interest (reported in the dollar ranges specified by NIH: $0–4,999; $5,000–9,999; $10,000–19,999; amounts between $20,000–100,000 by increments of $20,000; amounts above $100,000 by increments of $50,000), or a statement that the value cannot be readily determined;</li>
-          <li>A description of how the financial interest relates to the PHS-funded research and the basis for the Company's determination that the interest is an FCOI;</li>
-          <li>The role and principal duties of the conflicted Investigator in the research project; and</li>
-          <li>Key elements of the management plan.</li>
-        </ul>
-
-        <h3 style={{ fontWeight: '600', marginBottom: '0.5rem', marginTop: '1rem' }}>9.2 Annual FCOI Report</h3>
-        <p>
-          The Company will submit an annual FCOI report to the NIH for the duration of the project period regarding
-          any previously reported FCOI and the status of the management plan. The annual report will specify
-          whether the FCOI is still being managed, explain any changes to the management plan, and confirm
-          Investigator compliance.
+        <p><strong>If the subrecipient's FCOI policy applies:</strong> The subrecipient institution must certify
+          that its policy complies with federal FCOI regulations. The agreement will specify the timeframe for the
+          subrecipient to report identified FCOIs to ZCMI (typically within 50–55 days of identification) in time
+          for ZCMI to meet NIH reporting deadlines. ZCMI's DO will then submit the subrecipient FCOI report to NIH.
         </p>
-
-        <h3 style={{ fontWeight: '600', marginBottom: '0.5rem', marginTop: '1rem' }}>9.3 Revised FCOI Report</h3>
-        <p>
-          For any newly identified FCOI during an ongoing project, the Company will submit an FCOI report to the
-          NIH within 60 days of identification.
-        </p>
-
-        <h3 style={{ fontWeight: '600', marginBottom: '0.5rem', marginTop: '1rem' }}>9.4 Notification of Noncompliance</h3>
-        <p>
-          The Company will notify the NIH promptly if an Investigator (or subrecipient Investigator) fails to
-          comply with this Policy, or if noncompliance with an FCOI management plan appears to have biased the
-          design, conduct, or reporting of PHS-funded research. The Company will take corrective action promptly
-          upon identification of any noncompliance.
-        </p>
-
-        <h3 style={{ fontWeight: '600', marginBottom: '0.5rem', marginTop: '1rem' }}>9.5 Cooperation with NIH</h3>
-        <p>
-          The Company agrees to make FCOI and SFI information, including related institutional reviews and
-          determinations, available to the NIH promptly upon request.
+        <p><strong>If the subrecipient cannot certify compliance:</strong> The agreement will specify that ZCMI's
+          FCOI Policy applies. Subrecipient Investigators must disclose their SFIs to ZCMI. When an FCOI is
+          identified, ZCMI will implement a management plan, monitor compliance, and submit the required FCOI report
+          to NIH via the eRA Commons FCOI Module.
         </p>
       </Section>
 
-      <Section title="10. Retrospective Review">
+      {/* Section 15 */}
+      <Section id="s15" title="15) Maintenance of Records">
         <p>
-          If the Company identifies an SFI that was not disclosed in a timely manner by an Investigator, or was
-          not previously reviewed by the Company, the Institutional Official will, within 60 days, review the SFI,
-          determine whether it constitutes an FCOI, and if so, implement an interim management plan. In addition,
-          whenever an FCOI is not identified or managed in a timely manner, the Company will complete a
-          retrospective review of the Investigator's activities and the PHS-funded research project within 120 days
-          to determine whether any PHS-funded research conducted during the period of noncompliance was biased in
-          the design, conduct, or reporting of such research.
-        </p>
-        <p>The retrospective review will be documented and will include, at a minimum:</p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>Project number and project title;</li>
-          <li>PD/PI or contact PD/PI if a multiple PD/PI model is used;</li>
-          <li>Name of the Investigator with the FCOI;</li>
-          <li>Name of the entity with which the Investigator has an FCOI;</li>
-          <li>Reasons for the retrospective review;</li>
-          <li>Detailed methodology used for the retrospective review (e.g., methodology of the review process, composition of the review panel, documentation reviewed);</li>
-          <li>Findings of the review; and</li>
-          <li>Conclusions of the review.</li>
-        </ul>
-        <p>
-          If the retrospective review determines that the PHS-funded research was biased, the Company will notify
-          the NIH promptly and submit a mitigation report that includes the key elements of the retrospective
-          review listed above, plus a description of the impact of the bias on the research project and a plan of
-          action or description of actions taken to eliminate or mitigate the effect of the bias.
-        </p>
-
-        <h3 style={{ fontWeight: '600', marginBottom: '0.5rem', marginTop: '1.25rem' }}>10.1 Clinical Research Disclosure Requirement</h3>
-        <p>
-          In any case in which the Department of Health and Human Services determines that a PHS-funded clinical
-          research project whose purpose is to evaluate the safety or effectiveness of a drug, medical device, or
-          treatment has been designed, conducted, or reported by an Investigator with an FCOI that was not managed
-          or reported as required by this Policy, the Company shall require the Investigator to:
-        </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>Disclose the FCOI in each public presentation of the results of the research; and</li>
-          <li>Request an addendum to previously published presentations.</li>
-        </ul>
-      </Section>
-
-      <Section title="11. Subrecipient Requirements">
-        <p>
-          When the Company enters into a subaward agreement with a subrecipient for PHS-funded research, the
-          written agreement will specify whether the subrecipient's Investigators will comply with this Policy or
-          the subrecipient's own FCOI policy. If the subrecipient's Investigators will follow the subrecipient's
-          own policy, the subrecipient must certify that its policy complies with 42 CFR Part 50, Subpart F. The
-          subaward agreement will specify time periods for the subrecipient to report identified FCOIs to the
-          Company, which must be sufficient to enable the Company to report to NIH in a timely manner.
-        </p>
-        <p>
-          If the subrecipient cannot make such a certification, the agreement will state that the subrecipient's
-          Investigators are subject to this Policy for disclosing SFIs that are directly related to the
-          subrecipient's work for the Company.
+          ZCMI will maintain records of all Investigator financial interest disclosures, ZCMI's review and response
+          to those disclosures (whether or not they resulted in a determination of an FCOI), and any actions taken
+          under this policy or through retrospective review. These records will be retained for at least three years
+          from the date of submission of the final expenditures report, or for longer periods as specified in 2 CFR
+          200.334. ZCMI will retain these records for each competitive segment as required by regulation. Copies of
+          management plans will be retained as part of the record maintenance requirements.
         </p>
       </Section>
 
-      <Section title="12. Public Accessibility">
+      {/* Section 16 */}
+      <Section id="s16" title="16) Enforcement Actions for Investigator Noncompliance">
         <p>
-          This Policy is publicly accessible on the Company's website and has been submitted to the NIH via the
-          eRA Commons Institution Profile (IPF) Module, as required by NOT-OD-21-002. The Company will update the
-          posted policy and resubmit to NIH whenever the Policy is revised.
+          Compliance with this policy is a condition of employment and/or participation for all applicable
+          Investigators. Failure to comply with this policy — including failure to disclose Significant Financial
+          Interests, failure to comply with a Conflict Management Plan, or failure to complete required training —
+          may result in appropriate corrective or disciplinary actions.
         </p>
         <p>
-          If requested, the Company will make this Policy available to any individual within five business days of
-          the request. In addition, information concerning any Investigator's SFI determined to be an FCOI held by
-          Senior/Key Personnel (as defined in Section 3) will be made publicly accessible prior to the expenditure
-          of funds. The Company will make such information available via written request, responding within five
-          business days. The information made available will include, at a minimum:
+          Such actions may include, but are not limited to, formal notification or disciplinary measures,
+          restrictions on participation in research activities or use of research funds, suspension or termination
+          of employment or contractual relationship, and/or disqualification from participation in Government
+          Award-funded research.
         </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>The Investigator's name;</li>
-          <li>The Investigator's title and role with respect to the research project;</li>
-          <li>The name of the entity in which the SFI is held;</li>
-          <li>The nature of the SFI; and</li>
-          <li>The approximate dollar value of the SFI, or a statement that the interest is one whose value cannot be readily determined through reference to public prices or other reasonable measures of fair market value.</li>
-        </ul>
         <p>
-          This publicly accessible information will be updated at least annually, updated within sixty (60) days of
-          a newly identified FCOI, and will remain available for at least three (3) years from the date the
-          information was most recently updated.
+          In addition, ZCMI will take all actions required under applicable federal regulations and sponsor
+          requirements, including conducting retrospective review, implementing mitigation measures where necessary,
+          and notifying the sponsor when required.
         </p>
       </Section>
 
-      <Section title="13. Enforcement and Sanctions">
-        <p>
-          Failure to comply with any aspect of this Policy, including but not limited to failure to disclose SFIs
-          timely, failure to complete required training, or failure to comply with a management plan, may result in
-          sanctions or administrative actions including, but not limited to:
-        </p>
-        <ul style={{ paddingLeft: '2rem', margin: '0.75rem 0', lineHeight: '1.8' }}>
-          <li>Written warning;</li>
-          <li>Required retraining;</li>
-          <li>Suspension or termination of participation in PHS-funded research;</li>
-          <li>Reduction or elimination of the financial interest causing the conflict; and/or</li>
-          <li>Other administrative action, up to and including termination of employment or consulting arrangement.</li>
-        </ul>
-      </Section>
-
-      <Section title="14. Record Retention">
-        <p>
-          The Company will maintain records of all Investigator SFI disclosures, the Company's review of and
-          response to such disclosures (whether or not a disclosure resulted in a determination of an FCOI), all
-          actions taken under this Policy, and any retrospective reviews, for a period of at least three years from
-          the date the final expenditure report is submitted to the PHS, or as otherwise required by 2 CFR 200.334.
-        </p>
-      </Section>
-
-      <Section title="15. Policy Review and Updates">
-        <p>
-          This Policy will be reviewed at least annually by the Institutional Official and updated as necessary to
-          ensure continued compliance with 42 CFR Part 50, Subpart F, and NIH requirements. Any revisions to this
-          Policy will be communicated to all Investigators, and retraining will be required as applicable.
-        </p>
-      </Section>
-
-      <Section title="16. Regulatory References">
-        <ul style={{ paddingLeft: '2rem', lineHeight: '1.8' }}>
-          <li>42 CFR Part 50, Subpart F – Promoting Objectivity in Research</li>
-          <li>45 CFR Part 94 – Responsible Prospective Contractors</li>
-          <li>NIH Grants Policy Statement, Section 4.1.10 – Financial Conflict of Interest</li>
-          <li>NIH Guide Notice NOT-OD-21-002 – Required Submission of FCOI Policy into eRA Commons IPF Module</li>
-          <li>NIH Guide Notice NOT-OD-22-210 – Financial Conflict of Interest and Other Support: Reminders</li>
+      {/* Section 17 */}
+      <Section id="s17" title="17) Useful FCOI and NIH Resources">
+        <ul style={{ paddingLeft: '2rem', lineHeight: '2' }}>
+          <li>
+            NIH FCOI email:{' '}
+            <a href="mailto:fcoicompliance@mail.nih.gov" style={{ color: 'var(--primary-1)' }}>
+              fcoicompliance@mail.nih.gov
+            </a>
+          </li>
+          <li>
+            FCOI Regulation:{' '}
+            <a href="https://www.ecfr.gov/current/title-42/chapter-I/subchapter-D/part-50/subpart-F"
+              target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-1)' }}>
+              42 CFR Part 50 Subpart F – Promoting Objectivity in Research
+            </a>
+          </li>
+          <li>
+            Financial Conflict of Interest:{' '}
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/fcoi"
+              target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-1)' }}>
+              grants.nih.gov/policy-and-compliance/policy-topics/fcoi
+            </a>
+          </li>
+          <li>
+            FCOI Training:{' '}
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/fcoi/fcoi-training"
+              target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-1)' }}>
+              grants.nih.gov/policy-and-compliance/policy-topics/fcoi/fcoi-training
+            </a>
+          </li>
+          <li>NIH "Welcome Wagon" Letter: Information for New Recipient Organizations</li>
         </ul>
       </Section>
 
-      <Section title="17. Contact Information">
-        <p>For questions regarding this Policy, please contact the Institutional Official:</p>
-        <address style={{ marginTop: '0.75rem', fontStyle: 'normal', lineHeight: '1.8' }}>
+      {/* Section 18 */}
+      <Section id="s18" title="18) Point of Contact">
+        <p>
+          If you have a question related to the FCOI Policy of ZCMI, or would like to disclose a financial interest,
+          contact us using the information below:
+        </p>
+        <address style={{ marginTop: '0.75rem', fontStyle: 'normal', lineHeight: '1.9' }}>
           <strong>Kameron Hansen, Ph.D.</strong><br />
           President and Chief Technology Officer<br />
           ZwiCoat Materials Innovations, LLC<br />
           2635 Johnsons XING NE<br />
           Solon, IA 52333<br />
-          Phone: (917) 609-4598<br />
+          Phone:{' '}
+          <a href="tel:+19176094598" style={{ color: 'var(--primary-1)' }}>(917) 609-4598</a><br />
           Email:{' '}
           <a href="mailto:kameronh@zwicoat.com" style={{ color: 'var(--primary-1)' }}>
             kameronh@zwicoat.com
           </a>
         </address>
       </Section>
+
     </div>
   );
 };
 
-const Section = ({ title, children }) => (
-  <section style={{ marginBottom: '2rem' }}>
+const th = {
+  padding: '0.6rem 0.85rem',
+  textAlign: 'left',
+  fontWeight: '600',
+  fontSize: '0.85rem',
+  borderBottom: '1px solid rgba(255,255,255,0.3)',
+};
+
+const td = {
+  padding: '0.65rem 0.85rem',
+  verticalAlign: 'top',
+  borderBottom: '1px solid var(--grey-light)',
+  lineHeight: '1.6',
+};
+
+const Section = ({ id, title, children }) => (
+  <section id={id} style={{ marginBottom: '2.25rem', scrollMarginTop: '80px' }}>
     <h2 style={{
-      fontSize: '1.1rem',
+      fontSize: '1.05rem',
       fontWeight: '700',
       color: 'var(--primary-1)',
       borderBottom: '1px solid var(--grey-light)',
       paddingBottom: '0.4rem',
       marginBottom: '0.9rem',
       textTransform: 'uppercase',
-      letterSpacing: '0.05em',
+      letterSpacing: '0.04em',
     }}>
       {title}
     </h2>
