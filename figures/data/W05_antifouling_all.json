@@ -2,7 +2,7 @@
  {
   "category": "Protein",
   "assay": "Fibrinogen adsorption",
-  "surface": "Glass, SBMA coating, 2.5 wt% monomer",
+  "surface": "Glass, coated, 2.5 wt% monomer",
   "paper": "Leigh et al.",
   "year": 2017,
   "journal": "Biomacromolecules",
@@ -16,31 +16,13 @@
   "exact": false,
   "figure": "Fig 4A",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Protein",
   "assay": "Fibrinogen adsorption",
-  "surface": "Glass, CBMA coating, 2.5 wt% monomer",
-  "paper": "Leigh et al.",
-  "year": 2017,
-  "journal": "Biomacromolecules",
-  "species_or_setting": "in vitro, glass",
-  "uncoated": 1.0,
-  "coated": 0.06,
-  "unit": "relative fluorescence (uncoated = 1)",
-  "pct_reduction": 94,
-  "n": "3 samples, 5 images each",
-  "p_text": "not stated (text: about 6% of control)",
-  "exact": false,
-  "figure": "Fig 4B",
-  "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Protein",
-  "assay": "Fibrinogen adsorption",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Leigh et al.",
   "year": 2019,
   "journal": "Langmuir",
@@ -54,50 +36,13 @@
   "exact": false,
   "figure": "Fig 7D",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Protein",
   "assay": "Fibrinogen adsorption",
-  "surface": "Silicone (PDMS), CBMA coating",
-  "paper": "Leigh et al.",
-  "year": 2019,
-  "journal": "Langmuir",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 1.0,
-  "coated": 0.06,
-  "unit": "relative fluorescence (uncoated = 1)",
-  "pct_reduction": 94,
-  "n": "3 samples, 5 images each",
-  "p_text": "< 0.001 (text: greater than 90% reduction)",
-  "exact": false,
-  "figure": "Fig 7D",
-  "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Protein",
-  "assay": "Fibrinogen adsorption",
-  "surface": "Reinforced silicone, CBMA coating, 5% cross-linker",
-  "paper": "Jensen et al.",
-  "year": 2021,
-  "journal": "ACS Biomaterials Science and Engineering",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 1.0,
-  "coated": 0.07,
-  "unit": "relative fluorescence (uncoated = 1)",
-  "pct_reduction": 93,
-  "n": "3 samples, 9 images each",
-  "p_text": "not stated (ANOVA with Tukey in Methods)",
-  "exact": false,
-  "figure": "Fig 1G",
-  "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Protein",
-  "assay": "Fibrinogen adsorption",
-  "surface": "Reinforced silicone, SBMA coating, 5% cross-linker",
+  "surface": "Reinforced silicone, coated, 5% cross-linker",
   "paper": "Jensen et al.",
   "year": 2021,
   "journal": "ACS Biomaterials Science and Engineering",
@@ -111,12 +56,13 @@
   "exact": false,
   "figure": "Fig 1G",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h",
-  "surface": "Glass, SBMA coating",
+  "surface": "Glass, coated",
   "paper": "Leigh et al.",
   "year": 2017,
   "journal": "Biomacromolecules",
@@ -130,31 +76,13 @@
   "exact": false,
   "figure": "Fig 6E",
   "in_static_chart": true,
-  "note": "text: less than half of glass"
- },
- {
-  "category": "Cells",
-  "assay": "Fibroblast adhesion, 48 h",
-  "surface": "Glass, CBMA coating",
-  "paper": "Leigh et al.",
-  "year": 2017,
-  "journal": "Biomacromolecules",
-  "species_or_setting": "in vitro, glass",
-  "uncoated": 9.0,
-  "coated": 0.05,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 99,
-  "n": "at least 3 samples, at least 10 fields",
-  "p_text": "< 0.001",
-  "exact": false,
-  "figure": "Fig 6E",
-  "in_static_chart": true,
-  "note": "text: less than one percent of glass"
+  "note": "text: less than half of glass",
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Astrocyte adhesion, 48 h",
-  "surface": "Glass, SBMA coating",
+  "surface": "Glass, coated",
   "paper": "Leigh et al.",
   "year": 2017,
   "journal": "Biomacromolecules",
@@ -168,31 +96,13 @@
   "exact": true,
   "figure": "Fig 7E",
   "in_static_chart": true,
-  "note": "text: 13-fold reduction"
- },
- {
-  "category": "Cells",
-  "assay": "Astrocyte adhesion, 48 h",
-  "surface": "Glass, CBMA coating",
-  "paper": "Leigh et al.",
-  "year": 2017,
-  "journal": "Biomacromolecules",
-  "species_or_setting": "in vitro, glass",
-  "uncoated": 6.1,
-  "coated": 0.05,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 99,
-  "n": "at least 3 samples, at least 10 fields",
-  "p_text": "< 0.001",
-  "exact": false,
-  "figure": "Fig 7E",
-  "in_static_chart": true,
-  "note": "text: decrease of over 90-fold (lower bound)"
+  "note": "text: 13-fold reduction",
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Schwann cell adhesion, 48 h",
-  "surface": "Glass, SBMA coating",
+  "surface": "Glass, coated",
   "paper": "Leigh et al.",
   "year": 2017,
   "journal": "Biomacromolecules",
@@ -206,31 +116,13 @@
   "exact": false,
   "figure": "Fig 8E",
   "in_static_chart": true,
-  "note": "text: more than 40-fold decrease (lower bound)"
- },
- {
-  "category": "Cells",
-  "assay": "Schwann cell adhesion, 48 h",
-  "surface": "Glass, CBMA coating",
-  "paper": "Leigh et al.",
-  "year": 2017,
-  "journal": "Biomacromolecules",
-  "species_or_setting": "in vitro, glass",
-  "uncoated": 14.0,
-  "coated": 0.15,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 99,
-  "n": "at least 3 samples, at least 10 fields",
-  "p_text": "< 0.001",
-  "exact": false,
-  "figure": "Fig 8E",
-  "in_static_chart": true,
-  "note": "text: over 80-fold decrease (lower bound)"
+  "note": "text: more than 40-fold decrease (lower bound)",
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion after 14 days soaking in culture medium",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Leigh et al.",
   "year": 2019,
   "journal": "Langmuir",
@@ -244,31 +136,13 @@
   "exact": false,
   "figure": "Fig 10D",
   "in_static_chart": true,
-  "note": "ratio of plotted bars; plotted absolute values conflict with the text (inventory caveat)"
- },
- {
-  "category": "Cells",
-  "assay": "Fibroblast adhesion after 14 days soaking in culture medium",
-  "surface": "Silicone (PDMS), CBMA coating",
-  "paper": "Leigh et al.",
-  "year": 2019,
-  "journal": "Langmuir",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 30,
-  "coated": 1.2,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 96,
-  "n": "at least 3 substrates, at least 10 images",
-  "p_text": "< 0.001",
-  "exact": false,
-  "figure": "Fig 10D",
-  "in_static_chart": true,
-  "note": "ratio of plotted bars; text: almost 20 times less than the PDMS control"
+  "note": "ratio of plotted bars; plotted absolute values conflict with the text (inventory caveat)",
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h, no serum pre-soak",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Leigh et al.",
   "year": 2019,
   "journal": "Langmuir",
@@ -282,50 +156,13 @@
   "exact": false,
   "figure": "Fig 8D",
   "in_static_chart": false,
-  "note": "text: less than 5% of control"
- },
- {
-  "category": "Cells",
-  "assay": "Fibroblast adhesion, 48 h, no serum pre-soak",
-  "surface": "Silicone (PDMS), CBMA coating",
-  "paper": "Leigh et al.",
-  "year": 2019,
-  "journal": "Langmuir",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 7.8,
-  "coated": 0.25,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 97,
-  "n": "at least 3 substrates, at least 10 images",
-  "p_text": "< 0.001",
-  "exact": false,
-  "figure": "Fig 8D",
-  "in_static_chart": false,
-  "note": "text: just above 3% of control"
+  "note": "text: less than 5% of control",
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h",
-  "surface": "Reinforced silicone, CBMA coating, 5% cross-linker",
-  "paper": "Jensen et al.",
-  "year": 2021,
-  "journal": "ACS Biomaterials Science and Engineering",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 11.6,
-  "coated": 0.15,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 99,
-  "n": "3 samples, 10 images each",
-  "p_text": "not stated (ANOVA with Tukey in Methods)",
-  "exact": false,
-  "figure": "Fig 3G",
-  "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Cells",
-  "assay": "Fibroblast adhesion, 48 h",
-  "surface": "Reinforced silicone, SBMA coating, 5% cross-linker",
+  "surface": "Reinforced silicone, coated, 5% cross-linker",
   "paper": "Jensen et al.",
   "year": 2021,
   "journal": "ACS Biomaterials Science and Engineering",
@@ -339,31 +176,13 @@
   "exact": false,
   "figure": "Fig 3G",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Macrophage adhesion, 7 days",
-  "surface": "Reinforced silicone, CBMA coating, 5% cross-linker",
-  "paper": "Jensen et al.",
-  "year": 2021,
-  "journal": "ACS Biomaterials Science and Engineering",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 7.6,
-  "coated": 0.4,
-  "unit": "cells per um2 x 10^-4",
-  "pct_reduction": 95,
-  "n": "3 samples, 10 images each",
-  "p_text": "not stated (ANOVA with Tukey in Methods)",
-  "exact": false,
-  "figure": "Fig 2G",
-  "in_static_chart": true,
-  "note": "text: reduced by as much as 30-fold at the best cross-linker level"
- },
- {
-  "category": "Cells",
-  "assay": "Macrophage adhesion, 7 days",
-  "surface": "Reinforced silicone, SBMA coating, 5% cross-linker",
+  "surface": "Reinforced silicone, coated, 5% cross-linker",
   "paper": "Jensen et al.",
   "year": 2021,
   "journal": "ACS Biomaterials Science and Engineering",
@@ -377,12 +196,13 @@
   "exact": false,
   "figure": "Fig 2G",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h, newly made coating (mean of 4 cross-linker levels)",
-  "surface": "Silicone (PDMS), CBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Horne et al.",
   "year": 2023,
   "journal": "Acta Biomaterialia",
@@ -396,12 +216,13 @@
   "exact": false,
   "figure": "Fig 3F",
   "in_static_chart": true,
-  "note": "text: an order of magnitude less"
+  "note": "text: an order of magnitude less",
+  "chemistry": "CBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h, coating explanted after 6 months in mice (mean of 4 levels)",
-  "surface": "Silicone (PDMS), CBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Horne et al.",
   "year": 2023,
   "journal": "Acta Biomaterialia",
@@ -415,12 +236,13 @@
   "exact": false,
   "figure": "Fig 3F",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "CBMA"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h (3T3), low cross-linker",
-  "surface": "Silicone (PDMS), SBMA dual-network coating, 2.5% primary",
+  "surface": "Silicone (PDMS), coated, 2.5% primary cross-linker",
   "paper": "Barrera et al.",
   "year": 2026,
   "journal": "ACS Applied Polymer Materials",
@@ -434,12 +256,13 @@
   "exact": false,
   "figure": "Fig 6",
   "in_static_chart": true,
-  "note": "text: more than 99% reduction (low cross-link groups)"
+  "note": "text: more than 99% reduction (low cross-link groups)",
+  "chemistry": "SBMA (dual network)"
  },
  {
   "category": "Cells",
   "assay": "Fibroblast adhesion, 48 h (3T3), high cross-linker",
-  "surface": "Silicone (PDMS), SBMA dual-network coating, 20% primary, 5% secondary",
+  "surface": "Silicone (PDMS), coated, 20% primary and 5% secondary cross-linker",
   "paper": "Barrera et al.",
   "year": 2026,
   "journal": "ACS Applied Polymer Materials",
@@ -453,12 +276,13 @@
   "exact": false,
   "figure": "Figs 5D, 6",
   "in_static_chart": true,
-  "note": "text: about 90% reduction for the high cross-link dual network"
+  "note": "text: about 90% reduction for the high cross-link coating",
+  "chemistry": "SBMA (dual network)"
  },
  {
   "category": "Bacteria",
   "assay": "S. aureus adhesion, 1 h in suspension",
-  "surface": "Silicone (PDMS), pCBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -472,12 +296,13 @@
   "exact": false,
   "figure": "Fig 3",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "pCBMA"
  },
  {
   "category": "Bacteria",
   "assay": "S. epidermidis adhesion, 1 h in suspension",
-  "surface": "Silicone (PDMS), pCBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -491,12 +316,13 @@
   "exact": false,
   "figure": "Fig 3",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "pCBMA"
  },
  {
   "category": "Bacteria",
   "assay": "S. aureus adhesion, 1 h droplet (spray) exposure",
-  "surface": "Silicone (PDMS), pCBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -510,12 +336,13 @@
   "exact": false,
   "figure": "Fig 3",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "pCBMA"
  },
  {
   "category": "Bacteria",
   "assay": "S. epidermidis adhesion, 1 h droplet (spray) exposure",
-  "surface": "Silicone (PDMS), pCBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -529,12 +356,13 @@
   "exact": false,
   "figure": "Fig 3",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "pCBMA"
  },
  {
   "category": "Bacteria",
   "assay": "Adherent S. aureus on explant, day 21",
-  "surface": "Silicone (PDMS) implant under the skin, pCBMA coating, S. aureus inoculated",
+  "surface": "Silicone (PDMS) implant under the skin, coated, S. aureus inoculated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -548,12 +376,13 @@
   "exact": false,
   "figure": "Fig 7C",
   "in_static_chart": true,
-  "note": "text: more than 500 counts per field fewer"
+  "note": "text: more than 500 counts per field fewer",
+  "chemistry": "pCBMA"
  },
  {
   "category": "Bacteria",
   "assay": "Viable colonies recovered from explant, day 21",
-  "surface": "Silicone (PDMS) implant under the skin, pCBMA coating, S. aureus inoculated",
+  "surface": "Silicone (PDMS) implant under the skin, coated, S. aureus inoculated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -567,12 +396,13 @@
   "exact": false,
   "figure": "Fig 7D",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "pCBMA"
  },
  {
   "category": "Bacteria",
   "assay": "Adherent S. aureus in a 24 h challenge after 2 weeks in rats",
-  "surface": "Silicone (PDMS) implant, pCBMA coating",
+  "surface": "Silicone (PDMS) implant, coated",
   "paper": "Shen et al.",
   "year": 2021,
   "journal": "ACS Applied Bio Materials",
@@ -586,31 +416,13 @@
   "exact": false,
   "figure": "Fig 8",
   "in_static_chart": true,
-  "note": "text: more than 1000 counts per field fewer"
+  "note": "text: more than 1000 counts per field fewer",
+  "chemistry": "pCBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs sapphire ball in PBS",
-  "surface": "Reinforced silicone, CBMA coating, 4% cross-linker",
-  "paper": "Jensen et al.",
-  "year": 2021,
-  "journal": "ACS Biomaterials Science and Engineering",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 1.0,
-  "coated": 0.055,
-  "unit": "relative coefficient of friction (uncoated = 1)",
-  "pct_reduction": 95,
-  "n": "4",
-  "p_text": "not stated ('significantly decreased')",
-  "exact": false,
-  "figure": "Fig 5A",
-  "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Friction",
-  "assay": "Friction vs sapphire ball in PBS",
-  "surface": "Reinforced silicone, SBMA coating, 4% cross-linker",
+  "surface": "Reinforced silicone, coated, 4% cross-linker",
   "paper": "Jensen et al.",
   "year": 2021,
   "journal": "ACS Biomaterials Science and Engineering",
@@ -624,12 +436,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs steel ball in PBS",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Bennion et al.",
   "year": 2021,
   "journal": "Otology and Neurotology",
@@ -643,12 +456,13 @@
   "exact": false,
   "figure": "Fig 1B",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs ceramic ball in PBS",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Bennion et al.",
   "year": 2021,
   "journal": "Otology and Neurotology",
@@ -662,12 +476,13 @@
   "exact": false,
   "figure": "Fig 1B",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs guinea pig dermis in PBS",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Bennion et al.",
   "year": 2021,
   "journal": "Otology and Neurotology",
@@ -681,12 +496,13 @@
   "exact": false,
   "figure": "Fig 1B",
   "in_static_chart": true,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs sapphire probe in PBS, pristine coating",
-  "surface": "Silicone (PDMS), SBMA coating",
+  "surface": "Silicone (PDMS), coated",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -700,31 +516,13 @@
   "exact": false,
   "figure": "Fig 4",
   "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Friction",
-  "assay": "Friction vs sapphire probe in PBS, pristine coating",
-  "surface": "Silicone (PDMS), CBMA coating",
-  "paper": "Peel et al.",
-  "year": 2024,
-  "journal": "ACS Applied Bio Materials",
-  "species_or_setting": "in vitro, silicone (PDMS)",
-  "uncoated": 0.25,
-  "coated": 0.035,
-  "unit": "coefficient of friction (absolute)",
-  "pct_reduction": 86,
-  "n": "4 or more",
-  "p_text": "not stated",
-  "exact": false,
-  "figure": "Fig 4",
-  "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs sapphire probe in PBS, after 3 weeks in mice",
-  "surface": "Silicone (PDMS) disk, SBMA coating",
+  "surface": "Silicone (PDMS) disk, coated",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -738,31 +536,13 @@
   "exact": false,
   "figure": "Fig 4",
   "in_static_chart": true,
-  "note": null
- },
- {
-  "category": "Friction",
-  "assay": "Friction vs sapphire probe in PBS, after 3 weeks in mice",
-  "surface": "Silicone (PDMS) disk, CBMA coating",
-  "paper": "Peel et al.",
-  "year": 2024,
-  "journal": "ACS Applied Bio Materials",
-  "species_or_setting": "in vivo for 3 weeks (mice), then bench",
-  "uncoated": 0.27,
-  "coated": 0.035,
-  "unit": "coefficient of friction (absolute)",
-  "pct_reduction": 87,
-  "n": "4 or more",
-  "p_text": "not stated (no change from pristine)",
-  "exact": false,
-  "figure": "Fig 4",
-  "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs guinea pig aorta",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -776,12 +556,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs guinea pig bladder",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -795,12 +576,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs guinea pig dermis",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -814,12 +596,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs guinea pig fat",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -833,12 +616,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs guinea pig trachea",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -852,12 +636,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs steel probe",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -871,12 +656,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": false,
-  "note": null
+  "note": null,
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs five guinea pig tissues and steel (mean of six probes)",
-  "surface": "Silicone (PDMS), SBMA coating, 5% cross-linker",
+  "surface": "Silicone (PDMS), coated, 5% cross-linker",
   "paper": "Peel et al.",
   "year": 2024,
   "journal": "ACS Applied Bio Materials",
@@ -890,12 +676,13 @@
   "exact": false,
   "figure": "Fig 5A",
   "in_static_chart": true,
-  "note": "mean of six probe reductions (range about 94 to 98); the six single-probe rows are listed separately"
+  "note": "mean of six probe reductions (range about 94 to 98); the six single-probe rows are listed separately",
+  "chemistry": "SBMA"
  },
  {
   "category": "Friction",
   "assay": "Friction vs sapphire ball, 1 N, best group",
-  "surface": "Silicone (PDMS), SBMA dual-network coating, 2.5% primary, 2.5% secondary",
+  "surface": "Silicone (PDMS), coated, 2.5% primary and 2.5% secondary cross-linker",
   "paper": "Barrera et al.",
   "year": 2026,
   "journal": "ACS Applied Polymer Materials",
@@ -909,6 +696,7 @@
   "exact": false,
   "figure": "Fig 4B",
   "in_static_chart": true,
-  "note": "text: over 80% reduction for some systems; other dual groups reduce by about 58 to 74%"
+  "note": "text: over 80% reduction for some coatings; other coatings reduce by about 58 to 74%",
+  "chemistry": "SBMA (dual network)"
  }
 ]

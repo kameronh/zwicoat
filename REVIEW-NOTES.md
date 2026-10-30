@@ -155,3 +155,38 @@ NOT yet done (next session, in this order):
   the browser; no console errors.
 - Pending Kam: lab clutter in the wide pendulum shot is visible on the site
   (needs OK); SMTP choice; the ETT figures stay held.
+
+## 2026-10-30 night: committed, staged (lead)
+
+- Git: repository initialized at the v2 folder root on branch `v2`, remote
+  `https://github.com/kameronh/zwicoat.git`, first commit 02fdf66. The push
+  was blocked by the Claude Code permission classifier; Kam runs
+  `git push -u origin v2` (or allows the action).
+- Staging on the EC2 box: `/home/ubuntu/zwicoat-v2/dist` served by
+  `/etc/apache2/sites-available/zwicoat-staging.conf` (ServerName
+  staging.zwicoat.com, HTTP, noindex header, /api/contact proxied). The live
+  zwicoat.com vhost is untouched. Contact service `zwicoat-contact` runs on
+  127.0.0.1:5057 with /etc/zwicoat-contact.env = DRY_RUN=1.
+- Blocking item: DNS. zwicoat.com is on Route53 (awsdns); no AWS credentials
+  here. Kam adds an A record staging.zwicoat.com -> 3.131.73.139, then run on
+  the box: `sudo certbot --apache -d staging.zwicoat.com` for HTTPS.
+- Deploy script: `bash server/deploy-staging.sh` (builds locally, uploads
+  dist, runs server/remote-staging-setup.sh). The box has Node 20, so builds
+  stay local.
+- Production swap (not done, needs Kam's go): point zwicoat.conf and
+  zwicoat-le-ssl.conf DocumentRoot at /home/ubuntu/zwicoat-v2/dist, drop
+  FallbackResource, add the two ProxyPass lines, keep /fcoi; reload Apache.
+- Removed from the shipped site: unapproved deck images in public/images
+  (kept in assets-staging), the before/after expander photos, PhotoStrip.
+- Durability page `/durability` holds the pendulum loop; home and expanders
+  no longer show it. Thickness copy: "a few micrometres to 100 or more".
+
+## 2026-10-30: staging live over HTTPS
+
+- https://staging.zwicoat.com is up (certbot cert, HTTP redirects to HTTPS,
+  X-Robots-Tag noindex). Branch v2 pushed by Kam.
+- Email: info@zwicoat.com is an ImprovMX forward to kameronrhansen@gmail.com,
+  so the endpoint needs its own SMTP sender. Simplest: Gmail SMTP with an app
+  password on the Gmail account (MAIL_TO can stay info@zwicoat.com, which
+  forwards to the Gmail, or go to the Gmail directly). Kam enters the app
+  password on the box himself.

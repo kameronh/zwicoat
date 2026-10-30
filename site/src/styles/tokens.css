@@ -3,8 +3,9 @@
   defined here and nowhere else. A reskin is a change to this file.
 
   The default (the :root block) is Direction B, "Blueprint": a pale blue-gray
-  drawing sheet, Manrope headings, Public Sans body, JetBrains Mono for labels,
-  captions and buttons, square corners and thin rules. Contrast checked (WCAG):
+  drawing sheet, Public Sans for headings, body, captions and buttons,
+  JetBrains Mono for labels, spec values and figure title blocks, square corners
+  and thin rules. Contrast checked (WCAG):
   ink 15.4, ink-2 8.2, muted 5.7 on paper (5.0 on blue-tint), blue 5.5 on paper
   (4.8 on blue-tint), white on blue 5.9, white on blue-deep 8.5.
 */
@@ -25,15 +26,15 @@
 
   /* type */
   --font-sans: "Public Sans Variable", "Public Sans", system-ui, sans-serif;
-  --font-head: "Manrope Variable", "Manrope", system-ui, sans-serif;
+  --font-head: var(--font-sans);
   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
-  /* captions and buttons are mono in this design */
-  --font-caption: var(--font-mono);
-  --fs-caption-mono: 0.8125rem;
-  --font-btn: var(--font-mono);
-  --fs-btn: 0.875rem;
-  --btn-case: uppercase;
-  --btn-tracking: 0.04em;
+  /* captions and buttons are Public Sans; mono is kept for labels, spec values, source lines and figure title blocks */
+  --font-caption: var(--font-sans);
+  --fs-caption-mono: 1rem;
+  --font-btn: var(--font-sans);
+  --fs-btn: 1rem;
+  --btn-case: none;
+  --btn-tracking: 0;
 
   --fs-label: 0.75rem;
   --fs-caption: 0.875rem;
@@ -47,7 +48,7 @@
 
   --lh-body: 1.6;
   --lh-tight: 1.1;
-  --tracking-head: -0.025em;
+  --tracking-head: -0.02em;
   --tracking-label: 0.08em;
 
   /* layout */

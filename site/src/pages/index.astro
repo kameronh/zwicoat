@@ -8,7 +8,8 @@ import ProcessVideo from '../components/ProcessVideo.astro';
 import ApplicationCard from '../components/ApplicationCard.astro';
 import Steps from '../components/Steps.astro';
 import CTABand from '../components/CTABand.astro';
-import { W05 } from '../data/figure-text';
+import InteractiveChart from '../components/InteractiveChart.astro';
+import { W07, W25, W26, W28, W29 } from '../data/figure-text';
 import numbers from '../../public/data/W12_numbers.json';
 import apps from '../data/applications-index.json';
 
@@ -32,46 +33,55 @@ const steps = [
   </section>
 
   <section class="section container" aria-label="What the coating does">
-    <ClaimRow label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
-      <p>Ten measurements from four papers, in mice, rats and sheep, from four weeks to one year, on silicone and on real implant arrays. The sheep basal-turn measurement was not statistically significant.</p>
-      <p>In mice, the capsule was 67 percent thinner at six weeks on flat silicone and 62 percent thinner at one year on coated cochlear implant arrays (Horne 2023, Acta Biomaterialia).</p>
-      <!-- PENDING APPROVAL: Horne 2023 histology photo (Fig 5, Elsevier), /images/histology-pdms-capsule.png.
-      <Photo slot="figure" src="/images/histology-pdms-capsule.png" alt="Tissue section of a silicone strip implanted in a mouse. A dashed yellow outline marks the capsule, which is thinner around the coated half of the strip than around the uncoated half." caption="Tissue section from a mouse at six weeks. The capsule is thinner around the coated half of the silicone strip." credit="Horne et al. 2023, Acta Biomaterialia." aspect="965/523" />
-      -->
-      <Figure slot="figure" name="W27_capsule_thickness_mice" alt="Capsule thickness in mice. At six weeks on flat silicone the zwitterionic coating gave a capsule 67 percent thinner than uncoated, while a non-zwitterionic hydrogel control did not differ significantly. At one year on human cochlear implant arrays the coated capsule was 62 percent thinner." caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year. A non-zwitterionic hydrogel control did not differ significantly from uncoated." source="Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011" width={900} />
+    <ClaimRow label="Less scar" title="Less inflammation and less scar tissue at the sheep round window.">
+      <p>In three sheep, each with one coated and one uncoated human cochlear implant array, the coated ears had fewer cell nuclei (p = 0.0020), fewer macrophages (p = 0.0063) and less fibrous tissue (p = 0.0101) at four weeks. Each line is one sheep.</p>
+      <p>One sheep showed no difference in cells or macrophages, and the authors call the study a small pilot (Ben-Shlomo 2026, Hearing Research). Across mice, rats and sheep, scar was about 45 to 85 percent lower. <a href="/evidence#scar">See every scar measurement.</a></p>
+      <Figure slot="figure" name={W26.name} alt={W26.alt} caption={W26.caption} source={W26.source} width={900} />
     </ClaimRow>
 
     <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones." reverse>
-      <p>Working human cochlear implant arrays in sheep read 67 percent lower impedance at implantation and 47 percent lower four weeks later.</p>
+      <p>Working human cochlear implant arrays in sheep read 67 percent lower total impedance at implantation and 47 percent lower four weeks later. Access resistance was lower too.</p>
       <p>Three sheep, one coated and one uncoated array each (Ben-Shlomo 2026, Hearing Research). No coated device has been implanted in a person.</p>
-      <Figure slot="figure" name="W08_impedance_sheep" alt="Bar chart of total electrode impedance in sheep. Coated ears read 67 percent lower than uncoated ears at implantation and 47 percent lower four weeks later." caption="Electrode impedance of coated versus uncoated cochlear implant arrays in sheep." source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)." width={800} />
+      <Figure slot="figure" name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow label="Easier insertion" title="Insertion force fell by about 40 percent.">
-      <p>Coated cochlear implant arrays needed 37.0 mN of peak force against 64.2 mN for uncoated arrays, in human cadaveric cochleae (n = 9 per group, p = 0.001).</p>
-      <p>Force variation during insertion fell from 89.9 to 52.1 mN/s (p = 0.03). Bennion 2021, Otology and Neurotology.</p>
-      <Figure slot="figure" name="W07_insertion_force" alt="Two bar charts for coated and uncoated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force was 64.2 millinewtons uncoated and 37.0 coated, 42 percent lower (p = 0.001). Force variation was 89.9 millinewtons per second uncoated and 52.1 coated, 42 percent lower (p = 0.03)." caption="Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae." source="Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)." width={800} />
+    <ClaimRow label="Easier insertion" title={W07.title}>
+      <p>{W07.body}</p>
+      <Figure slot="figure" name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow label="Fewer bacteria, less friction" title="Protein, cells, bacteria and friction all fall by about 90 percent." reverse>
-      <p>Across 38 published comparisons of coated and uncoated surfaces, from eight papers, the median reduction was 94 percent. The range was 53 to 99 percent.</p>
-      <p>The four groups are fibrinogen adsorption, cell attachment, S. aureus and S. epidermidis adhesion, and friction. These are laboratory and explant measurements, not clinical results.</p>
-      <p><a href="/evidence#antifouling">Browse and filter every comparison on the evidence page.</a></p>
-      <Figure slot="figure" name={W05.name} alt={W05.alt} caption={W05.caption} source={W05.sourceShort} width={900} />
+    <ClaimRow label="Fewer bacteria" title="Far fewer bacteria on coated implants in rats." reverse>
+      <p>Silicone implants were placed in rats and challenged with S. aureus. At day 21, coated implants carried far fewer adherent bacteria and live colonies than uncoated ones (Shen 2021, ACS Applied Bio Materials).</p>
+      <p>A coating kept in a rat for two weeks still resisted a fresh challenge. These are animal results, not clinical results.</p>
+      <p><a href="/evidence#antifouling">Browse every protein, cell, bacteria and friction comparison on the evidence page.</a></p>
+      <Figure slot="figure" name={W29.name} alt={W29.alt} caption={W29.caption} source={W29.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow label="It stays on" title="The film was still intact at one year in mice.">
-      <p>Checkpoints run from two weeks in rats to one year in mice. Antifouling was unchanged at six months (Horne 2023, Peel 2024).</p>
-      <p>The hydrogel is covalently grafted, so it is part of the surface rather than a layer on top of it.</p>
+    <ClaimRow label="It stays on" title="Friction was unchanged after three weeks in mice.">
+      <p>Coated silicone was implanted in mice for three weeks, then taken out and tested. It kept about 90 percent lower friction than uncoated silicone (Peel 2024).</p>
+      <p>The hydrogel is covalently grafted, so it is part of the surface rather than a layer on top of it. At one year in mice the film was still intact (Horne 2023).</p>
       <p><a href="/durability">Full durability record</a></p>
-<div slot="figure" class="stack">
-              <Figure name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
-      </div>
+      <Figure slot="figure" name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} width={1000} />
     </ClaimRow>
   </section>
 
+  <section class="section container" aria-labelledby="timeline-h">
+    <div class="section-head wide">
+      <p class="label">The record</p>
+      <h2 id="timeline-h">Ten years of published work</h2>
+      <p class="tl-lead">Ten papers, three dissertations and three issued US patents, 2017 to 2026. Hover or focus a marker to read what it found.</p>
+    </div>
+    <InteractiveChart
+      id="timeline"
+      name="W24_publication_timeline"
+      alt="Timeline of the public record, 2017 to 2026, in three rows. Ten peer-reviewed papers run from 2017 to 2026, three University of Iowa dissertations were completed in 2018 and 2023, and three US patents were issued in 2022, 2023 and 2024."
+      caption="Timeline of the public record, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents."
+      source="Leigh 2017 Biomacromolecules; Leigh 2019 Langmuir; Jensen 2021 ACS Biomaterials Science and Engineering; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2023 (University of Iowa); US patents 11,525,069 (2022), 11,814,526 (2023), 12,116,498 (2024)."
+    />
+  </section>
+
   <section class="section container proc-grid" aria-label="The coating process">
-    <ProcessVideo poster="/media/process-poster.jpg" src="/media/process-loop" aspect="9/16" alt="A coated tube on a rod held in a clear cylinder of monomer solution under blue light, then lifted out and moved to the UV curing area." caption="Dip coating in our lab: the device is lowered into the monomer solution, then moved under UV light to cure. Phone footage, not the automated jig." />
+    <ProcessVideo poster="/images/process-poster.png" caption="Automated dip coating: one step. Video coming." />
     <div class="proc-text">
       <p class="label">The process</p>
       <h2>One dip, one UV step.</h2>
@@ -115,11 +125,30 @@ const steps = [
   />
 </Base>
 
+<script>
+  import { mount as mountTimeline } from '../scripts/timeline';
+  import type { PubRecord } from '../scripts/timeline';
+  import { showFallback } from '../scripts/chart-utils';
+  // Inlined into the bundle at build time; nothing is fetched.
+  import publications from '../../public/data/W24_publications.json';
+
+  const root = document.querySelector<HTMLElement>('[data-chart="timeline"]');
+  if (root) {
+    try {
+      mountTimeline(root, publications as PubRecord[]);
+    } catch (err) {
+      console.error('Chart "timeline" failed to mount; showing the static image.', err);
+      showFallback(root);
+    }
+  }
+</script>
+
 <style>
   .proc-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: center; }
   .proc-text { display: grid; gap: var(--space-3); max-width: 36ch; align-content: center; }
   @media (min-width: 720px) { .proc-grid { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); column-gap: var(--space-6); } }
-  .stack { display: grid; gap: var(--space-4); min-width: 0; }
+  .tl-lead { color: var(--ink-2); max-width: var(--measure); }
+  .section-head.wide { max-width: none; }
   .tiles-note { margin-top: var(--space-3); color: var(--ink-2); font-size: var(--fs-caption); }
   .tiles-note a { color: var(--blue); text-underline-offset: 0.18em; }
   .tiles-note.tiles-src { margin-top: var(--space-2); text-transform: none; letter-spacing: 0.02em; }

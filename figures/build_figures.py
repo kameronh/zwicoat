@@ -313,73 +313,62 @@ def w05_rows():
     """One dict per published bench comparison (coated vs uncoated). chart=False rows go to the JSON only."""
     rows = []
 
-    def add(cat, assay, surface, paper, year, journal, setting, unit, u, c, n, p, exact, fig, cassay, cstudy, pct=None, chart=True, note=None):
+    def add(cat, assay, surface, paper, year, journal, setting, unit, u, c, n, p, exact, fig, cassay, cstudy, pct=None, chart=True, note=None, chem=None):
         v = pct if pct is not None else 100 * (1 - c / u)
         rows.append(dict(category=cat, assay=assay, surface=surface, paper=paper, year=year, journal=journal, species_or_setting=setting, uncoated=u, coated=c, unit=unit,
-                         pct_reduction=int(v + 0.5), n=n, p_text=p, exact=exact, figure=fig, in_static_chart=chart, note=note, _assay=cassay, _study=cstudy))
+                         pct_reduction=int(v + 0.5), n=n, p_text=p, exact=exact, figure=fig, in_static_chart=chart, note=note, chemistry=chem, _assay=cassay, _study=cstudy))
     L17, L19, JN, SH, H23, BN, PL, BA = ("Leigh et al.", 2017, "Biomacromolecules"), ("Leigh et al.", 2019, "Langmuir"), ("Jensen et al.", 2021, "ACS Biomaterials Science and Engineering"), \
         ("Shen et al.", 2021, "ACS Applied Bio Materials"), ("Horne et al.", 2023, "Acta Biomaterialia"), ("Bennion et al.", 2021, "Otology and Neurotology"), \
         ("Peel et al.", 2024, "ACS Applied Bio Materials"), ("Barrera et al.", 2026, "ACS Applied Polymer Materials")
     g = "in vitro, glass"
     s = "in vitro, silicone (PDMS)"
-    # ---- Protein
-    add("Protein", "Fibrinogen adsorption", "Glass, SBMA coating, 2.5 wt% monomer", *L17, g, "relative fluorescence (uncoated = 1)", 1.0, 0.09, "3 samples, 5 images each", "not stated (text: below 10% of control)", False, "Fig 4A", "Fibrinogen on glass, SBMA", "Leigh 2017, n = 3")
-    add("Protein", "Fibrinogen adsorption", "Glass, CBMA coating, 2.5 wt% monomer", *L17, g, "relative fluorescence (uncoated = 1)", 1.0, 0.06, "3 samples, 5 images each", "not stated (text: about 6% of control)", False, "Fig 4B", "Fibrinogen on glass, CBMA", "Leigh 2017, n = 3")
-    add("Protein", "Fibrinogen adsorption", "Silicone (PDMS), SBMA coating", *L19, s, "relative fluorescence (uncoated = 1)", 1.0, 0.02, "3 samples, 5 images each", "< 0.001 (text: greater than 90% reduction)", False, "Fig 7D", "Fibrinogen on silicone, SBMA", "Leigh 2019, n = 3")
-    add("Protein", "Fibrinogen adsorption", "Silicone (PDMS), CBMA coating", *L19, s, "relative fluorescence (uncoated = 1)", 1.0, 0.06, "3 samples, 5 images each", "< 0.001 (text: greater than 90% reduction)", False, "Fig 7D", "Fibrinogen on silicone, CBMA", "Leigh 2019, n = 3")
-    add("Protein", "Fibrinogen adsorption", "Reinforced silicone, CBMA coating, 5% cross-linker", *JN, s, "relative fluorescence (uncoated = 1)", 1.0, 0.07, "3 samples, 9 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 1G", "Fibrinogen on silicone, CBMA", "Jensen 2021, 5% cross-linker, n = 3")
-    add("Protein", "Fibrinogen adsorption", "Reinforced silicone, SBMA coating, 5% cross-linker", *JN, s, "relative fluorescence (uncoated = 1)", 1.0, 0.09, "3 samples, 9 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 1G", "Fibrinogen on silicone, SBMA", "Jensen 2021, 5% cross-linker, n = 3")
+    # ---- Protein  (rule, Kam 2026-10-30: the site says "uncoated" vs "coated"; where a paper tested SBMA and CBMA only the SBMA result is kept.
+    #      The original chemistry is stored in the `chemistry` field of the JSON for traceability, never in the image.)
+    uf = "relative fluorescence (uncoated = 1)"
+    add("Protein", "Fibrinogen adsorption", "Glass, coated, 2.5 wt% monomer", *L17, g, uf, 1.0, 0.09, "3 samples, 5 images each", "not stated (text: below 10% of control)", False, "Fig 4A", "Fibrinogen on glass", "Leigh 2017, n = 3", chem="SBMA")
+    add("Protein", "Fibrinogen adsorption", "Silicone (PDMS), coated", *L19, s, uf, 1.0, 0.02, "3 samples, 5 images each", "< 0.001 (text: greater than 90% reduction)", False, "Fig 7D", "Fibrinogen on silicone", "Leigh 2019, n = 3", chem="SBMA")
+    add("Protein", "Fibrinogen adsorption", "Reinforced silicone, coated, 5% cross-linker", *JN, s, uf, 1.0, 0.09, "3 samples, 9 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 1G", "Fibrinogen on reinforced silicone", "Jensen 2021, 5% cross-linker, n = 3", chem="SBMA")
     # ---- Cells
     cu = "cells per um2 x 10^-4"
-    add("Cells", "Fibroblast adhesion, 48 h", "Glass, SBMA coating", *L17, g, cu, 9.0, 4.2, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 6E", "Fibroblasts on glass, SBMA", "Leigh 2017, n ≥ 3", note="text: less than half of glass")
-    add("Cells", "Fibroblast adhesion, 48 h", "Glass, CBMA coating", *L17, g, cu, 9.0, 0.05, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 6E", "Fibroblasts on glass, CBMA", "Leigh 2017, n ≥ 3", note="text: less than one percent of glass")
-    add("Cells", "Astrocyte adhesion, 48 h", "Glass, SBMA coating", *L17, g, cu, 6.1, 0.45, "at least 3 samples, at least 10 fields", "< 0.001", True, "Fig 7E", "Astrocytes on glass, SBMA", "Leigh 2017, n ≥ 3", pct=100 * (1 - 1 / 13), note="text: 13-fold reduction")
-    add("Cells", "Astrocyte adhesion, 48 h", "Glass, CBMA coating", *L17, g, cu, 6.1, 0.05, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 7E", "Astrocytes on glass, CBMA", "Leigh 2017, n ≥ 3", pct=100 * (1 - 1 / 90), note="text: decrease of over 90-fold (lower bound)")
-    add("Cells", "Schwann cell adhesion, 48 h", "Glass, SBMA coating", *L17, g, cu, 14.0, 0.3, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 8E", "Schwann cells on glass, SBMA", "Leigh 2017, n ≥ 3", pct=100 * (1 - 1 / 40), note="text: more than 40-fold decrease (lower bound)")
-    add("Cells", "Schwann cell adhesion, 48 h", "Glass, CBMA coating", *L17, g, cu, 14.0, 0.15, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 8E", "Schwann cells on glass, CBMA", "Leigh 2017, n ≥ 3", pct=100 * (1 - 1 / 80), note="text: over 80-fold decrease (lower bound)")
-    add("Cells", "Fibroblast adhesion after 14 days soaking in culture medium", "Silicone (PDMS), SBMA coating", *L19, s, cu, 30, 2.8, "at least 3 substrates, at least 10 images", "< 0.001", False, "Fig 10D", "Fibroblasts, silicone, SBMA, 14 d soak", "Leigh 2019, n ≥ 3", note="ratio of plotted bars; plotted absolute values conflict with the text (inventory caveat)")
-    add("Cells", "Fibroblast adhesion after 14 days soaking in culture medium", "Silicone (PDMS), CBMA coating", *L19, s, cu, 30, 1.2, "at least 3 substrates, at least 10 images", "< 0.001", False, "Fig 10D", "Fibroblasts, silicone, CBMA, 14 d soak", "Leigh 2019, n ≥ 3", note="ratio of plotted bars; text: almost 20 times less than the PDMS control")
-    add("Cells", "Fibroblast adhesion, 48 h, no serum pre-soak", "Silicone (PDMS), SBMA coating", *L19, s, cu, 7.8, 0.4, "at least 3 substrates, at least 10 images", "< 0.001", False, "Fig 8D", "Fibroblasts, silicone, SBMA", "Leigh 2019, n ≥ 3", chart=False, note="text: less than 5% of control")
-    add("Cells", "Fibroblast adhesion, 48 h, no serum pre-soak", "Silicone (PDMS), CBMA coating", *L19, s, cu, 7.8, 0.25, "at least 3 substrates, at least 10 images", "< 0.001", False, "Fig 8D", "Fibroblasts, silicone, CBMA", "Leigh 2019, n ≥ 3", chart=False, note="text: just above 3% of control")
-    add("Cells", "Fibroblast adhesion, 48 h", "Reinforced silicone, CBMA coating, 5% cross-linker", *JN, s, cu, 11.6, 0.15, "3 samples, 10 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 3G", "Fibroblasts, silicone, CBMA", "Jensen 2021, 5% cross-linker, n = 3")
-    add("Cells", "Fibroblast adhesion, 48 h", "Reinforced silicone, SBMA coating, 5% cross-linker", *JN, s, cu, 11.6, 1.75, "3 samples, 10 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 3G", "Fibroblasts, silicone, SBMA", "Jensen 2021, 5% cross-linker, n = 3")
-    add("Cells", "Macrophage adhesion, 7 days", "Reinforced silicone, CBMA coating, 5% cross-linker", *JN, s, cu, 7.6, 0.4, "3 samples, 10 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 2G", "Macrophages, silicone, CBMA", "Jensen 2021, 5% cross-linker, n = 3", note="text: reduced by as much as 30-fold at the best cross-linker level")
-    add("Cells", "Macrophage adhesion, 7 days", "Reinforced silicone, SBMA coating, 5% cross-linker", *JN, s, cu, 7.6, 0.45, "3 samples, 10 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 2G", "Macrophages, silicone, SBMA", "Jensen 2021, 5% cross-linker, n = 3")
+    add("Cells", "Fibroblast adhesion, 48 h", "Glass, coated", *L17, g, cu, 9.0, 4.2, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 6E", "Fibroblasts on glass", "Leigh 2017, n ≥ 3", note="text: less than half of glass", chem="SBMA")
+    add("Cells", "Astrocyte adhesion, 48 h", "Glass, coated", *L17, g, cu, 6.1, 0.45, "at least 3 samples, at least 10 fields", "< 0.001", True, "Fig 7E", "Astrocytes on glass", "Leigh 2017, n ≥ 3", pct=100 * (1 - 1 / 13), note="text: 13-fold reduction", chem="SBMA")
+    add("Cells", "Schwann cell adhesion, 48 h", "Glass, coated", *L17, g, cu, 14.0, 0.3, "at least 3 samples, at least 10 fields", "< 0.001", False, "Fig 8E", "Schwann cells on glass", "Leigh 2017, n ≥ 3", pct=100 * (1 - 1 / 40), note="text: more than 40-fold decrease (lower bound)", chem="SBMA")
+    add("Cells", "Fibroblast adhesion after 14 days soaking in culture medium", "Silicone (PDMS), coated", *L19, s, cu, 30, 2.8, "at least 3 substrates, at least 10 images", "< 0.001", False, "Fig 10D", "Fibroblasts on silicone, 14 d soak", "Leigh 2019, n ≥ 3", note="ratio of plotted bars; plotted absolute values conflict with the text (inventory caveat)", chem="SBMA")
+    add("Cells", "Fibroblast adhesion, 48 h, no serum pre-soak", "Silicone (PDMS), coated", *L19, s, cu, 7.8, 0.4, "at least 3 substrates, at least 10 images", "< 0.001", False, "Fig 8D", "Fibroblasts on silicone", "Leigh 2019, n ≥ 3", chart=False, note="text: less than 5% of control", chem="SBMA")
+    add("Cells", "Fibroblast adhesion, 48 h", "Reinforced silicone, coated, 5% cross-linker", *JN, s, cu, 11.6, 1.75, "3 samples, 10 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 3G", "Fibroblasts on silicone", "Jensen 2021, 5% cross-linker, n = 3", chem="SBMA")
+    add("Cells", "Macrophage adhesion, 7 days", "Reinforced silicone, coated, 5% cross-linker", *JN, s, cu, 7.6, 0.45, "3 samples, 10 images each", "not stated (ANOVA with Tukey in Methods)", False, "Fig 2G", "Macrophages on silicone", "Jensen 2021, 5% cross-linker, n = 3", chem="SBMA")
     # Horne 2023 Fig 3F, newly made coatings at 1.6/5/13/31 % cross-linker ~0.18/0.12/0.03/0.14; after 6 months in mice ~0.20/0.14/0.11/0.16 (uncoated = 1)
-    add("Cells", "Fibroblast adhesion, 48 h, newly made coating (mean of 4 cross-linker levels)", "Silicone (PDMS), CBMA coating", *H23, s, "relative to uncoated (uncoated = 1)", 1.0, round((0.18 + 0.12 + 0.03 + 0.14) / 4, 4), "3 per condition", "0.02 or less (Tukey, all coated groups)", False, "Fig 3F", "Fibroblasts, silicone, CBMA, new", "Horne 2023, 1.6 to 31% cross-linker, n = 3", note="text: an order of magnitude less")
-    add("Cells", "Fibroblast adhesion, 48 h, coating explanted after 6 months in mice (mean of 4 levels)", "Silicone (PDMS), CBMA coating", *H23, "in vitro assay on coatings explanted after 6 months in mice", "relative to uncoated (uncoated = 1)", 1.0, round((0.20 + 0.14 + 0.11 + 0.16) / 4, 4), "3 per condition", "0.02 or less; new vs 6-month p = 0.73", False, "Fig 3F", "Fibroblasts, CBMA, 6 months in mice", "Horne 2023, 1.6 to 31% cross-linker, n = 3")
-    add("Cells", "Fibroblast adhesion, 48 h (3T3), low cross-linker", "Silicone (PDMS), SBMA dual-network coating, 2.5% primary", *BA, s, "relative to uncoated (uncoated = 1; PDMS 32 cells/mm2)", 1.0, 0.01, "at least 4", "not stated ('significantly')", False, "Fig 6", "Fibroblasts, silicone, dual network", "Barrera 2026, 2.5% cross-linker, n ≥ 4", note="text: more than 99% reduction (low cross-link groups)")
-    add("Cells", "Fibroblast adhesion, 48 h (3T3), high cross-linker", "Silicone (PDMS), SBMA dual-network coating, 20% primary, 5% secondary", *BA, s, "relative to uncoated (uncoated = 1; PDMS 32 cells/mm2)", 1.0, 0.10, "at least 4", "not stated ('significantly')", False, "Figs 5D, 6", "Fibroblasts, silicone, dual network", "Barrera 2026, 20%/5% cross-linker, n ≥ 4", note="text: about 90% reduction for the high cross-link dual network")
-    # ---- Bacteria (Shen 2021, pCBMA, counts per high-power field)
+    add("Cells", "Fibroblast adhesion, 48 h, newly made coating (mean of 4 cross-linker levels)", "Silicone (PDMS), coated", *H23, s, "relative to uncoated (uncoated = 1)", 1.0, round((0.18 + 0.12 + 0.03 + 0.14) / 4, 4), "3 per condition", "0.02 or less (Tukey, all coated groups)", False, "Fig 3F", "Fibroblasts on silicone, new", "Horne 2023, 1.6 to 31% cross-linker, n = 3", note="text: an order of magnitude less", chem="CBMA")
+    add("Cells", "Fibroblast adhesion, 48 h, coating explanted after 6 months in mice (mean of 4 levels)", "Silicone (PDMS), coated", *H23, "in vitro assay on coatings explanted after 6 months in mice", "relative to uncoated (uncoated = 1)", 1.0, round((0.20 + 0.14 + 0.11 + 0.16) / 4, 4), "3 per condition", "0.02 or less; new vs 6-month p = 0.73", False, "Fig 3F", "Fibroblasts, coating kept 6 months in mice", "Horne 2023, 1.6 to 31% cross-linker, n = 3", chem="CBMA")
+    add("Cells", "Fibroblast adhesion, 48 h (3T3), low cross-linker", "Silicone (PDMS), coated, 2.5% primary cross-linker", *BA, s, "relative to uncoated (uncoated = 1; PDMS 32 cells/mm2)", 1.0, 0.01, "at least 4", "not stated ('significantly')", False, "Fig 6", "Fibroblasts on silicone", "Barrera 2026, 2.5% cross-linker, n ≥ 4", note="text: more than 99% reduction (low cross-link groups)", chem="SBMA (dual network)")
+    add("Cells", "Fibroblast adhesion, 48 h (3T3), high cross-linker", "Silicone (PDMS), coated, 20% primary and 5% secondary cross-linker", *BA, s, "relative to uncoated (uncoated = 1; PDMS 32 cells/mm2)", 1.0, 0.10, "at least 4", "not stated ('significantly')", False, "Figs 5D, 6", "Fibroblasts on silicone", "Barrera 2026, 20%/5% cross-linker, n ≥ 4", note="text: about 90% reduction for the high cross-link coating", chem="SBMA (dual network)")
+    # ---- Bacteria (Shen 2021, counts per high-power field; the coating there is the carboxybetaine polymer, pCBMA)
     hp = "counts per high-power field"
-    add("Bacteria", "S. aureus adhesion, 1 h in suspension", "Silicone (PDMS), pCBMA coating", *SH, s, hp, 1560, 40, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. aureus, 1 h in suspension", "Shen 2021, n = 10 fields")
-    add("Bacteria", "S. epidermidis adhesion, 1 h in suspension", "Silicone (PDMS), pCBMA coating", *SH, s, hp, 890, 60, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. epidermidis, 1 h in suspension", "Shen 2021, n = 10 fields")
-    add("Bacteria", "S. aureus adhesion, 1 h droplet (spray) exposure", "Silicone (PDMS), pCBMA coating", *SH, s, hp, 510, 80, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. aureus, 1 h droplet", "Shen 2021, n = 10 fields")
-    add("Bacteria", "S. epidermidis adhesion, 1 h droplet (spray) exposure", "Silicone (PDMS), pCBMA coating", *SH, s, hp, 240, 30, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. epidermidis, 1 h droplet", "Shen 2021, n = 10 fields")
-    add("Bacteria", "Adherent S. aureus on explant, day 21", "Silicone (PDMS) implant under the skin, pCBMA coating, S. aureus inoculated", *SH, "in vivo, rats, 21 days", hp, 940, 155, "about 71 fields (t test df = 69)", "< 0.0001", False, "Fig 7C", "S. aureus on explant, rats, day 21", "Shen 2021, n ≈ 71 fields", note="text: more than 500 counts per field fewer")
-    add("Bacteria", "Viable colonies recovered from explant, day 21", "Silicone (PDMS) implant under the skin, pCBMA coating, S. aureus inoculated", *SH, "in vivo, rats, 21 days", "colonies (as plotted)", 690, 35, "6 implants", "0.0006", False, "Fig 7D", "Live colonies on explant, rats, day 21", "Shen 2021, n = 6 implants")
-    add("Bacteria", "Adherent S. aureus in a 24 h challenge after 2 weeks in rats", "Silicone (PDMS) implant, pCBMA coating", *SH, "in vivo for 2 weeks, then challenged in a dish", hp, 2520, 210, "6 rats per group (30 fields)", "< 0.0001", False, "Fig 8", "S. aureus after 2 weeks in rats", "Shen 2021, n = 6 rats", note="text: more than 1000 counts per field fewer")
+    add("Bacteria", "S. aureus adhesion, 1 h in suspension", "Silicone (PDMS), coated", *SH, s, hp, 1560, 40, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. aureus, 1 h in suspension", "Shen 2021, n = 10 fields", chem="pCBMA")
+    add("Bacteria", "S. epidermidis adhesion, 1 h in suspension", "Silicone (PDMS), coated", *SH, s, hp, 890, 60, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. epidermidis, 1 h in suspension", "Shen 2021, n = 10 fields", chem="pCBMA")
+    add("Bacteria", "S. aureus adhesion, 1 h droplet (spray) exposure", "Silicone (PDMS), coated", *SH, s, hp, 510, 80, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. aureus, 1 h droplet", "Shen 2021, n = 10 fields", chem="pCBMA")
+    add("Bacteria", "S. epidermidis adhesion, 1 h droplet (spray) exposure", "Silicone (PDMS), coated", *SH, s, hp, 240, 30, "10 fields per condition", "< 0.0001 (ANOVA with Tukey)", False, "Fig 3", "S. epidermidis, 1 h droplet", "Shen 2021, n = 10 fields", chem="pCBMA")
+    add("Bacteria", "Adherent S. aureus on explant, day 21", "Silicone (PDMS) implant under the skin, coated, S. aureus inoculated", *SH, "in vivo, rats, 21 days", hp, 940, 155, "about 71 fields (t test df = 69)", "< 0.0001", False, "Fig 7C", "S. aureus on explant, rats, day 21", "Shen 2021, n ≈ 71 fields", note="text: more than 500 counts per field fewer", chem="pCBMA")
+    add("Bacteria", "Viable colonies recovered from explant, day 21", "Silicone (PDMS) implant under the skin, coated, S. aureus inoculated", *SH, "in vivo, rats, 21 days", "colonies (as plotted)", 690, 35, "6 implants", "0.0006", False, "Fig 7D", "Live colonies on explant, rats, day 21", "Shen 2021, n = 6 implants", chem="pCBMA")
+    add("Bacteria", "Adherent S. aureus in a 24 h challenge after 2 weeks in rats", "Silicone (PDMS) implant, coated", *SH, "in vivo for 2 weeks, then challenged in a dish", hp, 2520, 210, "6 rats per group (30 fields)", "< 0.0001", False, "Fig 8", "S. aureus after 2 weeks in rats", "Shen 2021, n = 6 rats", note="text: more than 1000 counts per field fewer", chem="pCBMA")
     # ---- Friction
     fu = "relative coefficient of friction (uncoated = 1)"
-    add("Friction", "Friction vs sapphire ball in PBS", "Reinforced silicone, CBMA coating, 4% cross-linker", *JN, s, fu, 1.0, 0.055, "4", "not stated ('significantly decreased')", False, "Fig 5A", "Friction vs sapphire, CBMA", "Jensen 2021, 4% cross-linker, n = 4")
-    add("Friction", "Friction vs sapphire ball in PBS", "Reinforced silicone, SBMA coating, 4% cross-linker", *JN, s, fu, 1.0, 0.062, "4", "not stated ('significantly decreased')", False, "Fig 5A", "Friction vs sapphire, SBMA", "Jensen 2021, 4% cross-linker, n = 4")
-    add("Friction", "Friction vs steel ball in PBS", "Silicone (PDMS), SBMA coating", *BN, "bench, PBS, 1 N", fu, 1.0, 0.06, "not stated", "< 0.0001 (text: greater than 90% reduction)", False, "Fig 1B", "Friction vs steel, SBMA", "Bennion 2021")
-    add("Friction", "Friction vs ceramic ball in PBS", "Silicone (PDMS), SBMA coating", *BN, "bench, PBS, 1 N", fu, 1.0, 0.06, "not stated", "< 0.0001 (text: greater than 90% reduction)", False, "Fig 1B", "Friction vs ceramic, SBMA", "Bennion 2021")
-    add("Friction", "Friction vs guinea pig dermis in PBS", "Silicone (PDMS), SBMA coating", *BN, "bench, ex vivo guinea pig dermis, PBS, 1 N", fu, 1.0, 0.06, "4 guinea pigs", "< 0.0001 (text: greater than 90% reduction)", False, "Fig 1B", "Friction vs guinea pig dermis, SBMA", "Bennion 2021, n = 4")
-    add("Friction", "Friction vs sapphire probe in PBS, pristine coating", "Silicone (PDMS), SBMA coating", *PL, s, "coefficient of friction (absolute)", 0.25, 0.027, "4 or more", "not stated", False, "Fig 4", "Friction vs sapphire, SBMA, pristine", "Peel 2024, n ≥ 4")
-    add("Friction", "Friction vs sapphire probe in PBS, pristine coating", "Silicone (PDMS), CBMA coating", *PL, s, "coefficient of friction (absolute)", 0.25, 0.035, "4 or more", "not stated", False, "Fig 4", "Friction vs sapphire, CBMA, pristine", "Peel 2024, n ≥ 4", chart=False)
-    add("Friction", "Friction vs sapphire probe in PBS, after 3 weeks in mice", "Silicone (PDMS) disk, SBMA coating", *PL, "in vivo for 3 weeks (mice), then bench", "coefficient of friction (absolute)", 0.27, 0.03, "4 or more", "not stated (no change from pristine)", False, "Fig 4", "Friction, SBMA, after 3 weeks in mice", "Peel 2024, n ≥ 4")
-    add("Friction", "Friction vs sapphire probe in PBS, after 3 weeks in mice", "Silicone (PDMS) disk, CBMA coating", *PL, "in vivo for 3 weeks (mice), then bench", "coefficient of friction (absolute)", 0.27, 0.035, "4 or more", "not stated (no change from pristine)", False, "Fig 4", "Friction, CBMA, after 3 weeks in mice", "Peel 2024, n ≥ 4", chart=False)
+    add("Friction", "Friction vs sapphire ball in PBS", "Reinforced silicone, coated, 4% cross-linker", *JN, s, fu, 1.0, 0.062, "4", "not stated ('significantly decreased')", False, "Fig 5A", "Friction vs sapphire", "Jensen 2021, 4% cross-linker, n = 4", chem="SBMA")
+    add("Friction", "Friction vs steel ball in PBS", "Silicone (PDMS), coated", *BN, "bench, PBS, 1 N", fu, 1.0, 0.06, "not stated", "< 0.0001 (text: greater than 90% reduction)", False, "Fig 1B", "Friction vs steel", "Bennion 2021", chem="SBMA")
+    add("Friction", "Friction vs ceramic ball in PBS", "Silicone (PDMS), coated", *BN, "bench, PBS, 1 N", fu, 1.0, 0.06, "not stated", "< 0.0001 (text: greater than 90% reduction)", False, "Fig 1B", "Friction vs ceramic", "Bennion 2021", chem="SBMA")
+    add("Friction", "Friction vs guinea pig dermis in PBS", "Silicone (PDMS), coated", *BN, "bench, ex vivo guinea pig dermis, PBS, 1 N", fu, 1.0, 0.06, "4 guinea pigs", "< 0.0001 (text: greater than 90% reduction)", False, "Fig 1B", "Friction vs guinea pig dermis", "Bennion 2021, n = 4", chem="SBMA")
+    add("Friction", "Friction vs sapphire probe in PBS, pristine coating", "Silicone (PDMS), coated", *PL, s, "coefficient of friction (absolute)", 0.25, 0.027, "4 or more", "not stated", False, "Fig 4", "Friction vs sapphire, pristine", "Peel 2024, n ≥ 4", chem="SBMA")
+    add("Friction", "Friction vs sapphire probe in PBS, after 3 weeks in mice", "Silicone (PDMS) disk, coated", *PL, "in vivo for 3 weeks (mice), then bench", "coefficient of friction (absolute)", 0.27, 0.03, "4 or more", "not stated (no change from pristine)", False, "Fig 4", "Friction, after 3 weeks in mice", "Peel 2024, n ≥ 4", chem="SBMA")
     tis = [("aorta", 0.03), ("bladder", 0.03), ("dermis", 0.06), ("fat", 0.02), ("trachea", 0.05), ("steel", 0.05)]
     for nm, v in tis:
-        add("Friction", f"Friction vs guinea pig {nm}" if nm != "steel" else "Friction vs steel probe", "Silicone (PDMS), SBMA coating, 5% cross-linker", *PL, "bench, ex vivo guinea pig tissue-covered probe, PBS" if nm != "steel" else "bench, PBS", fu, 1.0, v, "3 or more", "not stated (text: at least 90% reduction for all tissues)", False, "Fig 5A", "", "", chart=False)
+        add("Friction", f"Friction vs guinea pig {nm}" if nm != "steel" else "Friction vs steel probe", "Silicone (PDMS), coated, 5% cross-linker", *PL, "bench, ex vivo guinea pig tissue-covered probe, PBS" if nm != "steel" else "bench, PBS", fu, 1.0, v, "3 or more", "not stated (text: at least 90% reduction for all tissues)", False, "Fig 5A", "", "", chart=False, chem="SBMA")
     mean_pct = sum(100 * (1 - v) for _, v in tis) / len(tis)
     lo, hi = min(100 * (1 - v) for _, v in tis), max(100 * (1 - v) for _, v in tis)
-    rows.append(dict(category="Friction", assay="Friction vs five guinea pig tissues and steel (mean of six probes)", surface="Silicone (PDMS), SBMA coating, 5% cross-linker", paper="Peel et al.", year=2024, journal="ACS Applied Bio Materials",
+    rows.append(dict(category="Friction", assay="Friction vs five guinea pig tissues and steel (mean of six probes)", surface="Silicone (PDMS), coated, 5% cross-linker", paper="Peel et al.", year=2024, journal="ACS Applied Bio Materials",
                      species_or_setting="bench, ex vivo guinea pig tissue-covered probes, PBS", uncoated=1.0, coated=round(1 - mean_pct / 100, 3), unit=fu, pct_reduction=int(mean_pct + 0.5), n="3 or more", p_text="not stated (text: at least 90% reduction for all tissues)",
-                     exact=False, figure="Fig 5A", in_static_chart=True, note=f"mean of six probe reductions (range about {int(lo + 0.5)} to {int(hi + 0.5)}); the six single-probe rows are listed separately",
-                     _assay="Friction vs five tissues and steel, SBMA", _study=f"Peel 2024, range ~{int(lo + 0.5)} to {int(hi + 0.5)}, n ≥ 3"))
-    add("Friction", "Friction vs sapphire ball, 1 N, best group", "Silicone (PDMS), SBMA dual-network coating, 2.5% primary, 2.5% secondary", *BA, s, fu, 1.0, 0.16, "3 measurements per point", "not stated", False, "Fig 4B", "Friction vs sapphire, dual network", "Barrera 2026, 2.5%/2.5% cross-linker, n = 3", note="text: over 80% reduction for some systems; other dual groups reduce by about 58 to 74%")
+                     exact=False, figure="Fig 5A", in_static_chart=True, note=f"mean of six probe reductions (range about {int(lo + 0.5)} to {int(hi + 0.5)}); the six single-probe rows are listed separately", chemistry="SBMA",
+                     _assay="Friction vs five tissues and steel", _study=f"Peel 2024, range ~{int(lo + 0.5)} to {int(hi + 0.5)}, n ≥ 3"))
+    add("Friction", "Friction vs sapphire ball, 1 N, best group", "Silicone (PDMS), coated, 2.5% primary and 2.5% secondary cross-linker", *BA, s, fu, 1.0, 0.16, "3 measurements per point", "not stated", False, "Fig 4B", "Friction vs sapphire", "Barrera 2026, 2.5%/2.5% cross-linker, n = 3", note="text: over 80% reduction for some coatings; other coatings reduce by about 58 to 74%", chem="SBMA (dual network)")
     # order: protein, cells, bacteria, friction (insertion order within each already by paper)
     order = {"Protein": 0, "Cells": 1, "Bacteria": 2, "Friction": 3}
     rows.sort(key=lambda r: order[r["category"]])
@@ -426,9 +415,9 @@ def w05_antifouling():
     ax.set_yticks([]); ax.set_xticks(range(0, 101, 20)); ax.set_xticklabels([f"{t}%" for t in range(0, 101, 20)])
     ax.grid(axis="y", visible=False); ax.spines["left"].set_visible(False)
     ax.set_xlabel("Reduction versus the uncoated surface. Blue bar = coated surface; gray track = uncoated (100%).", fontsize=9.5)
-    ftitle(fig, "Protein, cells, bacteria and friction: every published comparison, coated versus uncoated",
+    ftitle(fig, "Protein, cells, bacteria and friction: published comparisons, coated versus uncoated",
            f"{n_rows} comparisons from {len(papers)} papers, 2017 to 2026; in vitro on glass or silicone unless the label says rats or mice; bar values approximate where marked (~)")
-    fig.text(0.01, 0.008, "~ = approximate: read from a published plot, converted from a fold change stated as 'about' or 'over', or averaged. SBMA = sulfobetaine, CBMA = carboxybetaine coating.", fontsize=8.5, color=MUTED)
+    fig.text(0.01, 0.008, "~ = approximate: read from a published plot, converted from a fold change stated as 'about' or 'over', or averaged.", fontsize=8.5, color=MUTED)
     srcs = ("Leigh BL, et al. Biomacromolecules 2017;18(8):2389-2401 (Fig 4 fibrinogen; Figs 6E, 7E, 8E cells on glass; fibrinogen and fibroblast values read from the published plots, astrocyte and Schwann cell values from the stated fold changes); "
             "Leigh BL, et al. Langmuir 2019;35(4):1100-1110 (Fig 7D fibrinogen; Fig 10D fibroblasts after 14 days in medium, plotted ratios used because the plotted absolute values conflict with the text); "
             "Jensen MJ, et al. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502 (Figs 1G, 2G, 3G at 5 percent cross-linker; Fig 5A friction at 4 percent; values read from the published plots); "
@@ -437,8 +426,9 @@ def w05_antifouling():
             "Bennion DM, et al. Otology and Neurotology 2021;42(10):1476-1483 (Fig 1B, steel, ceramic and guinea pig dermis; text states more than 90 percent lower, p < 0.0001); "
             "Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 4 pristine and after 3 weeks in mice; Fig 5A six probes, bar shows the mean, range in the label; read from the published plots); "
             "Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 6 fibroblasts, text states more than 99 percent for low and about 90 percent for high cross-linker; Fig 4B friction, best group 2.5/2.5 percent). "
-            "Per-comparison values, n and p are in figures/data/W05_antifouling_all.json")
-    save(fig, "W05_antifouling_and_friction", f"Every published bench comparison of coated versus uncoated surfaces ({n_rows} bars from {len(papers)} papers): protein adsorption, cell attachment, bacterial adhesion and friction, as percent reduction.", srcs)
+            "Chemistry, for traceability only (not shown in the image): where a paper tested both an SBMA and a CBMA coating, the SBMA result is plotted; Shen 2021 and Horne 2023 are CBMA coatings; Barrera 2026 is an SBMA dual-network coating. "
+            "Per-comparison values, n and p, and the chemistry of each row, are in figures/data/W05_antifouling_all.json")
+    save(fig, "W05_antifouling_and_friction", f"Published bench comparisons of coated versus uncoated surfaces ({n_rows} bars from {len(papers)} papers): protein adsorption, cell attachment, bacterial adhesion and friction, as percent reduction.", srcs)
     out = [{k: v for k, v in r.items() if not k.startswith("_")} for r in rows]
     json.dump(out, open(os.path.join(DATA, "W05_antifouling_all.json"), "w"), indent=1, ensure_ascii=False)
     print("W05 bars:", n_rows, "papers:", len(papers), "json rows:", len(out))
@@ -471,24 +461,34 @@ def w07_insertion():
     # Bennion DM, et al. Otol Neurotol 2021;42(10):1476-1483, Fig 4 and text (exact): human cadaveric cochleae, n = 9 per group, mean +/- SD, Mann-Whitney.
     #   A. maximum force: uncoated 64.2 +/- 17.9 mN, coated 37.0 +/- 11.3 mN, p = 0.001.
     #   B. force variation: uncoated 89.9 +/- 42.9 mN/s, coated 52.1 +/- 21.0 mN/s, p = 0.03.
-    panels = [("A. Peak insertion force", "Peak insertion force (mN)", (64.2, 17.9), (37.0, 11.3), "p = 0.001", 120),
-              ("B. Force variation during insertion", "Force variation (mN/s)", (89.9, 42.9), (52.1, 21.0), "p = 0.03", 175)]
-    fig, axes = plt.subplots(1, 2, figsize=(9.5, 5.4))
-    for ax, (pt, yl, u, c, ptxt, ymax) in zip(axes, panels):
+    # Peel A, et al. ACS Appl Bio Mater 2024;7:3124-3135, Fig 13A (approximate, read from the figure; the paper prints no group means): uncoated about 68 mN,
+    #   coated about 35 mN, n = 9 per group, p < 0.003 (caption and text). The inventory flags that this may be the same experiment as Bennion 2021 re-analysed.
+    panels = [("A. Peak insertion force, Bennion 2021", "Peak insertion force (mN)", (64.2, 17.9), (37.0, 11.3), "p = 0.001", 120, False),
+              ("B. Force variation, Bennion 2021", "Force variation (mN/s)", (89.9, 42.9), (52.1, 21.0), "p = 0.03", 175, False),
+              ("C. Peak insertion force, Peel 2024", "Peak insertion force (mN)", (68, None), (35, None), "p < 0.003", 120, True)]
+    fig, axes = plt.subplots(1, 3, figsize=(13.5, 5.4))
+    for ax, (pt, yl, u, c, ptxt, ymax, approx) in zip(axes, panels):
         for i, ((m, sd), col) in enumerate(((u, GRAY), (c, BLUE))):
             ax.bar(i, m, width=0.55, color=col, edgecolor=SURFACE, linewidth=2)
-            ax.errorbar(i, m, yerr=sd, color=INK, capsize=6, lw=1.6, capthick=1.6)
-            ax.text(i, ymax * 0.03, f"{m:.1f}\n± {sd:.1f}", ha="center", va="bottom", fontsize=11, color="white", fontweight="bold")
+            if sd is not None:
+                ax.errorbar(i, m, yerr=sd, color=INK, capsize=6, lw=1.6, capthick=1.6)
+                ax.text(i, ymax * 0.03, f"{m:.1f}\n± {sd:.1f}", ha="center", va="bottom", fontsize=11, color="white", fontweight="bold")
+            else:
+                ax.text(i, ymax * 0.03, f"~{m:g}", ha="center", va="bottom", fontsize=11, color="white", fontweight="bold")
         red = 100 * (1 - c[0] / u[0])
-        top = u[0] + u[1]
-        bracket(ax, 0, 1, top + ymax * 0.07, f"−{red:.0f}%, {ptxt}", ymax * 0.03)
-        ax.set_xticks([0, 1]); ax.set_xticklabels(["Uncoated\n(n = 9)", "ZwiGuard coated\n(n = 9)"], fontsize=10.5)
+        top = u[0] + (u[1] or 0)
+        lab = f"about −{round(red / 5) * 5:.0f}%, {ptxt}" if approx else f"−{red:.0f}%, {ptxt}"
+        bracket(ax, 0, 1, top + ymax * 0.07, lab, ymax * 0.03)
+        ax.set_xticks([0, 1]); ax.set_xticklabels(["Uncoated\n(n = 9)", "Coated\n(n = 9)"], fontsize=10.5)
         ax.set_xlim(-0.6, 1.6); ax.set_ylim(0, ymax); ax.set_ylabel(yl); ax.grid(axis="x", visible=False)
         ptitle(ax, pt)
-    ftitle(fig, "Coated cochlear implants insert with about 40 percent less force",
-           "Human cadaveric cochleae, n = 9 per group, mean ± SD; Bennion et al. 2021")
-    save(fig, "W07_insertion_force", "Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae.",
-         "Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)")
+    fig.subplots_adjust(wspace=0.32)
+    ftitle(fig, "Coated cochlear implants insert with about half the force",
+           "Two cadaveric studies, n = 9 per group each, mean ± SD; Bennion et al. 2021 (exact) and Peel et al. 2024 (approximate, read from the figure)")
+    save(fig, "W07_insertion_force", "Coated cochlear implant arrays needed about 42 percent less peak force (Bennion 2021, exact) and about 50 percent less (Peel 2024, approximate, read from the figure) than uncoated arrays in human cadaveric cochleae, and had about 42 percent less force variation (Bennion 2021). Caution: the inventory flags that the two experiments may overlap (same n, array types and similar means), so they are not shown as independent replications.",
+         "Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means, SD and p from the text, exact; coating is SBMA); "
+         "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (means about 68 and about 35 mN read from the published figure, approximate; n = 9 per group, p < 0.003 from the caption; SBMA coating; the paper prints no group means or SD for this figure; the text's 'about 30%' and 'at least 50%' statements conflict, so the figure means are used). "
+         "Possible data overlap: the Peel Fig 13 caption, n, array types and means resemble Bennion Fig 4, so this may be the same experiment re-analysed; confirm with the authors before calling the two panels independent")
 
 
 def w08_impedance():
@@ -504,8 +504,9 @@ def w08_impedance():
 
 # ---------------------------------------------------------------- W09 aging mass loss
 def w09_aging(ag):
-    series = {"Standard SBMA": (BLUE, 2.6), "Low crosslinker": (GRAY, 1.8), "Low monomer": (GRAY_LIGHT, 1.8), "CBMA": (ORANGE, 2.2)}
-    key = {"Standard": "Standard SBMA", "Low XL": "Low crosslinker", "Low monomer": "Low monomer", "CBMA": "CBMA"}
+    # Owner rule (2026-10-30): no chemistry names in the image. "Standard" is the SBMA recipe; the CBMA series (composition "CBMA" in the data) is not plotted.
+    series = {"Standard recipe": (BLUE, 2.6), "Low crosslinker": (GRAY, 1.8), "Low monomer": (GRAY_LIGHT, 1.8)}
+    key = {"Standard": "Standard recipe", "Low XL": "Low crosslinker", "Low monomer": "Low monomer"}
     fig, ax = plt.subplots(figsize=(10, 5.2))
     for comp, lab in key.items():
         pts = sorted((float(r["equivalent_years_at_37c"]), float(r["percent_change_from_baseline"])) for r in ag if r["batch"] == "Aryaman" and r["composition"] == comp and r["percent_change_from_baseline"] not in ("", None) and r["n"] not in ("", None))
@@ -514,8 +515,8 @@ def w09_aging(ag):
         ax.text(pts[-1][0] + 0.3, pts[-1][1], lab, fontsize=9.5, color=INK2, va="center")
     ax.axhline(0, color=GRAY, lw=1)
     ax.set_xlabel("Equivalent time at body temperature (years; 82 C oven, Q10 = 2)"); ax.set_ylabel("Change in dry mass (%)"); ax.set_xlim(0, 27); ax.legend(loc="lower left")
-    title(ax, "Accelerated aging: the standard recipe loses about 1 to 2 percent per equivalent year", "Free-standing gels at 82 C for 27 weeks, 4 to 25 gels per point; CBMA loses more early, then holds")
-    save(fig, "W09_accelerated_aging", "Dry-mass change of free-standing gels under accelerated aging.", "Accelerated aging Database, ambient-corrected package (timepoint_summary.csv)")
+    title(ax, "Accelerated aging: the standard recipe loses about 1 to 2 percent per equivalent year", "Free-standing gels at 82 C for 27 weeks, 4 to 25 gels per point")
+    save(fig, "W09_accelerated_aging", "Dry-mass change of free-standing gels under accelerated aging.", "Accelerated aging Database, ambient-corrected package (timepoint_summary.csv); the standard recipe is the SBMA gel, the CBMA series is not plotted")
 
 
 # ---------------------------------------------------------------- W10 substrate x evidence matrix
@@ -1024,24 +1025,24 @@ def w27_capsule_mice():
 # ---------------------------------------------------------------- W28 durability (Peel 2024)
 def w28_durability_peel():
     # Peel A, et al. ACS Appl Bio Mater 2024;7:3124-3135. Fig 4 (read from figure, approximate): absolute coefficient of friction, sapphire probe in PBS.
-    #   uncoated 0.25 pristine / 0.27 explanted; CBMA 0.035 / 0.035; SBMA 0.027 / 0.03. Explanted = 3 weeks in mice.
+    #   uncoated 0.25 pristine / 0.27 explanted; CBMA 0.035 / 0.035 (dropped from the chart, owner rule 2026-10-30); SBMA 0.027 / 0.03 (shown as "Coated"). Explanted = 3 weeks in mice.
     # Fig 5A (read from figure, approximate): SBMA-coated PDMS relative to uncoated = 1.0:
     #   aorta 0.03, bladder 0.03, dermis 0.06, fat 0.02, trachea 0.05, steel 0.05. Text (exact): at least 90 percent lower for every surface.
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(14, 5.6), gridspec_kw={"width_ratios": [1.3, 1.4]})
-    groups = [("Uncoated", (0.25, 0.27), (GRAY_LIGHT, GRAY)), ("CBMA coating", (0.035, 0.035), ("#A9D2EE", BLUE)), ("SBMA coating", (0.027, 0.03), ("#A9D2EE", BLUE))]
+    groups = [("Uncoated", (0.25, 0.27), (GRAY_LIGHT, GRAY)), ("Coated", (0.027, 0.03), ("#A9D2EE", BLUE))]
     for g, (lab, (pr, ex), (c1, c2)) in enumerate(groups):
         axA.bar(g * 3, pr, width=0.9, color=c1, edgecolor=SURFACE, linewidth=2)
         axA.bar(g * 3 + 1, ex, width=0.9, color=c2, edgecolor=SURFACE, linewidth=2)
         axA.text(g * 3, pr + 0.006, f"~{pr:g}", ha="center", fontsize=9, color=INK2)
         axA.text(g * 3 + 1, ex + 0.006, f"~{ex:g}", ha="center", fontsize=9, color=INK2)
         axA.text(g * 3 + 0.5, -0.115, lab, transform=axA.get_xaxis_transform(), ha="center", va="top", fontsize=10.5, color=INK, fontweight="bold")
-    axA.set_xticks([x for g in range(3) for x in (g * 3, g * 3 + 1)]); axA.set_xticklabels(["pristine", "explanted"] * 3, fontsize=8.5)
-    axA.set_ylim(0, 0.34); axA.set_xlim(-0.8, 8.8); axA.set_ylabel("Coefficient of friction (sapphire probe, in PBS)"); axA.grid(axis="x", visible=False)
+    axA.set_xticks([x for g in range(2) for x in (g * 3, g * 3 + 1)]); axA.set_xticklabels(["pristine", "explanted"] * 2, fontsize=9)
+    axA.set_ylim(0, 0.34); axA.set_xlim(-0.8, 5.0); axA.set_ylabel("Coefficient of friction (sapphire probe, in PBS)"); axA.grid(axis="x", visible=False)
     ptitle(axA, "A. Friction before and after 3 weeks in mice")
     tiss = [("Aorta", 0.03), ("Bladder", 0.03), ("Dermis", 0.06), ("Fat", 0.02), ("Trachea", 0.05), ("Steel", 0.05)]
     for i, (lab, c) in enumerate(tiss):
         axB.bar(i - 0.19, 1, width=0.34, color=GRAY_LIGHT, label="Uncoated" if i == 0 else None, edgecolor=SURFACE, linewidth=2)
-        axB.bar(i + 0.19, c, width=0.34, color=BLUE, label="SBMA coated" if i == 0 else None, edgecolor=SURFACE, linewidth=2)
+        axB.bar(i + 0.19, c, width=0.34, color=BLUE, label="Coated" if i == 0 else None, edgecolor=SURFACE, linewidth=2)
         axB.text(i + 0.19, c + 0.025, f"~{c:g}", ha="center", fontsize=9.5, color=INK2)
     axB.set_xticks(range(6)); axB.set_xticklabels([t[0] for t in tiss], fontsize=10.5); axB.set_ylim(0, 1.15)
     axB.set_ylabel("Friction relative to uncoated silicone"); axB.legend(loc="upper right"); axB.grid(axis="x", visible=False)
@@ -1049,7 +1050,7 @@ def w28_durability_peel():
     ftitle(fig, "The coating keeps its low friction after weeks in mice",
            "Mice, 3 weeks, n of 4 or more (A); at least 90 percent lower friction against every surface tested (B, stated in the text); bar values approximate, read from the published figure; Peel et al. 2024", nsub=1)
     save(fig, "W28_durability_peel", "Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel.",
-         "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156")
+         "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text; the coated series is the SBMA coating, the CBMA coating is not plotted). doi:10.1021/acsabm.4c00156")
 
 
 # ---------------------------------------------------------------- W29 bacteria in rats (Shen 2021)
@@ -1080,15 +1081,16 @@ def w29_bacteria_rats():
 def w30_crosslinker():
     # Jensen MJ, et al. ACS Biomater Sci Eng 2021;7(9):4494-4502. Values read from the figures (approximate); x = cross-linker percent of monomer.
     # Swelling (Fig 4A, PBS, percent of dry mass) at 1.6/4.8/13/31.3 %. Compressive modulus (Fig 4B, MPa) shown relative to the lowest cross-linker (1.6 %):
-    #   SBMA 1 / 1.1 / 6 / 18.8; CBMA 4.8 / 17.5 / 34.7 against a 1.6 % value of about 0.7 MPa implied by the text's 50-fold rise (the plotted point is hidden).
+    #   SBMA 1 / 1.1 / 6 / 18.8 (plotted); CBMA 4.8 / 17.5 / 34.7 against a 1.6 % value of about 0.7 MPa implied by the text's 50-fold rise (not plotted).
     # Friction (Fig 5B) and fibroblast density (Fig 3G) relative to bare silicone (PDMS = 1); fibroblast uncoated = 11.6 x 10^-4 cells/um2.
     xs4 = [1.6, 4.8, 13, 31.3]
-    swell = {"CBMA": [980, 520, 310, 225], "SBMA": [750, 400, 260, 215]}
-    mod = {"CBMA": [1, 4.8 / 0.7, 17.5 / 0.7, 34.7 / 0.7], "SBMA": [1, 1.1, 6, 18.8]}
-    fric = {"CBMA": [0.053, 0.060, 0.10, 0.145], "SBMA": [0.055, 0.063, 0.075, 0.10]}
+    # Owner rule (2026-10-30): only the SBMA series is plotted, drawn as "the coating"; the CBMA series is dropped from the image.
+    swell = {"Coated": [750, 400, 260, 215]}
+    mod = {"Coated": [1, 1.1, 6, 18.8]}
+    fric = {"Coated": [0.055, 0.063, 0.075, 0.10]}
     xsf = [0, 1.6, 4.8, 13, 31.3, 50, 66.7]
-    fib = {"CBMA": [v / 11.6 for v in (3.2, 0.4, 0.15, 0.05, 0.6, 0.2, 0.45)], "SBMA": [v / 11.6 for v in (6.8, 1.5, 1.75, 1.55, 2.3, 3.1, 4.4)]}
-    sty = {"CBMA": dict(color=BLUE, marker="o", ls="-", mfc=BLUE), "SBMA": dict(color="#073F63", marker="s", ls="--", mfc=SURFACE)}
+    fib = {"Coated": [v / 11.6 for v in (6.8, 1.5, 1.75, 1.55, 2.3, 3.1, 4.4)]}
+    sty = {"Coated": dict(color=BLUE, marker="o", ls="-", mfc=BLUE)}
     fig, axes = plt.subplots(1, 4, figsize=(15, 4.9), sharex=True)
     panels = [(axes[0], xs4, swell, "Swelling in saline (% of dry mass)", "Swelling", False, None),
               (axes[1], xs4, mod, "Stiffness, relative to the 1.6% sample", "Stiffness", False, None),
@@ -1105,38 +1107,36 @@ def w30_crosslinker():
             ax.set_ylim(bottom=0)
         ax.set_xlim(-2, 70); ax.set_xticks([0, 10, 20, 30, 40, 50, 60, 70]); ax.set_ylabel(yl, fontsize=10); ax.set_xlabel("Cross-linker (% of monomer)")
         ptitle(ax, pt)
-    axes[0].legend(loc="upper right")
     fig.subplots_adjust(wspace=0.42)
-    ftitle(fig, "One chemistry, a tunable window",
+    ftitle(fig, "One coating, a tunable window",
            "Shaded band = the window the paper reports as best for antifouling, about 5 to 15 percent cross-linker (workable from 1 to 50 percent); more cross-linker gives a stiffer, less swollen gel\n"
            "In vitro, free-standing gels for swelling and stiffness; values approximate, read from the published figures; Jensen et al. 2021", nsub=2)
     save(fig, "W30_crosslinker_tradeoff", "More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker.",
-         "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, CBMA baseline implied by the text's 50-fold rise; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852")
+         "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker; the plotted series is the SBMA coating, the CBMA series is not shown; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852")
 
 
 # ---------------------------------------------------------------- W31 bond strength vs benzophenone (Leigh 2019)
 def w31_bond_strength():
     # Leigh BL, et al. Langmuir 2019;35(4):1100-1110, Fig 6 (read from figure, N/m2 x 10^4; shown here in kPa, 10^4 N/m2 = 10 kPa). Approximate.
     # Thresholds from the text (exact): adhesive failure below 2.5 mg/mL (SBMA) and below 5 mg/mL (CBMA); cohesive failure (gel tears first) at or above.
+    # Owner rule (2026-10-30): the image shows the SBMA coating only, as a single panel with no chemistry name; the CBMA panel (pCBMA) is not plotted.
     bp = [0, 0.25, 0.5, 0.75, 1, 2.5, 5, 10, 50]
-    data = {"pSBMA": ([0.9, 3.9, 4.3, 5.4, 5.0, 5.2, 6.1, 7.4, 7.1], [0, 1.0, 1.5, 1.5, 0.5, 3.4, 3.9, 3.7, 3.5], 5),
-            "pCBMA": ([2.1, 2.1, 4.6, 5.8, 4.4, 5.6, 7.1, 8.5, 10.0], [0, 0.9, 0.4, 2.5, 1.1, 3.9, 4.4, 5.6, 6.2], 6)}
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5.4), sharey=True)
+    asp, swl, thr = [0.9, 3.9, 4.3, 5.4, 5.0, 5.2, 6.1, 7.4, 7.1], [0, 1.0, 1.5, 1.5, 0.5, 3.4, 3.9, 3.7, 3.5], 5
+    fig, ax = plt.subplots(figsize=(8.2, 5.4))
     xs = list(range(len(bp)))
-    for ax, (name, (asp, swl, thr)) in zip(axes, data.items()):
-        ax.axvspan(thr - 0.5, len(bp) - 0.5, color=BLUE, alpha=0.09, lw=0)
-        ax.plot(xs, [v * 10 for v in asp], color=BLUE, marker="o", lw=2, ms=7, markeredgecolor=BLUE, label="As prepared")
-        ax.plot(xs, [v * 10 for v in swl], color=BLUE, marker="s", lw=2, ls="--", ms=7, mfc=SURFACE, markeredgecolor=BLUE, markeredgewidth=1.8, label="After 48 h swelling in water")
-        ax.axvline(thr - 0.5, color=BLUE, lw=1.2)
-        ax.text(thr - 0.4, 108, f"gel tears before the\ninterface lets go,\nfrom {bp[thr]:g} mg/mL", fontsize=9.5, color=DARKBLUE, va="top", ha="left")
-        ax.text(thr - 0.6, 108, "interface fails first", fontsize=9.5, color=INK2, va="top", ha="right")
-        ax.set_xticks(xs); ax.set_xticklabels([f"{b:g}" for b in bp], fontsize=10); ax.set_ylim(0, 112); ax.set_xlim(-0.4, len(bp) - 0.6)
-        ax.set_xlabel("Benzophenone in the grafting bath (mg/mL)"); ax.grid(axis="x", visible=False); ptitle(ax, name)
-    axes[0].set_ylabel("Shear strength at break (kPa)"); axes[0].legend(loc="upper left", bbox_to_anchor=(0.01, 0.84), fontsize=9.5)
+    ax.axvspan(thr - 0.5, len(bp) - 0.5, color=BLUE, alpha=0.09, lw=0)
+    ax.plot(xs, [v * 10 for v in asp], color=BLUE, marker="o", lw=2, ms=7, markeredgecolor=BLUE, label="As prepared")
+    ax.plot(xs, [v * 10 for v in swl], color=BLUE, marker="s", lw=2, ls="--", ms=7, mfc=SURFACE, markeredgecolor=BLUE, markeredgewidth=1.8, label="After 48 h swelling in water")
+    ax.axvline(thr - 0.5, color=BLUE, lw=1.2)
+    ax.text(thr - 0.4, 108, f"gel tears before the\ninterface lets go,\nfrom {bp[thr]:g} mg/mL", fontsize=9.5, color=DARKBLUE, va="top", ha="left")
+    ax.text(thr - 0.6, 108, "interface fails first", fontsize=9.5, color=INK2, va="top", ha="right")
+    ax.set_xticks(xs); ax.set_xticklabels([f"{b:g}" for b in bp], fontsize=10); ax.set_ylim(0, 112); ax.set_xlim(-0.4, len(bp) - 0.6)
+    ax.set_xlabel("Benzophenone in the grafting bath (mg/mL)"); ax.grid(axis="x", visible=False)
+    ax.set_ylabel("Shear strength at break (kPa)"); ax.legend(loc="upper left", bbox_to_anchor=(0.01, 0.80), fontsize=9.5)
     ftitle(fig, "The bond gets stronger until the gel tears before the interface lets go",
-           "Grafted hydrogel films on silicone (PDMS), pull test, in vitro; values approximate, read from the published figure (n and error bars not stated); failure thresholds from the text; Leigh et al. 2019")
-    save(fig, "W31_bond_strength_vs_benzophenone", "Shear bond strength of zwitterionic films on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL for SBMA and 5 mg/mL for CBMA.",
-         "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838")
+           "Grafted hydrogel film on silicone (PDMS), pull test, in vitro; values approximate, read from the published figure\n(n and error bars not stated); failure threshold from the text; Leigh et al. 2019", nsub=1)
+    save(fig, "W31_bond_strength_vs_benzophenone", "Shear bond strength of a zwitterionic film on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL.",
+         "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure threshold from the text; the plotted series is the SBMA coating, the CBMA panel is not shown, its threshold is 5 mg/mL). doi:10.1021/acs.langmuir.8b00838")
 
 
 # ---------------------------------------------------------------- W32 every published in-vivo comparison (data only)

@@ -1,5 +1,5 @@
 ---
-import { W04, W05 } from '../data/figure-text';
+import { W04, W05, W07, W28, W30, W31 } from '../data/figure-text';
 import Base from '../layouts/Base.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
@@ -97,11 +97,11 @@ const dots = [
       </div>
     </ClaimRow>
 
-    <ClaimRow label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about 40 percent." reverse>
+    <ClaimRow label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about half." reverse>
       <p>On silicone, friction fell by more than 90 percent against steel, ceramic and dermis (Bennion 2021).</p>
-      <p>A coated cochlear implant electrode needed about 40 percent less peak force to enter human cadaveric cochleae (Bennion 2021).</p>
-      <p>A later cadaver study found that coated arrays needed about half the peak force (Peel 2024).</p>
-      <Figure slot="figure" name="W07_insertion_force" alt="Two bar charts for coated and uncoated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force was 64.2 millinewtons uncoated and 37.0 coated, 42 percent lower (p = 0.001). Force variation was 89.9 millinewtons per second uncoated and 52.1 coated, 42 percent lower (p = 0.03)." caption="Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae." source="Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)." width={800} />
+      <p>Coated cochlear implant arrays needed about half the peak force to enter human cadaveric cochleae.</p>
+      <p>Peak insertion force fell about 42 percent in one study (Bennion 2021, 64.2 to 37.0 mN, n = 9, p = 0.001) and about 50 percent in another (Peel 2024, about 68 to 35 mN, read from the figure).</p>
+      <Figure slot="figure" name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} width={800} />
     </ClaimRow>
 
     <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones.">
@@ -125,7 +125,7 @@ const dots = [
       <!-- PENDING APPROVAL: accelerated aging chart (W09). Internal study; not published. -->
       <div slot="figure" class="stack">
         <Figure name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
-        <Figure name="W28_durability_peel" alt="Friction of coated and uncoated silicone. After three weeks in mice, coated silicone kept about 90 percent lower friction. Against five guinea pig tissues and steel, coated silicone had at least 90 percent lower friction." caption="Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel." source="Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156" width={1000} />
+        <Figure name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} width={1000} />
         <Figure name="W11_sterilization" alt="Two panels. Left: the coating was intact after seven of eight sterilization cycles: steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry were intact, and e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping. The coating was intact after seven of eight sterilization cycles; wet e-beam failed." source="ZwiCoat CIVCO sterilization study, 2025 (Kyle Ruby). Internal data; silicone coupons, about 5 per group." width={1000} />
       </div>
     </ClaimRow>
@@ -144,8 +144,9 @@ const dots = [
         <p>The issued patents name other polymers, including PVC, polyurethane and PEEK, as well as metals, glass and ceramics (US 11,814,526).</p>
         <p>Whether the coating bonds to your material is what the feasibility round measures, on your parts.</p>
       </div>
+      <Photo src="/images/lab/ci-array-elemental-map.png" alt="Cross-section of a coated cochlear implant array imaged by elemental mapping. The silicone carrier is a round cyan disc holding a ring of small electrode wires and one larger rectangular insert. The hydrogel film is the thin pink and violet layer around the silicone." caption="Cross-section of a coated cochlear implant array: elemental map showing the hydrogel film on the silicone carrier. ZwiCoat." credit="ZwiCoat" aspect="844/575" />
       <Figure name="W10_substrate_evidence_matrix" alt="Matrix of substrates against the kinds of test on record: adhesion tests, dip or mold coating, sterilization, insertion force and implantation in vivo. Silicone, implant silicone, PVC, polyurethane (probe cover) and platinum contacts have data in most columns. PEEK has adhesion tests, coating and a rat implant. Parylene-C has adhesion tests only." caption="Evidence matrix: substrates versus the kinds of test on record. Blue means data exist in the ZwiCoat archive; polyurethane is the CIVCO probe cover." source="ZwiCoat Lap-shear Master database; archived experiment reports; published studies. Adhesion on silicone is published (Leigh 2019); the other cells are internal ZwiCoat tests." width={1000} />
-      <Figure name="W31_bond_strength_vs_benzophenone" alt="Shear bond strength of zwitterionic films on silicone against benzophenone grafting agent concentration. Strength rises until failure moves from the silicone interface into the gel, at 2.5 mg per mL for SBMA and 5 mg per mL for CBMA." caption="Shear bond strength of zwitterionic films on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL for SBMA and 5 mg/mL for CBMA." source="Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838" width={900} />
+      <Figure name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} width={900} />
       </div>
     </section>
 
@@ -163,11 +164,11 @@ const dots = [
         <p>Process settings are tuned on your parts during the feasibility round.</p>
         <!-- PENDING APPROVAL: thickness versus cure time (W15) and the 468-sample process database with the jig learning curve (W03). Internal data; not published. -->
       </div>
-      <Figure name="W30_crosslinker_tradeoff" alt="Charts against cross-linker percentage. More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker." caption="More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker." source="Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, CBMA baseline implied by the text, 50-fold rise; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852" width={1000} />
+      <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} width={1000} />
       </div>
     </section>
     <section class="video proc-grid" aria-label="The coating process">
-      <ProcessVideo poster="/media/process-poster.jpg" src="/media/process-loop" aspect="9/16" alt="A coated tube on a rod held in a clear cylinder of monomer solution under blue light, then lifted out and moved to the UV curing area." caption="Dip coating in our lab: the device is lowered into the monomer solution, then moved under UV light to cure. Phone footage, not the automated jig." />
+      <ProcessVideo poster="/images/process-poster.png" caption="Automated dip coating: one step. Video coming." />
       <div class="proc-text">
         <p class="label">The process, on video</p>
         <p>The part is dipped into the monomer solution, then moved under UV light. One UV step grafts the film and crosslinks it.</p>
@@ -311,7 +312,7 @@ const dots = [
   }
   @media (min-width: 900px) {
     .two { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
-    .two .block-head { grid-column: 1 / span 5; }
-    .two .prose, .two .block-body { grid-column: 6 / span 7; }
+    .two > .block-head { grid-column: 1 / span 5; }
+    .two > .prose, .two > .block-body { grid-column: 6 / span 7; }
   }
 </style>

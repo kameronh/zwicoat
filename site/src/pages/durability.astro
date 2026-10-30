@@ -1,4 +1,5 @@
 ---
+import { W28, W31 } from '../data/figure-text';
 import Base from '../layouts/Base.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
@@ -25,7 +26,7 @@ import CTABand from '../components/CTABand.astro';
     <ClaimRow label="After explant" title="Friction was unchanged after three weeks in mice." reverse>
       <p>Coated silicone was implanted in mice for three weeks, then taken out and tested (Peel 2024).</p>
       <p>It kept about 90 percent lower friction than uncoated silicone. Against five guinea pig tissues and steel, friction was at least 90 percent lower.</p>
-      <Figure slot="figure" name="W28_durability_peel" alt="Friction of coated and uncoated silicone. After three weeks in mice, coated silicone kept about 90 percent lower friction. Against five guinea pig tissues and steel, coated silicone had at least 90 percent lower friction." caption="Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel." source="Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156" width={1000} />
+      <Figure slot="figure" name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} width={1000} />
     </ClaimRow>
 
     <!-- Mechanical -->
@@ -37,7 +38,7 @@ import CTABand from '../components/CTABand.astro';
 
     <ClaimRow label="Mechanical" title="The gel tears before the bond lets go." reverse>
       <p>On silicone, the gel tore before the interface let go (Leigh 2019).</p>
-      <Figure slot="figure" name="W31_bond_strength_vs_benzophenone" alt="Shear bond strength of zwitterionic films on silicone against benzophenone grafting agent concentration. Strength rises until failure moves from the silicone interface into the gel, at 2.5 mg per mL for SBMA and 5 mg per mL for CBMA." caption="Shear bond strength of zwitterionic films on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL for SBMA and 5 mg/mL for CBMA." source="Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838" width={900} />
+      <Figure slot="figure" name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} width={900} />
     </ClaimRow>
 
     <!-- Sterilization and shipping -->

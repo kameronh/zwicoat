@@ -35,11 +35,24 @@ const ratioOf = (aspect: string) => {
   const [w, h] = aspect.split('/').map(Number);
   return w / h;
 };
-const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; aspect: string }> = {
+const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; aspect: string; credit?: string }> = {
+  'ci-array-elemental-map': {
+    src: '/images/lab/ci-array-elemental-map.png',
+    alt: 'Cross-section of a coated cochlear implant array imaged by elemental mapping. The silicone carrier is a round cyan disc holding a ring of small electrode wires and one larger rectangular insert. The hydrogel film is the thin pink and violet layer around the silicone.',
+    caption: 'Cross-section of a coated cochlear implant array: elemental map showing the hydrogel film on the silicone carrier. ZwiCoat.',
+    aspect: '844/575',
+    credit: 'ZwiCoat',
+  },
+  'ci-array-coated-dyed': {
+    src: '/images/lab/ci-array-coated-dyed.png',
+    alt: 'A cochlear implant array coated with the blue-dyed hydrogel, lying on a white bench. The dark bands are the electrode contacts.',
+    caption: 'A cochlear implant array coated with the blue-dyed hydrogel.',
+    aspect: '1594/526',
+  },
   'ci-array-section': {
-    src: '/images/lab/ci-array-section-micrograph-01.jpg',
-    alt: 'Microscope image of a cross-section of a coated cochlear implant array. The array is the pale disc in the center. The hydrogel coating is the blue-tinted ring around it, uneven in places, with a few small bubbles.',
-    caption: 'Cross-section of a coated cochlear implant array under the microscope: the array in the center, the hydrogel coating as a ring around it.',
+    src: '/images/lab/ci-proxy-section-blue-ring.jpg',
+    alt: 'Microscope image of a cross-section of a coated silicone cochlear implant proxy. The silicone core is the pale disc in the center; the dyed hydrogel coating is the dark blue ring around it.',
+    caption: 'Cross-section under the microscope: a silicone cochlear implant proxy (0.635 mm core) with the dyed hydrogel coating as the blue ring around it. ZwiCoat, 2025.',
     aspect: '2816/2112',
   },
   'ett-cuff': {
@@ -149,7 +162,7 @@ const spec = [
           }
           if (x.kind === 'labphoto') {
             const p = LAB_PHOTOS[x.key];
-            return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={CREDIT} aspect={p.aspect} />;
+            return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={p.credit ?? CREDIT} aspect={p.aspect} />;
           }
           return null;
         };

@@ -20,9 +20,9 @@ figures:
     source: "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol 2025;10(2):e70118. doi:10.1002/lio2.70118"
     alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimetre tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
   - name: "W07_insertion_force"
-    caption: "Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae."
-    source: "Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)"
-    alt: "Two bar charts from insertions into human cadaveric cochleae, nine per group. Peak insertion force was 64.2 millinewtons uncoated and 37.0 coated, about 42 percent lower. Force variation was 89.9 millinewtons per second uncoated and 52.1 coated."
+    caption: "Coated cochlear implant arrays needed about half the peak insertion force of uncoated arrays in two human cadaveric studies: about 42 percent less (Bennion 2021) and about 50 percent less (Peel 2024)."
+    source: "Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A and 4B (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156."
+    alt: "Three panels of insertion force for uncoated and coated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force in Bennion 2021 was 64.2 millinewtons uncoated and 37.0 coated, about 42 percent lower (p = 0.001). Force variation in the same study was 89.9 millinewtons per second uncoated and 52.1 coated, about 42 percent lower (p = 0.03). Peak insertion force in Peel 2024 was about 68 millinewtons uncoated and about 35 coated, about 50 percent lower."
 sources:
   - "Brodsky MB, Levy MJ, Jedlanek E, et al. Laryngeal injury and upper airway symptoms after oral endotracheal intubation with mechanical ventilation during critical care: a systematic review. Crit Care Med. 2018;46(12):2010-2017. doi:10.1097/CCM.0000000000003368"
   - "Gil-Perotin S, Ramirez P, Marti V, et al. Implications of endotracheal tube biofilm in ventilator-associated pneumonia response: a state of concept. Crit Care. 2012;16(3):R93. doi:10.1186/cc11357"
@@ -36,8 +36,8 @@ sources:
   - "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35(4):1100-1110."
   - "Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293."
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
-cardStat: "~40%"
-cardStatLabel: "less peak insertion force for coated cochlear implant arrays in human cadaveric cochleae (Bennion 2021)"
+cardStat: "~50%"
+cardStatLabel: "less peak insertion force for coated cochlear implant arrays in human cadaveric cochleae (Bennion 2021, Peel 2024)"
 ---
 ## The problem
 
@@ -59,7 +59,7 @@ No ZwiGuard result on an endotracheal or tracheostomy tube is published. The res
 
 {{photo:ett-cuff}}
 
-**Insertion force, in human cadaveric cochleae.** Coated cochlear implant arrays needed about 40 percent less peak force, 64.2 against 37.0 millinewtons (p = 0.001). This is the published insertion-force model. It is not a tube result. (Bennion 2021.)
+**Insertion force, in human cadaveric cochleae.** Coated cochlear implant arrays needed about half the peak force: about 42 percent less, 64.2 against 37.0 millinewtons (Bennion 2021, nine per group, p = 0.001), and about 50 percent less, about 68 against 35 millinewtons (Peel 2024, read from the figure). This is the published insertion-force model. It is not a tube result.
 
 {{figure:W07}}
 

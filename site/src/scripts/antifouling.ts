@@ -155,7 +155,7 @@ export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
   );
 
   const countEl = h('p', { class: 'sb-count', id: countId, 'aria-live': 'polite' });
-  const controls = h('div', { class: 'sb-controls' }, catCtl.field, chemCtl.field, setCtl.field, paperCtl.field, sortField, countEl);
+  const controls = h('div', { class: 'sb-controls' }, catCtl.field, setCtl.field, paperCtl.field, sortField, countEl);
 
   /* ----- chart area ----- */
   const wrap = h('div', { class: 'ch-wrap af-wrap' });
@@ -350,7 +350,7 @@ export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
             'span',
             { class: 'af-label' },
             h('span', { class: 'af-assay' }, r.assay),
-            h('span', { class: 'af-meta' }, `${r.paperKey} · ${CHEMS[r.chem]}${r.setting === 'invivo' ? ' · in vivo' : ''}`),
+            h('span', { class: 'af-meta' }, `${r.paperKey}${r.setting === 'invivo' ? ' · in vivo' : ''}`),
           ),
           h('span', { class: 'af-track' }, h('span', { class: 'af-bar', style: `width:${Math.max(0, Math.min(100, r.pct_reduction))}%` })),
           h('span', { class: 'af-val' }, valueText(r)),

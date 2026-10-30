@@ -8,7 +8,7 @@ import CTABand from '../components/CTABand.astro';
 import numbers from '../../public/data/W12_numbers.json';
 import archive from '../../public/data/W33_archive.json';
 import pubs from '../data/publications.json';
-import { W04, W05 } from '../data/figure-text';
+import { W04, W05, W07, W25, W26, W28, W29, W30, W31 } from '../data/figure-text';
 
 const { papers, theses, patents } = pubs;
 const tiles = numbers;
@@ -96,12 +96,7 @@ const nav = [
           caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year. A non-zwitterionic hydrogel control did not differ significantly from uncoated."
           source="Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
         />
-        <Figure
-          name="W26_sheep_histology"
-          alt="Three panels for sheep at four weeks: cell nuclei density, macrophage density and fibrosis at the round window, uncoated versus coated. Pooled across three sheep, coated arrays had fewer nuclei, fewer macrophages and less fibrosis. One sheep showed no difference in cells or macrophages."
-          caption="At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled. One sheep showed no difference in cells or macrophages."
-          source="Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606"
-        />
+        <Figure name={W26.name} alt={W26.alt} caption={W26.caption} source={W26.source} />
         <div class="photo-narrow">
           <Photo
             src="/images/histology-sheep.png"
@@ -129,12 +124,7 @@ const nav = [
           source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)."
           width={800}
         />
-        <Figure
-          name="W25_sheep_impedance_components"
-          alt="Three bar charts for sheep: total impedance, polarization impedance and access resistance of coated and uncoated arrays, at implantation and at four weeks."
-          caption="Total impedance, polarization impedance and access resistance of coated and uncoated human cochlear implant arrays in sheep, at implantation and at four weeks."
-          source="Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 3B to 3D (bar heights approximate, read from the published figure; p values as printed). doi:10.1016/j.heares.2026.109606"
-        />
+        <Figure name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} />
       </div>
     </section>
 
@@ -143,21 +133,11 @@ const nav = [
       <div class="ev-head">
         <p class="label ev-num">04</p>
         <h2 id="insertion-friction-h">Insertion force and friction</h2>
-        <p class="ev-text">In human cadaveric cochleae, coated arrays needed about 40 percent less peak force (Bennion 2021). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024).</p>
+        <p class="ev-text">In human cadaveric cochleae, coated arrays needed about half the peak insertion force: about 42 percent less in one study (Bennion 2021) and about 50 percent less in another (Peel 2024). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024).</p>
       </div>
       <div class="ev-body">
-        <Figure
-          name="W07_insertion_force"
-          alt="Bar charts of insertion measurements for coated and uncoated cochlear implant arrays in human cadaveric cochleae. Coated arrays needed about 40 percent less peak force and had about 42 percent less force variation."
-          caption="Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae."
-          source="Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)."
-        />
-        <Figure
-          name="W28_durability_peel"
-          alt="Friction of coated and uncoated silicone. After three weeks in mice, coated silicone kept about 90 percent lower friction. Against five guinea pig tissues and steel, coated silicone had at least 90 percent lower friction."
-          caption="Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel."
-          source="Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156"
-        />
+        <Figure name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} />
+        <Figure name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} />
       </div>
     </section>
 
@@ -173,15 +153,10 @@ const nav = [
           id="antifouling"
           name={W05.name}
           alt={W05.alt}
-          caption="Protein, cells, bacteria and friction: every published comparison of a coated surface with an uncoated one, as percent reduction. Filter by category, chemistry, setting or paper, then hover or focus a bar for the values, n and p. The static chart shows 38 of the 48 comparisons, from 8 papers. SBMA is sulfobetaine, CBMA is carboxybetaine."
+          caption="Protein, cells, bacteria and friction: every published comparison of a coated surface with an uncoated one, as percent reduction. Filter by category, chemistry, setting or paper, then hover or focus a bar for the values, n and p. The static chart shows 38 of the 48 comparisons, from 8 papers."
           source={W05.source}
         />
-        <Figure
-          name="W29_bacteria_rats"
-          alt="Charts of S. aureus on silicone implants in rats. At day 21, coated implants carried far fewer adherent bacteria and live colonies than uncoated implants. A coating kept in a rat for two weeks still resisted a fresh S. aureus challenge."
-          caption="In rats challenged with S. aureus, coated silicone implants carried far fewer bacteria and live colonies at day 21, and a coating kept in a rat for two weeks still resisted a fresh S. aureus challenge."
-          source="Shen N, Cheng E, Whitley JW, Horne RR, Leigh B, Xu L, Jones BD, Guymon CA, Hansen MR. ACS Applied Bio Materials 2021;4(2):1283-1293, Figs 7C, 7D and 8 (values approximate, read from the published figure; p values as printed). doi:10.1021/acsabm.0c01147"
-        />
+        <Figure name={W29.name} alt={W29.alt} caption={W29.caption} source={W29.source} />
       </div>
     </section>
 
@@ -217,18 +192,8 @@ const nav = [
           caption="Each dot is one experimental group (3 to 10 samples); black bar = median. ZwiCoat lap-shear database, 2017 to 2026; formulation details withheld. Filter by substrate, year or failure mode, then hover or focus a dot for the values."
           source="ZwiCoat lap-shear database, 2017 to 2026 (internal data; formulation details withheld)."
         />
-        <Figure
-          name="W31_bond_strength_vs_benzophenone"
-          alt="Shear bond strength of zwitterionic films on silicone against benzophenone grafting agent concentration. Strength rises until failure moves from the silicone interface into the gel, at 2.5 mg per mL for SBMA and 5 mg per mL for CBMA."
-          caption="Shear bond strength of zwitterionic films on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL for SBMA and 5 mg/mL for CBMA."
-          source="Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838"
-        />
-        <Figure
-          name="W30_crosslinker_tradeoff"
-          alt="Charts against cross-linker percentage. More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker."
-          caption="More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker."
-          source="Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, CBMA baseline implied by the text's 50-fold rise; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852"
-        />
+        <Figure name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} />
+        <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} />
       </div>
     </section>
 

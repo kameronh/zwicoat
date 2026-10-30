@@ -191,3 +191,10 @@ a { color: inherit; }
   text-transform: none;
   letter-spacing: 0.02em;
 }
+
+/* Figures are block-level and fill their container. Without an explicit width the
+   contained title block (contain: inline-size) gives the figure no intrinsic width,
+   and a figure in an auto-sized grid track collapsed to a few pixels. */
+figure.figure, .fig-frame, figure.photo, figure.pv { width: 100%; }
+/* Grid containers that hold figures get one explicit full-width track. */
+.block-body, .ev-body, .stack { grid-template-columns: minmax(0, 1fr); }

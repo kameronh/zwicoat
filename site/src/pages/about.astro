@@ -32,9 +32,8 @@ import team from '../data/team.json';
             <div class="bio">
               <h3>{m.name}</h3>
               <p class="label role">{m.title}</p>
-              <p class="short">{m.shortBio}</p>
               <details>
-                <summary>Read more</summary>
+                <summary>Bio</summary>
                 <p class="full">{m.fullBio}</p>
               </details>
             </div>
@@ -58,7 +57,6 @@ import team from '../data/team.json';
   .portrait { max-width: 220px; }
   .bio { display: grid; gap: var(--space-2); align-content: start; max-width: var(--measure); }
   .role { color: var(--blue-deep); }
-  .short { margin-top: var(--space-2); }
   details { margin-top: var(--space-2); }
   summary { color: var(--blue); font-weight: 600; text-underline-offset: 0.18em; }
   summary:hover { color: var(--blue-deep); }

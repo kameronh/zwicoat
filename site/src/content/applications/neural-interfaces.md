@@ -13,20 +13,20 @@ heroFigure: "W25_sheep_impedance_components"
 figures:
   - name: "W25_sheep_impedance_components"
     caption: "Total impedance, polarization impedance and access resistance of coated and uncoated human cochlear implant arrays in sheep, at implantation and at four weeks."
-    source: "Ben-Shlomo N, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hearing Research 2026;474:109606, Fig 3B to 3D (bar heights approximate, read from the published figure; p values as printed). doi:10.1016/j.heares.2026.109606"
+    source: "Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 3B to 3D (bar heights approximate, read from the published figure; p values as printed). doi:10.1016/j.heares.2026.109606"
     alt: "Three small bar charts of electrode impedance in kilohms for coated and uncoated human cochlear implant arrays in sheep, at implantation and at four weeks. Total impedance is about 30 uncoated against 10.5 coated at implantation, and about 17.5 against 9.5 at four weeks. Access resistance is about 12.5 against 6 at implantation and 11 against 5 at four weeks. Polarization impedance is about 20 against 6 at implantation and not significantly different at four weeks."
   - name: "W26_sheep_histology"
-    caption: "At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled; one sheep showed no difference in cells or macrophages."
-    source: "Ben-Shlomo N, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606"
-    alt: "Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. Dots show each of the three sheep. One sheep shows no benefit in cells or macrophages."
+    caption: "At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled. One sheep showed no difference in cells or macrophages."
+    source: "Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606"
+    alt: "Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. A line joins each of the three sheep's uncoated and coated values. One sheep shows no benefit in cells or macrophages."
   - name: "W27_capsule_thickness_mice"
     caption: "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year; a non-zwitterionic hydrogel control did not differ significantly from uncoated."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
     alt: "Two bar charts of scar capsule thickness in mice. Panel A, six weeks on flat silicone sheets: 82 micrometres uncoated, 43 with a PEG-type hydrogel and 27 with the zwitterionic coating. Panel B, one year on human cochlear implant arrays: 47 micrometres uncoated and 18 coated."
   - name: "W07_insertion_force"
-    caption: "Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae."
-    source: "Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)"
-    alt: "Two bar charts from insertions into human cadaveric cochleae, nine per group. Peak insertion force was 64.2 millinewtons uncoated and 37.0 coated, about 42 percent lower. Force variation was 89.9 millinewtons per second uncoated and 52.1 coated."
+    caption: "Coated cochlear implant arrays needed about half the peak insertion force of uncoated arrays in two human cadaveric studies: about 42 percent less (Bennion 2021) and about 50 percent less (Peel 2024)."
+    source: "Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A and 4B (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156."
+    alt: "Three panels of insertion force for uncoated and coated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force in Bennion 2021 was 64.2 millinewtons uncoated and 37.0 coated, about 42 percent lower (p = 0.001). Force variation in the same study was 89.9 millinewtons per second uncoated and 52.1 coated, about 42 percent lower (p = 0.03). Peak insertion force in Peel 2024 was about 68 millinewtons uncoated and about 35 coated, about 50 percent lower."
   - name: "histology-sheep"
     caption: "Sheep cochlea at the round window, uncoated array on the left and coated array on the right. Top row: H&E stain. Bottom row: stains for fibrosis (alpha-SMA, red), macrophages (Iba1, green) and nuclei (Hoechst, blue)."
     source: "Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 6A to D, CC BY 4.0."
@@ -57,13 +57,18 @@ Every result below comes from a published study. No coated device has been impla
 
 {{figure:W27}}
 
-**Insertion force, in human cadaveric cochleae.** Coated arrays needed about 40 percent less peak force, 64.2 against 37.0 millinewtons (p = 0.001, nine insertions per group). Force variation fell about 42 percent. (Bennion 2021, Otology and Neurotology.)
+**Insertion force, in human cadaveric cochleae.** Coated arrays needed about half the peak force. In two studies it fell about 42 percent, 64.2 against 37.0 millinewtons (Bennion 2021, Otology and Neurotology; p = 0.001, nine insertions per group), and about 50 percent, about 68 against 35 millinewtons (Peel 2024, ACS Applied Bio Materials; read from the figure). Force variation fell about 42 percent in the first study.
 
 {{figure:W07}}
 
 ## Under the microscope
 
-A cross-section of a coated array shows the hydrogel as a ring around the carrier.
+A cross-section of a coated array, mapped by element, shows the hydrogel film on the silicone carrier. The second picture is a coated array dyed blue so the film is easy to see.
+
+{{photo:ci-array-elemental-map}}
+
+
+{{photo:ci-array-coated-dyed}}
 
 {{photo:ci-array-section}}
 
