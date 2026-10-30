@@ -1,0 +1,180 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SpecStrip from '../../components/SpecStrip.astro';
+import Figure from '../../components/Figure.astro';
+import Photo from '../../components/Photo.astro';
+import VideoLoop from '../../components/VideoLoop.astro';
+import Prose from '../../components/Prose.astro';
+import References from '../../components/References.astro';
+import { imageSize } from '../../lib/imagesize';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('applications');
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+
+type Fig = (typeof d.figures)[number];
+const findFigure = (token: string): Fig => {
+  const f = d.figures.find((x) => x.name === token || x.name.startsWith(`${token}_`));
+  if (!f) throw new Error(`${d.slug}: no figures entry for {{figure:${token}}}`);
+  return f;
+};
+
+/*
+  Lab media, used through tokens in the markdown body:
+    {{photo:name}}      one photograph (names below, or a non-chart entry in the page's figures list)
+    {{video:name}}      a silent looping clip
+  Every lab image carries the same credit line.
+*/
+const CREDIT = 'ZwiCoat, 2026';
+const ratioOf = (aspect: string) => {
+  const [w, h] = aspect.split('/').map(Number);
+  return w / h;
+};
+const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; aspect: string }> = {
+  'ci-array-section': {
+    src: '/images/lab/ci-array-section-micrograph-01.jpg',
+    alt: 'Microscope image of a cross-section of a coated cochlear implant array. The array is the pale disc in the center. The hydrogel coating is the blue-tinted ring around it, uneven in places, with a few small bubbles.',
+    caption: 'Cross-section of a coated cochlear implant array under the microscope: the array in the center, the hydrogel coating as a ring around it.',
+    aspect: '2816/2112',
+  },
+  'ett-cuff': {
+    src: '/images/lab/ett-cuff-coated.jpg',
+    alt: 'The cuff of a coated endotracheal tube hanging against a gray fabric wall. The cuff and tube are an even blue.',
+    caption: 'The cuff of a dip-coated endotracheal tube.',
+    aspect: '1080/1920',
+  },
+};
+const LAB_VIDEOS: Record<string, { src: string; poster: string; caption: string; alt: string; aspect: string }> = {
+  cuff: {
+    src: '/media/cuff-loop',
+    poster: '/media/cuff-poster.jpg',
+    caption: 'A coated endotracheal tube cuff inflating and deflating.',
+    alt: 'A blue-coated endotracheal tube cuff against a gray wall, inflating and deflating twice.',
+    aspect: '9/16',
+  },
+};
+
+const hero = findFigure(d.heroFigure);
+// A tall chart (the antifouling bars) would fill the screen at the full hero width, so it gets a narrower column.
+const heroSize = imageSize(`/figures/${hero.name}.png`);
+const heroTall = heroSize.height / heroSize.width > 0.9;
+
+// Render the markdown to HTML, then split on the media tokens and interleave components.
+const html = entry.rendered?.html ?? '';
+if (!html) throw new Error(`${d.slug}: no rendered body`);
+const pieces = html.split(/<p>\{\{(figure|photo|video):([A-Za-z0-9_-]+)\}\}<\/p>/);
+type Block =
+  | { kind: 'html'; html: string }
+  | { kind: 'figure'; fig: Fig }
+  | { kind: 'photo'; fig: Fig }
+  | { kind: 'labphoto'; key: string; portrait: boolean }
+  | { kind: 'video'; key: string; portrait: boolean };
+const raw: Block[] = [];
+for (let i = 0; i < pieces.length; i += 3) {
+  if (pieces[i].trim()) raw.push({ kind: 'html', html: pieces[i] });
+  const type = pieces[i + 1];
+  const name = pieces[i + 2];
+  if (!type) continue;
+  if (type === 'figure') raw.push({ kind: 'figure', fig: findFigure(name) });
+  else if (type === 'photo') {
+    if (LAB_PHOTOS[name]) raw.push({ kind: 'labphoto', key: name, portrait: ratioOf(LAB_PHOTOS[name].aspect) < 0.9 });
+    else raw.push({ kind: 'photo', fig: findFigure(name) });
+  } else if (type === 'video') {
+    if (!LAB_VIDEOS[name]) throw new Error(`${d.slug}: unknown video ${name}`);
+    raw.push({ kind: 'video', key: name, portrait: ratioOf(LAB_VIDEOS[name].aspect) < 0.9 });
+  }
+}
+if (raw.some((b) => b.kind === 'html' && b.html.includes('{{'))) {
+  throw new Error(`${d.slug}: a media token was not replaced`);
+}
+// Two portrait items in a row (a clip and a photo) sit side by side instead of each filling a column.
+type Item = Block | { kind: 'pair'; items: Block[] };
+const blocks: Item[] = [];
+const isPortrait = (x?: Block) => !!x && (x.kind === 'video' || x.kind === 'labphoto') && x.portrait;
+for (let i = 0; i < raw.length; i++) {
+  const b = raw[i];
+  const n = raw[i + 1];
+  if (isPortrait(b) && isPortrait(n)) {
+    blocks.push({ kind: 'pair', items: [b, n] });
+    i++;
+  } else blocks.push(b);
+}
+
+const photoSize = (f: Fig) => {
+  const s = imageSize(`/images/${f.name}.png`);
+  return `${s.width}/${s.height}`;
+};
+
+const spec = [
+  { label: 'Devices', value: d.devices },
+  { label: 'Substrates', value: d.substrates },
+  { label: 'Thickness', value: d.thickness },
+  { label: 'Sterilization', value: d.sterilization },
+  { label: 'Regulatory path', value: d.regulatory },
+  { label: 'Evidence', value: d.evidence },
+];
+---
+<Base title={d.title} description={d.standfirst}>
+  <div class="container section">
+    <header class="head">
+      <p class="label">Application</p>
+      <h1>{d.title}</h1>
+      <p class="lead">{d.standfirst}</p>
+    </header>
+
+    <SpecStrip items={spec} />
+
+    <div class:list={['hero', { tall: heroTall }]}>
+      <Figure name={hero.name} alt={hero.alt} caption={hero.caption} source={hero.source} width={1000} />
+    </div>
+
+    <div class="body">
+      {blocks.map((b) => {
+        if (b.kind === 'html') return <Prose><Fragment set:html={b.html} /></Prose>;
+        if (b.kind === 'figure') {
+          return <div class="fig"><Figure name={b.fig.name} alt={b.fig.alt} caption={b.fig.caption} source={b.fig.source} width={1000} /></div>;
+        }
+        if (b.kind === 'photo') {
+          return <div class="fig"><Photo src={`/images/${b.fig.name}.png`} alt={b.fig.alt} caption={b.fig.caption} credit={b.fig.source} aspect={photoSize(b.fig)} /></div>;
+        }
+        const one = (x: Block) => {
+          if (x.kind === 'video') {
+            const v = LAB_VIDEOS[x.key];
+            return <VideoLoop src={v.src} poster={v.poster} caption={v.caption} alt={v.alt} aspect={v.aspect} credit={CREDIT} />;
+          }
+          if (x.kind === 'labphoto') {
+            const p = LAB_PHOTOS[x.key];
+            return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={CREDIT} aspect={p.aspect} />;
+          }
+          return null;
+        };
+        if (b.kind === 'video' || b.kind === 'labphoto') return <div class="fig">{one(b)}</div>;
+        if (b.kind === 'pair') return <div class="fig pair">{b.items.map((x) => <div class="pair-item">{one(x)}</div>)}</div>;
+        return null;
+      })}
+    </div>
+
+    <section class="refs" aria-label="References">
+      <References>
+        {d.sources.map((s) => <li>{s}</li>)}
+      </References>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .head { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); max-width: 40rem; }
+  .hero { margin-top: var(--space-5); max-width: 62rem; }
+  .hero.tall { max-width: 44rem; }
+  .body { margin-top: var(--space-5); }
+  .body :global(.prose h2:first-child) { margin-top: var(--space-5); }
+  .fig { margin-block: var(--space-5); max-width: 62rem; min-width: 0; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); align-items: start; max-width: 40rem; }
+  .pair-item { min-width: 0; }
+  .refs { margin-top: var(--space-6); }
+</style>

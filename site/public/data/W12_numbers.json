@@ -1,0 +1,50 @@
+[
+ {
+  "value": "10",
+  "label": "peer-reviewed papers, 2017 to 2026",
+  "takeaway": "Protein, cells, bacteria and scar all measured, in vitro and in four animal and cadaver models.",
+  "source": "Ten papers listed in figures/data/W24_publications.json (DOIs given there)"
+ },
+ {
+  "value": "3",
+  "label": "PhD dissertations, University of Iowa",
+  "takeaway": "Three doctoral theses underpin the chemistry and the process.",
+  "source": "Leigh 2018, Peel 2023, Horne 2023 (University of Iowa)"
+ },
+ {
+  "value": "3",
+  "label": "issued US patents",
+  "takeaway": "The photografting method and the coated-device system are protected.",
+  "source": "US 11,525,069 B2 (Dec 13, 2022); US 11,814,526 B2 (Nov 14, 2023); US 12,116,498 B2 (Oct 15, 2024)"
+ },
+ {
+  "value": "7",
+  "label": "patents granted in five countries",
+  "takeaway": "United States, Australia, China, Japan and Mexico: the largest device markets.",
+  "source": "ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,498; AU 2017280359; CN ZL201780049849.X; JP 7005535; MX 388986); Kam Hansen, 2026-10-29"
+ },
+ {
+  "value": "5",
+  "label": "provisional applications filed",
+  "takeaway": "Five new inventions filed; national applications pending in Canada, Europe and South Africa.",
+  "source": "ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,498; AU 2017280359; CN ZL201780049849.X; JP 7005535; MX 388986); Kam Hansen, 2026-10-29"
+ },
+ {
+  "value": "1 year",
+  "label": "film intact after implantation, mice",
+  "takeaway": "Durable: the covalent graft outlasts the study and the capsule stays thin.",
+  "source": "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 7)"
+ },
+ {
+  "value": "4 weeks",
+  "label": "functional human arrays in sheep",
+  "takeaway": "Works on the real device: lower impedance and less inflammation on a working implant.",
+  "source": "Ben-Shlomo N, et al. Hearing Research 2026;474:109606"
+ },
+ {
+  "value": "~90%",
+  "label": "less protein, cell and bacterial adhesion and friction, published bench studies",
+  "takeaway": "Nothing sticks: the hydration shell turns away protein, cells and bacteria before scar or biofilm can start.",
+  "source": "Leigh 2017, Leigh 2019, Jensen 2021, Shen 2021, Horne 2023, Bennion 2021, Peel 2024, Barrera 2026 (see W05; median of the plotted bars is about 94 percent, range about 53 to 99)"
+ }
+]

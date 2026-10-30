@@ -1,0 +1,163 @@
+---
+// The form posts to a small endpoint on our own server (see server/contact/README.md).
+// Production default is same-origin /api/contact. Override with PUBLIC_FORM_ENDPOINT in site/.env.
+const endpoint = (import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined) || '/api/contact';
+
+const devices = [
+  'Neural interfaces',
+  'Tissue expanders and breast implants',
+  'Vascular access',
+  'Indwelling catheters',
+  'Airway tubes',
+  'GI stents',
+  'PEEK and orthopedic',
+  'Sensors',
+  'ENT and feeding tubes',
+  'Other',
+];
+const materials = ['Silicone', 'PVC', 'Polyurethane', 'PEEK', 'Other'];
+
+const body = [
+  'Name: ',
+  'Organization: ',
+  'Email: ',
+  'Device type: ',
+  'Material: ',
+  '',
+  'Message: ',
+].join('\n');
+const mailto = `mailto:info@zwicoat.com?subject=${encodeURIComponent('Parts for a free feasibility coating')}&body=${encodeURIComponent(body)}`;
+---
+<div class="contact-form-wrap" data-contact-form>
+  <!-- Status messages sit before the form so :target works without JavaScript
+       (the server redirects to /contact?sent=1#form-sent or ?error=1#form-error). -->
+  <div class="status status-ok" id="form-sent" role="status" tabindex="-1">
+    <p><strong>Thanks. We reply within two business days.</strong></p>
+  </div>
+  <div class="status status-error" id="form-error" role="alert" tabindex="-1">
+    <p><strong>The message did not send.</strong> Please email us at <a href={mailto}>info@zwicoat.com</a> and we will reply within two business days.</p>
+  </div>
+
+  <form class="form" id="contact-form" action={endpoint} method="post">
+    <div class="field">
+      <label for="cf-name">Name</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="200" />
+    </div>
+    <div class="field">
+      <label for="cf-org">Organization</label>
+      <input id="cf-org" name="organization" type="text" autocomplete="organization" maxlength="200" />
+    </div>
+    <div class="field">
+      <label for="cf-email">Email</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="254" />
+    </div>
+    <div class="field">
+      <label for="cf-device">Device type</label>
+      <select id="cf-device" name="device">
+        <option value="">Choose one</option>
+        {devices.map((d) => <option value={d}>{d}</option>)}
+      </select>
+    </div>
+    <div class="field">
+      <label for="cf-material">Material</label>
+      <select id="cf-material" name="material">
+        <option value="">Choose one</option>
+        {materials.map((m) => <option value={m}>{m}</option>)}
+      </select>
+    </div>
+    <div class="field field-wide">
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" rows="6" required minlength="10" maxlength="4000"></textarea>
+    </div>
+    <div class="hp" aria-hidden="true">
+      <label for="cf-website">Leave this field empty</label>
+      <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <div class="field-wide">
+      <button class="btn" type="submit">Send</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>('[data-contact-form]');
+  const form = wrap?.querySelector<HTMLFormElement>('#contact-form');
+  const ok = wrap?.querySelector<HTMLElement>('#form-sent');
+  const err = wrap?.querySelector<HTMLElement>('#form-error');
+
+  if (wrap && form && ok && err) {
+    const show = (which: 'ok' | 'error') => {
+      wrap.classList.remove('is-sent', 'is-error');
+      wrap.classList.add(which === 'ok' ? 'is-sent' : 'is-error');
+      (which === 'ok' ? ok : err).focus();
+    };
+
+    // Landing on /contact?sent=1 or ?error=1 after a plain (no-JavaScript) post.
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') show('ok');
+    else if (params.get('error') === '1') show('error');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending';
+      }
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const result = await res.json().catch(() => ({}));
+        if (res.ok && result.ok) {
+          form.reset();
+          show('ok');
+        } else {
+          show('error');
+        }
+      } catch {
+        show('error');
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = 'Send';
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-form-wrap { display: grid; gap: var(--space-4); max-width: 720px; }
+  .form { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .field { display: grid; gap: 0.4rem; }
+  .field label { font-size: var(--fs-caption); font-weight: 600; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.6rem 0.75rem;
+    background: var(--paper);
+    border: 1px solid var(--muted);
+    border-radius: var(--radius);
+  }
+  .field textarea { resize: vertical; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .status { display: none; padding: var(--space-3) var(--space-4); border-left: 4px solid var(--blue); background: var(--paper); }
+  .status p { margin: 0; }
+  .status a { color: var(--blue); text-underline-offset: 0.18em; }
+  .status-error { border-left-color: currentColor; }
+  /* JavaScript sets a class on the wrapper. Without JavaScript, the redirect fragment drives :target. */
+  .is-sent .status-ok, .is-error .status-error, .status:target { display: block; }
+  .is-sent .form, .status-ok:target ~ .form { display: none; }
+
+  @media (min-width: 720px) {
+    .form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field-wide { grid-column: 1 / -1; }
+  }
+</style>

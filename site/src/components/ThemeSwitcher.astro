@@ -1,0 +1,88 @@
+---
+/*
+  Design comparison switcher (dev tool). Hidden for normal visitors: it only
+  shows when the URL has ?themes=1 or localStorage zc-themes-v2 is 1. The head
+  script in Base.astro has already applied ?theme= and saved it.
+*/
+---
+<div class="theme-switch" data-theme-switch hidden role="group" aria-label="Design direction">
+  <span class="label">Design</span>
+  <button type="button" data-set-theme="b" aria-pressed="false">B Blueprint (current)</button>
+  <button type="button" data-set-theme="a" aria-pressed="false">A Lab notebook</button>
+  <button type="button" data-set-theme="c" aria-pressed="false">C Evidence first</button>
+  <button type="button" class="theme-switch-close" data-theme-close aria-label="Hide the design switcher">Hide</button>
+</div>
+
+<style>
+  .theme-switch {
+    position: fixed;
+    right: var(--space-3);
+    bottom: var(--space-3);
+    z-index: 90;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    max-width: calc(100vw - 2 * var(--space-3));
+    padding: 0.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius);
+    font-size: var(--fs-caption);
+  }
+  .theme-switch[hidden] { display: none; }
+  .theme-switch .label { color: var(--line); padding-inline: 0.35rem; }
+  .theme-switch button {
+    min-height: 36px;
+    padding: 0.25rem 0.7rem;
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--muted);
+    border-radius: var(--radius);
+    font-size: var(--fs-caption);
+    line-height: 1.2;
+  }
+  .theme-switch button:hover { border-color: var(--paper); }
+  .theme-switch button[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); font-weight: 600; }
+  .theme-switch .theme-switch-close { border-color: transparent; color: var(--line); }
+</style>
+
+<script>
+  const box = document.querySelector<HTMLElement>('[data-theme-switch]');
+  if (box) {
+    const read = (k: string): string | null => {
+      try { return localStorage.getItem(k); } catch { return null; }
+    };
+    const write = (k: string, v: string | null) => {
+      try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch { /* storage blocked */ }
+    };
+    const show = new URLSearchParams(location.search).get('themes') === '1' || read('zc-themes-v2') === '1';
+    if (show) {
+      box.hidden = false;
+      const buttons = Array.from(box.querySelectorAll<HTMLButtonElement>('[data-set-theme]'));
+      const mark = () => {
+        const cur = document.documentElement.dataset.theme || 'b';
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.setTheme === cur)));
+      };
+      buttons.forEach((b) =>
+        b.addEventListener('click', () => {
+          const t = b.dataset.setTheme!;
+          document.documentElement.dataset.theme = t;
+          write('zc-theme-v2', t);
+          // Keep a ?theme= in the address bar in step, so a reload does not undo the choice.
+          const u = new URL(location.href);
+          if (u.searchParams.has('theme')) {
+            u.searchParams.set('theme', t);
+            history.replaceState(null, '', u);
+          }
+          mark();
+        }),
+      );
+      box.querySelector('[data-theme-close]')?.addEventListener('click', () => {
+        write('zc-themes-v2', null);
+        box.hidden = true;
+      });
+      mark();
+    }
+  }
+</script>

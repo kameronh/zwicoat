@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+<Base title="Contact" description="Contact ZwiCoat Materials Innovations in Solon, Iowa. Send us a message, or send parts for a free feasibility coating.">
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Contact</p>
+      <h1>Tell us about your device.</h1>
+      <p class="lead">Send a message and we will reply within two business days.</p>
+    </header>
+
+    <div class="layout">
+      <div class="form-col">
+        <ContactForm />
+        <p class="mail-line">Or email <a href="mailto:info@zwicoat.com">info@zwicoat.com</a> directly.</p>
+      </div>
+      <aside class="info" aria-label="Address and email">
+        <h2 class="label">ZwiCoat Materials Innovations, LLC</h2>
+        <address>
+          2635 Johnsons XING NE<br />
+          Solon, IA 52333<br />
+          <a href="mailto:info@zwicoat.com">info@zwicoat.com</a><br />
+          <a href="tel:+19176094598">(917) 609-4598</a>
+        </address>
+        <p class="note">Want parts coated? The free feasibility round is described on the <a href="/partner">partner page</a>.</p>
+      </aside>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+  .info { display: grid; gap: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--ink); }
+  address { font-style: normal; line-height: 1.8; color: var(--ink-2); }
+  address a, .note a { color: var(--blue); text-underline-offset: 0.18em; }
+  .mail-line { margin-top: var(--space-3); color: var(--ink-2); }
+  .mail-line a { color: var(--blue); text-underline-offset: 0.18em; }
+  .note { color: var(--ink-2); max-width: 36ch; }
+  @media (min-width: 900px) {
+    .layout { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); column-gap: var(--space-6); }
+    .info { position: sticky; top: calc(var(--nav-h) + var(--space-4)); }
+  }
+</style>

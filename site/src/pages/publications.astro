@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import Callout from '../components/Callout.astro';
+import pubs from '../data/publications.json';
+
+const { papers, theses, inPreparation, patents, counterparts } = pubs;
+---
+<Base title="Publications" description="Ten peer-reviewed papers, three dissertations and issued US patents behind the ZwiGuard zwitterionic hydrogel coating.">
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Publications</p>
+      <h1>Ten peer-reviewed papers, newest first.</h1>
+      <p class="lead">Every result on this site comes from a published paper, a dissertation or an issued patent. Each link below goes to the journal page through its DOI.</p>
+    </header>
+
+    <section class="block" aria-labelledby="papers-h">
+      <h2 id="papers-h">Peer-reviewed papers</h2>
+      <ul class="stack" role="list">
+        {papers.map((p) => (
+          <li>
+            <Callout label={p.openAccess ? 'Published, open access' : 'Published'} title={p.title} href={p.doi}>
+              <p class="pub-journal">{p.authors} {p.journal} {p.year};{p.volume}:{p.pages}.</p>
+              <p class="pub-summary">{p.summary}</p>
+            </Callout>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="theses-h">
+      <h2 id="theses-h">Dissertations</h2>
+      <p class="intro">PhD theses from the University of Iowa, Department of Chemical and Biochemical Engineering.</p>
+      <ul class="list" role="list">
+        {theses.map((t) => (
+          <li>
+            <p class="item-title">{t.link ? <a href={t.link}>{t.title}</a> : t.title}</p>
+            <p class="item-meta">{t.author}, {t.year}. {t.school}.</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="prep-h">
+      <h2 id="prep-h">Manuscripts in preparation</h2>
+      <p class="intro">These are not published and are not cited as results anywhere on this site. The topics are listed so you know where the work is going.</p>
+      <ul class="list" role="list">
+        {inPreparation.map((t) => (
+          <li><p class="item-title">{t}</p></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="patents-h">
+      <h2 id="patents-h">Patents</h2>
+      <ul class="list" role="list">
+        {patents.map((p) => (
+          <li>
+            <p class="item-title"><a href={p.link}>{p.number}</a></p>
+            {p.note && <p class="item-meta">{p.note}</p>}
+          </li>
+        ))}
+      </ul>
+      <p class="intro">{counterparts}</p>
+    </section>
+  </div>
+
+</Base>
+
+<style>
+  .block { padding-block: var(--space-5); border-top: 1px solid var(--line); display: grid; gap: var(--space-4); }
+  .block h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+  .intro { color: var(--ink-2); max-width: var(--measure); }
+  .stack, .list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-4); }
+  .pub-journal { color: var(--ink-2); }
+  .pub-summary { color: var(--ink); margin-top: var(--space-2); font-size: var(--fs-body); }
+  .list li { display: grid; gap: 0.25rem; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); max-width: var(--measure); }
+  .item-title { font-weight: 600; }
+  .item-title a { color: var(--blue); text-underline-offset: 0.18em; }
+  .item-meta { color: var(--ink-2); font-size: var(--fs-caption); }
+</style>

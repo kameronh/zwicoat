@@ -1,0 +1,61 @@
+---
+interface Props {
+  items: { value: string; label: string; takeaway?: string }[];
+  columns?: 3 | 4 | 6;
+}
+const { items, columns = 3 } = Astro.props;
+---
+<ul class:list={['tiles', `cols-${columns}`]} role="list">
+  {items.map((it) => (
+    <li class="tile">
+      <span class="tile-value">{it.value}</span>
+      <span class="tile-label label">{it.label}</span>
+      {it.takeaway && <span class="tile-takeaway">{it.takeaway}</span>}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--space-4) var(--space-3);
+    background: var(--paper-2);
+  }
+  .tile-value {
+    font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+    font-weight: 700;
+    letter-spacing: var(--tracking-head);
+    line-height: 1;
+    color: var(--blue);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .tile-label { text-transform: none; letter-spacing: 0.02em; line-height: 1.45; color: var(--ink-2); font-size: var(--fs-label); }
+  .tile-takeaway { font-size: var(--fs-body); line-height: 1.45; color: var(--ink); margin-top: 0.25rem; }
+
+  @media (min-width: 640px) {
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 .tile-value { font-size: var(--fs-display); }
+  }
+  @media (min-width: 1020px) {
+    .cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .cols-6 .tile, .cols-4 .tile { padding: var(--space-4); }
+  }
+</style>

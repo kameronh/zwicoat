@@ -1,0 +1,152 @@
+{
+ "2016": {
+  "total": 3,
+  "scientists": [
+   "Braden Leigh"
+  ],
+  "by_category": {
+   "Other / reference": 3
+  }
+ },
+ "2017": {
+  "total": 11,
+  "scientists": [
+   "Braden Leigh"
+  ],
+  "by_category": {
+   "Other / reference": 4,
+   "Biology (cells, bacteria, animals)": 6,
+   "Adhesion and mechanics": 1
+  }
+ },
+ "2018": {
+  "total": 4,
+  "scientists": [
+   "Braden Leigh"
+  ],
+  "by_category": {
+   "Adhesion and mechanics": 3,
+   "Biology (cells, bacteria, animals)": 1
+  }
+ },
+ "2019": {
+  "total": 1,
+  "scientists": [
+   "Na Shen"
+  ],
+  "by_category": {
+   "Biology (cells, bacteria, animals)": 1
+  }
+ },
+ "2020": {
+  "total": 20,
+  "scientists": [
+   "Adreann Peel",
+   "Douglas Bennion",
+   "Na Shen",
+   "Ryan Horne"
+  ],
+  "by_category": {
+   "Adhesion and mechanics": 10,
+   "Biology (cells, bacteria, animals)": 9,
+   "Coating process": 1
+  }
+ },
+ "2021": {
+  "total": 14,
+  "scientists": [
+   "Adreann Peel",
+   "Douglas Bennion",
+   "Ryan Horne"
+  ],
+  "by_category": {
+   "Adhesion and mechanics": 3,
+   "Device function (friction, insertion, impedance)": 3,
+   "Biology (cells, bacteria, animals)": 3,
+   "Durability (aging, sterilization, leachables)": 1,
+   "Coating process": 3,
+   "Other / reference": 1
+  }
+ },
+ "2022": {
+  "total": 10,
+  "scientists": [
+   "Adreann Peel",
+   "Kameron Hansen",
+   "Ryan Horne"
+  ],
+  "by_category": {
+   "Device function (friction, insertion, impedance)": 2,
+   "Coating process": 3,
+   "Adhesion and mechanics": 4,
+   "Biology (cells, bacteria, animals)": 1
+  }
+ },
+ "2023": {
+  "total": 3,
+  "scientists": [
+   "Ryan Horne"
+  ],
+  "by_category": {
+   "Biology (cells, bacteria, animals)": 1,
+   "Coating process": 2
+  }
+ },
+ "2024": {
+  "total": 33,
+  "scientists": [
+   "Aryaman Verma",
+   "George Barrera",
+   "Kameron Hansen",
+   "Noureddean Omar"
+  ],
+  "by_category": {
+   "Durability (aging, sterilization, leachables)": 1,
+   "Adhesion and mechanics": 23,
+   "Device function (friction, insertion, impedance)": 3,
+   "Biology (cells, bacteria, animals)": 4,
+   "Other / reference": 2
+  }
+ },
+ "2025": {
+  "total": 45,
+  "scientists": [
+   "Aryaman Verma",
+   "Benjamin Brower",
+   "Emilie McBurney",
+   "Emma Tebben",
+   "Isabelle Meador",
+   "Kameron Hansen",
+   "Kyle Ruby",
+   "Nir Ben-Shlomo",
+   "Parker Reineke"
+  ],
+  "by_category": {
+   "Coating process": 9,
+   "Device function (friction, insertion, impedance)": 4,
+   "Adhesion and mechanics": 24,
+   "Durability (aging, sterilization, leachables)": 5,
+   "Other / reference": 1,
+   "Biology (cells, bacteria, animals)": 2
+  }
+ },
+ "2026": {
+  "total": 38,
+  "scientists": [
+   "Amadou Sall",
+   "Benjamin Brower",
+   "Emma Tebben",
+   "Kameron Hansen",
+   "Kate Breitsprecher",
+   "Kyle Ruby",
+   "Parker Reineke",
+   "Terry Yin"
+  ],
+  "by_category": {
+   "Adhesion and mechanics": 14,
+   "Other / reference": 7,
+   "Device function (friction, insertion, impedance)": 5,
+   "Coating process": 12
+  }
+ }
+}

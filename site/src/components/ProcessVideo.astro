@@ -1,0 +1,75 @@
+---
+/*
+  The dip-coating process slot. With `src` it plays a silent loop (pass the path
+  with or without an extension; .webm is offered first, then .mp4). Without `src`
+  it shows the poster with a "coming" label. `aspect` is the clip's width/height,
+  "16/9" for landscape or "9/16" for the portrait phone footage; a portrait clip
+  sits in a narrow column beside the caption so it never fills the screen.
+*/
+interface Props {
+  poster: string;
+  src?: string;
+  caption: string;
+  alt?: string;
+  aspect?: string;
+  webm?: boolean;
+}
+const { poster, src, caption, alt = 'Still frame placeholder for the dip-coating process video', aspect = '16/9', webm = true } = Astro.props;
+const [aw, ah] = aspect.split('/').map(Number);
+const portrait = aw / ah < 1;
+const base = src ? src.replace(/\.(mp4|webm)$/, '') : '';
+---
+<figure class:list={['pv', { pending: !src, portrait }]}>
+  <div class="pv-box">
+    <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">VIDEO</span><span class="fig-tag-src">{src ? 'ZwiCoat, 2026' : 'Process video: coming'}</span></p>
+    <div class="pv-frame" style={`aspect-ratio: ${aspect};`}>
+      {src ? (
+        <video data-loop autoplay muted loop playsinline preload="metadata" poster={poster} aria-label={alt === 'Still frame placeholder for the dip-coating process video' ? caption : alt}>
+          {webm && <source src={`${base}.webm`} type="video/webm" />}
+          <source src={`${base}.mp4`} type="video/mp4" />
+          <img src={poster} alt={alt} loading="lazy" decoding="async" />
+        </video>
+      ) : (
+        <>
+          <img src={poster} alt={alt} loading="lazy" decoding="async" />
+          <span class="pv-label label">Process video: coming</span>
+        </>
+      )}
+    </div>
+  </div>
+  <figcaption class="pv-caption">{caption}</figcaption>
+</figure>
+
+<style>
+  .pv { margin: 0; min-width: 0; max-width: 100%; }
+  .pv-box { min-width: 0; border: var(--frame-border); background: var(--paper); }
+  .pv-frame {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .pv-frame img, .pv-frame video { width: 100%; max-width: 100%; height: 100%; object-fit: contain; }
+  .pv-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3);
+    text-align: center;
+    color: var(--ink-2);
+  }
+  .pv-caption { margin-top: var(--space-3); max-width: var(--measure); }
+  /* Portrait clip: a narrow column no taller than the screen. */
+  .portrait { max-width: min(100%, 24rem, calc(78vh * 0.5625)); }
+  /* Until the clip exists, the slot is hidden on phones (home.md). It shows as soon as a src is set. */
+  @media (max-width: 719px) {
+    .pending { display: none; }
+  }
+</style>
+
+<script>
+  import '../scripts/loops';
+</script>

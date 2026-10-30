@@ -1,0 +1,162 @@
+[
+ {
+  "year": 2017,
+  "type": "paper",
+  "first_author": "Leigh",
+  "title": "Photopolymerizable zwitterionic polymer patterns control cell adhesion and guide neural growth",
+  "journal": "Biomacromolecules",
+  "doi": "10.1021/acs.biomac.7b00579",
+  "finding": "A one-step UV process grafts thin carboxybetaine or sulfobetaine coatings onto glass that cut fibrinogen adsorption to under 10 percent of bare glass, nearly eliminate fibroblast, astrocyte and Schwann cell attachment, and make nerve fibers grow in straight lines along 100 micrometre stripes (in vitro).",
+  "open_access": false
+ },
+ {
+  "year": 2019,
+  "type": "paper",
+  "first_author": "Leigh",
+  "title": "Antifouling photograftable zwitterionic coatings on PDMS substrates",
+  "journal": "Langmuir",
+  "doi": "10.1021/acs.langmuir.8b00838",
+  "finding": "A one-step UV process grafts a cross-linked zwitterionic hydrogel about 7 micrometres thick onto silicone so firmly that it fails inside the gel rather than at the silicone interface, cuts fibrinogen adsorption by more than 90 percent and fibroblast attachment 20-fold or more (in vitro).",
+  "open_access": false
+ },
+ {
+  "year": 2021,
+  "type": "paper",
+  "first_author": "Jensen",
+  "title": "Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density",
+  "journal": "ACS Biomaterials Science and Engineering",
+  "doi": "10.1021/acsbiomaterials.1c00852",
+  "finding": "Cross-linked zwitterionic coatings on silicone cut protein, macrophage and fibroblast attachment and friction, with the best balance at roughly 5 to 15 percent cross-linker; more cross-linker makes the gel stiffer and less swollen but less antifouling (in vitro).",
+  "open_access": true
+ },
+ {
+  "year": 2021,
+  "type": "paper",
+  "first_author": "Shen",
+  "title": "Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces",
+  "journal": "ACS Applied Bio Materials",
+  "doi": "10.1021/acsabm.0c01147",
+  "finding": "A pCBMA coating on silicone cut adhesion of two common device-infection bacteria roughly 10-fold or more in the lab, and in rats left far fewer bacteria on the implant at day 21 and still resisted S. aureus after two weeks in the animal.",
+  "open_access": false
+ },
+ {
+  "year": 2021,
+  "type": "paper",
+  "first_author": "Bennion",
+  "title": "Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces",
+  "journal": "Otology and Neurotology",
+  "doi": "10.1097/MAO.0000000000003288",
+  "finding": "A thin zwitterionic coating cut friction on silicone by more than 90 percent and cut the peak force needed to push a cochlear implant electrode into human cadaveric cochleae by about 40 percent.",
+  "open_access": false
+ },
+ {
+  "year": 2023,
+  "type": "paper",
+  "first_author": "Horne",
+  "title": "Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings",
+  "journal": "Acta Biomaterialia",
+  "doi": "10.1016/j.actbio.2023.05.011",
+  "finding": "Coated silicone and cochlear implant arrays grew a scar capsule about 40 to 70 percent thinner than uncoated ones in mice, from six weeks out to one year, and the coating stayed intact.",
+  "open_access": false
+ },
+ {
+  "year": 2024,
+  "type": "paper",
+  "first_author": "Peel",
+  "title": "Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants",
+  "journal": "ACS Applied Bio Materials",
+  "doi": "10.1021/acsabm.4c00156",
+  "finding": "The coatings stay on and keep their very low friction after weeks in mice, drying and rewetting, bending, long wear and high loads.",
+  "open_access": true
+ },
+ {
+  "year": 2025,
+  "type": "paper",
+  "first_author": "Horne",
+  "title": "Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces",
+  "journal": "Laryngoscope Investigative Otolaryngology",
+  "doi": "10.1002/lio2.70118",
+  "finding": "Hydrogel films grafted onto silicone sheets and tubes lowered the tilt angle needed to start mucus flow, with the largest benefit on flat sheets and larger tubes, and a small, preliminary gain in how fast a dried mucus plug cleared.",
+  "open_access": true
+ },
+ {
+  "year": 2026,
+  "type": "paper",
+  "first_author": "Ben-Shlomo",
+  "title": "Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance",
+  "journal": "Hearing Research",
+  "doi": "10.1016/j.heares.2026.109606",
+  "finding": "In a three-sheep pilot, coated human cochlear implant arrays had about half the electrode impedance of uncoated arrays at implantation, and at the round window level had significantly fewer cells, fewer macrophages and less fibrous tissue.",
+  "open_access": true
+ },
+ {
+  "year": 2026,
+  "type": "paper",
+  "first_author": "Barrera",
+  "title": "Photografted dual-network zwitterionic hydrogel coatings for biomaterials",
+  "journal": "ACS Applied Polymer Materials",
+  "doi": "10.1021/acsapm.6c02510",
+  "finding": "Adding a second zwitterionic network on top of the grafted one cut swelling by up to about threefold and nearly doubled adhesion strength, kept friction low, cut fibroblast adhesion by about 90 to 99 percent in vitro and thinned the scar capsule by about 75 percent in rats at six weeks.",
+  "open_access": "unknown"
+ },
+ {
+  "year": 2018,
+  "type": "dissertation",
+  "first_author": "Leigh",
+  "title": "PhD dissertation, University of Iowa",
+  "journal": "University of Iowa",
+  "doi": null,
+  "finding": null,
+  "open_access": "unknown"
+ },
+ {
+  "year": 2023,
+  "type": "dissertation",
+  "first_author": "Peel",
+  "title": "PhD dissertation, University of Iowa",
+  "journal": "University of Iowa",
+  "doi": null,
+  "finding": null,
+  "open_access": "unknown"
+ },
+ {
+  "year": 2023,
+  "type": "dissertation",
+  "first_author": "Horne",
+  "title": "PhD dissertation, University of Iowa",
+  "journal": "University of Iowa",
+  "doi": null,
+  "finding": null,
+  "open_access": "unknown"
+ },
+ {
+  "year": 2022,
+  "type": "patent",
+  "first_author": "Cheng",
+  "title": "Durable photopolymerizable cross-linked anti-fouling coatings (method)",
+  "journal": "US 11,525,069 B2, issued Dec 13, 2022",
+  "doi": null,
+  "finding": "A method for making a cross-linked anti-fouling coating on a medical-system component: treat the surface with an adhesion-promoting substance, apply a zwitterionic monomer liquid, then polymerize with light in the presence of a cross-linker.",
+  "open_access": true
+ },
+ {
+  "year": 2023,
+  "type": "patent",
+  "first_author": "Cheng",
+  "title": "Durable photopolymerizable cross-linked anti-fouling coatings (system)",
+  "journal": "US 11,814,526 B2, issued Nov 14, 2023",
+  "doi": null,
+  "finding": "A system made of a substrate and a cross-linked zwitterionic hydrogel coating that is covalently bonded to the substrate surface and resists adhesion by biomolecules, cells, tissue or bacteria.",
+  "open_access": true
+ },
+ {
+  "year": 2024,
+  "type": "patent",
+  "first_author": "Cheng",
+  "title": "Durable photopolymerizable cross-linked anti-fouling coatings",
+  "journal": "US 12,116,498 B2, issued Oct 15, 2024",
+  "doi": null,
+  "finding": "Third US patent in the family on durable, photografted, cross-linked anti-fouling coatings (issue date and title confirmed on Google Patents, 2026-10-29).",
+  "open_access": true
+ }
+]

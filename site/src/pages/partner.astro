@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import Steps from '../components/Steps.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const steps = [
+  { n: 1, title: 'Feasibility, free', body: 'You send parts. We coat them in our facility, with no cap on quantity. We return coated parts with matched uncoated controls and data on coverage and adhesion, friction, and protein and bacterial adhesion. Your team runs its own tests on the coated parts.' },
+  { n: 2, title: 'Joint development', body: 'We optimize the coating on your production devices. We run the program the claim needs: ISO 10993 biocompatibility, sterilization validation on your cycle, accelerated aging and shelf life, and an animal model.' },
+  { n: 3, title: 'Manufacturing and filing', body: 'We coat for you. Our FDA Device Master File holds the formulation, process and safety data. Through a letter of authorization, FDA reviews it confidentially and your submission incorporates it by reference.' },
+];
+---
+<Base title="Partner with us" description="Send us parts. ZwiCoat coats them free in a feasibility round and returns them with matched uncoated controls and data.">
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Partner with us</p>
+      <h1>Bring us a device with a fouling, scar or friction problem. We coat it free and return it with data.</h1>
+    </header>
+
+    <section class="block" aria-labelledby="steps-h">
+      <h2 id="steps-h" class="visually-hidden">How a partnership works</h2>
+      <Steps steps={steps} />
+    </section>
+
+    <section class="block two" aria-labelledby="who-h">
+      <h2 id="who-h">Who this is for</h2>
+      <div class="prose">
+        <p>Device manufacturers: cochlear implants and neurostimulators, breast implants and tissue expanders, catheters and vascular access, airway and ENT tubes, GI stents, PEEK implants and sensors.</p>
+        <p>Contract and component manufacturers.</p>
+        <p>Consultants and innovation centers who bring client devices.</p>
+      </div>
+    </section>
+
+    <section class="block two" aria-labelledby="reg-h">
+      <h2 id="reg-h">What the regulatory path looks like</h2>
+      <div class="prose">
+        <p>A coated device usually needs a new 510(k). A device approved through PMA needs a PMA supplement. Plan on a Pre-Submission.</p>
+        <p>Performance claims, such as lower friction or less protein and bacterial adhesion, rest on bench data. Clinical claims need clinical data. We make no clinical claim.</p>
+        <p>ZwiGuard&trade; is non-biocidal, so no antimicrobial-agent data are required.</p>
+        <p>Expect FDA to treat the zwitterionic polymer as a novel material. Plan on a full ISO 10993 package plus chemical characterization.</p>
+        <p>We are building an ISO 13485 quality system under our NIH Phase II program.</p>
+      </div>
+    </section>
+
+    <section class="block two" aria-labelledby="ster-h">
+      <h2 id="ster-h">Sterilization and shipping</h2>
+      <div class="prose">
+        <p>The coating has been tested through common sterilization cycles (steam, EtO, UV and gamma, wet or dry, and dry e-beam); wet e-beam did not pass. Bond strength held after gamma or e-beam plus shipping. We validate on your cycle during joint development.</p>
+        <p>Parts ship wet or dry. Dry is the default.</p>
+      </div>
+    </section>
+
+    <section class="block two" aria-labelledby="pat-h">
+      <h2 id="pat-h">Protected</h2>
+      <div class="prose">
+        <p>The method and the coated-device system are covered by US patents 11,525,069; 11,814,526; and 12,116,498. Counterpart patents cover Australia, China, Japan and Mexico. More filings are pending.</p>
+        <p><a href="/publications">See the publications and patents</a>.</p>
+      </div>
+    </section>
+
+    <section class="block form-block" id="form" aria-labelledby="form-h">
+      <div class="form-intro">
+        <h2 id="form-h">Send us parts</h2>
+        <p class="lead">Tell us what the device is and what it is made of. We will reply with shipping details.</p>
+      </div>
+      <div class="form-wrap">
+        <ContactForm />
+        <p class="mail-line">Or email <a href="mailto:info@zwicoat.com">info@zwicoat.com</a> directly.</p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page-head h1 { font-size: clamp(2rem, 1.4rem + 2.8vw, 3.5rem); }
+  .block { padding-block: var(--space-5); border-top: 1px solid var(--line); }
+  .block:first-of-type { border-top: 0; padding-top: 0; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+  .two h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+  .two .prose a, .prose a { color: var(--blue); text-underline-offset: 0.18em; }
+  .form-block { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); border-top: 1px solid var(--ink); margin-top: var(--space-5); }
+  .mail-line { margin-top: var(--space-3); color: var(--ink-2); }
+  .mail-line a { color: var(--blue); text-underline-offset: 0.18em; }
+  .form-intro { display: grid; gap: var(--space-3); align-content: start; }
+  .form-intro .lead { max-width: 32ch; }
+  @media (min-width: 900px) {
+    .two { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
+    .two h2 { grid-column: 1 / span 4; }
+    .two .prose { grid-column: 6 / span 7; }
+    .form-block { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
+    .form-intro { grid-column: 1 / span 4; }
+    .form-wrap { grid-column: 6 / span 7; }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+
+const directions = [
+  {
+    key: 'a',
+    name: 'A. Lab notebook',
+    text: 'The site reads like a well-kept research record: warm paper, near-black ink, ruled hairlines above each section and small mono labels like a figure legend. Type is IBM Plex Sans, with brand blue as the single accent.',
+  },
+  {
+    key: 'b',
+    name: 'B. Blueprint',
+    text: 'An engineering document: a pale blue-gray drawing sheet, thin rules, Manrope headings and mono data labels. Each figure sits in a thin frame with a small title block at the top. This is the design the site ships with.',
+  },
+  {
+    key: 'c',
+    name: 'C. Evidence first',
+    text: 'A data-journalism layout where the chart leads and the claim sits beside it in large type. Type is Public Sans, with a clean white page. This was the default until Blueprint was chosen.',
+  },
+];
+const pages = [
+  ['/', 'Home'],
+  ['/technology', 'Technology'],
+  ['/evidence', 'Evidence'],
+];
+---
+<Base title="Design comparison" description="Three design directions for zwicoat.com, side by side." noindex>
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Internal</p>
+      <h1>Compare the three directions.</h1>
+      <p class="lead">The same pages and the same content in each design. Open a page below, then use the switcher at the bottom right to flip between A, B and C without a reload.</p>
+    </header>
+
+    <ul class="dirs" role="list">
+      {directions.map((d) => (
+        <li class="dir">
+          <h2>{d.name}</h2>
+          <p>{d.text}</p>
+          <ul class="links" role="list">
+            {pages.map(([path, text]) => (
+              <li><a class="btn-outline" href={`${path}?theme=${d.key}&themes=1`}>{text}</a></li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+
+    <p class="note">Your choice is remembered in this browser. To go back to the default design, open any page with <code>?theme=b</code>. The switcher stays hidden for normal visitors unless the address has <code>?themes=1</code>.</p>
+  </div>
+</Base>
+
+<style>
+  .dirs { display: grid; gap: var(--space-5); margin: 0; padding: 0; list-style: none; max-width: 52rem; }
+  .dir { display: grid; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--ink); }
+  .dir h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+  .dir p { max-width: var(--measure); color: var(--ink-2); }
+  .links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+  .note { margin-top: var(--space-5); max-width: var(--measure); color: var(--ink-2); font-size: var(--fs-caption); }
+  .note code { font-family: var(--font-mono); }
+</style>

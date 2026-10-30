@@ -1,0 +1,150 @@
+/*
+  Design tokens. Every color, font, size, radius and shadow on the site is
+  defined here and nowhere else. A reskin is a change to this file.
+
+  The default (the :root block) is Direction B, "Blueprint": a pale blue-gray
+  drawing sheet, Manrope headings, Public Sans body, JetBrains Mono for labels,
+  captions and buttons, square corners and thin rules. Contrast checked (WCAG):
+  ink 15.4, ink-2 8.2, muted 5.7 on paper (5.0 on blue-tint), blue 5.5 on paper
+  (4.8 on blue-tint), white on blue 5.9, white on blue-deep 8.5.
+*/
+:root {
+  /* color */
+  --paper: #F4F7FA;
+  --paper-2: #E9EEF3;
+  --ink: #14202B;
+  --ink-2: #3E4C59;
+  --muted: #56636F;
+  --line: #BFCBD7;
+  --blue: #0A68A6;
+  --blue-deep: #08507F;
+  --blue-tint: #DDEAF4;
+  --orange: #C9711A;
+  --plum: #7B4FA6;
+  --on-blue: #FFFFFF;
+
+  /* type */
+  --font-sans: "Public Sans Variable", "Public Sans", system-ui, sans-serif;
+  --font-head: "Manrope Variable", "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+  /* captions and buttons are mono in this design */
+  --font-caption: var(--font-mono);
+  --fs-caption-mono: 0.8125rem;
+  --font-btn: var(--font-mono);
+  --fs-btn: 0.875rem;
+  --btn-case: uppercase;
+  --btn-tracking: 0.04em;
+
+  --fs-label: 0.75rem;
+  --fs-caption: 0.875rem;
+  --fs-body: 1rem;
+  --fs-lead: 1.25rem;
+  --fs-h3: 1.75rem;
+  --fs-h2: 2.5rem;
+  --fs-h1: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  --fs-display: clamp(2.5rem, 1.8rem + 2.8vw, 4rem);
+  --fs-display-lg: clamp(3.5rem, 2rem + 5vw, 5rem);
+
+  --lh-body: 1.6;
+  --lh-tight: 1.1;
+  --tracking-head: -0.025em;
+  --tracking-label: 0.08em;
+
+  /* layout */
+  --measure: 68ch;
+  --container: 1200px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --nav-h: 64px;
+  --radius: 0;
+  --shadow: none;
+
+  /* drawing frame (figures): a thin ink frame with a mono title block */
+  --fig-tag-display: flex;
+  --fig-frame-border: 1px solid var(--ink);
+  --fig-img-border: 0;
+  --frame-border: 1px solid var(--ink);
+
+  /* spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --section-y: clamp(3.5rem, 2rem + 6vw, 7rem);
+}
+
+/*
+  Alternative designs (dev tool, see /design-compare). The default above is
+  Direction B "Blueprint". A theme is chosen with ?theme=a|b|c and sets
+  data-theme on <html>; the switcher (?themes=1) remembers it in localStorage
+  key zc-theme-v2. Themes a and c restate every token they change, so each is
+  complete on its own.
+*/
+
+/* Direction A, "Lab notebook": warm paper, ruled hairlines, IBM Plex. */
+:root[data-theme="a"] {
+  --paper: #FBFAF6;
+  --paper-2: #F3F1EA;
+  --ink: #1A1A1A;
+  --ink-2: #47453E;
+  --muted: #6B675D;
+  --line: #DDD8CC;
+  --blue: #0E7FC4;
+  --blue-deep: #0A5F94;
+  --blue-tint: #E6EEF2;
+
+  --font-sans: "IBM Plex Sans Variable", "IBM Plex Sans", system-ui, sans-serif;
+  --font-head: var(--font-sans);
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-caption: var(--font-sans);
+  --fs-caption-mono: 1rem;
+  --font-btn: var(--font-sans);
+  --fs-btn: 1rem;
+  --btn-case: none;
+  --btn-tracking: 0;
+
+  --fs-h2: 2.125rem;
+  --fs-h3: 1.5rem;
+  --fs-h1: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --fs-display: clamp(2.25rem, 1.7rem + 2.2vw, 3.5rem);
+  --fs-display-lg: clamp(3rem, 1.8rem + 4vw, 4.25rem);
+  --lh-body: 1.65;
+  --tracking-head: -0.01em;
+  --radius: 2px;
+
+  --fig-tag-display: none;
+  --fig-frame-border: 0;
+  --fig-img-border: 1px solid var(--line);
+  --frame-border: 1px solid var(--line);
+}
+
+/* Direction C, "Evidence first": the earlier default. Clean white page, Public Sans throughout. */
+:root[data-theme="c"] {
+  --paper: #FCFCFB;
+  --paper-2: #F3F5F7;
+  --ink: #141A1F;
+  --ink-2: #4A5058;
+  --muted: #7A8089;
+  --line: #E6E8EA;
+  --blue: #0E7FC4;
+  --blue-deep: #0A5F94;
+  --blue-tint: #E7F2FA;
+
+  --font-head: var(--font-sans);
+  --font-caption: var(--font-sans);
+  --fs-caption-mono: 1rem;
+  --font-btn: var(--font-sans);
+  --fs-btn: 1rem;
+  --btn-case: none;
+  --btn-tracking: 0;
+
+  --tracking-head: -0.02em;
+  --radius: 4px;
+
+  --fig-tag-display: none;
+  --fig-frame-border: 0;
+  --fig-img-border: 1px solid var(--line);
+  --frame-border: 1px solid var(--line);
+}

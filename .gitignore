@@ -1,0 +1,20 @@
+# site build and deps
+site/node_modules/
+site/dist/
+site/.astro/
+site/.env
+site/.env.*
+!site/.env.example
+# raw lab media and deck extracts stay out of git (large, internal)
+assets-staging/lab-media/*.mp4
+assets-staging/lab-media/*.mov
+assets-staging/deck-images/*.tiff
+# python
+__pycache__/
+*.pyc
+# os
+.DS_Store
+Thumbs.db
+desktop.ini
+# session scratch
+.claude/launch.json

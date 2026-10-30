@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import ClaimRow from '../components/ClaimRow.astro';
+import Figure from '../components/Figure.astro';
+import VideoLoop from '../components/VideoLoop.astro';
+import References from '../components/References.astro';
+import CTABand from '../components/CTABand.astro';
+---
+<Base title="Durability" description="The ZwiGuard coating is covalently grafted and crosslinked, so it survives implantation, handling and sterilization. The published record and our own tests.">
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Durability</p>
+      <h1>It stays on.</h1>
+      <p class="lead">The coating is covalently grafted and crosslinked, so it survives implantation, handling and sterilization. Here is the published record and our own tests.</p>
+    </header>
+
+    <!-- In the body -->
+    <ClaimRow label="In the body" title="The film was still intact at one year in mice.">
+      <p>Checkpoints run from two weeks in rats to one year in mice. At one year in mice, the film was intact (Horne 2023).</p>
+      <p>Four weeks in sheep cochleae showed no delamination (Ben-Shlomo 2026).</p>
+      <p>A PEG-based control film partly detached at six weeks in mice, and the zwitterionic film did not (Horne 2023, Fig 5).</p>
+      <Figure slot="figure" name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
+    </ClaimRow>
+
+    <ClaimRow label="After explant" title="Friction was unchanged after three weeks in mice." reverse>
+      <p>Coated silicone was implanted in mice for three weeks, then taken out and tested (Peel 2024).</p>
+      <p>It kept about 90 percent lower friction than uncoated silicone. Against five guinea pig tissues and steel, friction was at least 90 percent lower.</p>
+      <Figure slot="figure" name="W28_durability_peel" alt="Friction of coated and uncoated silicone. After three weeks in mice, coated silicone kept about 90 percent lower friction. Against five guinea pig tissues and steel, coated silicone had at least 90 percent lower friction." caption="Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel." source="Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156" width={1000} />
+    </ClaimRow>
+
+    <!-- Mechanical -->
+    <ClaimRow label="Mechanical" title="It takes a hit.">
+      <p>A weighted pendulum strikes a coated tissue expander.</p>
+      <p>The coating showed no visible damage (internal test, 2026).</p>
+      <VideoLoop slot="figure" src="/media/pendulum-loop" poster="/media/pendulum-poster.jpg" aspect="1/1" caption="Pendulum impact test on a coated tissue expander, close-up (left) and wide view (right). No visible damage to the coating." alt="Two synchronized views of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard. The close-up is on the left and the wide view on the right." credit="ZwiCoat, 2026" />
+    </ClaimRow>
+
+    <ClaimRow label="Mechanical" title="The gel tears before the bond lets go." reverse>
+      <p>On silicone, the gel tore before the interface let go (Leigh 2019).</p>
+      <Figure slot="figure" name="W31_bond_strength_vs_benzophenone" alt="Shear bond strength of zwitterionic films on silicone against benzophenone grafting agent concentration. Strength rises until failure moves from the silicone interface into the gel, at 2.5 mg per mL for SBMA and 5 mg per mL for CBMA." caption="Shear bond strength of zwitterionic films on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL for SBMA and 5 mg/mL for CBMA." source="Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838" width={900} />
+    </ClaimRow>
+
+    <!-- Sterilization and shipping -->
+    <ClaimRow label="Sterilization and shipping" title="Seven of eight cycles left the coating intact.">
+      <p>The coating has been tested through common sterilization cycles (steam, EtO, UV and gamma, wet or dry, and dry e-beam); wet e-beam did not pass. Bond strength held after gamma or e-beam plus shipping. We validate on your cycle during joint development.</p>
+      <Figure slot="figure" name="W11_sterilization" alt="Two panels. Left: the coating was intact after seven of eight sterilization cycles: steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry were intact, and e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping. The coating was intact after seven of eight sterilization cycles; wet e-beam failed." source="ZwiCoat CIVCO sterilization study, 2025 (Kyle Ruby). Internal data; silicone coupons, about 5 per group." width={1000} />
+    </ClaimRow>
+
+    <!-- Not shown yet -->
+    <ClaimRow label="What we have not shown yet" title="Aging and shelf life come next." reverse>
+      <p>Long-term aging and shelf life are measured in joint development.</p>
+      <p>Results from studies in preparation are not on this site.</p>
+    </ClaimRow>
+
+    <section class="block refs" aria-label="References">
+      <References>
+        <li>Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223.</li>
+        <li>Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Appl Bio Mater. 2024;7:3124-3135.</li>
+        <li>Ben-Shlomo N, Peel A, Etler C, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hear Res. 2026;474:109606.</li>
+        <li>Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293.</li>
+        <li>Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35:1100-1110.</li>
+      </References>
+    </section>
+  </div>
+
+  <CTABand
+    title="Bring us a device with a fouling, scar or friction problem."
+    body="We coat it free, with no cap on quantity, and return it with matched uncoated controls and data."
+    button={{ text: 'Send us parts', href: '/partner#form' }}
+  />
+</Base>
+
+<style>
+  .refs { padding-block: var(--space-5); border-top: 1px solid var(--line); }
+</style>

@@ -1,0 +1,54 @@
+---
+/*
+  A short silent loop in a drawing frame that matches Figure. Autoplays muted,
+  plays inline, no controls. If the video cannot play, the poster stays on screen
+  (the poster attribute, and an <img> inside the video element for browsers
+  without video support). Pass the path with or without an extension: the
+  component offers the .webm first and the .mp4 second.
+*/
+interface Props {
+  src: string;
+  poster: string;
+  caption: string;
+  credit?: string;
+  /** width/height of the clip, written "w/h" */
+  aspect?: string;
+  alt?: string;
+  /** set false when no .webm exists */
+  webm?: boolean;
+}
+const { src, poster, caption, credit, aspect = '1/1', alt = caption, webm = true } = Astro.props;
+const base = src.replace(/\.(mp4|webm)$/, '');
+const [aw, ah] = aspect.split('/').map(Number);
+const ratio = aw && ah ? aw / ah : 1;
+---
+<figure class="vl" style={`--ratio: ${ratio.toFixed(4)};`}>
+  <div class="vl-box">
+    <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">VIDEO</span><span class="fig-tag-src">{credit ?? 'ZwiCoat, 2026'}</span></p>
+    <div class="vl-frame" style={`aspect-ratio: ${aspect};`}>
+      <video data-loop autoplay muted loop playsinline preload="metadata" poster={poster} aria-label={alt}>
+        {webm && <source src={`${base}.webm`} type="video/webm" />}
+        <source src={`${base}.mp4`} type="video/mp4" />
+        <img src={poster} alt={alt} loading="lazy" decoding="async" />
+      </video>
+    </div>
+  </div>
+  <figcaption class="vl-cap">
+    <p class="vl-caption">{caption}</p>
+    {credit && <p class="vl-credit label">{credit}</p>}
+  </figcaption>
+</figure>
+
+<style>
+  .vl { margin: 0; min-width: 0; max-width: min(100%, calc(78vh * var(--ratio))); }
+  .vl-box { min-width: 0; border: var(--frame-border); background: var(--paper); }
+  .vl-frame { width: 100%; max-width: 100%; overflow: hidden; background: var(--paper-2); }
+  .vl-frame video, .vl-frame img { width: 100%; max-width: 100%; height: 100%; object-fit: contain; }
+  .vl-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .vl-caption { color: var(--ink); }
+  .vl-credit { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+</style>
+
+<script>
+  import '../scripts/loops';
+</script>

@@ -1,0 +1,49 @@
+---
+/*
+  Frame for one of the two interactive charts. The page script mounts the chart
+  into .ichart-mount. Without JavaScript the <noscript> image shows; if mounting
+  throws, the script swaps in the same image. A download link is always present.
+*/
+import '../styles/charts.css';
+import { imageSize } from '../lib/imagesize';
+
+interface Props {
+  id: string;
+  name: string;
+  alt: string;
+  caption: string;
+  source: string;
+  width?: number;
+}
+const { id, name, alt, caption, source, width = 1000 } = Astro.props;
+const src = `/figures/${name}.png`;
+const size = imageSize(src);
+const height = Math.round((width * size.height) / size.width);
+---
+<figure class="ichart">
+  <div
+    class="ichart-mount"
+    data-chart={id}
+    data-fallback-src={src}
+    data-fallback-alt={alt}
+    data-fallback-width={width}
+    data-fallback-height={height}
+  >
+    <noscript><img class="ch-fallback-img" src={src} alt={alt} width={width} height={height} decoding="async" /></noscript>
+  </div>
+  <figcaption class="ichart-cap">
+    <p class="ichart-caption">{caption}</p>
+    <p class="ichart-source label">Source: {source}</p>
+    <p class="ichart-dl"><a href={src} download>Download the static chart</a> <span class="label">PNG</span></p>
+  </figcaption>
+</figure>
+
+<style>
+  .ichart { margin: 0; }
+  .ichart-mount { min-height: 18rem; }
+  .ichart-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .ichart-caption { color: var(--ink); }
+  .ichart-source { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+  .ichart-dl a { color: var(--blue); font-weight: 600; text-underline-offset: 0.18em; }
+  .ichart-dl a:hover { color: var(--blue-deep); }
+</style>

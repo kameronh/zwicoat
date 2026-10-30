@@ -1,0 +1,67 @@
+---
+import Figure from './Figure.astro';
+import { W04 } from '../data/figure-text';
+
+// The hero figure is one line to swap. Alt, caption and source live in src/data/figure-text.ts.
+const fig = { name: W04.name, alt: W04.alt, caption: W04.caption, source: W04.sourceShort };
+// Dimension callouts, set like the notes on an engineering sheet. Values are cited on the pages they link to.
+const dims = [
+  { tag: 'Thickness', value: 'a few micrometres to 100 or more, tunable' },
+  { tag: 'Bond', value: 'gel tears before the interface lets go (Leigh 2019)' },
+  { tag: 'Impedance', value: 'about half, four weeks in sheep (Ben-Shlomo 2026)' },
+];
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="label">Zwitterionic hydrogel coating for medical devices</p>
+      <h1>The surface the body ignores.</h1>
+      <p class="lead">
+        ZwiGuard is a zwitterionic hydrogel coating, covalently bonded to the device, that keeps protein, cells and bacteria off. Less scar, lower impedance, easier insertion, fewer bacteria. One coating step. Ten years of evidence.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/evidence">See the evidence</a>
+        <a class="btn-outline" href="/partner#form">Send us parts</a>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <Figure name={fig.name} alt={fig.alt} caption={fig.caption} source={fig.source} width={1000} />
+    </div>
+    <ul class="dims" role="list" aria-label="Key dimensions">
+      {dims.map((d, i) => (
+        <li class="dim">
+          <span class="dim-line" aria-hidden="true"></span>
+          <span class="dim-tag"><span class="dim-n">{String(i + 1).padStart(2, '0')}</span> {d.tag}</span>
+          <span class="dim-val">{d.value}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem) var(--section-y); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+  .hero-text { display: grid; gap: var(--space-4); align-content: start; }
+  .hero-text h1 { max-width: 12ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+  .hero-figure { min-width: 0; }
+  /* Dimension callouts: a hairline-ruled row, no boxes. */
+  .dims { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr); margin: var(--space-2) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+  .dim { display: grid; gap: 0.35rem; align-content: start; padding: var(--space-3) 0; border-bottom: 1px solid var(--line); font-family: var(--font-mono); }
+  .dim:last-child { border-bottom: 0; }
+  /* The dimension line: a rule with a tick at each end. */
+  .dim-line { position: relative; display: block; height: 9px; margin-bottom: 0.25rem; border-left: 1px solid var(--ink-2); border-right: 1px solid var(--ink-2); }
+  .dim-line::before { content: ''; position: absolute; left: 0; right: 0; top: 4px; border-top: 1px solid var(--ink-2); }
+  .dim-tag { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
+  .dim-n { color: var(--blue); margin-right: 0.35rem; }
+  .dim-val { font-size: 0.9375rem; line-height: 1.5; color: var(--ink); max-width: 34ch; }
+  @media (min-width: 720px) {
+    .dims { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .dim { padding: var(--space-3) var(--space-4) var(--space-3) var(--space-3); border-bottom: 0; border-left: 1px solid var(--line); }
+    .dim:first-child { padding-left: 0; border-left: 0; }
+  }
+  @media (min-width: 1020px) {
+    .hero-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-6); align-items: center; }
+  }
+</style>

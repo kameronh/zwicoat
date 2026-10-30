@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="842.544pt" height="993.430584pt" viewBox="0 0 842.544 993.430584" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-29T21:18:54.489825</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 993.430584 
+L 842.544 993.430584 
+L 842.544 -0 
+L 0 -0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 409.68 910.224 
+L 776.88 910.224 
+L 776.88 75.672 
+L 409.68 75.672 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 24.264 81.41433 
+L 820.944 81.41433 
+L 820.944 100.555431 
+L 24.264 100.555431 
+z
+" style="fill: #e9f2f9"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 24.264 222.101422 
+L 820.944 222.101422 
+L 820.944 241.242523 
+L 24.264 241.242523 
+z
+" style="fill: #e9f2f9"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 24.264 554.199523 
+L 820.944 554.199523 
+L 820.944 573.340624 
+L 24.264 573.340624 
+z
+" style="fill: #e9f2f9"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 24.264 714.027716 
+L 820.944 714.027716 
+L 820.944 733.168817 
+L 24.264 733.168817 
+z
+" style="fill: #e9f2f9"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 409.68 910.224 
+L 409.68 75.672 
+" clip-path="url(#p03e03ffa2a)" style="fill: none; stroke: #e6e8ea; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m6d0a4f0af9" d="M 0 0 
+L 0 3.5 
+" style="stroke: #4a5058; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6d0a4f0af9" x="409.68" y="910.224" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="409.68" y="925.097594" transform="rotate(-0 409.68 925.097594)">0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 475.251429 910.224 
+L 475.251429 75.672 
+" clip-path="url(#p03e03ffa2a)" style="fill: none; stroke: #e6e8ea; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m6d0a4f0af9" x="475.251429" y="910.224" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="475.251429" y="925.097594" transform="rotate(-0 475.251429 925.097594)">20%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 540.822857 910.224 
+L 540.822857 75.672 
+" clip-path="url(#p03e03ffa2a)" style="fill: none; stroke: #e6e8ea; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m6d0a4f0af9" x="540.822857" y="910.224" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="540.822857" y="925.097594" transform="rotate(-0 540.822857 925.097594)">40%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 606.394286 910.224 
+L 606.394286 75.672 
+" clip-path="url(#p03e03ffa2a)" style="fill: none; stroke: #e6e8ea; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m6d0a4f0af9" x="606.394286" y="910.224" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="606.394286" y="925.097594" transform="rotate(-0 606.394286 925.097594)">60%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 671.965714 910.224 
+L 671.965714 75.672 
+" clip-path="url(#p03e03ffa2a)" style="fill: none; stroke: #e6e8ea; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m6d0a4f0af9" x="671.965714" y="910.224" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="671.965714" y="925.097594" transform="rotate(-0 671.965714 925.097594)">80%</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 737.537143 910.224 
+L 737.537143 75.672 
+" clip-path="url(#p03e03ffa2a)" style="fill: none; stroke: #e6e8ea; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m6d0a4f0af9" x="737.537143" y="910.224" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="737.537143" y="925.097594" transform="rotate(-0 737.537143 925.097594)">100%</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="fill: #4a5058; font: 9.5px 'Arial'; text-anchor: middle" x="593.28" y="938.199547" transform="rotate(-0 593.28 938.199547)">Reduction versus the uncoated surface. Blue bar = coated surface; gray track = uncoated (100%).</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_7">
+    <path d="M 409.68 104.19224 
+L 737.537143 104.19224 
+L 737.537143 116.059723 
+L 409.68 116.059723 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 409.68 123.333341 
+L 737.537143 123.333341 
+L 737.537143 135.200824 
+L 409.68 135.200824 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 409.68 142.474442 
+L 737.537143 142.474442 
+L 737.537143 154.341925 
+L 409.68 154.341925 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 409.68 161.615543 
+L 737.537143 161.615543 
+L 737.537143 173.483026 
+L 409.68 173.483026 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 409.68 180.756644 
+L 737.537143 180.756644 
+L 737.537143 192.624127 
+L 409.68 192.624127 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 409.68 199.897745 
+L 737.537143 199.897745 
+L 737.537143 211.765228 
+L 409.68 211.765228 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 409.68 244.879332 
+L 737.537143 244.879332 
+L 737.537143 256.746815 
+L 409.68 256.746815 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 409.68 264.020433 
+L 737.537143 264.020433 
+L 737.537143 275.887916 
+L 409.68 275.887916 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 409.68 283.161534 
+L 737.537143 283.161534 
+L 737.537143 295.029017 
+L 409.68 295.029017 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 409.68 302.302635 
+L 737.537143 302.302635 
+L 737.537143 314.170117 
+L 409.68 314.170117 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 409.68 321.443736 
+L 737.537143 321.443736 
+L 737.537143 333.311218 
+L 409.68 333.311218 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 409.68 340.584837 
+L 737.537143 340.584837 
+L 737.537143 352.452319 
+L 409.68 352.452319 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 409.68 359.725938 
+L 737.537143 359.725938 
+L 737.537143 371.59342 
+L 409.68 371.59342 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 409.68 378.867039 
+L 737.537143 378.867039 
+L 737.537143 390.734521 
+L 409.68 390.734521 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 409.68 398.008139 
+L 737.537143 398.008139 
+L 737.537143 409.875622 
+L 409.68 409.875622 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 409.68 417.14924 
+L 737.537143 417.14924 
+L 737.537143 429.016723 
+L 409.68 429.016723 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 409.68 436.290341 
+L 737.537143 436.290341 
+L 737.537143 448.157824 
+L 409.68 448.157824 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 409.68 455.431442 
+L 737.537143 455.431442 
+L 737.537143 467.298925 
+L 409.68 467.298925 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 409.68 474.572543 
+L 737.537143 474.572543 
+L 737.537143 486.440026 
+L 409.68 486.440026 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 409.68 493.713644 
+L 737.537143 493.713644 
+L 737.537143 505.581127 
+L 409.68 505.581127 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 409.68 512.854745 
+L 737.537143 512.854745 
+L 737.537143 524.722228 
+L 409.68 524.722228 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 409.68 531.995846 
+L 737.537143 531.995846 
+L 737.537143 543.863328 
+L 409.68 543.863328 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 409.68 576.977433 
+L 737.537143 576.977433 
+L 737.537143 588.844916 
+L 409.68 588.844916 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 409.68 596.118534 
+L 737.537143 596.118534 
+L 737.537143 607.986017 
+L 409.68 607.986017 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 409.68 615.259635 
+L 737.537143 615.259635 
+L 737.537143 627.127117 
+L 409.68 627.127117 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 409.68 634.400736 
+L 737.537143 634.400736 
+L 737.537143 646.268218 
+L 409.68 646.268218 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 409.68 653.541837 
+L 737.537143 653.541837 
+L 737.537143 665.409319 
+L 409.68 665.409319 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 409.68 672.682938 
+L 737.537143 672.682938 
+L 737.537143 684.55042 
+L 409.68 684.55042 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 409.68 691.824039 
+L 737.537143 691.824039 
+L 737.537143 703.691521 
+L 409.68 703.691521 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 409.68 736.805626 
+L 737.537143 736.805626 
+L 737.537143 748.673108 
+L 409.68 748.673108 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 409.68 755.946727 
+L 737.537143 755.946727 
+L 737.537143 767.814209 
+L 409.68 767.814209 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 409.68 775.087828 
+L 737.537143 775.087828 
+L 737.537143 786.95531 
+L 409.68 786.95531 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 409.68 794.228928 
+L 737.537143 794.228928 
+L 737.537143 806.096411 
+L 409.68 806.096411 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 409.68 813.370029 
+L 737.537143 813.370029 
+L 737.537143 825.237512 
+L 409.68 825.237512 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_41">
+    <path d="M 409.68 832.51113 
+L 737.537143 832.51113 
+L 737.537143 844.378613 
+L 409.68 844.378613 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 409.68 851.652231 
+L 737.537143 851.652231 
+L 737.537143 863.519714 
+L 409.68 863.519714 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 409.68 870.793332 
+L 737.537143 870.793332 
+L 737.537143 882.660815 
+L 409.68 882.660815 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 409.68 889.934433 
+L 737.537143 889.934433 
+L 737.537143 901.801916 
+L 409.68 901.801916 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #eef0f2"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 409.68 104.19224 
+L 708.03 104.19224 
+L 708.03 116.059723 
+L 409.68 116.059723 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_46">
+    <path d="M 409.68 123.333341 
+L 717.865714 123.333341 
+L 717.865714 135.200824 
+L 409.68 135.200824 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_47">
+    <path d="M 409.68 142.474442 
+L 730.98 142.474442 
+L 730.98 154.341925 
+L 409.68 154.341925 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_48">
+    <path d="M 409.68 161.615543 
+L 717.865714 161.615543 
+L 717.865714 173.483026 
+L 409.68 173.483026 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_49">
+    <path d="M 409.68 180.756644 
+L 714.587143 180.756644 
+L 714.587143 192.624127 
+L 409.68 192.624127 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_50">
+    <path d="M 409.68 199.897745 
+L 708.03 199.897745 
+L 708.03 211.765228 
+L 409.68 211.765228 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_51">
+    <path d="M 409.68 244.879332 
+L 583.444286 244.879332 
+L 583.444286 256.746815 
+L 409.68 256.746815 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_52">
+    <path d="M 409.68 264.020433 
+L 734.258571 264.020433 
+L 734.258571 275.887916 
+L 409.68 275.887916 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_53">
+    <path d="M 409.68 283.161534 
+L 711.308571 283.161534 
+L 711.308571 295.029017 
+L 409.68 295.029017 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_54">
+    <path d="M 409.68 302.302635 
+L 734.258571 302.302635 
+L 734.258571 314.170117 
+L 409.68 314.170117 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_55">
+    <path d="M 409.68 321.443736 
+L 730.98 321.443736 
+L 730.98 333.311218 
+L 409.68 333.311218 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_56">
+    <path d="M 409.68 340.584837 
+L 734.258571 340.584837 
+L 734.258571 352.452319 
+L 409.68 352.452319 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_57">
+    <path d="M 409.68 359.725938 
+L 708.03 359.725938 
+L 708.03 371.59342 
+L 409.68 371.59342 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_58">
+    <path d="M 409.68 378.867039 
+L 724.422857 378.867039 
+L 724.422857 390.734521 
+L 409.68 390.734521 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_59">
+    <path d="M 409.68 398.008139 
+L 734.258571 398.008139 
+L 734.258571 409.875622 
+L 409.68 409.875622 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_60">
+    <path d="M 409.68 417.14924 
+L 688.358571 417.14924 
+L 688.358571 429.016723 
+L 409.68 429.016723 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_61">
+    <path d="M 409.68 436.290341 
+L 721.144286 436.290341 
+L 721.144286 448.157824 
+L 409.68 448.157824 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_62">
+    <path d="M 409.68 455.431442 
+L 717.865714 455.431442 
+L 717.865714 467.298925 
+L 409.68 467.298925 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_63">
+    <path d="M 409.68 474.572543 
+L 698.194286 474.572543 
+L 698.194286 486.440026 
+L 409.68 486.440026 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_64">
+    <path d="M 409.68 493.713644 
+L 688.358571 493.713644 
+L 688.358571 505.581127 
+L 409.68 505.581127 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_65">
+    <path d="M 409.68 512.854745 
+L 734.258571 512.854745 
+L 734.258571 524.722228 
+L 409.68 524.722228 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_66">
+    <path d="M 409.68 531.995846 
+L 704.751429 531.995846 
+L 704.751429 543.863328 
+L 409.68 543.863328 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_67">
+    <path d="M 409.68 576.977433 
+L 727.701429 576.977433 
+L 727.701429 588.844916 
+L 409.68 588.844916 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_68">
+    <path d="M 409.68 596.118534 
+L 714.587143 596.118534 
+L 714.587143 607.986017 
+L 409.68 607.986017 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_69">
+    <path d="M 409.68 615.259635 
+L 685.08 615.259635 
+L 685.08 627.127117 
+L 409.68 627.127117 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_70">
+    <path d="M 409.68 634.400736 
+L 698.194286 634.400736 
+L 698.194286 646.268218 
+L 409.68 646.268218 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_71">
+    <path d="M 409.68 653.541837 
+L 685.08 653.541837 
+L 685.08 665.409319 
+L 409.68 665.409319 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_72">
+    <path d="M 409.68 672.682938 
+L 721.144286 672.682938 
+L 721.144286 684.55042 
+L 409.68 684.55042 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_73">
+    <path d="M 409.68 691.824039 
+L 711.308571 691.824039 
+L 711.308571 703.691521 
+L 409.68 703.691521 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_74">
+    <path d="M 409.68 736.805626 
+L 721.144286 736.805626 
+L 721.144286 748.673108 
+L 409.68 748.673108 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_75">
+    <path d="M 409.68 755.946727 
+L 717.865714 755.946727 
+L 717.865714 767.814209 
+L 409.68 767.814209 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_76">
+    <path d="M 409.68 775.087828 
+L 717.865714 775.087828 
+L 717.865714 786.95531 
+L 409.68 786.95531 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_77">
+    <path d="M 409.68 794.228928 
+L 717.865714 794.228928 
+L 717.865714 806.096411 
+L 409.68 806.096411 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_78">
+    <path d="M 409.68 813.370029 
+L 717.865714 813.370029 
+L 717.865714 825.237512 
+L 409.68 825.237512 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_79">
+    <path d="M 409.68 832.51113 
+L 701.472857 832.51113 
+L 701.472857 844.378613 
+L 409.68 844.378613 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_80">
+    <path d="M 409.68 851.652231 
+L 701.472857 851.652231 
+L 701.472857 863.519714 
+L 409.68 863.519714 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_81">
+    <path d="M 409.68 870.793332 
+L 724.422857 870.793332 
+L 724.422857 882.660815 
+L 409.68 882.660815 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_82">
+    <path d="M 409.68 889.934433 
+L 685.08 889.934433 
+L 685.08 901.801916 
+L 409.68 901.801916 
+z
+" clip-path="url(#p03e03ffa2a)" style="fill: #0e7fc4"/>
+   </g>
+   <g id="patch_83">
+    <path d="M 409.68 910.224 
+L 776.88 910.224 
+" style="fill: none; stroke: #e6e8ea; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="fill: #1b1f24; font: 700 10.5px 'Arial'; text-anchor: start" x="35.28" y="93.701756" transform="rotate(-0 35.28 93.701756)">Protein: fibrinogen adsorption  (6)</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="712.292143" y="112.58856" transform="rotate(-0 712.292143 112.58856)">~91%</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="112.584107" transform="rotate(-0 402.336 112.584107)">Fibrinogen on glass, SBMA</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="112.286177" transform="rotate(-0 35.28 112.286177)">Leigh 2017, n = 3</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="131.729661" transform="rotate(-0 722.127857 131.729661)">~94%</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="131.725208" transform="rotate(-0 402.336 131.725208)">Fibrinogen on glass, CBMA</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="131.427278" transform="rotate(-0 35.28 131.427278)">Leigh 2017, n = 3</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="735.242143" y="150.870762" transform="rotate(-0 735.242143 150.870762)">~98%</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="150.866308" transform="rotate(-0 402.336 150.866308)">Fibrinogen on silicone, SBMA</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="150.568379" transform="rotate(-0 35.28 150.568379)">Leigh 2019, n = 3</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="170.011863" transform="rotate(-0 722.127857 170.011863)">~94%</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="170.007409" transform="rotate(-0 402.336 170.007409)">Fibrinogen on silicone, CBMA</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="169.70948" transform="rotate(-0 35.28 169.70948)">Leigh 2019, n = 3</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="718.849286" y="189.152963" transform="rotate(-0 718.849286 189.152963)">~93%</text>
+   </g>
+   <g id="text_22">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="189.14851" transform="rotate(-0 402.336 189.14851)">Fibrinogen on silicone, CBMA</text>
+   </g>
+   <g id="text_23">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="188.887768" transform="rotate(-0 35.28 188.887768)">Jensen 2021, 5% cross-linker, n = 3</text>
+   </g>
+   <g id="text_24">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="712.292143" y="208.294064" transform="rotate(-0 712.292143 208.294064)">~91%</text>
+   </g>
+   <g id="text_25">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="208.289611" transform="rotate(-0 402.336 208.289611)">Fibrinogen on silicone, SBMA</text>
+   </g>
+   <g id="text_26">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="208.028869" transform="rotate(-0 35.28 208.028869)">Jensen 2021, 5% cross-linker, n = 3</text>
+   </g>
+   <g id="text_27">
+    <text style="fill: #1b1f24; font: 700 10.5px 'Arial'; text-anchor: start" x="35.28" y="234.388847" transform="rotate(-0 35.28 234.388847)">Cells: attachment in culture  (16)</text>
+   </g>
+   <g id="text_28">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="587.706429" y="253.275652" transform="rotate(-0 587.706429 253.275652)">~53%</text>
+   </g>
+   <g id="text_29">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="253.271198" transform="rotate(-0 402.336 253.271198)">Fibroblasts on glass, SBMA</text>
+   </g>
+   <g id="text_30">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="252.973269" transform="rotate(-0 35.28 252.973269)">Leigh 2017, n ≥ 3</text>
+   </g>
+   <g id="text_31">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="738.520714" y="272.416752" transform="rotate(-0 738.520714 272.416752)">~99%</text>
+   </g>
+   <g id="text_32">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="272.412299" transform="rotate(-0 402.336 272.412299)">Fibroblasts on glass, CBMA</text>
+   </g>
+   <g id="text_33">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="272.11437" transform="rotate(-0 35.28 272.11437)">Leigh 2017, n ≥ 3</text>
+   </g>
+   <g id="text_34">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="715.570714" y="291.557853" transform="rotate(-0 715.570714 291.557853)">92%</text>
+   </g>
+   <g id="text_35">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="291.5534" transform="rotate(-0 402.336 291.5534)">Astrocytes on glass, SBMA</text>
+   </g>
+   <g id="text_36">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="291.255471" transform="rotate(-0 35.28 291.255471)">Leigh 2017, n ≥ 3</text>
+   </g>
+   <g id="text_37">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="738.520714" y="310.698954" transform="rotate(-0 738.520714 310.698954)">~99%</text>
+   </g>
+   <g id="text_38">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="310.694501" transform="rotate(-0 402.336 310.694501)">Astrocytes on glass, CBMA</text>
+   </g>
+   <g id="text_39">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="310.396571" transform="rotate(-0 35.28 310.396571)">Leigh 2017, n ≥ 3</text>
+   </g>
+   <g id="text_40">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="735.242143" y="329.840055" transform="rotate(-0 735.242143 329.840055)">~98%</text>
+   </g>
+   <g id="text_41">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="329.835602" transform="rotate(-0 402.336 329.835602)">Schwann cells on glass, SBMA</text>
+   </g>
+   <g id="text_42">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="329.537672" transform="rotate(-0 35.28 329.537672)">Leigh 2017, n ≥ 3</text>
+   </g>
+   <g id="text_43">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="738.520714" y="348.981156" transform="rotate(-0 738.520714 348.981156)">~99%</text>
+   </g>
+   <g id="text_44">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="348.976703" transform="rotate(-0 402.336 348.976703)">Schwann cells on glass, CBMA</text>
+   </g>
+   <g id="text_45">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="348.678773" transform="rotate(-0 35.28 348.678773)">Leigh 2017, n ≥ 3</text>
+   </g>
+   <g id="text_46">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="712.292143" y="368.122257" transform="rotate(-0 712.292143 368.122257)">~91%</text>
+   </g>
+   <g id="text_47">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="368.115577" transform="rotate(-0 402.336 368.115577)">Fibroblasts, silicone, SBMA, 14 d soak</text>
+   </g>
+   <g id="text_48">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="367.819874" transform="rotate(-0 35.28 367.819874)">Leigh 2019, n ≥ 3</text>
+   </g>
+   <g id="text_49">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="728.685" y="387.263358" transform="rotate(-0 728.685 387.263358)">~96%</text>
+   </g>
+   <g id="text_50">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="387.256678" transform="rotate(-0 402.336 387.256678)">Fibroblasts, silicone, CBMA, 14 d soak</text>
+   </g>
+   <g id="text_51">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="386.960975" transform="rotate(-0 35.28 386.960975)">Leigh 2019, n ≥ 3</text>
+   </g>
+   <g id="text_52">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="738.520714" y="406.404459" transform="rotate(-0 738.520714 406.404459)">~99%</text>
+   </g>
+   <g id="text_53">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="406.397779" transform="rotate(-0 402.336 406.397779)">Fibroblasts, silicone, CBMA</text>
+   </g>
+   <g id="text_54">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="406.139264" transform="rotate(-0 35.28 406.139264)">Jensen 2021, 5% cross-linker, n = 3</text>
+   </g>
+   <g id="text_55">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="692.620714" y="425.54556" transform="rotate(-0 692.620714 425.54556)">~85%</text>
+   </g>
+   <g id="text_56">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="425.53888" transform="rotate(-0 402.336 425.53888)">Fibroblasts, silicone, SBMA</text>
+   </g>
+   <g id="text_57">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="425.280364" transform="rotate(-0 35.28 425.280364)">Jensen 2021, 5% cross-linker, n = 3</text>
+   </g>
+   <g id="text_58">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="725.406429" y="444.686661" transform="rotate(-0 725.406429 444.686661)">~95%</text>
+   </g>
+   <g id="text_59">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="444.682208" transform="rotate(-0 402.336 444.682208)">Macrophages, silicone, CBMA</text>
+   </g>
+   <g id="text_60">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="444.421465" transform="rotate(-0 35.28 444.421465)">Jensen 2021, 5% cross-linker, n = 3</text>
+   </g>
+   <g id="text_61">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="463.827762" transform="rotate(-0 722.127857 463.827762)">~94%</text>
+   </g>
+   <g id="text_62">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="463.823308" transform="rotate(-0 402.336 463.823308)">Macrophages, silicone, SBMA</text>
+   </g>
+   <g id="text_63">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="463.562566" transform="rotate(-0 35.28 463.562566)">Jensen 2021, 5% cross-linker, n = 3</text>
+   </g>
+   <g id="text_64">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="702.456429" y="482.968863" transform="rotate(-0 702.456429 482.968863)">~88%</text>
+   </g>
+   <g id="text_65">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="482.962183" transform="rotate(-0 402.336 482.962183)">Fibroblasts, silicone, CBMA, new</text>
+   </g>
+   <g id="text_66">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="482.703667" transform="rotate(-0 35.28 482.703667)">Horne 2023, 1.6 to 31% cross-linker, n = 3</text>
+   </g>
+   <g id="text_67">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="692.620714" y="502.109963" transform="rotate(-0 692.620714 502.109963)">~85%</text>
+   </g>
+   <g id="text_68">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="502.103284" transform="rotate(-0 402.336 502.103284)">Fibroblasts, CBMA, 6 months in mice</text>
+   </g>
+   <g id="text_69">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="501.844768" transform="rotate(-0 35.28 501.844768)">Horne 2023, 1.6 to 31% cross-linker, n = 3</text>
+   </g>
+   <g id="text_70">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="738.520714" y="521.251064" transform="rotate(-0 738.520714 521.251064)">~99%</text>
+   </g>
+   <g id="text_71">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="521.244385" transform="rotate(-0 402.336 521.244385)">Fibroblasts, silicone, dual network</text>
+   </g>
+   <g id="text_72">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="520.985869" transform="rotate(-0 35.28 520.985869)">Barrera 2026, 2.5% cross-linker, n ≥ 4</text>
+   </g>
+   <g id="text_73">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="709.013571" y="540.392165" transform="rotate(-0 709.013571 540.392165)">~90%</text>
+   </g>
+   <g id="text_74">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="540.385486" transform="rotate(-0 402.336 540.385486)">Fibroblasts, silicone, dual network</text>
+   </g>
+   <g id="text_75">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="540.12697" transform="rotate(-0 35.28 540.12697)">Barrera 2026, 20%/5% cross-linker, n ≥ 4</text>
+   </g>
+   <g id="text_76">
+    <text style="fill: #1b1f24; font: 700 10.5px 'Arial'; text-anchor: start" x="35.28" y="566.486948" transform="rotate(-0 35.28 566.486948)">Bacteria: Staphylococcus adhesion  (7)</text>
+   </g>
+   <g id="text_77">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="731.963571" y="585.373752" transform="rotate(-0 731.963571 585.373752)">~97%</text>
+   </g>
+   <g id="text_78">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="585.424963" transform="rotate(-0 402.336 585.424963)">S. aureus, 1 h in suspension</text>
+   </g>
+   <g id="text_79">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="585.108557" transform="rotate(-0 35.28 585.108557)">Shen 2021, n = 10 fields</text>
+   </g>
+   <g id="text_80">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="718.849286" y="604.514853" transform="rotate(-0 718.849286 604.514853)">~93%</text>
+   </g>
+   <g id="text_81">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="604.566064" transform="rotate(-0 402.336 604.566064)">S. epidermidis, 1 h in suspension</text>
+   </g>
+   <g id="text_82">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="604.249658" transform="rotate(-0 35.28 604.249658)">Shen 2021, n = 10 fields</text>
+   </g>
+   <g id="text_83">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="689.342143" y="623.655954" transform="rotate(-0 689.342143 623.655954)">~84%</text>
+   </g>
+   <g id="text_84">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="623.707165" transform="rotate(-0 402.336 623.707165)">S. aureus, 1 h droplet</text>
+   </g>
+   <g id="text_85">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="623.390759" transform="rotate(-0 35.28 623.390759)">Shen 2021, n = 10 fields</text>
+   </g>
+   <g id="text_86">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="702.456429" y="642.797055" transform="rotate(-0 702.456429 642.797055)">~88%</text>
+   </g>
+   <g id="text_87">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="642.848266" transform="rotate(-0 402.336 642.848266)">S. epidermidis, 1 h droplet</text>
+   </g>
+   <g id="text_88">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="642.53186" transform="rotate(-0 35.28 642.53186)">Shen 2021, n = 10 fields</text>
+   </g>
+   <g id="text_89">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="689.342143" y="661.938156" transform="rotate(-0 689.342143 661.938156)">~84%</text>
+   </g>
+   <g id="text_90">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="661.933703" transform="rotate(-0 402.336 661.933703)">S. aureus on explant, rats, day 21</text>
+   </g>
+   <g id="text_91">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="661.672961" transform="rotate(-0 35.28 661.672961)">Shen 2021, n ≈ 71 fields</text>
+   </g>
+   <g id="text_92">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="725.406429" y="681.079257" transform="rotate(-0 725.406429 681.079257)">~95%</text>
+   </g>
+   <g id="text_93">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="681.031015" transform="rotate(-0 402.336 681.031015)">Live colonies on explant, rats, day 21</text>
+   </g>
+   <g id="text_94">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="680.865859" transform="rotate(-0 35.28 680.865859)">Shen 2021, n = 6 implants</text>
+   </g>
+   <g id="text_95">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="715.570714" y="700.220358" transform="rotate(-0 715.570714 700.220358)">~92%</text>
+   </g>
+   <g id="text_96">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="700.213678" transform="rotate(-0 402.336 700.213678)">S. aureus after 2 weeks in rats</text>
+   </g>
+   <g id="text_97">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="699.955163" transform="rotate(-0 35.28 699.955163)">Shen 2021, n = 6 rats</text>
+   </g>
+   <g id="text_98">
+    <text style="fill: #1b1f24; font: 700 10.5px 'Arial'; text-anchor: start" x="35.28" y="726.315141" transform="rotate(-0 35.28 726.315141)">Friction: coated versus uncoated silicone  (9)</text>
+   </g>
+   <g id="text_99">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="725.406429" y="745.201945" transform="rotate(-0 725.406429 745.201945)">~95%</text>
+   </g>
+   <g id="text_100">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="745.253156" transform="rotate(-0 402.336 745.253156)">Friction vs sapphire, CBMA</text>
+   </g>
+   <g id="text_101">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="744.93675" transform="rotate(-0 35.28 744.93675)">Jensen 2021, 4% cross-linker, n = 4</text>
+   </g>
+   <g id="text_102">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="764.343046" transform="rotate(-0 722.127857 764.343046)">~94%</text>
+   </g>
+   <g id="text_103">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="764.394257" transform="rotate(-0 402.336 764.394257)">Friction vs sapphire, SBMA</text>
+   </g>
+   <g id="text_104">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="764.077851" transform="rotate(-0 35.28 764.077851)">Jensen 2021, 4% cross-linker, n = 4</text>
+   </g>
+   <g id="text_105">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="783.484147" transform="rotate(-0 722.127857 783.484147)">~94%</text>
+   </g>
+   <g id="text_106">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="783.477467" transform="rotate(-0 402.336 783.477467)">Friction vs steel, SBMA</text>
+   </g>
+   <g id="text_107">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="783.218952" transform="rotate(-0 35.28 783.218952)">Bennion 2021</text>
+   </g>
+   <g id="text_108">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="802.625248" transform="rotate(-0 722.127857 802.625248)">~94%</text>
+   </g>
+   <g id="text_109">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="802.618568" transform="rotate(-0 402.336 802.618568)">Friction vs ceramic, SBMA</text>
+   </g>
+   <g id="text_110">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="802.360053" transform="rotate(-0 35.28 802.360053)">Bennion 2021</text>
+   </g>
+   <g id="text_111">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="722.127857" y="821.766349" transform="rotate(-0 722.127857 821.766349)">~94%</text>
+   </g>
+   <g id="text_112">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="821.761896" transform="rotate(-0 402.336 821.761896)">Friction vs guinea pig dermis, SBMA</text>
+   </g>
+   <g id="text_113">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="821.501153" transform="rotate(-0 35.28 821.501153)">Bennion 2021, n = 4</text>
+   </g>
+   <g id="text_114">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="705.735" y="840.90745" transform="rotate(-0 705.735 840.90745)">~89%</text>
+   </g>
+   <g id="text_115">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="840.958661" transform="rotate(-0 402.336 840.958661)">Friction vs sapphire, SBMA, pristine</text>
+   </g>
+   <g id="text_116">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="840.642254" transform="rotate(-0 35.28 840.642254)">Peel 2024, n ≥ 4</text>
+   </g>
+   <g id="text_117">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="705.735" y="860.048551" transform="rotate(-0 705.735 860.048551)">~89%</text>
+   </g>
+   <g id="text_118">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="860.041871" transform="rotate(-0 402.336 860.041871)">Friction, SBMA, after 3 weeks in mice</text>
+   </g>
+   <g id="text_119">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="859.783355" transform="rotate(-0 35.28 859.783355)">Peel 2024, n ≥ 4</text>
+   </g>
+   <g id="text_120">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="728.685" y="879.189652" transform="rotate(-0 728.685 879.189652)">~96%</text>
+   </g>
+   <g id="text_121">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="879.182972" transform="rotate(-0 402.336 879.182972)">Friction vs five tissues and steel, SBMA</text>
+   </g>
+   <g id="text_122">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="878.887269" transform="rotate(-0 35.28 878.887269)">Peel 2024, range ~94 to 98, n ≥ 3</text>
+   </g>
+   <g id="text_123">
+    <text style="fill: #1b1f24; font: 700 9.5px 'Arial'; text-anchor: start" x="689.342143" y="898.330752" transform="rotate(-0 689.342143 898.330752)">~84%</text>
+   </g>
+   <g id="text_124">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'; text-anchor: end" x="402.336" y="898.324073" transform="rotate(-0 402.336 898.324073)">Friction vs sapphire, dual network</text>
+   </g>
+   <g id="text_125">
+    <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="35.28" y="898.065557" transform="rotate(-0 35.28 898.065557)">Barrera 2026, 2.5%/2.5% cross-linker, n = 3</text>
+   </g>
+  </g>
+  <g id="text_126">
+   <text style="fill: #1b1f24; font: 700 14px 'Arial'; text-anchor: start" x="21.6" y="31.791563" transform="rotate(-0 21.6 31.791563)">Protein, cells, bacteria and friction: every published comparison, coated versus uncoated</text>
+  </g>
+  <g id="text_127">
+   <text style="fill: #7a8089; font: 10.5px 'Arial'; text-anchor: start" x="21.6" y="56.603672" transform="rotate(-0 21.6 56.603672)">38 comparisons from 8 papers, 2017 to 2026; in vitro on glass or silicone unless the label says rats or mice; bar values approximate where marked (~)</text>
+  </g>
+  <g id="text_128">
+   <text style="fill: #7a8089; font: 8.5px 'Arial'; text-anchor: start" x="21.6" y="970.0416" transform="rotate(-0 21.6 970.0416)">~ = approximate: read from a published plot, converted from a fold change stated as 'about' or 'over', or averaged. SBMA = sulfobetaine, CBMA = carboxybetaine coating.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p03e03ffa2a">
+   <rect x="409.68" y="75.672" width="367.2" height="834.552"/>
+  </clipPath>
+ </defs>
+</svg>

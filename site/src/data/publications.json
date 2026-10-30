@@ -1,0 +1,170 @@
+{
+  "papers": [
+    {
+      "id": "barrera-2026",
+      "title": "Photografted dual-network zwitterionic hydrogel coatings for biomaterials",
+      "authors": "Barrera G, Wu A, Peel A, Elmer N, Hansen KR, Xu L, Hansen MR, Guymon CA.",
+      "journal": "ACS Applied Polymer Materials",
+      "year": 2026,
+      "volume": "8(18)",
+      "pages": "16328-16338",
+      "doi": "https://doi.org/10.1021/acsapm.6c02510",
+      "openAccess": false,
+      "summary": "A second, interpenetrating network makes the zwitterionic coating tougher and less swollen while keeping its antifouling; in rats, capsules around coated silicone were about 75 percent thinner at six weeks."
+    },
+    {
+      "id": "benshlomo-2026",
+      "title": "Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance",
+      "authors": "Ben-Shlomo N, Peel A, Etler C, et al.",
+      "journal": "Hearing Research",
+      "year": 2026,
+      "volume": "474",
+      "pages": "109606",
+      "doi": "https://doi.org/10.1016/j.heares.2026.109606",
+      "openAccess": true,
+      "summary": "Human cochlear implant arrays with the coating read about half the electrode impedance of uncoated arrays in sheep, and the cochlea showed less inflammation at four weeks."
+    },
+    {
+      "id": "horne-2025",
+      "title": "Enhancing Mucus Flow and Clearance by Grafting Zwitterionic Hydrogel Films to Luminal Surfaces",
+      "authors": "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M.",
+      "journal": "Laryngoscope Investigative Otolaryngology",
+      "year": 2025,
+      "volume": "10(2)",
+      "pages": "e70118",
+      "doi": "https://doi.org/10.1002/lio2.70118",
+      "openAccess": true,
+      "summary": "On the bench, mucus began to flow at a gentler tilt on coated silicone sheets and tubes, and a dried mucus plug cleared sooner in a preliminary test."
+    },
+    {
+      "id": "peel-2024",
+      "title": "Photografted Zwitterionic Hydrogel Coating Durability for Reduced Foreign Body Response to Cochlear Implants",
+      "authors": "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA.",
+      "journal": "ACS Applied Bio Materials",
+      "year": 2024,
+      "volume": "7",
+      "pages": "3124-3135",
+      "doi": "https://doi.org/10.1021/acsabm.4c00156",
+      "openAccess": true,
+      "summary": "The coating kept its low friction after three weeks in mice, after drying and rewetting, and under repeated bending. Coated arrays needed about half the peak force to enter human cadaver cochleae."
+    },
+    {
+      "id": "horne-2023",
+      "title": "Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings",
+      "authors": "Horne R, Ben-Shlomo N, Jensen M, et al.",
+      "journal": "Acta Biomaterialia",
+      "year": 2023,
+      "volume": "166",
+      "pages": "212-223",
+      "doi": "https://doi.org/10.1016/j.actbio.2023.05.011",
+      "openAccess": false,
+      "summary": "In mice, coated silicone and coated human implant arrays had thinner scar capsules than uncoated ones, and the film was still intact after one year."
+    },
+    {
+      "id": "bennion-2021",
+      "title": "Zwitterionic Photografted Coatings of Cochlear Implant Biomaterials Reduce Friction and Insertion Forces",
+      "authors": "Bennion DM, Horne R, Peel A, et al.",
+      "journal": "Otology and Neurotology",
+      "year": 2021,
+      "volume": "42(10)",
+      "pages": "1476-1483",
+      "doi": "https://doi.org/10.1097/MAO.0000000000003288",
+      "openAccess": false,
+      "summary": "The coating cut friction on silicone by more than 90 percent and cut the peak force to insert an electrode into human cadaver cochleae by about 40 percent."
+    },
+    {
+      "id": "jensen-2021",
+      "title": "Antifouling and Mechanical Properties of Photografted Zwitterionic Hydrogel Thin-Film Coatings Depend on the Cross-Link Density",
+      "authors": "Jensen MJ, Peel A, Horne R, et al.",
+      "journal": "ACS Biomaterials Science and Engineering",
+      "year": 2021,
+      "volume": "7(9)",
+      "pages": "4494-4502",
+      "doi": "https://doi.org/10.1021/acsbiomaterials.1c00852",
+      "openAccess": true,
+      "summary": "The amount of cross-linker sets how stiff the film is and how well it resists protein, cells and friction. The best balance in the lab came at roughly 5 to 15 percent cross-linker."
+    },
+    {
+      "id": "shen-2021",
+      "title": "Photograftable Zwitterionic Coatings Prevent Staphylococcus aureus and Staphylococcus epidermidis Adhesion to PDMS Surfaces",
+      "authors": "Shen N, Cheng E, Whitley JW, et al.",
+      "journal": "ACS Applied Bio Materials",
+      "year": 2021,
+      "volume": "4(2)",
+      "pages": "1283-1293",
+      "doi": "https://doi.org/10.1021/acsabm.0c01147",
+      "openAccess": false,
+      "summary": "Coated silicone held far fewer S. aureus and S. epidermidis in the lab. In rats it carried fewer bacteria 21 days after implantation."
+    },
+    {
+      "id": "leigh-2019",
+      "title": "Antifouling Photograftable Zwitterionic Coatings on PDMS Substrates",
+      "authors": "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA.",
+      "journal": "Langmuir",
+      "year": 2019,
+      "volume": "35",
+      "pages": "1100-1110",
+      "doi": "https://doi.org/10.1021/acs.langmuir.8b00838",
+      "openAccess": false,
+      "summary": "A one-step UV process grafts a cross-linked film onto silicone that cuts protein and fibroblast adhesion in the lab and fails inside the gel before it fails at the silicone."
+    },
+    {
+      "id": "leigh-2017",
+      "title": "Photopolymerizable Zwitterionic Polymer Patterns Control Cell Adhesion and Guide Neural Growth",
+      "authors": "Leigh BL, Cheng E, Xu L, Andresen C, Hansen MR, Guymon CA.",
+      "journal": "Biomacromolecules",
+      "year": 2017,
+      "volume": "18(8)",
+      "pages": "2389-2401",
+      "doi": "https://doi.org/10.1021/acs.biomac.7b00579",
+      "openAccess": false,
+      "summary": "Coated stripes on glass kept protein and cells off, and nerve fibers grew in straight lines along 100 micrometre stripes."
+    }
+  ],
+  "theses": [
+    {
+      "author": "Braden L. Leigh",
+      "year": 2018,
+      "title": "Engineering surfaces using photopolymerization to improve cochlear implant materials",
+      "school": "University of Iowa",
+      "link": "https://doi.org/10.17077/etd.igg40fff"
+    },
+    {
+      "author": "Adreann Peel",
+      "year": 2023,
+      "title": "Durable photografted zwitterionic hydrogel coatings to decrease biofouling and increase lubricity for biomaterials",
+      "school": "University of Iowa",
+      "link": "https://doi.org/10.25820/etd.007232"
+    },
+    {
+      "author": "Ryan R. Horne",
+      "year": 2023,
+      "title": "Improving cochlear implant and tympanostomy tube surfaces via photografted zwitterionic thin films",
+      "school": "University of Iowa",
+      "link": ""
+    }
+  ],
+  "inPreparation": [
+    "Endotracheal tube insertion force and stenosis",
+    "A six-month sheep cohort with coated cochlear implant arrays",
+    "Coated PEEK for cranioplasty"
+  ],
+  "patents": [
+    {
+      "number": "US 11,525,069",
+      "note": "Method of making a durable, cross-linked, covalently grafted anti-fouling coating. Issued December 13, 2022.",
+      "link": "https://patents.google.com/patent/US11525069"
+    },
+    {
+      "number": "US 11,814,526",
+      "note": "The coated-device system: a substrate with a covalently bonded, cross-linked zwitterionic hydrogel coating. Issued November 14, 2023.",
+      "link": "https://patents.google.com/patent/US11814526"
+    },
+    {
+      "number": "US 12,116,498",
+      "note": "",
+      "link": "https://patents.google.com/patent/US12116498"
+    }
+  ],
+  "counterparts": "Counterpart patents are granted in Australia (2017280359), China (ZL201780049849.X), Japan (7005535) and Mexico (388986). Applications are pending in Canada (3028732), Europe (EP 17740822.6) and South Africa (2018/08574). The patents are licensed exclusively from the University of Iowa Research Foundation."
+}

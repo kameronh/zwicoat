@@ -1,0 +1,422 @@
+[
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 3.5152774686506523,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.8211411278873427,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 1.645632779589809,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.8849836523167448,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.4846972555054458,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.9814796615355448,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.8489444417555172,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.9480696835640907,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 2.5327747822812388,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 0.9472447733718856,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.47082720377570103,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.5931098002131207,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.6883498432981892,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.4308200558116946,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.42402522265715337,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.5045570971302878,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 0.5216498932350766,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 0.7356125734462513,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 0.5691854322465104,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 0.5697121255850635,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 0.5900859470284743,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 0.7385766571501082,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 0.4924123619472489,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.5456658394675217,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.27791749409883065,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.5185214947917492,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.5124069898890857,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.5347947322940609,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.4882073846341052,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.476942197617912,
+"peak_N": null
+},
+{
+"surgeon": "MB",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 0.35737829684347977,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 4.440695522389712,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 4.466729173738822,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 7.028805109074187,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 8.35303277931007,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 8.969364339211559,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 9.296021321177715,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "uncoated",
+"batch": "uncoated",
+"impulse_Ns": 10.814442026378469,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 2.1236416753275154,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 2.215765079427146,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 1.63142956737505,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 2.205989035040626,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 1.9872919458554668,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 2.371210232059685,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 2.6583516123192634,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 1",
+"impulse_Ns": 4.8749264523597216,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 2.8039283467014084,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 2.5363836103577384,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 2.089721655336696,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 8.068394694011385,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 4.145739380763686,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 5.74570586795572,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 2",
+"impulse_Ns": 7.176304083554101,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.7150698063481427,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.4527236970383983,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.5006962565815152,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.4810918426566624,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.4725612684584837,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.3963458439513574,
+"peak_N": null
+},
+{
+"surgeon": "MH",
+"condition": "coated",
+"batch": "coated 3",
+"impulse_Ns": 1.2829866830473065,
+"peak_N": null
+}
+]

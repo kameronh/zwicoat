@@ -1,0 +1,35 @@
+---
+interface Props {
+  steps: { n: string | number; title: string; body: string }[];
+}
+const { steps } = Astro.props;
+---
+<ol class="steps" role="list" style={`--n:${steps.length}`}>
+  {steps.map((s) => (
+    <li class="step">
+      <span class="step-n" aria-hidden="true">{String(s.n).padStart(2, '0')}</span>
+      <h3 class="step-title">{s.title}</h3>
+      <p class="step-body">{s.body}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); }
+  .step {
+    display: grid;
+    gap: var(--space-2);
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--line);
+  }
+  .step:first-child { border-top: 1px solid var(--ink); }
+  .step-n { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 500; color: var(--blue); }
+  .step-title { font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem); }
+  .step-body { color: var(--ink-2); max-width: 46ch; }
+
+  @media (min-width: 900px) {
+    .steps { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+    .step { padding: var(--space-4) var(--space-4) 0 0; border-top: 1px solid var(--ink); }
+    .step + .step { padding-left: var(--space-4); border-left: 1px solid var(--line); }
+  }
+</style>

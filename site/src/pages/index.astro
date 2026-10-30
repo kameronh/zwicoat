@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import StatTiles from '../components/StatTiles.astro';
+import ClaimRow from '../components/ClaimRow.astro';
+import Figure from '../components/Figure.astro';
+import ProcessVideo from '../components/ProcessVideo.astro';
+import ApplicationCard from '../components/ApplicationCard.astro';
+import Steps from '../components/Steps.astro';
+import CTABand from '../components/CTABand.astro';
+import { W05 } from '../data/figure-text';
+import numbers from '../../public/data/W12_numbers.json';
+import apps from '../data/applications-index.json';
+
+const tiles = numbers;
+
+const steps = [
+  { n: 1, title: 'Feasibility, free', body: 'You send parts. We coat them, with no cap on quantity, and return them with matched uncoated controls and our data.' },
+  { n: 2, title: 'Joint development', body: 'We optimize the coating on your production devices and run ISO 10993, sterilization, aging and an animal model.' },
+  { n: 3, title: 'Manufacturing', body: 'We coat for you. Our FDA Device Master File sits behind your submission.' },
+];
+---
+<Base title="ZwiCoat" description="ZwiGuard is a zwitterionic hydrogel coating, covalently bonded to the device, that keeps protein, cells and bacteria off. Ten years of evidence.">
+  <Hero />
+
+  <section class="section container" aria-labelledby="numbers-h">
+    <h2 id="numbers-h" class="visually-hidden">The public record in numbers</h2>
+    <StatTiles items={tiles} columns={4} />
+    <p class="tiles-note">Every number on this site comes from a published paper, dissertation or issued patent.</p>
+    <p class="tiles-note">And behind the papers: <a href="/evidence#archive">182 archived experiments, 1,056 adhesion tests, 136 animals.</a></p>
+    <p class="tiles-note tiles-src label">Sources: the ten journal papers and the dissertations listed on the Publications page, USPTO records, ZCMI patent schedule, 2025.</p>
+  </section>
+
+  <section class="section container" aria-label="What the coating does">
+    <ClaimRow label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
+      <p>Ten measurements from four papers, in mice, rats and sheep, from four weeks to one year, on silicone and on real implant arrays. The sheep basal-turn measurement was not statistically significant.</p>
+      <p>In mice, the capsule was 67 percent thinner at six weeks on flat silicone and 62 percent thinner at one year on coated cochlear implant arrays (Horne 2023, Acta Biomaterialia).</p>
+      <!-- PENDING APPROVAL: Horne 2023 histology photo (Fig 5, Elsevier), /images/histology-pdms-capsule.png.
+      <Photo slot="figure" src="/images/histology-pdms-capsule.png" alt="Tissue section of a silicone strip implanted in a mouse. A dashed yellow outline marks the capsule, which is thinner around the coated half of the strip than around the uncoated half." caption="Tissue section from a mouse at six weeks. The capsule is thinner around the coated half of the silicone strip." credit="Horne et al. 2023, Acta Biomaterialia." aspect="965/523" />
+      -->
+      <Figure slot="figure" name="W27_capsule_thickness_mice" alt="Capsule thickness in mice. At six weeks on flat silicone the zwitterionic coating gave a capsule 67 percent thinner than uncoated, while a non-zwitterionic hydrogel control did not differ significantly. At one year on human cochlear implant arrays the coated capsule was 62 percent thinner." caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year. A non-zwitterionic hydrogel control did not differ significantly from uncoated." source="Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011" width={900} />
+    </ClaimRow>
+
+    <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones." reverse>
+      <p>Working human cochlear implant arrays in sheep read 67 percent lower impedance at implantation and 47 percent lower four weeks later.</p>
+      <p>Three sheep, one coated and one uncoated array each (Ben-Shlomo 2026, Hearing Research). No coated device has been implanted in a person.</p>
+      <Figure slot="figure" name="W08_impedance_sheep" alt="Bar chart of total electrode impedance in sheep. Coated ears read 67 percent lower than uncoated ears at implantation and 47 percent lower four weeks later." caption="Electrode impedance of coated versus uncoated cochlear implant arrays in sheep." source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)." width={800} />
+    </ClaimRow>
+
+    <ClaimRow label="Easier insertion" title="Insertion force fell by about 40 percent.">
+      <p>Coated cochlear implant arrays needed 37.0 mN of peak force against 64.2 mN for uncoated arrays, in human cadaveric cochleae (n = 9 per group, p = 0.001).</p>
+      <p>Force variation during insertion fell from 89.9 to 52.1 mN/s (p = 0.03). Bennion 2021, Otology and Neurotology.</p>
+      <Figure slot="figure" name="W07_insertion_force" alt="Two bar charts for coated and uncoated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force was 64.2 millinewtons uncoated and 37.0 coated, 42 percent lower (p = 0.001). Force variation was 89.9 millinewtons per second uncoated and 52.1 coated, 42 percent lower (p = 0.03)." caption="Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae." source="Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)." width={800} />
+    </ClaimRow>
+
+    <ClaimRow label="Fewer bacteria, less friction" title="Protein, cells, bacteria and friction all fall by about 90 percent." reverse>
+      <p>Across 38 published comparisons of coated and uncoated surfaces, from eight papers, the median reduction was 94 percent. The range was 53 to 99 percent.</p>
+      <p>The four groups are fibrinogen adsorption, cell attachment, S. aureus and S. epidermidis adhesion, and friction. These are laboratory and explant measurements, not clinical results.</p>
+      <p><a href="/evidence#antifouling">Browse and filter every comparison on the evidence page.</a></p>
+      <Figure slot="figure" name={W05.name} alt={W05.alt} caption={W05.caption} source={W05.sourceShort} width={900} />
+    </ClaimRow>
+
+    <ClaimRow label="It stays on" title="The film was still intact at one year in mice.">
+      <p>Checkpoints run from two weeks in rats to one year in mice. Antifouling was unchanged at six months (Horne 2023, Peel 2024).</p>
+      <p>The hydrogel is covalently grafted, so it is part of the surface rather than a layer on top of it.</p>
+      <p><a href="/durability">Full durability record</a></p>
+<div slot="figure" class="stack">
+              <Figure name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
+      </div>
+    </ClaimRow>
+  </section>
+
+  <section class="section container proc-grid" aria-label="The coating process">
+    <ProcessVideo poster="/media/process-poster.jpg" src="/media/process-loop" aspect="9/16" alt="A coated tube on a rod held in a clear cylinder of monomer solution under blue light, then lifted out and moved to the UV curing area." caption="Dip coating in our lab: the device is lowered into the monomer solution, then moved under UV light to cure. Phone footage, not the automated jig." />
+    <div class="proc-text">
+      <p class="label">The process</p>
+      <h2>One dip, one UV step.</h2>
+      <p>The part is dipped into the monomer solution, then moved under UV light. One UV step grafts the film and crosslinks it.</p>
+    </div>
+  </section>
+
+  <section class="section container" aria-labelledby="apps-h">
+    <div class="section-head">
+      <p class="label">Applications</p>
+      <h2 id="apps-h">Nine device families, one number that matters for each.</h2>
+    </div>
+    <ul class="grid" role="list">
+      {apps.map((a) => (
+        <li><ApplicationCard slug={a.slug} title={a.title} stat={a.stat} statLabel={a.statLabel} image={a.image} alt={a.alt} /></li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section container" aria-labelledby="work-h">
+    <div class="section-head">
+      <p class="label">How we work together</p>
+      <h2 id="work-h">Three steps, and the first one is free.</h2>
+    </div>
+    <Steps steps={steps} />
+  </section>
+
+  <section class="section container" aria-label="Credentials">
+    <dl class="cred">
+      <div><dt class="label">Origin</dt><dd>University of Iowa spin-off.</dd></div>
+      <div><dt class="label">Funding</dt><dd>NIH SBIR Phase I and Phase II.</dd></div>
+      <div><dt class="label">Patents</dt><dd>US 11,525,069; 11,814,526; 12,116,498.</dd></div>
+      <div><dt class="label">Papers</dt><dd>Ten peer-reviewed papers.</dd></div>
+    </dl>
+  </section>
+
+  <CTABand
+    title="Bring us a device with a fouling, scar or friction problem."
+    body="We coat it free, with no cap on quantity, and return it with matched uncoated controls and data."
+    button={{ text: 'Send us parts', href: '/partner#form' }}
+  />
+</Base>
+
+<style>
+  .proc-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: center; }
+  .proc-text { display: grid; gap: var(--space-3); max-width: 36ch; align-content: center; }
+  @media (min-width: 720px) { .proc-grid { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); column-gap: var(--space-6); } }
+  .stack { display: grid; gap: var(--space-4); min-width: 0; }
+  .tiles-note { margin-top: var(--space-3); color: var(--ink-2); font-size: var(--fs-caption); }
+  .tiles-note a { color: var(--blue); text-underline-offset: 0.18em; }
+  .tiles-note.tiles-src { margin-top: var(--space-2); text-transform: none; letter-spacing: 0.02em; }
+  .section-head { display: grid; gap: var(--space-2); margin-bottom: var(--space-5); max-width: 32ch; }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cred {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .cred > div { display: grid; gap: 0.35rem; padding: var(--space-3) 0; border-bottom: 1px solid var(--line); }
+  .cred > div:last-child { border-bottom: 0; }
+  .cred dd { margin: 0; font-size: var(--fs-lead); font-weight: 500; line-height: 1.35; }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1020px) {
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cred { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .cred > div { border-bottom: 0; padding: var(--space-4) var(--space-3); border-left: 1px solid var(--line); }
+    .cred > div:first-child { border-left: 0; padding-left: 0; }
+  }
+</style>

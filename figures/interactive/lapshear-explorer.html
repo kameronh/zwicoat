@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lap-shear explorer (prototype)</title>
+<style>
+  :root { --blue:#0E7FC4; --ink:#1B1F24; --ink2:#4A5058; --muted:#7A8089; --grid:#E6E8EA; --surface:#FCFCFB; }
+  body { margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--ink); background:var(--surface); }
+  .wrap { max-width:1100px; margin:0 auto; padding:24px 16px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:14px; margin-bottom:14px; }
+  .filters { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; margin:0 0 10px; font-size:14px; }
+  .filters label { color:var(--ink2); }
+  select { font: inherit; padding:4px 6px; border:1px solid var(--grid); border-radius:6px; background:#fff; }
+  svg { width:100%; height:auto; display:block; }
+  .tip { position:fixed; pointer-events:none; background:#fff; border:1px solid var(--grid); border-radius:8px; padding:8px 10px; font-size:13px; line-height:1.35; box-shadow:0 4px 14px rgba(0,0,0,.08); display:none; max-width:280px; }
+  .src { color:var(--muted); font-size:12px; margin-top:8px; }
+  noscript img { width:100%; }
+  table { border-collapse:collapse; font-size:13px; margin-top:12px; width:100%; }
+  th, td { text-align:left; padding:4px 8px; border-bottom:1px solid var(--grid); }
+  details summary { cursor:pointer; color:var(--ink2); font-size:14px; margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 id="title">Adhesion tests across seven substrates</h1>
+  <div class="sub" id="subtitle"></div>
+  <div class="filters">
+    <label>Substrate <select id="fSub"><option value="">All</option></select></label>
+    <label>Year <select id="fYear"><option value="">All</option></select></label>
+    <label>Water ratio W <select id="fW"><option value="">All</option></select></label>
+    <label>Failure mode <select id="fFail"><option value="">All</option><option>cohesive</option><option>adhesive</option></select></label>
+  </div>
+  <noscript><img src="../png/W02_lapshear_database.png" alt="Lap-shear bond strength by substrate, static chart"></noscript>
+  <svg id="chart" viewBox="0 0 1100 560" role="img" aria-labelledby="title"></svg>
+  <div class="tip" id="tip"></div>
+  <div class="src">Each dot is one experimental group (3 to 10 samples); black bar = median of the groups. Source: ZwiCoat lap-shear database, 2017 to 2026. Hover or tap a dot for details.</div>
+  <details><summary>Table view (filtered)</summary><table id="tbl"></table></details>
+</div>
+<script>
+// Data is inlined at build time from figures/data/W02_lapshear_groups.json; the prototype fetches it.
+const ORDER = ["PVC","Silicone (PDMS)","Silicone film on glass","Implant silicone","PEEK","Parylene-C","Polyester"];
+const svg = document.getElementById("chart"), tip = document.getElementById("tip");
+let DATA = [];
+function seeded(i){ const x = Math.sin(i*9301+49297)*233280; return x - Math.floor(x); }
+function failClass(f){ f=(f||"").toLowerCase(); if(f.startsWith("c")) return "cohesive"; if(f.startsWith("a")) return "adhesive"; return "other"; }
+function fill(sel, vals){ vals.forEach(v=>{ const o=document.createElement("option"); o.textContent=v; o.value=v; sel.appendChild(o); }); }
+function median(a){ a=[...a].sort((x,y)=>x-y); const n=a.length; return n? (n%2? a[(n-1)/2] : (a[n/2-1]+a[n/2])/2) : 0; }
+function render(){
+  const fs = document.getElementById("fSub").value, fy = document.getElementById("fYear").value, fw = document.getElementById("fW").value, ff = document.getElementById("fFail").value;
+  const rows = DATA.filter(d => (!fs || d.substrate===fs) && (!fy || String(d.year)===fy) && (!fw || String(d.W)===fw) && (!ff || failClass(d.fail)===ff));
+  const subs = ORDER.filter(s => !fs || s===fs);
+  const L=70, R=20, T=20, B=90, W=1100, H=560, pw=W-L-R, ph=H-T-B, ymax=700;
+  const x = i => L + (i+0.5)*pw/subs.length, y = v => T + ph - Math.min(v,ymax)/ymax*ph;
+  let g = "";
+  for(let v=0; v<=ymax; v+=100) g += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#E6E8EA"/><text x="${L-8}" y="${y(v)+4}" font-size="12" text-anchor="end" fill="#4A5058">${v}</text>`;
+  g += `<text transform="translate(16 ${T+ph/2}) rotate(-90)" font-size="13" text-anchor="middle" fill="#4A5058">Lap-shear bond strength, group mean (kPa)</text>`;
+  subs.forEach((s,i)=>{
+    const pts = rows.filter(d=>d.substrate===s); const tests = pts.reduce((a,d)=>a+(d.n||0),0);
+    const half = Math.min(0.42*pw/subs.length, 60);
+    pts.forEach((d,k)=>{ const jx = (seeded(k+i*997)-0.5)*2*half; g += `<circle cx="${x(i)+jx}" cy="${y(d.kPa)}" r="5" fill="#0E7FC4" fill-opacity="0.6" stroke="#FCFCFB" stroke-width="1.5" data-i="${DATA.indexOf(d)}"/>`; });
+    if(pts.length) g += `<line x1="${x(i)-half-8}" x2="${x(i)+half+8}" y1="${y(median(pts.map(d=>d.kPa)))}" y2="${y(median(pts.map(d=>d.kPa)))}" stroke="#1B1F24" stroke-width="3"/>`;
+    g += `<text x="${x(i)}" y="${T+ph+24}" font-size="13" text-anchor="middle" fill="#1B1F24">${s}</text><text x="${x(i)}" y="${T+ph+44}" font-size="12" text-anchor="middle" fill="#7A8089">${pts.length} groups, ${tests||"?"} tests</text>`;
+  });
+  svg.innerHTML = g;
+  const total = rows.reduce((a,d)=>a+(d.n||0),0);
+  document.getElementById("subtitle").textContent = `${rows.length} experimental groups, ${total.toLocaleString()} individual tests shown`;
+  const tbl = document.getElementById("tbl");
+  tbl.innerHTML = "<tr><th>Substrate</th><th>kPa</th><th>n</th><th>Year</th><th>W</th><th>C</th><th>Failure</th><th>Scientist</th></tr>" + rows.map(d=>`<tr><td>${d.substrate}</td><td>${d.kPa}</td><td>${d.n||""}</td><td>${d.year}</td><td>${d.W??""}</td><td>${d.C??""}</td><td>${d.fail||""}</td><td>${d.scientist}</td></tr>`).join("");
+}
+svg.addEventListener("mousemove", e => {
+  const c = e.target.closest("circle"); if(!c){ tip.style.display="none"; return; }
+  const d = DATA[+c.dataset.i];
+  tip.innerHTML = `<b>${d.substrate}</b><br>${d.kPa} kPa, n = ${d.n||"?"}<br>W ${d.W??"?"}, C ${d.C??"?"}<br>${d.year}, ${d.scientist}<br>failure: ${d.fail||"not stated"}<br><span style="color:#7A8089">${d.campaign}</span>`;
+  tip.style.display="block"; tip.style.left=(e.clientX+14)+"px"; tip.style.top=(e.clientY+14)+"px";
+});
+svg.addEventListener("mouseleave", ()=> tip.style.display="none");
+fetch("../data/W02_lapshear_groups.json").then(r=>r.json()).then(j=>{
+  DATA = j;
+  fill(document.getElementById("fSub"), ORDER);
+  fill(document.getElementById("fYear"), [...new Set(j.map(d=>String(d.year)))].sort());
+  fill(document.getElementById("fW"), [...new Set(j.map(d=>d.W).filter(v=>v!=null))].sort((a,b)=>a-b).map(String));
+  ["fSub","fYear","fW","fFail"].forEach(id=>document.getElementById(id).addEventListener("change", render));
+  render();
+}).catch(()=>{ svg.outerHTML = '<img src="../png/W02_lapshear_database.png" alt="Lap-shear bond strength by substrate, static chart" style="width:100%">'; });
+</script>
+</body>
+</html>

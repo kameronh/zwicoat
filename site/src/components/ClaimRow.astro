@@ -1,0 +1,42 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  reverse?: boolean;
+}
+const { label, title, reverse = false } = Astro.props;
+const hasFigure = Astro.slots.has('figure');
+---
+<section class:list={['claim', { reverse }]}>
+  <div class="claim-text">
+    <p class="label">{label}</p>
+    <h2 class="claim-title">{title}</h2>
+    <div class="claim-body"><slot /></div>
+  </div>
+  {hasFigure && <div class="claim-figure"><slot name="figure" /></div>}
+</section>
+
+<style>
+  .claim {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--line);
+  }
+  .claim-text { display: grid; gap: var(--space-3); align-content: start; }
+  .claim-title { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem); }
+  .claim-body { display: grid; gap: var(--space-3); color: var(--ink-2); max-width: 46ch; }
+  .claim-body :global(p) { font-size: 1.0625rem; }
+  .claim-body :global(a) { color: var(--blue); text-underline-offset: 0.18em; }
+  .claim-figure { min-width: 0; }
+
+  @media (min-width: 900px) {
+    .claim { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
+    .claim-text { grid-column: 1 / span 5; position: sticky; top: calc(var(--nav-h) + var(--space-4)); }
+    .claim-figure { grid-column: 6 / span 7; }
+    .reverse .claim-text { grid-column: 8 / span 5; grid-row: 1; }
+    .reverse .claim-figure { grid-column: 1 / span 7; grid-row: 1; }
+  }
+</style>

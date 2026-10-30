@@ -1,0 +1,87 @@
+---
+import apps from '../data/applications-index.json';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container">
+    <div class="cols">
+      <div class="col">
+        <h2 class="label">Company</h2>
+        <ul role="list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/partner">Partner with us</a></li>
+          <li><a href="/technology">Technology</a></li>
+          <li><a href="/fcoi">FCOI policy</a></li>
+        </ul>
+      </div>
+      <div class="col col-apps">
+        <h2 class="label">Applications</h2>
+        <ul role="list">
+          {apps.map((a) => <li><a href={`/applications/${a.slug}`}>{a.title}</a></li>)}
+        </ul>
+      </div>
+      <div class="col">
+        <h2 class="label">Evidence</h2>
+        <ul role="list">
+          <li><a href="/evidence">Ten years of data</a></li>
+          <li><a href="/durability">Durability</a></li>
+          <li><a href="/publications">Publications</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h2 class="label">Contact</h2>
+        <address>
+          ZwiCoat Materials Innovations, LLC<br />
+          2635 Johnsons XING NE<br />
+          Solon, IA 52333<br />
+          <a href="mailto:info@zwicoat.com">info@zwicoat.com</a><br />
+          <a href="tel:+19176094598">(917) 609-4598</a>
+        </address>
+        <p><a class="btn-outline foot-btn" href="/partner#form">Send us parts</a></p>
+      </div>
+    </div>
+
+    <div class="legal">
+      <a class="foot-logo" href="/" aria-label="ZwiCoat home"><img src="/logo.png" alt="ZwiCoat" width="63" height="32" loading="lazy" decoding="async" /></a>
+      <p>University of Iowa spin-off. Supported by NIH SBIR awards.</p>
+      <p>ZwiGuard is a trademark of ZwiCoat Materials Innovations, LLC.</p>
+      <p>&copy; {year} ZwiCoat Materials Innovations, LLC. <a href="/fcoi">FCOI policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--section-y);
+    padding-block: var(--space-6) var(--space-5);
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    font-size: var(--fs-caption);
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .col h2 { margin-bottom: var(--space-3); }
+  .col ul { padding: 0; margin: 0; list-style: none; display: grid; gap: 0.15rem; }
+  .col a, .legal a { color: var(--ink); text-decoration: none; display: inline-block; padding-block: 0.3rem; }
+  .col a:hover, .legal a:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 0.18em; }
+  address { font-style: normal; line-height: 1.7; color: var(--ink-2); }
+  address a { padding-block: 0; }
+  .foot-btn { margin-top: var(--space-3); color: var(--blue) !important; text-decoration: none !important; padding: 0.65rem 1.25rem !important; }
+  .legal {
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 0.4rem;
+    color: var(--muted);
+  }
+  .legal a { color: var(--ink-2); padding-block: 0; text-decoration: underline; text-underline-offset: 0.18em; }
+  .legal .foot-logo { display: inline-block; justify-self: start; padding: 0; text-decoration: none; margin-bottom: var(--space-2); }
+  .foot-logo img { height: 32px; width: auto; }
+  @media (min-width: 720px) {
+    .cols { grid-template-columns: 1fr 1.4fr 1fr 1.3fr; gap: var(--space-4); }
+  }
+</style>

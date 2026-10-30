@@ -1,0 +1,247 @@
+---
+import apps from '../data/applications-index.json';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const is = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
+const links = [
+  { href: '/technology', text: 'Technology' },
+  { href: '/durability', text: 'Durability' },
+  { href: '/evidence', text: 'Evidence' },
+];
+const after = [
+  { href: '/partner', text: 'Partner with us' },
+  { href: '/about', text: 'About' },
+];
+---
+<header class="nav" data-nav>
+  <div class="container nav-bar">
+    <a class="brand" href="/" aria-label="ZwiCoat home">
+      <img class="brand-logo" src="/logo.png" alt="ZwiCoat" width="79" height="40" decoding="async" />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+      <span class="menu-toggle-text">Menu</span>
+      <svg class="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" /></svg>
+      <svg class="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" /></svg>
+    </button>
+
+    <nav class="menu" id="site-menu" aria-label="Main" data-menu>
+      <ul class="menu-list" role="list">
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={is(l.href) ? 'page' : undefined}>{l.text}</a></li>
+        ))}
+        <li class="has-sub" data-sub>
+          <button type="button" class:list={['sub-toggle', { current: is('/applications') }]} aria-expanded="false" aria-controls="apps-menu" data-sub-toggle>
+            Applications
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1.5 3.5L5 7l3.5-3.5" /></svg>
+          </button>
+          <ul class="sub-list" id="apps-menu" role="list" data-sub-list>
+            <li class="sub-all"><a href="/applications">All applications</a></li>
+            {apps.map((a) => (
+              <li><a href={`/applications/${a.slug}`} aria-current={path === `/applications/${a.slug}` ? 'page' : undefined}>{a.title}</a></li>
+            ))}
+          </ul>
+        </li>
+        {after.map((l) => (
+          <li><a href={l.href} aria-current={is(l.href) ? 'page' : undefined}>{l.text}</a></li>
+        ))}
+      </ul>
+      <a class="btn nav-cta" href="/partner#form">Send us parts</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: var(--nav-h);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--ink);
+    flex: none;
+  }
+  .brand-logo { height: 40px; width: auto; }
+
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-weight: 600;
+  }
+  .icon-close { display: none; }
+  .menu-toggle[aria-expanded='true'] .icon-open { display: none; }
+  .menu-toggle[aria-expanded='true'] .icon-close { display: block; }
+
+  .menu { display: flex; align-items: center; gap: var(--space-4); }
+  .menu-list { display: flex; align-items: center; gap: var(--space-1); padding: 0; margin: 0; list-style: none; }
+  .menu-list > li { position: relative; }
+  .menu-list > li > a,
+  .sub-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius);
+  }
+  .menu-list > li > a:hover,
+  .sub-toggle:hover { color: var(--blue); }
+  .menu-list > li > a[aria-current='page'],
+  .sub-toggle.current { color: var(--blue); }
+  .sub-toggle svg { transition: transform 0.15s; }
+  .sub-toggle[aria-expanded='true'] svg { transform: rotate(180deg); }
+
+  .sub-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 300px;
+    margin: 0;
+    padding: var(--space-2);
+    list-style: none;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .sub-toggle[aria-expanded='true'] + .sub-list { display: block; }
+  .sub-list a {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+  .sub-list a:hover { background: var(--blue-tint); color: var(--blue-deep); }
+  .sub-list a[aria-current='page'] { color: var(--blue); font-weight: 600; }
+  .sub-all { border-bottom: 1px solid var(--line); margin-bottom: var(--space-1); padding-bottom: var(--space-1); }
+  .sub-all a { font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
+
+  /* No JavaScript: open the menu on hover or focus inside */
+  :global(html:not(.js)) .has-sub:hover .sub-list,
+  :global(html:not(.js)) .has-sub:focus-within .sub-list { display: block; }
+
+  @media (max-width: 1019px) {
+    .menu-toggle { display: inline-flex; }
+    .menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-3);
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      padding: var(--space-3) var(--gutter) var(--space-4);
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .menu.open { display: flex; }
+    :global(html:not(.js)) .menu { display: flex; position: static; max-height: none; }
+    :global(html:not(.js)) .menu-toggle { display: none; }
+    :global(html:not(.js)) .nav-bar { flex-wrap: wrap; padding-block: var(--space-2); }
+    .menu-list { flex-direction: column; align-items: stretch; gap: 0; }
+    .menu-list > li { border-bottom: 1px solid var(--line); }
+    .menu-list > li > a, .sub-toggle { width: 100%; justify-content: space-between; min-height: 48px; padding: 0; font-size: 1.0625rem; }
+    .sub-list {
+      position: static;
+      min-width: 0;
+      padding: 0 0 var(--space-2) var(--space-3);
+      border: 0;
+    }
+    .sub-list a { padding: 0.65rem 0; min-height: 44px; }
+    .sub-all { border-bottom: 0; margin: 0; padding: 0; }
+    .nav-cta { width: 100%; }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  if (nav) {
+    const toggle = nav.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
+    const menu = nav.querySelector<HTMLElement>('[data-menu]')!;
+    const sub = nav.querySelector<HTMLElement>('[data-sub]')!;
+    const subBtn = nav.querySelector<HTMLButtonElement>('[data-sub-toggle]')!;
+    const subList = nav.querySelector<HTMLElement>('[data-sub-list]')!;
+    const desktop = window.matchMedia('(min-width: 1020px) and (hover: hover)');
+
+    const setSub = (open: boolean) => subBtn.setAttribute('aria-expanded', String(open));
+    const setMenu = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('open', open);
+      if (!open) setSub(false);
+    };
+    const items = () => Array.from(subList.querySelectorAll<HTMLAnchorElement>('a'));
+
+    toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+    // On a desktop pointer, hover already opened the menu, so a click keeps it open.
+    subBtn.addEventListener('click', () => setSub(desktop.matches ? true : subBtn.getAttribute('aria-expanded') !== 'true'));
+
+    // Hover opens on desktop pointers only; click and keyboard work everywhere.
+    sub.addEventListener('mouseenter', () => { if (desktop.matches) setSub(true); });
+    sub.addEventListener('mouseleave', () => { if (desktop.matches) setSub(false); });
+
+    // Keyboard: Down opens and moves in, arrows move, Escape closes and returns to the button.
+    subBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setSub(true);
+        items()[0]?.focus();
+      }
+    });
+    subList.addEventListener('keydown', (e) => {
+      const list = items();
+      const i = list.indexOf(document.activeElement as HTMLAnchorElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); list[(i + 1) % list.length].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
+      else if (e.key === 'Home') { e.preventDefault(); list[0].focus(); }
+      else if (e.key === 'End') { e.preventDefault(); list[list.length - 1].focus(); }
+    });
+    nav.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (subBtn.getAttribute('aria-expanded') === 'true') {
+        setSub(false);
+        subBtn.focus();
+      } else if (toggle.getAttribute('aria-expanded') === 'true') {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+    // Tab out of the menu list closes it; a click elsewhere closes it too.
+    sub.addEventListener('focusout', (e) => {
+      const next = e.relatedTarget as Node | null;
+      if (next && !sub.contains(next)) setSub(false);
+    });
+    document.addEventListener('click', (e) => {
+      if (!sub.contains(e.target as Node)) setSub(false);
+    });
+    desktop.addEventListener('change', () => setSub(false));
+  }
+</script>

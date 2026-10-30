@@ -1,0 +1,11 @@
+[
+  {"slug": "neural-interfaces", "title": "Neural interfaces", "stat": "~50%", "statLabel": "lower total electrode impedance after four weeks in sheep (Ben-Shlomo 2026)", "image": "/images/lab/ci-array-coated-electrodes-01.jpg", "alt": "A cochlear implant electrode array coated in blue hydrogel, with the electrode contacts visible through the coating."},
+  {"slug": "tissue-expanders", "title": "Tissue expanders and breast implants", "stat": "82 to 27 µm", "statLabel": "capsule thickness around coated silicone in mice at six weeks (Horne 2023)", "image": "/images/lab/expander-inflated-200pct-01.jpg", "alt": "A tissue expander coated in blue hydrogel, inflated to 200 percent of its starting volume, with the blue coating covering the whole shell."},
+  {"slug": "vascular-access", "title": "Vascular access", "stat": "~97%", "statLabel": "less S. aureus adhesion on coated silicone in vitro (Shen 2021)", "image": null, "alt": ""},
+  {"slug": "indwelling-catheters", "title": "Indwelling catheters", "stat": "12.5 vs 12.6%", "statLabel": "symptomatic CAUTI with silver alloy versus standard catheters: the problem a new surface must solve (Pickard 2012)", "image": null, "alt": ""},
+  {"slug": "airway", "title": "Airway tubes", "stat": "~40%", "statLabel": "less peak insertion force for coated cochlear implant arrays in human cadaveric cochleae (Bennion 2021)", "image": "/images/lab/ett-cuff-coated.jpg", "alt": "The cuff of a coated endotracheal tube, an even blue, hanging against a gray wall."},
+  {"slug": "gi-stents", "title": "GI stents", "stat": "22.5 vs 30 min", "statLabel": "median time to clear a dried mucus plug, coated against uncoated tubes (Horne 2025)", "image": null, "alt": ""},
+  {"slug": "peek-and-orthopedic", "title": "PEEK and orthopedic", "stat": "feasibility", "statLabel": "PEEK bonding is measured on your parts", "image": null, "alt": ""},
+  {"slug": "sensors", "title": "Sensors", "stat": "~60%", "statLabel": "thinner capsule around implanted arrays at one year in mice (Horne 2023)", "image": null, "alt": ""},
+  {"slug": "ent-tubes", "title": "ENT and feeding tubes", "stat": "~0°", "statLabel": "tilt to start saline flow on coated silicone sheets, against 45 uncoated (Horne 2025)", "image": null, "alt": ""}
+]

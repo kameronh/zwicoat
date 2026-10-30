@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import ApplicationCard from '../../components/ApplicationCard.astro';
+import apps from '../../data/applications-index.json';
+---
+<Base title="Applications" description="Nine device families, each with the published study that matters most for it. ZwiGuard is a zwitterionic hydrogel coating, tested in mice, rats, sheep and the laboratory.">
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Applications</p>
+      <h1>Nine device families, one number that matters for each.</h1>
+      <p class="lead">Every page names the problem first, then the published study that bears on it. The number on each card comes from that study, and every page lists its sources. No coated device has been implanted in a person. Where a substrate or result is not yet published, the page says the feasibility round measures it on your parts.</p>
+    </header>
+
+    <ul class="grid" role="list">
+      {apps.map((a) => (
+        <li><ApplicationCard slug={a.slug} title={a.title} stat={a.stat} statLabel={a.statLabel} image={a.image} alt={a.alt} /></li>
+      ))}
+    </ul>
+  </div>
+
+</Base>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1020px) {
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>

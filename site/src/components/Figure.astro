@@ -1,0 +1,49 @@
+---
+import { imageSize } from '../lib/imagesize';
+
+interface Props {
+  name: string;
+  alt: string;
+  caption: string;
+  source: string;
+  width?: number;
+  format?: 'png' | 'svg';
+}
+const { name, alt, caption, source, width = 1000, format = 'png' } = Astro.props;
+const src = `/figures/${name}.${format}`;
+const size = imageSize(src);
+const height = Math.round((width * size.height) / size.width);
+// Theme B draws a title block (figure number and source) above the image. Hidden in every other theme.
+const figId = name.split('_')[0];
+---
+<figure class="figure">
+  <div class="fig-frame">
+    <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">FIG {figId}</span><span class="fig-tag-src">{source}</span></p>
+    <img class="figure-img" src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+  </div>
+  <figcaption class="figure-cap">
+    <p class="figure-caption">{caption}</p>
+    <p class="figure-source label">Source: {source}</p>
+  </figcaption>
+</figure>
+
+<style>
+  .figure { margin: 0; min-width: 0; max-width: 100%; }
+  /* The frame is a thin drawing border with a mono title block along the top
+     (the default design; themes a and c turn the tag and border off with tokens). */
+  .fig-frame { min-width: 0; max-width: 100%; border: var(--fig-frame-border); background: var(--paper); }
+  /* The image never exceeds its frame, whatever its width and height attributes say. */
+  .figure-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: var(--fig-img-border);
+    border-radius: var(--radius);
+    background: var(--paper);
+  }
+  .figure-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .figure-caption { color: var(--ink); }
+  .figure-source { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+
+</style>

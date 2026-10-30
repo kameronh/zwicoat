@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="629.1pt" height="429.124937pt" viewBox="0 0 629.1 429.124937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-29T21:18:57.249177</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 429.124937 
+L 629.1 429.124937 
+L 629.1 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 39.177 48.939017 
+L 199.323 48.939017 
+Q 209.088 48.939017 209.088 58.086617 
+L 209.088 208.107257 
+Q 209.088 217.254857 199.323 217.254857 
+L 39.177 217.254857 
+Q 29.412 217.254857 29.412 208.107257 
+L 29.412 58.086617 
+Q 29.412 48.939017 39.177 48.939017 
+z
+" clip-path="url(#pf80d76f87f)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 234.477 48.939017 
+L 394.623 48.939017 
+Q 404.388 48.939017 404.388 58.086617 
+L 404.388 208.107257 
+Q 404.388 217.254857 394.623 217.254857 
+L 234.477 217.254857 
+Q 224.712 217.254857 224.712 208.107257 
+L 224.712 58.086617 
+Q 224.712 48.939017 234.477 48.939017 
+z
+" clip-path="url(#pf80d76f87f)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 429.777 48.939017 
+L 589.923 48.939017 
+Q 599.688 48.939017 599.688 58.086617 
+L 599.688 208.107257 
+Q 599.688 217.254857 589.923 217.254857 
+L 429.777 217.254857 
+Q 420.012 217.254857 420.012 208.107257 
+L 420.012 58.086617 
+Q 420.012 48.939017 429.777 48.939017 
+z
+" clip-path="url(#pf80d76f87f)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 39.177 231.891017 
+L 199.323 231.891017 
+Q 209.088 231.891017 209.088 241.038617 
+L 209.088 391.059257 
+Q 209.088 400.206857 199.323 400.206857 
+L 39.177 400.206857 
+Q 29.412 400.206857 29.412 391.059257 
+L 29.412 241.038617 
+Q 29.412 231.891017 39.177 231.891017 
+z
+" clip-path="url(#pf80d76f87f)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 234.477 231.891017 
+L 394.623 231.891017 
+Q 404.388 231.891017 404.388 241.038617 
+L 404.388 391.059257 
+Q 404.388 400.206857 394.623 400.206857 
+L 234.477 400.206857 
+Q 224.712 400.206857 224.712 391.059257 
+L 224.712 241.038617 
+Q 224.712 231.891017 234.477 231.891017 
+z
+" clip-path="url(#pf80d76f87f)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 429.777 231.891017 
+L 589.923 231.891017 
+Q 599.688 231.891017 599.688 241.038617 
+L 599.688 391.059257 
+Q 599.688 400.206857 589.923 400.206857 
+L 429.777 400.206857 
+Q 420.012 400.206857 420.012 391.059257 
+L 420.012 241.038617 
+Q 420.012 231.891017 429.777 231.891017 
+z
+" clip-path="url(#pf80d76f87f)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="119.25" y="90.165377" transform="rotate(-0 119.25 90.165377)">182</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(58.563281 117.26396)">experiments with a written</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(105.536836 128.745464)">report</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(60.725391 172.368108)">Every result traces to a dated</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(77.984297 182.636968)">report in our archive.</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="314.55" y="90.165377" transform="rotate(-0 314.55 90.165377)">1,056</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(257.932031 117.26396)">adhesion tests on seven</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(290.331914 128.745464)">substrates</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(268.77375 167.162382)">Durable: bond strength</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(252.023203 177.431241)">characterized on silicone, PVC,</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(240.759141 187.737226)">PEEK, parylene-C and polyurethane.</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="509.85" y="90.165377" transform="rotate(-0 509.85 90.165377)">468</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(454.405898 117.26396)">coated cochlear implant</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(473.086875 128.745464)">samples scored</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(450.068906 172.368108)">Repeatable: a scored process</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(442.900547 182.531499)">record behind every coated array.</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="119.25" y="273.117377" transform="rotate(-0 119.25 273.117377)">136</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(43.970742 300.074456)">animals with recorded outcomes</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(75.781641 311.715921)">(mice, rats, sheep)</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(60.477891 355.320108)">Four models, from bench to a</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(86.738906 365.483499)">working implant.</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="314.55" y="273.117377" transform="rotate(-0 314.55 273.117377)">2,812</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'; text-anchor: middle" x="314.55" y="305.956712" transform="rotate(-0 314.55 305.956712)">raw data files archived</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(246.933984 355.320108)">Traceable: the raw data sit behind</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(291.043125 365.483499)">every chart.</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="509.85" y="273.117377" transform="rotate(-0 509.85 273.117377)">20</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(443.026523 300.21596)">scientists and students since</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(498.172031 311.697464)">2016</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(451.834453 355.322218)">Ten years of work across two</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(444.650625 365.591077)">university labs and the company.</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #1b1f24; font: 700 14px 'Arial'; text-anchor: start" x="21.6" y="31.620937" transform="rotate(-0 21.6 31.620937)">And in the archive</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf80d76f87f">
+   <rect x="21.6" y="41.620937" width="585.9" height="365.904"/>
+  </clipPath>
+ </defs>
+</svg>

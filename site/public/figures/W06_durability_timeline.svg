@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="725.673471pt" height="311.284969pt" viewBox="0 0 725.673471 311.284969" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-29T21:18:54.953499</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 311.284969 
+L 725.673471 311.284969 
+L 725.673471 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 34.473471 272.463562 
+L 704.073471 272.463562 
+L 704.073471 61.791562 
+L 34.473471 61.791562 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m1201964ee8" d="M 0 0 
+L 0 3.5 
+" style="stroke: #4a5058; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1201964ee8" x="46.430614" y="272.463562" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="46.430614" y="287.369812" transform="rotate(-0 46.430614 287.369812)">Day 0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m1201964ee8" x="195.8949" y="272.463562" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="195.8949" y="287.337156" transform="rotate(-0 195.8949 287.337156)">3 months</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m1201964ee8" x="345.359185" y="272.463562" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="345.359185" y="287.337156" transform="rotate(-0 345.359185 287.337156)">6 months</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m1201964ee8" x="494.823471" y="272.463562" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="494.823471" y="287.337156" transform="rotate(-0 494.823471 287.337156)">9 months</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m1201964ee8" x="644.287757" y="272.463562" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="fill: #4a5058; font: 11px 'Arial'; text-anchor: middle" x="644.287757" y="287.369812" transform="rotate(-0 644.287757 287.369812)">1 year</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="LineCollection_1">
+    <path d="M 46.430614 167.127562 
+L 692.116328 167.127562 
+" clip-path="url(#p337d09594b)" style="fill: none; stroke: #c9ced4; stroke-width: 3"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 34.473471 272.463562 
+L 704.073471 272.463562 
+" style="fill: none; stroke: #e6e8ea; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m110d8db692" d="M 0 5.91608 
+C 1.568963 5.91608 3.073876 5.292724 4.1833 4.1833 
+C 5.292724 3.073876 5.91608 1.568963 5.91608 0 
+C 5.91608 -1.568963 5.292724 -3.073876 4.1833 -4.1833 
+C 3.073876 -5.292724 1.568963 -5.91608 0 -5.91608 
+C -1.568963 -5.91608 -3.073876 -5.292724 -4.1833 -4.1833 
+C -5.292724 -3.073876 -5.91608 -1.568963 -5.91608 0 
+C -5.91608 1.568963 -5.292724 3.073876 -4.1833 4.1833 
+C -3.073876 5.292724 -1.568963 5.91608 0 5.91608 
+z
+" style="stroke: #fcfcfb; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#p337d09594b)">
+     <use xlink:href="#m110d8db692" x="70.3449" y="167.127562" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_4">
+    <path d="M 65.950406 115.94115 
+Q 68.062225 140.539308 70.174044 165.137466 
+" style="fill: none; stroke: #8a929b; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(32.688281 89.828437)">2 weeks in rats</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(21.6 100.015406)">still repels S. aureus</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(41.388203 110.063437)">Shen 2021</text>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#p337d09594b)">
+     <use xlink:href="#m110d8db692" x="82.302042" y="167.127562" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_5">
+    <path d="M 121.087833 213.748805 
+Q 102.335292 191.207901 83.58275 168.666997 
+" style="fill: none; stroke: #8a929b; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(102.320357 224.087484)">3 weeks in mice</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(97.293521 234.274453)">friction unchanged</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(114.717115 244.433812)">Peel 2024</text>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#p337d09594b)">
+     <use xlink:href="#m110d8db692" x="96.052757" y="167.127562" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 182.088562 119.932128 
+Q 139.946299 143.049508 97.804035 166.166889 
+" style="fill: none; stroke: #8a929b; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(155.477606 94.872047)">4 weeks in a sheep cochlea</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(140.702137 104.920078)">no delamination, all arrays working</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(175.807606 115.079437)">Ben-Shlomo 2026</text>
+   </g>
+   <g id="PathCollection_4">
+    <g clip-path="url(#p337d09594b)">
+     <use xlink:href="#m110d8db692" x="345.359185" y="167.127562" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_7">
+    <path d="M 345.359185 213.282494 
+Q 345.359185 191.203681 345.359185 169.124868 
+" style="fill: none; stroke: #8a929b; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(309.458092 224.087484)">6 months in mice</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(273.805631 234.274453)">antifouling unchanged, films intact</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(296.506177 244.433812)">Horne 2023, Peel 2024</text>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#p337d09594b)">
+     <use xlink:href="#m110d8db692" x="644.287757" y="167.127562" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_8">
+    <path d="M 614.218487 120.646802 
+Q 628.710796 143.048861 643.203105 165.450919 
+" style="fill: none; stroke: #8a929b; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(519.281585 94.733109)">1 year in mice on human implant arrays</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(536.699983 105.031406)">film intact, capsule 60% thinner</text>
+    <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(577.616038 115.079437)">Horne 2023</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #7a8089; font: 10.5px 'Arial'; text-anchor: start" x="34.473471" y="54.314841" transform="rotate(-0 34.473471 54.314841)">Covalently grafted, so the film is part of the surface rather than a layer on it</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #1b1f24; font: 700 14px 'Arial'; text-anchor: start" x="34.473471" y="31.791562" transform="rotate(-0 34.473471 31.791562)">The coating stays on: checkpoints from two weeks to one year in vivo</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p337d09594b">
+   <rect x="34.473471" y="61.791562" width="669.6" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,317 @@
+---
+import { W04, W05 } from '../data/figure-text';
+import Base from '../layouts/Base.astro';
+import ClaimRow from '../components/ClaimRow.astro';
+import Figure from '../components/Figure.astro';
+import Photo from '../components/Photo.astro';
+import ProcessVideo from '../components/ProcessVideo.astro';
+import References from '../components/References.astro';
+import CTABand from '../components/CTABand.astro';
+
+const waterX = Array.from({ length: 16 }, (_, i) => 44 + i * 24);
+const bondX = Array.from({ length: 10 }, (_, i) => 50 + i * 40);
+const pairX = [80, 170, 260, 350, 440];
+const dots = [
+  { x: 90, r: 7, label: 'protein' },
+  { x: 220, r: 16, label: 'cell' },
+  { x: 350, r: 10, label: 'bacterium' },
+];
+---
+<Base title="Technology" description="ZwiGuard is a zwitterionic hydrogel that binds a shell of water, is covalently grafted to the device and crosslinked in one UV step. It is a hydration barrier, not a drug.">
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Technology</p>
+      <h1>A hydration barrier, not a drug.</h1>
+      <p class="lead">Every device that touches the body starts the same way. Within seconds, proteins coat it. Bacteria, cells and clot build on that film. Depending on the device, the result is a scar capsule, an infection, a blockage or a lost signal. ZwiGuard&trade; resists that first step.</p>
+    </header>
+
+    <!-- How it works -->
+    <ClaimRow label="How it works" title="A shell of water that nothing can displace.">
+      <p>ZwiGuard is a zwitterionic hydrogel made from sulfobetaine and carboxybetaine methacrylate.</p>
+      <p>Each repeat unit carries balanced positive and negative charges and a strong dipole. The dipole binds a tightly ordered shell of water.</p>
+      <p>Proteins, cells and bacteria cannot displace that shell, so they do not stick. The hold is stronger than the hydrogen-bonded hydration of PEG.</p>
+      <p>Zwitterionic hydrogels implanted in mice resisted the foreign body reaction in a 2013 study (Zhang et al., Nature Biotechnology).</p>
+      <p>One UV step does two jobs. Benzophenone grafts the hydrogel to the device surface. The same light crosslinks the network.</p>
+      <p>The result is a crosslinked hydrogel anchored to the device. It is not a thin tethered brush, an adsorbed layer that can wash off, or an additive blended into the polymer.</p>
+      <figure slot="figure" class="schematic">
+        <svg viewBox="0 0 560 400" role="img" aria-labelledby="hiw-t hiw-d" class="hiw">
+          <title id="hiw-t">How the coating works</title>
+          <desc id="hiw-d">A gray device surface is joined by short covalent bonds to a blue hydrogel layer that holds positive and negative charge pairs. A row of bound water molecules sits on top of the hydrogel. A protein, a cell and a bacterium approach from above and each turns away.</desc>
+          <defs>
+            <marker id="hiw-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 z" class="s-head" />
+            </marker>
+          </defs>
+
+          {dots.map((d) => (
+            <g>
+              <text x={d.x} y="22" text-anchor="middle" class="s-label">{d.label}</text>
+              <circle cx={d.x} cy="56" r={d.r} class="s-dot" />
+              <path d={`M ${d.x - 4} 84 C ${d.x - 4} 172, ${d.x + 40} 172, ${d.x + 40} 108`} class="s-arrow" marker-end="url(#hiw-arrow)" />
+            </g>
+          ))}
+
+          {waterX.map((x) => <circle cx={x} cy="172" r="7" class="s-water" />)}
+          <text x="428" y="177" class="s-note">bound water</text>
+
+          <rect x="30" y="196" width="500" height="94" class="s-gel" />
+          <text x="46" y="222" class="s-on">ZwiGuard hydrogel</text>
+          {pairX.map((x) => (
+            <text x={x} y="268" text-anchor="middle" class="s-pair">+ &#8722;</text>
+          ))}
+
+          {bondX.map((x) => <line x1={x} y1="290" x2={x} y2="334" class="s-bond" />)}
+          <text x="428" y="317" class="s-note">covalent bonds</text>
+
+          <rect x="30" y="334" width="500" height="56" class="s-slab" />
+          <text x="46" y="368" class="s-on">Device surface</text>
+        </svg>
+        <figcaption class="fig-cap">
+          <p>A protein, a cell and a bacterium approach the water shell and turn away. Schematic, not to scale.</p>
+          <p class="label src">Source: ZwiCoat schematic. Mechanism after Zhang et al. 2013, Nature Biotechnology 31:553, and the photografting method in US 11,525,069.</p>
+        </figcaption>
+      </figure>
+    </ClaimRow>
+
+    <!-- What it does -->
+    <ClaimRow label="Antifouling" title="Protein, cells and bacteria stay off." reverse>
+      <p>Across 38 published comparisons of coated and uncoated surfaces, from eight papers, the median reduction was 94 percent. The range was 53 to 99 percent.</p>
+      <p>Fibrinogen adsorption fell by 91 to 98 percent (Leigh 2017, Leigh 2019, Jensen 2021). S. aureus adhesion fell by 97 percent in suspension and 84 percent on explants from rats (Shen 2021).</p>
+      <p>Friction against dermis was 94 percent lower (Bennion 2021). These are bench and explant measurements, not clinical results.</p>
+      <p><a href="/evidence#antifouling">Browse and filter every comparison on the evidence page.</a></p>
+      <div slot="figure" class="stack">
+        <Figure name={W05.name} alt={W05.alt} caption={W05.caption} source={W05.sourceShort} width={900} />
+        <!-- PENDING APPROVAL: Leigh 2019 stripe micrographs (stripes-protein, stripes-cells). Reuse and the credit (Leigh 2019 vs 2017) are unconfirmed. Held until Kam approves. -->
+      </div>
+    </ClaimRow>
+
+    <ClaimRow label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
+      <p>In mice, rats and sheep, from four weeks to one year, the scar around coated silicone and coated cochlear implant arrays was smaller than around uncoated ones.</p>
+      <p>The largest reduction, about 85 percent less fibrosis, was in sheep cochleae at four weeks (Ben-Shlomo 2026, Hearing Research). The basal-turn measurement in the same study was not statistically significant.</p>
+      <p>In rats, four coated groups had capsules about 72 to 83 percent thinner at six weeks (Barrera 2026, ACS Applied Polymer Materials).</p>
+      <p>At one year in mice, the film was still intact and the capsule was about 60 percent thinner (Horne 2023).</p>
+      <div slot="figure" class="stack">
+        <Figure name={W04.name} alt={W04.alt} caption={W04.caption} source={W04.sourceShort} width={1000} />
+        <Figure name="W27_capsule_thickness_mice" alt="Capsule thickness in mice. At six weeks on flat silicone the zwitterionic coating gave a capsule 67 percent thinner than uncoated, while a non-zwitterionic hydrogel control did not differ significantly. At one year on human cochlear implant arrays the coated capsule was 62 percent thinner." caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year. A non-zwitterionic hydrogel control did not differ significantly from uncoated." source="Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011" width={900} />
+        <!-- PENDING APPROVAL: Horne 2023 Fig 7 histology photo (Elsevier), file histology-array-1yr, one-year tissue sections. Held until reuse is confirmed. -->
+      </div>
+    </ClaimRow>
+
+    <ClaimRow label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about 40 percent." reverse>
+      <p>On silicone, friction fell by more than 90 percent against steel, ceramic and dermis (Bennion 2021).</p>
+      <p>A coated cochlear implant electrode needed about 40 percent less peak force to enter human cadaveric cochleae (Bennion 2021).</p>
+      <p>A later cadaver study found that coated arrays needed about half the peak force (Peel 2024).</p>
+      <Figure slot="figure" name="W07_insertion_force" alt="Two bar charts for coated and uncoated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force was 64.2 millinewtons uncoated and 37.0 coated, 42 percent lower (p = 0.001). Force variation was 89.9 millinewtons per second uncoated and 52.1 coated, 42 percent lower (p = 0.03)." caption="Coated cochlear implant arrays needed about 40 percent less peak force, and had about 42 percent less force variation, than uncoated arrays in human cadaveric cochleae." source="Bennion DM, Horne R, Peel A, Reineke P, Henslee A, Kaufmann C, Guymon CA, Hansen MR. Otology and Neurotology 2021;42(10):1476-1483. doi:10.1097/MAO.0000000000003288 (Fig 4A and 4B; means and SD from the text)." width={800} />
+    </ClaimRow>
+
+    <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones.">
+      <p>Working human cochlear implant arrays in sheep read 67 percent lower impedance at implantation and 47 percent lower four weeks later.</p>
+      <p>The study used three sheep, with one coated and one uncoated array each (Ben-Shlomo 2026). The sheep cochleae also showed less inflammation.</p>
+      <p>No coated device has been implanted in a person.</p>
+      <div slot="figure" class="stack">
+        <Figure name="W08_impedance_sheep" alt="Bar chart of total electrode impedance in sheep. Coated ears read 67 percent lower than uncoated ears at implantation and 47 percent lower four weeks later." caption="Electrode impedance of coated versus uncoated cochlear implant arrays in sheep." source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)." width={800} />
+        <Photo src="/images/histology-sheep.png" alt="Four sections of a sheep cochlea. The left column shows an uncoated array site with dense tissue in the scala. The right column shows a coated array site with much less tissue. The top row is H and E stain and the bottom row is immunostaining." caption="Sheep cochlea sections four weeks after implantation, uncoated on the left and coated on the right." credit="Ben-Shlomo et al. 2026, Hearing Research, CC BY." aspect="1750/1150" />
+      </div>
+    </ClaimRow>
+
+    <!-- It stays on -->
+    <ClaimRow label="It stays on" title="The film was still intact at one year in mice." reverse>
+      <p>Checkpoints run from two weeks in rats to one year in mice.</p>
+      <p>Friction was unchanged after three weeks implanted in mice (Peel 2024). Antifouling was unchanged at six months (Horne 2023, Peel 2024).</p>
+      <p>A PEG-based control film partly detached at six weeks in mice, and the zwitterionic film did not (Horne 2023, Fig 5).</p>
+      <p>The coating has been tested through common sterilization cycles (steam, EtO, UV and gamma, wet or dry, and dry e-beam); wet e-beam did not pass. Bond strength held after gamma or e-beam plus shipping. We validate on your cycle during joint development.</p>
+      <p>Accelerated aging and shelf life are part of joint development too.</p>
+      <p><a href="/durability">Full durability record</a></p>
+      <!-- PENDING APPROVAL: accelerated aging chart (W09). Internal study; not published. -->
+      <div slot="figure" class="stack">
+        <Figure name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
+        <Figure name="W28_durability_peel" alt="Friction of coated and uncoated silicone. After three weeks in mice, coated silicone kept about 90 percent lower friction. Against five guinea pig tissues and steel, coated silicone had at least 90 percent lower friction." caption="Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel." source="Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156" width={1000} />
+        <Figure name="W11_sterilization" alt="Two panels. Left: the coating was intact after seven of eight sterilization cycles: steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry were intact, and e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping. The coating was intact after seven of eight sterilization cycles; wet e-beam failed." source="ZwiCoat CIVCO sterilization study, 2025 (Kyle Ruby). Internal data; silicone coupons, about 5 per group." width={1000} />
+      </div>
+    </ClaimRow>
+
+    <!-- Substrates -->
+    <section class="block two" aria-labelledby="sub-h">
+      <div class="block-head">
+        <p class="label">Substrates</p>
+        <h2 id="sub-h">Silicone is published. Your material is the feasibility round.</h2>
+      </div>
+      <div class="block-body">
+      <div class="prose">
+        <p>Bonds to silicone and polyurethane in our own tests; PVC, PEEK and parylene-C have archived adhesion tests; published adhesion data are on silicone (Leigh 2019).</p>
+        <p>The published tests are on silicone (PDMS), including real cochlear implant arrays, and on glass.</p>
+        <p>On silicone, adhesion tests fail inside the gel rather than at the silicone surface (Leigh 2019, Langmuir).</p>
+        <p>The issued patents name other polymers, including PVC, polyurethane and PEEK, as well as metals, glass and ceramics (US 11,814,526).</p>
+        <p>Whether the coating bonds to your material is what the feasibility round measures, on your parts.</p>
+      </div>
+      <Figure name="W10_substrate_evidence_matrix" alt="Matrix of substrates against the kinds of test on record: adhesion tests, dip or mold coating, sterilization, insertion force and implantation in vivo. Silicone, implant silicone, PVC, polyurethane (probe cover) and platinum contacts have data in most columns. PEEK has adhesion tests, coating and a rat implant. Parylene-C has adhesion tests only." caption="Evidence matrix: substrates versus the kinds of test on record. Blue means data exist in the ZwiCoat archive; polyurethane is the CIVCO probe cover." source="ZwiCoat Lap-shear Master database; archived experiment reports; published studies. Adhesion on silicone is published (Leigh 2019); the other cells are internal ZwiCoat tests." width={1000} />
+      <Figure name="W31_bond_strength_vs_benzophenone" alt="Shear bond strength of zwitterionic films on silicone against benzophenone grafting agent concentration. Strength rises until failure moves from the silicone interface into the gel, at 2.5 mg per mL for SBMA and 5 mg per mL for CBMA." caption="Shear bond strength of zwitterionic films on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL for SBMA and 5 mg/mL for CBMA." source="Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838" width={900} />
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="block two" aria-labelledby="proc-h">
+      <div class="block-head">
+        <p class="label">Process</p>
+        <h2 id="proc-h">One UV step, on a jig or in a mold.</h2>
+      </div>
+      <div class="block-body">
+      <div class="prose">
+        <p>We coat by dip coating with an automated jig. For full encapsulation and curved arrays, we use overmolding and printed molds.</p>
+        <p>Thickness is a dial: the process runs from a few micrometres to 100 micrometres or more, set by cure time and formulation.</p>
+        <p>In the published work, the film on silicone was about 7 micrometres thick (Leigh 2019).</p>
+        <p>Process settings are tuned on your parts during the feasibility round.</p>
+        <!-- PENDING APPROVAL: thickness versus cure time (W15) and the 468-sample process database with the jig learning curve (W03). Internal data; not published. -->
+      </div>
+      <Figure name="W30_crosslinker_tradeoff" alt="Charts against cross-linker percentage. More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker." caption="More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker." source="Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, CBMA baseline implied by the text, 50-fold rise; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852" width={1000} />
+      </div>
+    </section>
+    <section class="video proc-grid" aria-label="The coating process">
+      <ProcessVideo poster="/media/process-poster.jpg" src="/media/process-loop" aspect="9/16" alt="A coated tube on a rod held in a clear cylinder of monomer solution under blue light, then lifted out and moved to the UV curing area." caption="Dip coating in our lab: the device is lowered into the monomer solution, then moved under UV light to cure. Phone footage, not the automated jig." />
+      <div class="proc-text">
+        <p class="label">The process, on video</p>
+        <p>The part is dipped into the monomer solution, then moved under UV light. One UV step grafts the film and crosslinks it.</p>
+      </div>
+    </section>
+
+    <!-- Compared -->
+    <section class="block" aria-labelledby="cmp-h">
+      <div class="block-head wide">
+        <p class="label">Compared with other coatings</p>
+        <h2 id="cmp-h">A water shell that stays, with no drug to run out.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="cmp">
+          <caption class="visually-hidden">ZwiGuard compared with hydrophilic coatings and with biocidal or drug-eluting coatings</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Property</span></th>
+              <th scope="col">Hydrophilic</th>
+              <th scope="col">Biocidal or drug-eluting</th>
+              <th scope="col" class="zg">ZwiGuard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Mechanism</th>
+              <td>Lowers friction by holding water at the surface.</td>
+              <td>Releases or presents an agent that kills or slows microbes.</td>
+              <td class="zg">Binds a tight shell of water that proteins, cells and bacteria cannot displace.</td>
+            </tr>
+            <tr>
+              <th scope="row">Durability</th>
+              <td>FDA has documented peeling, flaking and shedding of lubricious coatings on intravascular devices.</td>
+              <td>A finite reservoir: in the CATHETER trial, silver alloy catheters had 12.5 percent symptomatic urinary infection and standard catheters 12.6 percent.</td>
+              <td class="zg">Covalently grafted and crosslinked, and intact after one year in mice.</td>
+            </tr>
+            <tr>
+              <th scope="row">Drug content</th>
+              <td>Not biocidal.</td>
+              <td>Resistance and hypersensitivity are concerns.</td>
+              <td class="zg">Drug-free and non-biocidal, so nothing elutes and nothing runs out.</td>
+            </tr>
+            <tr>
+              <th scope="row">Regulatory note</th>
+              <td>A coating on the device.</td>
+              <td>Antimicrobial agents bring added FDA testing and labeling.</td>
+              <td class="zg">No antimicrobial agent, so no antimicrobial-agent data are required.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="label src table-src">Sources: FDA guidance on lubricious coatings, 2019; Pickard et al. 2012, Lancet 380:1927 (CATHETER trial, 7,102 adults); FDA draft guidance on antimicrobial agents in 510(k)s, 2007; Horne et al. 2023, Acta Biomaterialia 166:212.</p>
+    </section>
+
+    <!-- Regulatory -->
+    <section class="block two" aria-labelledby="reg-h">
+      <div class="block-head">
+        <p class="label">Regulatory</p>
+        <h2 id="reg-h">The partner files. ZwiCoat supports.</h2>
+      </div>
+      <div class="prose">
+        <p>A coated device usually needs a new 510(k), or a PMA supplement for a PMA device.</p>
+        <p>Our Device Master File holds the formulation, process and safety data. FDA reviews it confidentially, and each submission incorporates it by reference.</p>
+        <p>We are building an ISO 13485 quality system under our NIH Phase II program.</p>
+        <p>Zwitterionic surfaces have been cleared before: a PICC and a series of Foley catheters (FDA 510(k) summaries K113225; K192034, K221625, K222118, K233013).</p>
+        <p>Performance claims rest on bench data. Clinical claims need clinical data. We make no clinical claim.</p>
+      </div>
+    </section>
+
+    <section class="block refs" aria-label="References">
+      <References>
+        <li>Zhang L, Cao Z, Bai T, et al. Zwitterionic hydrogels implanted in mice resist the foreign-body reaction. Nat Biotechnol. 2013;31(6):553-556.</li>
+        <li>Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223.</li>
+        <li>Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Appl Bio Mater. 2024;7:3124-3135.</li>
+        <li>Ben-Shlomo N, Peel A, Etler C, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hear Res. 2026;474:109606.</li>
+        <li>Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293.</li>
+        <li>Bennion DM, Horne R, Peel A, et al. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otol Neurotol. 2021;42(10):1476-1483.</li>
+        <li>Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35:1100-1110.</li>
+        <li>Pickard R, Lam T, MacLennan G, et al. Antimicrobial catheters for reduction of symptomatic urinary tract infection in adults requiring short-term catheterisation in hospital (CATHETER). Lancet. 2012;380:1927-1935.</li>
+        <li>FDA. Intravascular Catheters, Wires, and Delivery Systems with Lubricious Coatings: Labeling Considerations. Guidance for Industry and FDA Staff. October 10, 2019.</li>
+        <li>FDA. Draft guidance: premarket notification [510(k)] submissions for medical devices that include antimicrobial agents. Fed Regist. 2007;72(138):39630-39631.</li>
+        <li>FDA. 510(k) summaries K113225; K192034, K221625, K222118, K233013. accessdata.fda.gov.</li>
+      </References>
+    </section>
+  </div>
+
+  <CTABand
+    title="Bring us a device with a fouling, scar or friction problem."
+    body="We coat it free, with no cap on quantity, and return it with matched uncoated controls and data."
+    button={{ text: 'Send us parts', href: '/partner#form' }}
+  />
+</Base>
+
+<style>
+
+  .schematic { margin: 0; }
+  .hiw { width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+  .hiw text { font-family: var(--font-sans); }
+  .s-label { font-size: 15px; font-weight: 600; fill: var(--ink); }
+  .s-note { font-size: 15px; fill: var(--ink-2); }
+  .s-on { font-size: 15px; font-weight: 600; fill: var(--on-blue); }
+  .s-pair { font-size: 24px; font-weight: 600; fill: var(--on-blue); }
+  .s-dot { fill: var(--ink); }
+  .s-arrow { fill: none; stroke: var(--ink-2); stroke-width: 2; stroke-linecap: round; }
+  .s-head { fill: var(--ink-2); }
+  .s-water { fill: var(--blue-tint); stroke: var(--blue); stroke-width: 1.5; }
+  .s-gel { fill: var(--blue); }
+  .s-bond { stroke: var(--ink); stroke-width: 2.5; }
+  .s-slab { fill: var(--ink-2); }
+  .fig-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .src { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+
+  .stack { display: grid; gap: var(--space-4); min-width: 0; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+
+  .block { padding-block: var(--space-6); border-top: 1px solid var(--line); display: grid; gap: var(--space-4); }
+  .block-head { display: grid; gap: var(--space-2); align-content: start; }
+  .block-head h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem); max-width: 22ch; }
+  .block-head.wide h2 { max-width: 30ch; }
+  .two { grid-template-columns: minmax(0, 1fr); }
+  .prose a { color: var(--blue); }
+  .video { padding-bottom: var(--space-5); }
+  .proc-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+  .proc-text { display: grid; gap: var(--space-2); max-width: 36ch; align-content: start; }
+  @media (min-width: 720px) { .proc-grid { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); column-gap: var(--space-5); } }
+  .block-body { display: grid; gap: var(--space-5); min-width: 0; }
+
+  .table-wrap { overflow-x: auto; }
+  .cmp { width: 100%; min-width: 44rem; font-size: var(--fs-caption); }
+  .cmp th, .cmp td { text-align: left; vertical-align: top; padding: 0.85rem 1rem 0.85rem 0; border-bottom: 1px solid var(--line); line-height: 1.5; }
+  .cmp thead th { font-family: var(--font-mono); font-size: var(--fs-label); font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); border-bottom: 1px solid var(--ink); }
+  .cmp tbody th { font-weight: 700; width: 9rem; color: var(--ink); }
+  .cmp td { color: var(--ink-2); }
+  .cmp .zg { padding-left: 1rem; background: var(--blue-tint); color: var(--ink); }
+  .cmp thead th.zg { color: var(--blue-deep); }
+  .table-src { max-width: var(--measure); }
+  .refs { padding-block: var(--space-5); }
+
+  @media (min-width: 720px) {
+    .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 900px) {
+    .two { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
+    .two .block-head { grid-column: 1 / span 5; }
+    .two .prose, .two .block-body { grid-column: 6 / span 7; }
+  }
+</style>
