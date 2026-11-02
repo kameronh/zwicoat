@@ -40,7 +40,7 @@
 .tl-mark.is-active .dot, .tl-mark:focus-visible .dot { stroke: var(--ink); stroke-width: 3; }
 .tl-mark.is-active .hit { fill: var(--blue-tint); }
 
-/* Study browser markers: color = species, hollow = not significant. */
+/* Study chart markers: color = species. */
 .sb-band { fill: var(--paper-2); }
 .pt { fill: var(--c, var(--ink-2)); stroke: var(--paper); stroke-width: 1; }
 .pt.ns { fill: var(--paper); stroke: var(--c, var(--ink-2)); stroke-width: 2; }

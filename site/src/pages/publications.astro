@@ -3,14 +3,14 @@ import Base from '../layouts/Base.astro';
 import Callout from '../components/Callout.astro';
 import pubs from '../data/publications.json';
 
-const { papers, theses, inPreparation, patents, counterparts } = pubs;
+const { papers, theses, patents, counterparts } = pubs;
 ---
-<Base title="Publications" description="Ten peer-reviewed papers, three dissertations and issued US patents behind the ZwiGuard zwitterionic hydrogel coating.">
+<Base title="Publications" description="Ten peer-reviewed papers, three dissertations and issued US patents behind the ZwiCoat zwitterionic hydrogel coating.">
   <div class="container section">
     <header class="page-head">
       <p class="label">Publications</p>
       <h1>Ten peer-reviewed papers, newest first.</h1>
-      <p class="lead">Every result on this site comes from a published paper, a dissertation or an issued patent. Each link below goes to the journal page through its DOI.</p>
+      <p class="lead">Results on this site come from the papers, dissertations and patents below, and from ZwiCoat laboratory studies where marked. Each link below goes to the journal page through its DOI.</p>
     </header>
 
     <section class="block" aria-labelledby="papers-h">
@@ -36,16 +36,6 @@ const { papers, theses, inPreparation, patents, counterparts } = pubs;
             <p class="item-title">{t.link ? <a href={t.link}>{t.title}</a> : t.title}</p>
             <p class="item-meta">{t.author}, {t.year}. {t.school}.</p>
           </li>
-        ))}
-      </ul>
-    </section>
-
-    <section class="block" aria-labelledby="prep-h">
-      <h2 id="prep-h">Manuscripts in preparation</h2>
-      <p class="intro">These are not published and are not cited as results anywhere on this site. The topics are listed so you know where the work is going.</p>
-      <ul class="list" role="list">
-        {inPreparation.map((t) => (
-          <li><p class="item-title">{t}</p></li>
         ))}
       </ul>
     </section>

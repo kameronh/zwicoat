@@ -1,14 +1,14 @@
 ---
 title: "Indwelling catheters"
 slug: "indwelling-catheters"
-order: 4
-standfirst: "ZwiGuard™ is a drug-free coating for urinary and drainage catheters, tested on silicone for protein, cell and bacterial adhesion, with no urine data yet."
+order: 5
+standfirst: "ZwiCoat is a drug-free coating for urinary and drainage catheters, tested on silicone for protein, cell and bacterial adhesion."
 devices: "Foley and intermittent catheters, ureteral stents, surgical drains"
 substrates: "silicone (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); others in the feasibility round"
-thickness: "tunable, from a few micrometres to 100 micrometres or more (ZwiCoat process range); about 7 micrometres in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
 sterilization: "validated on your cycle during joint development"
-regulatory: "traditional 510(k); zwitterion-modified silicone Foley catheters are already cleared (K192034 through K233013)"
-evidence: "in vitro; rats, up to 21 days; mice, one year under the skin; urine not yet measured"
+regulatory: "510(k) path with our Master File behind your submission"
+evidence: "in vitro; rats, up to 21 days; mice, one year under the skin"
 heroFigure: "W18_silver_foley_cauti"
 figures:
   - name: "W18_silver_foley_cauti"
@@ -20,9 +20,9 @@ figures:
     source: "Shen N, Cheng E, Whitley JW, Horne RR, Leigh B, Xu L, Jones BD, Guymon CA, Hansen MR. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Applied Bio Materials 2021;4(2):1283-1293, Figs 7C, 7D and 8 (values approximate, read from the published figure; p values as printed). doi:10.1021/acsabm.0c01147"
     alt: "Three bar charts from rats. Adherent S. aureus per field at day 21: about 940 uncoated and 155 coated. Live colonies recovered at day 21: about 690 uncoated and 35 coated. After two weeks in a rat and a fresh S. aureus challenge: about 2,520 uncoated and 210 coated."
   - name: "W28_durability_peel"
-    caption: "Friction of uncoated vs coated silicone, before and after three weeks in mice (panel A). Coated silicone kept about 90 percent lower friction, and had at least 90 percent lower friction against five guinea pig tissues and steel."
+    caption: "Friction of uncoated vs coated silicone, before and after three weeks in mice (panel A). Coated silicone kept about 90 percent lower friction after three weeks in mice, and at least 90 percent lower against steel and five animal tissues."
     source: "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156"
-    alt: "Friction of coated and uncoated silicone. Panel A: uncoated vs coated, before and after three weeks in mice; coated silicone kept about 90 percent lower friction. Panel B: against five guinea pig tissues and steel, coated silicone had at least 90 percent lower friction."
+    alt: "Friction of coated and uncoated silicone. Panel A: uncoated vs coated, before and after three weeks in mice; coated silicone kept about 90 percent lower friction. Panel B: against steel and five animal tissues, coated silicone had at least 90 percent lower friction."
   - name: "W06_durability_timeline"
     caption: "In-vivo durability checkpoints from two weeks to one year."
     source: "Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023"
@@ -38,7 +38,6 @@ sources:
   - "Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293."
   - "Bennion DM, Horne R, Peel A, et al. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otol Neurotol. 2021;42(10):1476-1483."
   - "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol. 2025;10(2):e70118."
-  - "FDA 510(k) summaries K192034, K221625, K222118 and K233013 (zwitterion-modified silicone Foley catheters). accessdata.fda.gov."
 cardStat: "12.5 vs 12.6%"
 cardStatLabel: "symptomatic CAUTI with silver alloy versus standard catheters: the problem a new surface must solve (Pickard 2012)"
 ---
@@ -48,17 +47,17 @@ About 75 percent of hospital urinary tract infections are catheter-associated (C
 
 Silver has not changed the picture. In the CATHETER trial of 7,102 patients, symptomatic infection by six weeks was 12.6 percent with standard catheters and 12.5 percent with silver alloy catheters. A nitrofural catheter reached 10.6 percent (Pickard 2012). The chart above shows the trial.
 
-## What ZwiGuard does here
+## What ZwiCoat does here
 
-Every result below is from a published study on silicone. No urine data are published.
+Every result below is from a published study on silicone.
 
 **Protein, cells and bacteria.** On coated silicone in vitro, fibrinogen adsorption fell by more than 90 percent, and fibroblast attachment fell 20-fold or more (Leigh 2019). S. aureus adhesion fell about 97 percent and S. epidermidis adhesion about 93 percent (Shen 2021).
 
-**Bacteria, in rats.** In rats challenged with S. aureus, coated implants carried about 155 bacteria per field at day 21, against about 940 uncoated (p < 0.0001). A coating kept two weeks in a rat still resisted a fresh challenge (Shen 2021).
+**Bacteria, in rats.** In rats challenged with S. aureus, coated implants carried about 155 bacteria per field at day 21, against about 940 uncoated. A coating kept two weeks in a rat still resisted a fresh challenge (Shen 2021).
 
 {{figure:W29}}
 
-**Friction.** Coated silicone kept about 90 percent lower friction after three weeks in mice, and at least 90 percent lower against five guinea pig tissues and steel (Peel 2024; Bennion 2021). FDA has cleared zwitterion-modified silicone Foley catheters (K192034 through K233013).
+**Friction.** Coated silicone kept about 90 percent lower friction after three weeks in mice, and at least 90 percent lower against five guinea pig tissues and steel (Peel 2024; Bennion 2021).
 
 {{figure:W28}}
 
@@ -66,11 +65,11 @@ Every result below is from a published study on silicone. No urine data are publ
 
 {{figure:W06}}
 
-**Not yet measured.** Urine, encrustation and Gram-negative bacteria. The feasibility round measures adhesion and friction on your catheter. Your team runs bladder-model and urine tests on the coated parts.
+The feasibility round measures adhesion and friction on your catheter, and your team can run bladder-model and urine tests on the coated parts.
 
-## Why it drops in
+## How it fits your process
 
-One chemistry and one dip step serve urinary, drainage and vascular lines. The coating is applied to the outer wall and the lumen together. One development program and one Device Master File can carry across a product line. The film is drug-free, so there is no antimicrobial to manage. Bonding to PVC and polyurethane catheters is measured in the feasibility round on your parts.
+One chemistry and one dip step coat urinary, drainage and vascular lines, outer wall and lumen together, so one development program and one Device Master File can cover a whole product line. The film is drug-free, with no antimicrobial to manage. Bonding to PVC and polyurethane catheters is measured in the feasibility round on your parts.
 
 ## How to start
 

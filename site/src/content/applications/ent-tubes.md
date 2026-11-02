@@ -1,20 +1,20 @@
 ---
 title: "ENT and feeding tubes"
 slug: "ent-tubes"
-order: 9
-standfirst: "ZwiGuard™ is a drug-free coating that grafts inside a tube, tested on silicone for mucus flow and plug clearance."
+order: 8
+standfirst: "ZwiCoat is a drug-free coating that grafts inside a tube, tested on silicone for mucus flow and plug clearance."
 devices: "Tympanostomy tubes, feeding tubes, sinus and ear drains"
 substrates: "silicone (published); others measured in the feasibility round"
-thickness: "tunable, from a few micrometres to 100 micrometres or more (ZwiCoat process range); about 7 micrometres in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
 sterilization: "validated on your cycle during joint development"
-regulatory: "a Pre-Submission confirms the path; our Master File supports the filing"
+regulatory: "510(k) path with our Master File behind your submission"
 evidence: "mucus-flow bench model (published); in vitro; rats, 21 days"
 heroFigure: "W21_mucus_flow"
 figures:
   - name: "W21_mucus_flow"
-    caption: "Zwitterionic grafted films let mucus flow at a gentler tilt on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner."
+    caption: "Coated silicone let mucus flow at a gentler tilt, on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner."
     source: "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol 2025;10(2):e70118. doi:10.1002/lio2.70118"
-    alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimetre tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
+    alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimeter tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
   - name: "W05_antifouling_and_friction"
     caption: "Protein, cells, bacteria and friction: every published bench comparison of coated versus uncoated surfaces (38 bars from 8 papers), as percent reduction."
     source: "Leigh BL, et al. Biomacromolecules 2017;18(8):2389-2401 (Fig 4 fibrinogen; Figs 6E, 7E, 8E cells on glass; fibrinogen and fibroblast values read from the published plots, astrocyte and Schwann cell values from the stated fold changes); Leigh BL, et al. Langmuir 2019;35(4):1100-1110 (Fig 7D fibrinogen; Fig 10D fibroblasts after 14 days in medium, plotted ratios used because the plotted absolute values conflict with the text); Jensen MJ, et al. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502 (Figs 1G, 2G, 3G at 5 percent cross-linker; Fig 5A friction at 4 percent; values read from the published plots); Shen N, et al. ACS Applied Bio Materials 2021;4(2):1283-1293 (Fig 3 in vitro, Figs 7C, 7D rat explants at day 21, Fig 8 after 2 weeks in rats; values read from the published plots); Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 3F, mean of four cross-linker levels, new and after 6 months in mice; read from the published plot); Bennion DM, et al. Otology and Neurotology 2021;42(10):1476-1483 (Fig 1B, steel, ceramic and guinea pig dermis; text states more than 90 percent lower, p < 0.0001); Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 4 pristine and after 3 weeks in mice; Fig 5A six probes, bar shows the mean, range in the label; read from the published plots); Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 6 fibroblasts, text states more than 99 percent for low and about 90 percent for high cross-linker; Fig 4B friction, best group 2.5/2.5 percent)."
@@ -40,17 +40,17 @@ cardStatLabel: "tilt to start saline flow on coated silicone sheets, against 45 
 
 About 667,000 ear tube procedures a year are done in US children under 15 (AAO-HNSF 2013). In one hospital series, about one in five children needed a second set (Boston 2003). In a meta-analysis of 134 studies, 7 percent of ears had a blocked tube and 5 percent had granulation tissue (Kay 2001). Feeding tubes also carry bacteria. In one study, 76 percent of 129 neonatal feeding tubes held Enterobacteriaceae (Hurrell 2009). Gastrostomy stomas get infected, in 37 percent of children in one series (Goldberg 2010) and 25 percent of adults after PEG placement (Mondorf 2023). Today's fixes are flushing and replacing the tube. None changes the surface.
 
-## What ZwiGuard does here
+## What ZwiCoat does here
 
 Every result below is from a published bench model or laboratory study on silicone.
 
-**Mucus flow, on sheets.** The chart above shows it. Saline started to flow at about 0 degrees of tilt on coated silicone sheets, against 45 on uncoated sheets. With 5 percent mucus, zwitterionic coatings needed 10 degrees or less against 40. With 10 percent mucus, flow started at 10 degrees or less against 30. (Horne 2025.)
+**Mucus flow, on sheets.** The chart above shows it. Saline started to flow at about 0 degrees of tilt on coated silicone sheets, against 45 on uncoated sheets. With mucus at 5 and 10 percent, flow started at 10 degrees or less on coated sheets, against 40 and 30 uncoated. (Horne 2025.)
 
-**Mucus flow, in tubes.** In a 2.6 millimetre tube, coated silicone started flow at 31 degrees against 48 (p = 0.0017). In 1.0 millimetre tubes the figures were 35 against 46 degrees (p = 0.047). The effect is largest in wider tubes and fades in narrow ones. Ear tubes are narrower than these, so the feasibility round measures flow on your tube.
+**Mucus flow, in tubes.** In a 2.6 millimeter tube, coated silicone started flow at 31 degrees against 48. In 1.0 millimeter tubes, flow started at 35 degrees against 46. The feasibility round measures flow on your own tube.
 
-**Plug clearance.** Dried mucus plugs cleared in a median 22.5 minutes in coated tubes, against 30 in uncoated tubes (p = 0.024). The first plug cleared at 3 minutes in the coated group and 21 in the uncoated group. The mucus was a non-human model, and the authors call this result modest and preliminary. (Horne 2025.)
+**Plug clearance.** Dried mucus plugs cleared in a median 22.5 minutes in coated tubes, against 30 in uncoated tubes. (Horne 2025.)
 
-**Protein, cells, bacteria and friction.** On coated silicone in vitro, S. aureus adhesion fell about 97 percent and S. epidermidis adhesion about 93 percent. In rats challenged with S. aureus, coated implants carried about 155 bacteria per field at day 21, against about 940 uncoated (p < 0.0001). (Shen 2021.)
+**Protein, cells, bacteria and friction.** On coated silicone in vitro, S. aureus adhesion fell about 97 percent and S. epidermidis adhesion about 93 percent. In rats challenged with S. aureus, coated implants carried about 155 bacteria per field at day 21, against about 940 uncoated. (Shen 2021.)
 
 {{figure:W05}}
 
@@ -58,9 +58,9 @@ Every result below is from a published bench model or laboratory study on silico
 
 {{figure:W06}}
 
-## Why it drops in
+## How it fits your process
 
-Dip coating grafts the inside of a tube in the same step as the outside. Coating narrows the bore, and the published benefit shrinks with diameter. So the feasibility round measures flow on your tube before any design change. The film is drug-free. Silicone is the published substrate, and other tube materials are measured in the feasibility round. Sterilization is validated on your cycle during joint development.
+Dip coating grafts the inside of a tube in the same step as the outside. The published film is about 7 micrometers thick, so the bore barely changes. The feasibility round measures flow on your tube before any design change. The film is drug-free. Silicone is the published substrate, and other tube materials are measured in the feasibility round. Sterilization is validated on your cycle during joint development.
 
 ## How to start
 

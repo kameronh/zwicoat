@@ -1,0 +1,50 @@
+---
+import Figure from './Figure.astro';
+import Photo from './Photo.astro';
+import VideoLoop from './VideoLoop.astro';
+import Prose from './Prose.astro';
+
+/*
+  Renders the blocks of an application page: prose, charts, photographs and clips.
+  Two portrait items in a row arrive already grouped as a pair.
+*/
+interface LabPhoto { src: string; alt: string; caption: string; aspect: string; credit?: string }
+interface LabVideo { src: string; poster: string; caption: string; alt: string; aspect: string }
+interface Props {
+  blocks: any[];
+  photos: Record<string, LabPhoto>;
+  videos: Record<string, LabVideo>;
+  credit: string;
+  photoSize: Record<string, string>;
+}
+const { blocks, photos, videos, credit, photoSize } = Astro.props;
+---
+{blocks.map((b) => {
+  if (b.kind === 'html') return <Prose><Fragment set:html={b.html} /></Prose>;
+  if (b.kind === 'figure') {
+    return <div class="fig"><Figure name={b.fig.name} alt={b.fig.alt} caption={b.fig.caption} source={b.fig.source} width={1000} /></div>;
+  }
+  if (b.kind === 'photo') {
+    return <div class="fig"><Photo src={`/images/${b.fig.name}.png`} alt={b.fig.alt} caption={b.fig.caption} credit={b.fig.source} aspect={photoSize[b.fig.name]} /></div>;
+  }
+  const one = (x: any) => {
+    if (x.kind === 'video') {
+      const v = videos[x.key];
+      return <VideoLoop src={v.src} poster={v.poster} caption={v.caption} alt={v.alt} aspect={v.aspect} credit={credit} />;
+    }
+    if (x.kind === 'labphoto') {
+      const p = photos[x.key];
+      return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={p.credit ?? credit} aspect={p.aspect} />;
+    }
+    return null;
+  };
+  if (b.kind === 'video' || b.kind === 'labphoto') return <div class="fig">{one(b)}</div>;
+  if (b.kind === 'pair') return <div class="fig pair">{b.items.map((x: any) => <div class="pair-item">{one(x)}</div>)}</div>;
+  return null;
+})}
+
+<style>
+  .fig { margin-block: var(--space-5); max-width: 62rem; min-width: 0; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); align-items: start; max-width: 40rem; }
+  .pair-item { min-width: 0; }
+</style>

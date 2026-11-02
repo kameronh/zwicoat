@@ -4,7 +4,6 @@ import Hero from '../components/Hero.astro';
 import StatTiles from '../components/StatTiles.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
-import ProcessVideo from '../components/ProcessVideo.astro';
 import ApplicationCard from '../components/ApplicationCard.astro';
 import Steps from '../components/Steps.astro';
 import CTABand from '../components/CTABand.astro';
@@ -18,30 +17,30 @@ const tiles = numbers;
 const steps = [
   { n: 1, title: 'Feasibility, free', body: 'You send parts. We coat them, with no cap on quantity, and return them with matched uncoated controls and our data.' },
   { n: 2, title: 'Joint development', body: 'We optimize the coating on your production devices and run ISO 10993, sterilization, aging and an animal model.' },
-  { n: 3, title: 'Manufacturing', body: 'We coat for you. Our FDA Device Master File sits behind your submission.' },
+  { n: 3, title: 'Manufacturing', body: 'We coat for you, on the process we validated together.' },
 ];
 ---
-<Base title="ZwiCoat" description="ZwiGuard is a zwitterionic hydrogel coating, covalently bonded to the device, that keeps protein, cells and bacteria off. Ten years of evidence.">
+<Base title="ZwiCoat" description="ZwiCoat is a zwitterionic hydrogel coating, covalently bonded to the device, that keeps protein, cells and bacteria off. Ten years of evidence.">
   <Hero />
 
   <section class="section container" aria-labelledby="numbers-h">
     <h2 id="numbers-h" class="visually-hidden">The public record in numbers</h2>
     <StatTiles items={tiles} columns={4} />
-    <p class="tiles-note">Every number on this site comes from a published paper, dissertation or issued patent.</p>
-    <p class="tiles-note">And behind the papers: <a href="/evidence#archive">182 archived experiments, 1,056 adhesion tests, 136 animals.</a></p>
-    <p class="tiles-note tiles-src label">Sources: the ten journal papers and the dissertations listed on the Publications page, USPTO records, ZCMI patent schedule, 2025.</p>
+    <p class="tiles-note">Every number has its source listed under it.</p>
+    <p class="tiles-note">And behind the papers: 182 archived experiments, 1,056 adhesion tests, 136 animals.</p>
+    <p class="tiles-note tiles-src label">Sources: the ten journal papers and the dissertations listed on the Publications page, USPTO records, ZCMI patent schedule, 2025; archive counts, ZwiCoat Data archive.</p>
   </section>
 
   <section class="section container" aria-label="What the coating does">
     <ClaimRow label="Less scar" title="Less inflammation and less scar tissue at the sheep round window.">
-      <p>In three sheep, each with one coated and one uncoated human cochlear implant array, the coated ears had fewer cell nuclei (p = 0.0020), fewer macrophages (p = 0.0063) and less fibrous tissue (p = 0.0101) at four weeks. Each line is one sheep.</p>
-      <p>One sheep showed no difference in cells or macrophages, and the authors call the study a small pilot (Ben-Shlomo 2026, Hearing Research). Across mice, rats and sheep, scar was about 45 to 85 percent lower. <a href="/evidence#scar">See every scar measurement.</a></p>
+      <p>In three sheep, each fitted with one coated and one uncoated human cochlear implant array, the coated ears had fewer cells, fewer macrophages and less fibrous tissue after four weeks.</p>
+      <p>Across mice, rats and sheep, scar was about 45 to 85 percent lower (Ben-Shlomo 2026, Hearing Research). <a href="/evidence#scar">See every scar measurement.</a></p>
       <Figure slot="figure" name={W26.name} alt={W26.alt} caption={W26.caption} source={W26.source} width={900} />
     </ClaimRow>
 
     <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones." reverse>
       <p>Working human cochlear implant arrays in sheep read 67 percent lower total impedance at implantation and 47 percent lower four weeks later. Access resistance was lower too.</p>
-      <p>Three sheep, one coated and one uncoated array each (Ben-Shlomo 2026, Hearing Research). No coated device has been implanted in a person.</p>
+      <p>Same sheep study, same arrays: the coated side read lower on every comparison. All results are from animal and laboratory studies.</p>
       <Figure slot="figure" name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} width={900} />
     </ClaimRow>
 
@@ -51,8 +50,8 @@ const steps = [
     </ClaimRow>
 
     <ClaimRow label="Fewer bacteria" title="Far fewer bacteria on coated implants in rats." reverse>
-      <p>Silicone implants were placed in rats and challenged with S. aureus. At day 21, coated implants carried far fewer adherent bacteria and live colonies than uncoated ones (Shen 2021, ACS Applied Bio Materials).</p>
-      <p>A coating kept in a rat for two weeks still resisted a fresh challenge. These are animal results, not clinical results.</p>
+      <p>Silicone implants in rats were challenged with Staphylococcus aureus. After 21 days, coated implants carried far fewer bacteria than uncoated ones (Shen 2021, ACS Applied Bio Materials).</p>
+      <p>A coating that had spent two weeks in a rat still resisted a fresh challenge.</p>
       <p><a href="/evidence#antifouling">Browse every protein, cell, bacteria and friction comparison on the evidence page.</a></p>
       <Figure slot="figure" name={W29.name} alt={W29.alt} caption={W29.caption} source={W29.source} width={900} />
     </ClaimRow>
@@ -69,30 +68,23 @@ const steps = [
     <div class="section-head wide">
       <p class="label">The record</p>
       <h2 id="timeline-h">Ten years of published work</h2>
-      <p class="tl-lead">Ten papers, three dissertations and three issued US patents, 2017 to 2026. Hover or focus a marker to read what it found.</p>
+      <p class="tl-lead">Ten papers, three dissertations and three US patents, from 2017 to 2026. Select a marker to see what each one found.</p>
     </div>
     <InteractiveChart
       id="timeline"
       name="W24_publication_timeline"
-      alt="Timeline of the public record, 2017 to 2026, in three rows. Ten peer-reviewed papers run from 2017 to 2026, three University of Iowa dissertations were completed in 2018 and 2023, and three US patents were issued in 2022, 2023 and 2024."
+      alt="Timeline of the public record, 2017 to 2026, in three rows. Ten peer-reviewed papers run from 2017 to 2026, three University of Iowa dissertations were completed in 2018, 2023 and 2024, and three US patents were issued in 2022, 2023 and 2024."
       caption="Timeline of the public record, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents."
-      source="Leigh 2017 Biomacromolecules; Leigh 2019 Langmuir; Jensen 2021 ACS Biomaterials Science and Engineering; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2023 (University of Iowa); US patents 11,525,069 (2022), 11,814,526 (2023), 12,116,498 (2024)."
+      source="Leigh 2017 Biomacromolecules; Leigh 2019 Langmuir; Jensen 2021 ACS Biomaterials Science and Engineering; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2024 (University of Iowa); US patents 11,525,069 (2022), 11,814,526 (2023), 12,116,498 (2024)."
     />
   </section>
 
-  <section class="section container proc-grid" aria-label="The coating process">
-    <ProcessVideo poster="/images/process-poster.png" caption="Automated dip coating: one step. Video coming." />
-    <div class="proc-text">
-      <p class="label">The process</p>
-      <h2>One dip, one UV step.</h2>
-      <p>The part is dipped into the monomer solution, then moved under UV light. One UV step grafts the film and crosslinks it.</p>
-    </div>
-  </section>
+  <!-- ProcessVideo: hidden until the clip exists -->
 
   <section class="section container" aria-labelledby="apps-h">
     <div class="section-head">
       <p class="label">Applications</p>
-      <h2 id="apps-h">Nine device families, one number that matters for each.</h2>
+      <h2 id="apps-h">Nine device families, and the published result that matters for each.</h2>
     </div>
     <ul class="grid" role="list">
       {apps.map((a) => (

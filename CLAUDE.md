@@ -53,6 +53,39 @@ the three proposed directions), `content/` (every page's copy),
    three, no hero with a centered headline over a blurred blob.
 7. Plain language, no em-dashes in copy. One idea per sentence.
 
+## Editorial rules (Kam, 2026-11-02; apply to every page)
+
+- **Product name is ZwiCoat.** "ZwiGuard" is retired. The company is ZwiCoat
+  Materials Innovations; the coating is ZwiCoat; prefer "coated" and
+  "uncoated" in comparisons.
+- **No monomer names in prominent copy.** Do not write SBMA, CBMA,
+  sulfobetaine or carboxybetaine in headlines, first sentences or chart
+  labels. Rare exceptions where the chemistry is the point (W30 keeps both
+  series), never on the home page.
+- **Do not use the word "benzophenone"** on the site. Say "grafting agent".
+  Axis: "Grafting agent concentration (mg/mL)".
+- **Internal, unpublished sources get the minimum citation**: "ZwiCoat
+  internal study, 2025". No scientist names, no partner or customer names.
+- **Company website, not a lab report.** Remove non-significant bars and
+  the sentences that explain them, caveats about sample overlap, p values in
+  headlines, and anything that only a reviewer would want. Headers make a
+  positive, plain statement ("Compatible with multiple sterilization
+  methods"), not a tally ("Seven of eight cycles ...").
+- **Hide what does not exist yet.** No "coming next", "not shown yet" or
+  empty video slots. The process-video slot stays hidden until the clip
+  exists.
+- **Regulatory**: one brief, optimistic sentence on each application page
+  only; nothing on the home page or technology page.
+- **Every sentence must make sense on its own and connect to its
+  neighbour**; delete or rewrite any that does not ("Silicone is published.
+  Your material is the feasibility round." fails).
+- **Vary sentence length and tone**; no long runs of identical short
+  sentences; keep paragraphs short.
+- **Application order**: neural interfaces, tissue expanders and breast
+  implants, airway tubes, vascular access, indwelling catheters, PEEK and
+  orthopedic, sensors, ENT and feeding tubes, GI stents.
+- Horne dissertation year is 2024. The sheep work runs to six months.
+
 ## Where things come from
 
 - White papers (the source of each application page):

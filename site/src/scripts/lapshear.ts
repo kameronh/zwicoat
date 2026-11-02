@@ -1,5 +1,5 @@
 /*
-  Lap-shear explorer (static fallback: W02_lapshear_database.png).
+  Lap-shear interactive chart (static fallback: W02_lapshear_database.png).
   Data: W02_lapshear_public.json, inlined at build time by the evidence page.
   One dot per experimental group (the group mean, 3 to 10 samples), grouped by
   substrate, with a bar at the median of the groups shown. Filters: substrate,
@@ -33,14 +33,13 @@ const SUBSTRATE_ORDER = [
   'PVC',
   'PEEK',
   'Parylene-C',
-  'Polyurethane (probe cover)',
+  'Polyurethane',
 ];
 /** Short names for the rotated labels on narrow screens. */
 const SHORT: Record<string, string> = {
   'Silicone (PDMS)': 'PDMS',
   'Silicone film on glass': 'Film on glass',
   'Implant silicone': 'Implant silicone',
-  'Polyurethane (probe cover)': 'Polyurethane',
 };
 const UNDATED = 'undated';
 
@@ -91,7 +90,7 @@ interface Row extends LapShearRow {
 }
 
 export function mount(root: HTMLElement, data: LapShearRow[]): void {
-  if (!data.length) throw new Error('Lap-shear explorer: no data');
+  if (!data.length) throw new Error('Lap-shear chart: no data');
 
   const rows: Row[] = data.map((r, i) => ({
     ...r,

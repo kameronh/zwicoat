@@ -190,3 +190,22 @@ NOT yet done (next session, in this order):
   password on the Gmail account (MAIL_TO can stay info@zwicoat.com, which
   forwards to the Gmail, or go to the Gmail directly). Kam enters the app
   password on the box himself.
+
+## 2026-10-30 late: Kam's second round applied (lead)
+
+- Charts relabeled uncoated vs coated (no SBMA/CBMA in any image); W07 now
+  three panels (Bennion peak and variation, Peel peak), headline "about half".
+- Fonts: Public Sans on the Blueprint layout; mono kept for labels and sources.
+- Nav: Technology, Evidence, Durability, Applications, Partner, About.
+- Home charts: W04 hero, W26, W25, W07, W29, W28, interactive publication
+  timeline. W27, W08, W05, W06 moved to evidence only.
+- ETT dip-coating video removed; process slot back to placeholder.
+- Team: Co-founder titles; single "Bio" dropdown each.
+- Collapsed-figure bug on /technology (W10, W31, W30 at 5 px): a CSS selector
+  in technology.astro matched nested .prose; fixed with child selectors and
+  full-width figure rules.
+- Images: current-site elemental map on technology and neural; dyed array on
+  the neural card and page; cross-section micrograph (CI proxy, blue ring)
+  on neural. Better stereo shots exist only at 1280x720; candidates in
+  assets-staging/lab-media/micrographs/CANDIDATES.md.
+- Staging redeployed; committed on v2 (Kam pushes).

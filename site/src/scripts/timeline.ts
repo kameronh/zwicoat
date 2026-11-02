@@ -1,7 +1,7 @@
 /*
   Interactive publication timeline (static fallback: W24_publication_timeline.png).
   Data: W24_publications.json, inlined at build time by the evidence page.
-  Rows: papers, dissertations, patents. Hover or focus a marker for the finding;
+  Rows: papers, dissertations, patents. Select a marker for the finding;
   click, or press Enter, to open the paper (DOI) or the patent (Google Patents).
 */
 import { s, h, uid, guard, watchWidth, Tooltip } from './chart-utils';

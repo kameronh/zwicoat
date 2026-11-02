@@ -16,7 +16,7 @@ const after = [
 <header class="nav" data-nav>
   <div class="container nav-bar">
     <a class="brand" href="/" aria-label="ZwiCoat home">
-      <img class="brand-logo" src="/logo.png" alt="ZwiCoat" width="79" height="40" decoding="async" />
+      <img class="brand-logo" src="/logo.svg" alt="ZwiCoat" width="119" height="40" decoding="async" />
     </a>
 
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
@@ -142,7 +142,7 @@ const after = [
   .sub-all { border-bottom: 1px solid var(--line); margin-bottom: var(--space-1); padding-bottom: var(--space-1); }
   .sub-all a { font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
 
-  /* No JavaScript: open the menu on hover or focus inside */
+  /* No JavaScript: open the menu on hover or keyboard focus inside */
   :global(html:not(.js)) .has-sub:hover .sub-list,
   :global(html:not(.js)) .has-sub:focus-within .sub-list { display: block; }
 

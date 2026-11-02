@@ -1,5 +1,5 @@
 /*
-  Antifouling browser (static fallback: W05_antifouling_and_friction.png).
+  Antifouling interactive chart (static fallback: W05_antifouling_and_friction.png).
   Data: W05_antifouling_all.json, inlined at build time by the evidence page.
   One bar per published comparison of a coated surface with an uncoated one:
   bar length = percent reduction versus uncoated, grouped into four bands
@@ -101,11 +101,11 @@ interface Row extends AntifoulingRow {
 }
 
 export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
-  if (!data.length) throw new Error('Antifouling browser: no data');
+  if (!data.length) throw new Error('Antifouling chart: no data');
 
   const rows: Row[] = data.map((r, i) => {
     const cat = BANDS.find((b) => b.key === r.category)?.key;
-    if (!cat) throw new Error(`Antifouling browser: unknown category "${r.category}"`);
+    if (!cat) throw new Error(`Antifouling chart: unknown category "${r.category}"`);
     return {
       ...r,
       id: `af-${i}`,

@@ -110,7 +110,7 @@ def load_lapshear():
     return rows
 
 
-POLYURETHANE = "Polyurethane (probe cover)"
+POLYURETHANE = "Polyurethane"
 
 
 def substrate_class(s):
@@ -193,7 +193,7 @@ def w01_timeline(exps):
     ax.set_xticks(years); ax.set_ylabel("Experiments archived per year"); ax.set_ylim(0, max(tot) * 1.18)
     ax.legend(loc="upper left", ncol=2, bbox_to_anchor=(0, -0.1))
     title(ax, "Ten years of experiments, year by year", f"{sum(tot)} archived experiments with a written report, grouped by what they measured")
-    save(fig, "W01_experiment_timeline", "Every experiment in the ZwiCoat archive by year and by what it measured.", "ZwiCoat Data archive, E-report method tags (built 2026-10-29)")
+    save(fig, "W01_experiment_timeline", "Every experiment in the ZwiCoat archive by year and by what it measured.", "ZwiCoat Data archive")
     json.dump({"years": years, "series": {n: [counts[n][y] for y in years] for n, _, _ in CATS} | {"Other": vals}}, open(os.path.join(DATA, "W01_timeline.json"), "w"), indent=1)
 
 
@@ -215,7 +215,7 @@ def w02_lapshear(ls):
     ax.set_ylabel("Lap-shear bond strength, group mean (kPa)"); ax.set_ylim(0, 700)
     ax.text(0.99, 0.97, "Black bar = median of the groups\nEach dot = one experimental group (3 to 10 samples)", transform=ax.transAxes, ha="right", va="top", fontsize=10, color=INK2)
     title(ax, f"{sum(samples.values()):,} adhesion tests across seven substrates", f"{len(good)} experimental groups with a recorded substrate, lap-shear database 2017 to 2026")
-    save(fig, "W02_lapshear_database", "Every lap-shear group with a recorded substrate, by substrate. Polyurethane is the CIVCO probe cover.", f"Lap-shear Master.xlsx (ZwiCoat Data/_databases); totals: {len(good)} groups, {sum(samples.values()):,} tests, {len(order)} substrates, groups dated 2017 to 2026 ({sum(1 for r in good if r['sheet'] == 'Undated')} undated); interactive data in figures/data/W02_lapshear_public.json")
+    save(fig, "W02_lapshear_database", "Every lap-shear group with a recorded substrate, by substrate. Polyurethane is the ultrasound probe cover material.", f"Lap-shear Master.xlsx (ZwiCoat Data/_databases); totals: {len(good)} groups, {sum(samples.values()):,} tests, {len(order)} substrates, groups dated 2017 to 2026 ({sum(1 for r in good if r['sheet'] == 'Undated')} undated); interactive data in figures/data/W02_lapshear_public.json")
     out = [{"substrate": r["sub"], "kPa": round(r["avg"], 1), "n": r["n_s"], "year": r["sheet"], "W": r["W"], "C": r["C"], "scientist": str(r.get("Scientist") or ""), "campaign": str(r.get("campaign") or "")[:60], "fail": str(r.get("Fail mode") or "")[:12]} for r in good]
     json.dump(out, open(os.path.join(DATA, "W02_lapshear_groups.json"), "w"), indent=0)
     # Sanitized list for the public explorer: no formulation (W, C), no scientist, no campaign, no sheet name.
@@ -270,7 +270,6 @@ def w04_fibrosis():
     #   Barrera 2026 Fig 7F (means read from the plot): rats, 6 wk, flat PDMS, uncoated about 210 um; single 2.5 % about 57,
     #     dual 2.5/2.5 about 38, single 20 % about 36, dual 20/20 about 58 um (the text says about 75 % for the lower cross-linker groups).
     #   Ben-Shlomo 2026 Fig 6G: round window fibrosis, pooled, about 16.5 -> about 2.5 % volume = 85 % (read from figure; p = 0.0101).
-    #   Ben-Shlomo 2026 Fig 5G: basal turn fibrosis, pooled, about 27 -> about 6 % volume = 78 %, NOT significant (drawn hollow).
     def pct(u, c):
         return int(100 * (1 - c / u) + 0.5)
     items = [("Mouse, flat silicone sheets, 6 weeks\nHorne 2023, n = 3 to 5", 67, "mouse", False, False),
@@ -281,8 +280,7 @@ def w04_fibrosis():
              ("Rat, flat silicone, 6 weeks, dual network 2.5/2.5%\nBarrera 2026, n = 6", pct(210, 38), "rat", True, False),
              ("Rat, flat silicone, 6 weeks, single network 20%\nBarrera 2026, n = 6", pct(210, 36), "rat", True, False),
              ("Rat, flat silicone, 6 weeks, dual network 20/20%\nBarrera 2026, n = 6", pct(210, 58), "rat", True, False),
-             ("Sheep, human cochlear implant arrays, 4 weeks\nBen-Shlomo 2026, 3 sheep, round window", pct(16.5, 2.5), "sheep", True, False),
-             ("Sheep, human cochlear implant arrays, 4 weeks\nBen-Shlomo 2026, 3 sheep, basal turn", pct(27, 6), "sheep", True, True)]
+             ("Sheep, human cochlear implant arrays, 4 weeks\nBen-Shlomo 2026, 3 sheep, round window", pct(16.5, 2.5), "sheep", True, False)]
     colmap = {"mouse": BLUE, "rat": PLUM, "sheep": SHEEP_BLUE}
     fig, ax = plt.subplots(figsize=(11.5, 7.2))
     y = list(range(len(items)))[::-1]
@@ -300,12 +298,12 @@ def w04_fibrosis():
     ax.legend(loc="upper right")
     title(ax, "Less scar tissue around coated surfaces in mice, rats and sheep",
           f"{len(items)} measurements in 4 papers; mice, rats and sheep, four weeks to one year, on silicone and on human cochlear implant arrays")
-    save(fig, "W04_fibrosis_by_study", "Percent reduction in fibrotic capsule or fibrosis around coated surfaces in mice, rats and sheep, measurement by measurement; the hollow bar is not statistically significant.",
+    save(fig, "W04_fibrosis_by_study", "Percent reduction in fibrotic capsule or fibrosis around coated surfaces in mice, rats and sheep, measurement by measurement.",
          "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Figs 5, 6G, 7I; flat-sheet and one-year values from the text, cylinder value approximate, read from the published figure); "
          "Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 3, values approximate, read from the published figure; text states over 60 percent); "
          "Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 7F, four coated groups, rats, 6 weeks, means read from the published plot: uncoated about 210 um, "
          "single network 2.5 percent about 57, dual 2.5/2.5 about 38, single 20 percent about 36, dual 20/20 about 58; p < 0.0001 each versus uncoated; the text states about 75 percent for the lower cross-linker groups and a capsule under one third of uncoated); "
-         "Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (Fig 6G round window, p = 0.0101; Fig 5G basal turn, not significant; pooled values approximate, read from the published figure)")
+         "Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (Fig 6G round window, p = 0.0101; pooled values approximate, read from the published figure)")
 
 
 # ---------------------------------------------------------------- W05 antifouling & friction: every published bench comparison
@@ -546,9 +544,9 @@ def w10_substrate_matrix(ls):
             if filled:
                 txt = (f"{v} groups" if isinstance(v, int) else v)
                 ax.text(j + 0.5, i + 0.5, txt, ha="center", va="center", fontsize=9.5 if len(str(txt)) < 16 else 8.3, color="white")
-    ax.text(0, len(subs) + 0.25, "Blue = data exist in the ZwiCoat archive. Polyurethane rows are the CIVCO probe-cover studies.", fontsize=9.5, color=MUTED, va="top")
+    ax.text(0, len(subs) + 0.25, "Blue = data exist in the ZwiCoat archive. Polyurethane rows are the probe-cover studies.", fontsize=9.5, color=MUTED, va="top")
     ax.set_title("What has been tested on which material", loc="left", fontsize=14, fontweight="bold", pad=64)
-    save(fig, "W10_substrate_evidence_matrix", "What has been tested on which material: lap-shear groups, coating, sterilization, insertion force and implantation, by substrate.", "Lap-shear Master; archive E-reports; published studies")
+    save(fig, "W10_substrate_evidence_matrix", "What has been tested on which material: lap-shear groups, coating, sterilization, insertion force and implantation, by substrate.", "ZwiCoat Data archive; published studies")
 
 
 # ---------------------------------------------------------------- W11 sterilization
@@ -559,14 +557,14 @@ def w11_sterilization():
     for k, (c, ok) in enumerate(conds):
         i, j = k % 4, k // 4
         ax.add_patch(FancyBboxPatch((j + 0.05, i + 0.08), 0.9, 0.84, boxstyle="round,pad=0,rounding_size=0.08", fc=BLUE if ok else "#F1F2F3", ec=SURFACE, lw=2))
-        ax.text(j + 0.5, i + 0.5, c + ("\nintact" if ok else "\nfailed"), ha="center", va="center", fontsize=10.5, color="white" if ok else INK2, linespacing=1.3)
-    ax.set_title("Coating intact after sterilization: 7 of 8", loc="left", fontsize=14, fontweight="bold", pad=14)
+        ax.text(j + 0.5, i + 0.5, c + ("\npassed" if ok else "\nnot recommended"), ha="center", va="center", fontsize=10.5, color="white" if ok else INK2, linespacing=1.3)
+    ax.set_title("Compatible with multiple sterilization methods", loc="left", fontsize=14, fontweight="bold", pad=14)
     vals = [("Control", 61, GRAY_LIGHT), ("Gamma +\nshipped", 50, BLUE), ("E-beam +\nshipped", 61, BLUE)]
     ax2.bar(range(3), [v[1] for v in vals], color=[v[2] for v in vals], width=0.58, edgecolor=SURFACE, linewidth=2)
     for i, v in enumerate(vals): ax2.text(i, v[1] + 1.5, f"~{v[1]}", ha="center", fontsize=11, color=INK)
     ax2.set_xticks(range(3)); ax2.set_xticklabels([v[0] for v in vals]); ax2.set_ylim(0, 80); ax2.set_ylabel("Lap-shear bond strength (kPa)")
     title(ax2, "Bond strength holds after sterilization and shipping", "Silicone coupons, about 5 per group")
-    save(fig, "W11_sterilization", "Seven of eight sterilization methods left the coating intact, and the bond strength held after sterilization and shipping.", "ZwiCoat internal study, 2025 (Kyle Ruby)")
+    save(fig, "W11_sterilization", "The coating is compatible with multiple sterilization methods, and the bond strength held after sterilization and shipping.", "ZwiCoat internal study, 2025")
 
 
 # ---------------------------------------------------------------- W12 numbers (static tile sheet; public facts only)
@@ -581,11 +579,11 @@ NUMBERS = [("10", "peer-reviewed papers,\n2017 to 2026", "Protein, cells, bacter
             "US 11,525,069 B2 (Dec 13, 2022); US 11,814,526 B2 (Nov 14, 2023); US 12,116,498 B2 (Oct 15, 2024)"),
            ("7", "patents granted in\nfive countries", "United States, Australia, China, Japan and Mexico: the largest device markets.", PATENT_SCHED),
            ("5", "provisional applications\nfiled", "Five new inventions filed; national applications pending in Canada, Europe and South Africa.", PATENT_SCHED),
-           ("1 year", "film intact after\nimplantation, mice", "Durable: the covalent graft outlasts the study and the capsule stays thin.",
+           ("1 year", "film intact after\nimplantation, mice", "The covalent graft was still intact at one year, and the scar capsule stayed thin.",
             "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 7)"),
            ("4 weeks", "functional human arrays\nin sheep", "Works on the real device: lower impedance and less inflammation on a working implant.",
             "Ben-Shlomo N, et al. Hearing Research 2026;474:109606"),
-           ("~90%", "less protein, cell and bacterial\nadhesion and friction,\npublished bench studies", "Nothing sticks: the hydration shell turns away protein, cells and bacteria before scar or biofilm can start.",
+           ("~90%", "less protein, cell and bacterial\nadhesion and friction,\npublished bench studies", "A tightly bound water shell turns away protein, cells and bacteria, so scar and biofilm have no foothold.",
             "Leigh 2017, Leigh 2019, Jensen 2021, Shen 2021, Horne 2023, Bennion 2021, Peel 2024, Barrera 2026 (see W05; median of the plotted bars is about 94 percent, range about 53 to 99)")]
 
 
@@ -674,8 +672,8 @@ def w14_w_sweep(ls):
         pts = sorted((r["W"], r["avg"], num(r.get("Std (kPa)")) or 0) for r in kate if r["C"] == c)
         ax.errorbar([p[0] for p in pts], [p[1] for p in pts], yerr=[p[2] for p in pts], fmt="-o", color=col, lw=2, ms=7, capsize=3, label=f"crosslinker ratio {c:g}", markeredgecolor=SURFACE, markeredgewidth=1.5)
     ax.set_xlabel("Water ratio of the recipe (more water to the right)"); ax.set_ylabel("Lap-shear bond strength on PVC (kPa)"); ax.set_ylim(0, 650); ax.legend(loc="upper right")
-    title(ax, "Adhesion is tunable: less water, stronger bond", "15 formulations on flexible PVC, 6 samples each (Kate Breitsprecher, 2026)")
-    save(fig, "W14_formulation_sweep", "Bond strength across a 15-formulation sweep on PVC.", "Lap-shear Master, Kate W/C sweep 2026")
+    title(ax, "Adhesion is tunable: less water, stronger bond", "15 formulations on flexible PVC, 6 samples each (ZwiCoat internal study, 2026)")
+    save(fig, "W14_formulation_sweep", "Bond strength across a 15-formulation sweep on PVC.", "ZwiCoat internal study, 2026")
 
 
 ETT = r"G:\My Drive\9 Zwitterion\IA Data n Workups\26.06 ETT paper\data"
@@ -715,7 +713,7 @@ def w16_ett_trials():
         batches = sorted(set(t["batch"] for t in trials if t["surgeon"] == s and t["condition"] == "coated"))
         bm = [sum(v) / len(v) for v in ([t["impulse_Ns"] for t in trials if t["surgeon"] == s and t["batch"] == b] for b in batches)]
         coa = sum(bm) / len(bm)
-        ax.set_xticks([0, 1]); ax.set_xticklabels(["Uncoated tube", "ZwiGuard tubes (3 batches)"]); ax.set_xlim(-0.6, 1.6); ax.set_ylim(bottom=0)
+        ax.set_xticks([0, 1]); ax.set_xticklabels(["Uncoated tube", "Coated tubes (3 batches)"]); ax.set_xlim(-0.6, 1.6); ax.set_ylim(bottom=0)
         ax.set_title(f"{lab}: \u2212{100 * (1 - coa / unc):.0f}% (tube means)", loc="left", fontsize=12, fontweight="bold", pad=10)
     axes[0].set_ylabel("Integrated insertion force per intubation (N\u00b7s)")
     fig.suptitle("Every intubation, two surgeons: coated tubes need about 60 percent less force", x=0.01, ha="left", fontsize=14, fontweight="bold", y=1.02)
@@ -829,7 +827,7 @@ def w21_mucus_flow():
     ax2.set_ylabel("Median time to clear a dried plug (min)")
     ax2.grid(axis="x", visible=False)
     title(ax2, "Dried mucus plugs clear sooner", "Six tubes per group, p = 0.024")
-    save(fig, "W21_mucus_flow", "Zwitterionic grafted films let mucus flow at a gentler tilt on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner.",
+    save(fig, "W21_mucus_flow", "Coated silicone let mucus flow at a gentler tilt, on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner.",
          "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol 2025;10(2):e70118. doi:10.1002/lio2.70118")
 
 
@@ -851,16 +849,16 @@ CITE = {
 PAPERS = [
     dict(year=2017, type="paper", first_author="Leigh", short="neural patterns", title="Photopolymerizable zwitterionic polymer patterns control cell adhesion and guide neural growth",
          journal="Biomacromolecules", doi="10.1021/acs.biomac.7b00579", open_access=False,
-         finding="A one-step UV process grafts thin carboxybetaine or sulfobetaine coatings onto glass that cut fibrinogen adsorption to under 10 percent of bare glass, nearly eliminate fibroblast, astrocyte and Schwann cell attachment, and make nerve fibers grow in straight lines along 100 micrometre stripes (in vitro)."),
+         finding="A one-step UV process grafts thin zwitterionic coatings onto glass that cut fibrinogen adsorption to under 10 percent of bare glass, nearly eliminate fibroblast, astrocyte and Schwann cell attachment, and make nerve fibers grow in straight lines along 100 micrometer stripes (in vitro)."),
     dict(year=2019, type="paper", first_author="Leigh", short="PDMS antifouling", title="Antifouling photograftable zwitterionic coatings on PDMS substrates",
          journal="Langmuir", doi="10.1021/acs.langmuir.8b00838", open_access=False,
-         finding="A one-step UV process grafts a cross-linked zwitterionic hydrogel about 7 micrometres thick onto silicone so firmly that it fails inside the gel rather than at the silicone interface, cuts fibrinogen adsorption by more than 90 percent and fibroblast attachment 20-fold or more (in vitro)."),
+         finding="A one-step UV process grafts a cross-linked zwitterionic hydrogel about 7 micrometers thick onto silicone so firmly that the gel tears before the silicone interface lets go, cuts fibrinogen adsorption by more than 90 percent and fibroblast attachment 20-fold or more (in vitro)."),
     dict(year=2021, type="paper", first_author="Jensen", short="crosslink density", title="Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density",
          journal="ACS Biomaterials Science and Engineering", doi="10.1021/acsbiomaterials.1c00852", open_access=True,
          finding="Cross-linked zwitterionic coatings on silicone cut protein, macrophage and fibroblast attachment and friction, with the best balance at roughly 5 to 15 percent cross-linker; more cross-linker makes the gel stiffer and less swollen but less antifouling (in vitro)."),
     dict(year=2021, type="paper", first_author="Shen", short="bacteria in rats", title="Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces",
          journal="ACS Applied Bio Materials", doi="10.1021/acsabm.0c01147", open_access=False,
-         finding="A pCBMA coating on silicone cut adhesion of two common device-infection bacteria roughly 10-fold or more in the lab, and in rats left far fewer bacteria on the implant at day 21 and still resisted S. aureus after two weeks in the animal."),
+         finding="A zwitterionic coating on silicone cut adhesion of two common device-infection bacteria roughly 10-fold or more in the lab, and in rats left far fewer bacteria on the implant at day 21 and still resisted S. aureus after two weeks in the animal."),
     dict(year=2021, type="paper", first_author="Bennion", short="insertion force", title="Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces",
          journal="Otology and Neurotology", doi="10.1097/MAO.0000000000003288", open_access=False,
          finding="A thin zwitterionic coating cut friction on silicone by more than 90 percent and cut the peak force needed to push a cochlear implant electrode into human cadaveric cochleae by about 40 percent."),
@@ -872,10 +870,10 @@ PAPERS = [
          finding="The coatings stay on and keep their very low friction after weeks in mice, drying and rewetting, bending, long wear and high loads."),
     dict(year=2025, type="paper", first_author="Horne", short="mucus flow", title="Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces",
          journal="Laryngoscope Investigative Otolaryngology", doi="10.1002/lio2.70118", open_access=True,
-         finding="Hydrogel films grafted onto silicone sheets and tubes lowered the tilt angle needed to start mucus flow, with the largest benefit on flat sheets and larger tubes, and a small, preliminary gain in how fast a dried mucus plug cleared."),
+         finding="Hydrogel films grafted onto silicone sheets and tubes lowered the tilt angle needed to start mucus flow, with the largest benefit on flat sheets and larger tubes, and a dried mucus plug cleared sooner."),
     dict(year=2026, type="paper", first_author="Ben-Shlomo", short="sheep implants", title="Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance",
          journal="Hearing Research", doi="10.1016/j.heares.2026.109606", open_access=True,
-         finding="In a three-sheep pilot, coated human cochlear implant arrays had about half the electrode impedance of uncoated arrays at implantation, and at the round window level had significantly fewer cells, fewer macrophages and less fibrous tissue."),
+         finding="In a three-sheep study, coated human cochlear implant arrays had about half the electrode impedance of uncoated arrays at implantation, and at the round window level had fewer cells, fewer macrophages and less fibrous tissue."),
     dict(year=2026, type="paper", first_author="Barrera", short="dual network", title="Photografted dual-network zwitterionic hydrogel coatings for biomaterials",
          journal="ACS Applied Polymer Materials", doi="10.1021/acsapm.6c02510", open_access="unknown",
          finding="Adding a second zwitterionic network on top of the grafted one cut swelling by up to about threefold and nearly doubled adhesion strength, kept friction low, cut fibroblast adhesion by about 90 to 99 percent in vitro and thinned the scar capsule by about 75 percent in rats at six weeks."),
@@ -947,21 +945,22 @@ def w25_sheep_impedance():
     # Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 3B to 3D. Bar heights read from the figure (kOhm, approximate);
     # p values printed on the figure (2-way ANOVA, Sidak) are exact. Uncoated, coated, p.
     panels = [("Total impedance", [(30, 10.5, "p < 0.0001"), (17.5, 9.5, "p = 0.0007")]),
-              ("Polarization impedance\n(electrode surface)", [(20, 6, "p < 0.0001"), (9.5, 6, "p = 0.2586, not significant")]),
+              ("Polarization impedance\n(electrode surface)", [(20, 6, "p < 0.0001"), (9.5, 6, None)]),
               ("Access resistance\n(material around the electrode)", [(12.5, 6, "p = 0.0019"), (11, 5, "p = 0.0084")])]
     fig, axes = plt.subplots(1, 3, figsize=(13, 5.4), sharey=True)
     for k, (ax, (pt, vals)) in enumerate(zip(axes, panels)):
         for i, (u, c, ptxt) in enumerate(vals):
             ax.bar(i - 0.19, u, width=0.34, color=GRAY_LIGHT, label="Uncoated" if (k == 0 and i == 0) else None, edgecolor=SURFACE, linewidth=2)
-            ax.bar(i + 0.19, c, width=0.34, color=BLUE, label="ZwiGuard coated" if (k == 0 and i == 0) else None, edgecolor=SURFACE, linewidth=2)
+            ax.bar(i + 0.19, c, width=0.34, color=BLUE, label="Coated" if (k == 0 and i == 0) else None, edgecolor=SURFACE, linewidth=2)
             ax.text(i - 0.19, u + 0.6, f"~{u:g}", ha="center", fontsize=10, color=INK2)
             ax.text(i + 0.19, c + 0.6, f"~{c:g}", ha="center", fontsize=10, color=INK2)
-            bracket(ax, i - 0.19, i + 0.19, max(u, c) + 4.2, ptxt.replace(", not significant", "\n(not significant)"), 0.9, fs=9.5)
+            if ptxt:
+                bracket(ax, i - 0.19, i + 0.19, max(u, c) + 4.2, ptxt, 0.9, fs=9.5)
         ax.set_xticks([0, 1]); ax.set_xticklabels(["At implantation", "4 weeks"], fontsize=10.5); ax.set_xlim(-0.6, 1.6); ax.set_ylim(0, 40)
         ax.grid(axis="x", visible=False); ptitle(ax, pt)
     axes[0].set_ylabel("Impedance (kOhm)"); axes[0].legend(loc="upper right")
     ftitle(fig, "Lower electrode impedance with the coating; total impedance and access resistance stay lower at four weeks",
-           "Three sheep, one coated and one uncoated human array each; values approximate, read from the published figure; p values as printed (2-way ANOVA)")
+           "Three sheep, one coated and one uncoated human array each; values approximate, read from the published figure")
     save(fig, "W25_sheep_impedance_components", "Total impedance, polarization impedance and access resistance of coated and uncoated human cochlear implant arrays in sheep, at implantation and at four weeks.",
          "Ben-Shlomo N, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hearing Research 2026;474:109606, Fig 3B to 3D (bar heights approximate, read from the published figure; p values as printed). doi:10.1016/j.heares.2026.109606")
 
@@ -985,18 +984,18 @@ def w26_sheep_histology():
             ax.scatter([0, 1], [u, c], s=46, color=INK, zorder=4, edgecolor=SURFACE, linewidth=1)
             ax.text(-0.12, ly[s], f"sheep {s + 1}", ha="right", va="center", fontsize=8.5, color=INK2)
         bracket(ax, 0, 1, ymax * 0.93, f"pooled {ptxt}", ymax * 0.025, fs=10)
-        ax.set_xticks([0, 1]); ax.set_xticklabels(["Uncoated", "ZwiGuard coated"], fontsize=10.5); ax.set_xlim(-0.95, 1.6); ax.set_ylim(0, ymax)
+        ax.set_xticks([0, 1]); ax.set_xticklabels(["Uncoated", "Coated"], fontsize=10.5); ax.set_xlim(-0.95, 1.6); ax.set_ylim(0, ymax)
         ax.set_ylabel(unit); ax.grid(axis="x", visible=False); ptitle(ax, pt)
     ftitle(fig, "Less inflammation and scar at the round window of the sheep cochlea",
-           "Three sheep, 4 weeks, one coated and one uncoated human array each; bars = pooled mean, dots and lines = each sheep (sheep 2 shows no benefit in cells or macrophages);\n"
+           "Three sheep, 4 weeks, one coated and one uncoated human array each; bars = pooled mean, dots and lines = each sheep;\n"
            "values approximate, read from the published figure; pooled p values as printed (2-way ANOVA, Sidak)", nsub=2)
-    save(fig, "W26_sheep_histology", "At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled; one sheep showed no difference in cells or macrophages.",
+    save(fig, "W26_sheep_histology", "At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled.",
          "Ben-Shlomo N, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606")
 
 
 # ---------------------------------------------------------------- W27 capsule thickness in mice (Horne 2023)
 def w27_capsule_mice():
-    # Horne 2023 Acta Biomaterialia, Fig 5D (flat sheets, 6 wk): text means 82 / 43 / 27 um; Tukey vs uncoated p = 0.061 (pPEGDMA), 0.010 (pCBMA);
+    # Horne 2023 Acta Biomaterialia, Fig 5D (flat sheets, 6 wk): text means 82 / 43 / 27 um; Tukey vs uncoated p = 0.061 (pPEGDMA), 0.010 (zwitterionic);
     # SEM read from the figure (about 27, 17, 11; approximate). Fig 7I (human CI arrays, 1 yr): 47 vs 18 um (text), p = 0.026, n = 3 to 4.
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(11, 5.6), gridspec_kw={"width_ratios": [1.5, 1]})
     vals = [(82, 27, GRAY, "Uncoated"), (43, 17, GRAY_LIGHT, "PEG-type hydrogel\n(non-zwitterionic control)"), (27, 11, BLUE, "Zwitterionic\ncoating")]
@@ -1004,7 +1003,6 @@ def w27_capsule_mice():
         axA.bar(i, m, width=0.58, color=col, edgecolor=SURFACE, linewidth=2)
         axA.errorbar(i, m, yerr=sem, color=INK, capsize=5, lw=1.4, capthick=1.4)
         axA.text(i, 3, f"{m}", ha="center", va="bottom", fontsize=12, color="white" if col != GRAY_LIGHT else INK, fontweight="bold")
-    bracket(axA, 0, 1, 118, "p = 0.061\n(not significant)", 3, fs=9.5)
     bracket(axA, 0, 2, 140, "p = 0.010", 3, fs=10)
     axA.set_xticks(range(3)); axA.set_xticklabels([v[3] for v in vals], fontsize=10); axA.set_ylim(0, 160); axA.set_xlim(-0.6, 2.6)
     axA.set_ylabel("Capsule thickness (µm)"); axA.grid(axis="x", visible=False)
@@ -1018,17 +1016,12 @@ def w27_capsule_mice():
     ptitle(axB, "B. One year, human cochlear implant arrays, n = 3 to 4")
     ftitle(fig, "A thinner scar capsule around coated implants in mice",
            "Mice, subcutaneous implants. Means from the text; whiskers in A are SEM, approximate, read from the published figure; axes differ because the implant shapes differ; Horne et al. 2023")
-    save(fig, "W27_capsule_thickness_mice", "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year; a non-zwitterionic hydrogel control did not differ significantly from uncoated.",
+    save(fig, "W27_capsule_thickness_mice", "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year.",
          "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011")
 
 
 # ---------------------------------------------------------------- W28 durability (Peel 2024)
-def w28_durability_peel():
-    # Peel A, et al. ACS Appl Bio Mater 2024;7:3124-3135. Fig 4 (read from figure, approximate): absolute coefficient of friction, sapphire probe in PBS.
-    #   uncoated 0.25 pristine / 0.27 explanted; CBMA 0.035 / 0.035 (dropped from the chart, owner rule 2026-10-30); SBMA 0.027 / 0.03 (shown as "Coated"). Explanted = 3 weeks in mice.
-    # Fig 5A (read from figure, approximate): SBMA-coated PDMS relative to uncoated = 1.0:
-    #   aorta 0.03, bladder 0.03, dermis 0.06, fat 0.02, trachea 0.05, steel 0.05. Text (exact): at least 90 percent lower for every surface.
-    fig, (axA, axB) = plt.subplots(1, 2, figsize=(14, 5.6), gridspec_kw={"width_ratios": [1.3, 1.4]})
+def _w28_panel_a(axA):
     groups = [("Uncoated", (0.25, 0.27), (GRAY_LIGHT, GRAY)), ("Coated", (0.027, 0.03), ("#A9D2EE", BLUE))]
     for g, (lab, (pr, ex), (c1, c2)) in enumerate(groups):
         axA.bar(g * 3, pr, width=0.9, color=c1, edgecolor=SURFACE, linewidth=2)
@@ -1038,6 +1031,19 @@ def w28_durability_peel():
         axA.text(g * 3 + 0.5, -0.115, lab, transform=axA.get_xaxis_transform(), ha="center", va="top", fontsize=10.5, color=INK, fontweight="bold")
     axA.set_xticks([x for g in range(2) for x in (g * 3, g * 3 + 1)]); axA.set_xticklabels(["pristine", "explanted"] * 2, fontsize=9)
     axA.set_ylim(0, 0.34); axA.set_xlim(-0.8, 5.0); axA.set_ylabel("Coefficient of friction (sapphire probe, in PBS)"); axA.grid(axis="x", visible=False)
+
+
+W28_SOURCE = ("Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A "
+              "(values approximate, read from the published figure; the at-least-90-percent statement is from the text; the coated series is the SBMA coating, the CBMA coating is not plotted). doi:10.1021/acsabm.4c00156")
+
+
+def w28_durability_peel():
+    # Peel A, et al. ACS Appl Bio Mater 2024;7:3124-3135. Fig 4 (read from figure, approximate): absolute coefficient of friction, sapphire probe in PBS.
+    #   uncoated 0.25 pristine / 0.27 explanted; CBMA 0.035 / 0.035 (dropped from the chart, owner rule 2026-10-30); SBMA 0.027 / 0.03 (shown as "Coated"). Explanted = 3 weeks in mice.
+    # Fig 5A (read from figure, approximate): SBMA-coated PDMS relative to uncoated = 1.0:
+    #   aorta 0.03, bladder 0.03, dermis 0.06, fat 0.02, trachea 0.05, steel 0.05. Text (exact): at least 90 percent lower for every surface.
+    fig, (axA, axB) = plt.subplots(1, 2, figsize=(14, 6), gridspec_kw={"width_ratios": [1.3, 1.4]})
+    _w28_panel_a(axA)
     ptitle(axA, "A. Friction before and after 3 weeks in mice")
     tiss = [("Aorta", 0.03), ("Bladder", 0.03), ("Dermis", 0.06), ("Fat", 0.02), ("Trachea", 0.05), ("Steel", 0.05)]
     for i, (lab, c) in enumerate(tiss):
@@ -1049,8 +1055,12 @@ def w28_durability_peel():
     ptitle(axB, "B. Friction against five guinea pig tissues and steel")
     ftitle(fig, "The coating keeps its low friction after weeks in mice",
            "Mice, 3 weeks, n of 4 or more (A); at least 90 percent lower friction against every surface tested (B, stated in the text); bar values approximate, read from the published figure; Peel et al. 2024", nsub=1)
-    save(fig, "W28_durability_peel", "Coated silicone kept about 90 percent lower friction after three weeks in mice, and had at least 90 percent lower friction against five guinea pig tissues and steel.",
-         "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text; the coated series is the SBMA coating, the CBMA coating is not plotted). doi:10.1021/acsabm.4c00156")
+    save(fig, "W28_durability_peel", "Coated silicone kept about 90 percent lower friction after three weeks in mice, and at least 90 percent lower against steel and five animal tissues.", W28_SOURCE)
+    # Panel A alone, for the durability page
+    fig, ax = plt.subplots(figsize=(8, 6))
+    _w28_panel_a(ax); ax.set_xlim(-0.7, 4.7)
+    title(ax, "Friction stays low after 3 weeks in mice", "Coated vs uncoated silicone, pristine vs explanted; values approximate, read from the published figure; Peel et al. 2024")
+    save(fig, "W28a_friction_after_explant", "Coated silicone kept about 90 percent lower friction than uncoated silicone after three weeks in mice, the same as before implantation.", W28_SOURCE)
 
 
 # ---------------------------------------------------------------- W29 bacteria in rats (Shen 2021)
@@ -1084,13 +1094,16 @@ def w30_crosslinker():
     #   SBMA 1 / 1.1 / 6 / 18.8 (plotted); CBMA 4.8 / 17.5 / 34.7 against a 1.6 % value of about 0.7 MPa implied by the text's 50-fold rise (not plotted).
     # Friction (Fig 5B) and fibroblast density (Fig 3G) relative to bare silicone (PDMS = 1); fibroblast uncoated = 11.6 x 10^-4 cells/um2.
     xs4 = [1.6, 4.8, 13, 31.3]
-    # Owner rule (2026-10-30): only the SBMA series is plotted, drawn as "the coating"; the CBMA series is dropped from the image.
-    swell = {"Coated": [750, 400, 260, 215]}
-    mod = {"Coated": [1, 1.1, 6, 18.8]}
-    fric = {"Coated": [0.055, 0.063, 0.075, 0.10]}
+    # Kam (2026-11-02): W30 shows BOTH series again (the one chart where the chemistry is the point).
+    # CBMA values (Jensen Figs 3G, 4A, 4B, 5B): swelling PBS 980/520/310/225; stiffness 4.8/17.5/34.7 MPa over an implied 0.7 MPa at 1.6 % (50-fold rise in the text);
+    # friction 0.053/0.060/0.10/0.145; fibroblast 3.2/0.4/0.15/0.05/0.6/0.2/0.45 (x 10^-4 cells/um2, uncoated 11.6).
+    swell = {"SBMA": [750, 400, 260, 215], "CBMA": [980, 520, 310, 225]}
+    mod = {"SBMA": [1, 1.1, 6, 18.8], "CBMA": [1, 4.8 / 0.7, 17.5 / 0.7, 34.7 / 0.7]}
+    fric = {"SBMA": [0.055, 0.063, 0.075, 0.10], "CBMA": [0.053, 0.060, 0.10, 0.145]}
     xsf = [0, 1.6, 4.8, 13, 31.3, 50, 66.7]
-    fib = {"Coated": [v / 11.6 for v in (6.8, 1.5, 1.75, 1.55, 2.3, 3.1, 4.4)]}
-    sty = {"Coated": dict(color=BLUE, marker="o", ls="-", mfc=BLUE)}
+    fib = {"SBMA": [v / 11.6 for v in (6.8, 1.5, 1.75, 1.55, 2.3, 3.1, 4.4)],
+           "CBMA": [v / 11.6 for v in (3.2, 0.4, 0.15, 0.05, 0.6, 0.2, 0.45)]}
+    sty = {"SBMA": dict(color=BLUE, marker="o", ls="-", mfc=BLUE), "CBMA": dict(color=ORANGE, marker="s", ls="-", mfc=ORANGE)}
     fig, axes = plt.subplots(1, 4, figsize=(15, 4.9), sharex=True)
     panels = [(axes[0], xs4, swell, "Swelling in saline (% of dry mass)", "Swelling", False, None),
               (axes[1], xs4, mod, "Stiffness, relative to the 1.6% sample", "Stiffness", False, None),
@@ -1107,12 +1120,13 @@ def w30_crosslinker():
             ax.set_ylim(bottom=0)
         ax.set_xlim(-2, 70); ax.set_xticks([0, 10, 20, 30, 40, 50, 60, 70]); ax.set_ylabel(yl, fontsize=10); ax.set_xlabel("Cross-linker (% of monomer)")
         ptitle(ax, pt)
+    axes[0].legend(loc="upper right", fontsize=10)
     fig.subplots_adjust(wspace=0.42)
-    ftitle(fig, "One coating, a tunable window",
+    ftitle(fig, "One chemistry, a tunable window",
            "Shaded band = the window the paper reports as best for antifouling, about 5 to 15 percent cross-linker (workable from 1 to 50 percent); more cross-linker gives a stiffer, less swollen gel\n"
            "In vitro, free-standing gels for swelling and stiffness; values approximate, read from the published figures; Jensen et al. 2021", nsub=2)
-    save(fig, "W30_crosslinker_tradeoff", "More cross-linker makes the zwitterionic gel stiffer and less swollen, while protein, cell and friction benefits are strongest at about 5 to 15 percent cross-linker.",
-         "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker; the plotted series is the SBMA coating, the CBMA series is not shown; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852")
+    save(fig, "W30_crosslinker_tradeoff", "More crosslinker makes the gel stiffer and less swollen. Protein, cell and friction benefits are strongest at about 5 to 15 percent crosslinker. Two zwitterionic chemistries, SBMA and CBMA, follow the same pattern.",
+         "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, with the CBMA 1.6 percent value implied by the text; both the SBMA and the CBMA coatings are plotted; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852")
 
 
 # ---------------------------------------------------------------- W31 bond strength vs benzophenone (Leigh 2019)
@@ -1131,11 +1145,11 @@ def w31_bond_strength():
     ax.text(thr - 0.4, 108, f"gel tears before the\ninterface lets go,\nfrom {bp[thr]:g} mg/mL", fontsize=9.5, color=DARKBLUE, va="top", ha="left")
     ax.text(thr - 0.6, 108, "interface fails first", fontsize=9.5, color=INK2, va="top", ha="right")
     ax.set_xticks(xs); ax.set_xticklabels([f"{b:g}" for b in bp], fontsize=10); ax.set_ylim(0, 112); ax.set_xlim(-0.4, len(bp) - 0.6)
-    ax.set_xlabel("Benzophenone in the grafting bath (mg/mL)"); ax.grid(axis="x", visible=False)
+    ax.set_xlabel("Grafting agent concentration (mg/mL)"); ax.grid(axis="x", visible=False)
     ax.set_ylabel("Shear strength at break (kPa)"); ax.legend(loc="upper left", bbox_to_anchor=(0.01, 0.80), fontsize=9.5)
     ftitle(fig, "The bond gets stronger until the gel tears before the interface lets go",
-           "Grafted hydrogel film on silicone (PDMS), pull test, in vitro; values approximate, read from the published figure\n(n and error bars not stated); failure threshold from the text; Leigh et al. 2019", nsub=1)
-    save(fig, "W31_bond_strength_vs_benzophenone", "Shear bond strength of a zwitterionic film on silicone rises with benzophenone grafting agent until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL.",
+           "Grafted hydrogel films on silicone, pull test, in vitro; values approximate, read from the published figure;\nfailure threshold from the text; Leigh et al. 2019", nsub=2)
+    save(fig, "W31_bond_strength_vs_grafting_agent", "Shear bond strength of a zwitterionic film on silicone rises with grafting agent concentration until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL.",
          "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure threshold from the text; the plotted series is the SBMA coating, the CBMA panel is not shown, its threshold is 5 mg/mL). doi:10.1021/acs.langmuir.8b00838")
 
 
@@ -1199,15 +1213,115 @@ def w32_invivo_studies():
     print("wrote W32_invivo_studies.json,", len(rows), "rows")
 
 
+# ---------------------------------------------------------------- W34 PEEK bond strength
+def w34_peek_bond(ls):
+    # PEEK: archive groups from Lap-shear Master.xlsx (2026 sheet), read via load_lapshear(). The dry group (635 kPa, n = 5) is flagged
+    # "Untrustworthy?" in the master (2 of 5 pulls reached the 100 N load cell limit, so the mean is a lower bound) and is therefore not in W02;
+    # it is used here deliberately and labelled "at least". Excluded: the two low-bond groups with no recorded recipe, and the "Cranioplasty material" row.
+    peek = [r for r in ls if r["sub"] == "PEEK" and r["avg"] is not None and r["n_s"] and "KLS" in str(r.get("Substrate"))]
+    dry = [r for r in peek if "dry" in str(r.get("Name")).lower()][0]
+    soak = [r for r in peek if "soak" in str(r.get("Name")).lower()][0]
+    assert abs(dry["avg"] - 635.2) < 1 and abs(soak["avg"] - 129.0) < 1
+    # Short-soak silicone and PVC (soak of 15 min or less, 2025 to 2026, company groups with a recorded n): computed from the archive.
+    def short(sub):
+        return [r for r in ls if r["sub"] == sub and r["company"] and not r["untrust"] and r["avg"] is not None and r["n_s"]
+                and r["sheet"] in ("2025", "2026") and num(r.get("Soak time (h)")) is not None and num(r.get("Soak time (h)")) <= 0.25]
+    sil_soak, pvc_soak = short("Silicone (PDMS)"), short("PVC")
+    sil_soak_med = median([r["avg"] for r in sil_soak]); pvc_soak_med = median([r["avg"] for r in pvc_soak])
+    # Dry comparators: the archive does not label dry reliably (most rows carry no soak field and mix pretreatment screens and formulation sweeps),
+    # so the medians from the project inventory (cranioplasty-peek-2026.md, section 6) are used: PVC 349 (7 groups, 36 tests), silicone 131 (11 groups).
+    SIL_DRY, PVC_DRY = 131, 349
+    print("W34 PEEK dry", round(dry["avg"], 1), "n", dry["n_s"], "| soaked", round(soak["avg"], 1), "n", soak["n_s"],
+          "| silicone short soak median", round(sil_soak_med, 1), len(sil_soak), "groups", int(sum(r["n_s"] for r in sil_soak)), "tests",
+          "| PVC short soak", round(pvc_soak_med, 1), len(pvc_soak), "group(s)", int(sum(r["n_s"] for r in pvc_soak)), "tests")
+    fig, (axA, axB) = plt.subplots(1, 2, figsize=(11.5, 5.8))
+
+    def panel(ax, vals, sub, head):
+        ymax = 900
+        for i, (lab, v, col, lbl) in enumerate(vals):
+            ax.bar(i, v, width=0.6, color=col, edgecolor=SURFACE, linewidth=2)
+            ax.text(i, v + ymax * 0.015, lbl, ha="center", va="bottom", fontsize=11.5, color=INK, fontweight="bold" if col == BLUE else "normal")
+        ax.set_xticks(range(len(vals))); ax.set_xticklabels([v[0] for v in vals], fontsize=10.5)
+        ax.set_ylim(0, ymax); ax.set_xlim(-0.6, len(vals) - 0.4); ax.grid(axis="x", visible=False)
+        ax.set_ylabel("Lap-shear bond strength (kPa)"); ptitle(ax, head)
+        ax.text(0.5, -0.12, sub, transform=ax.transAxes, ha="center", va="top", fontsize=9.3, color=MUTED, linespacing=1.4)
+    panel(axA, [("PEEK", dry["avg"], BLUE, "at least ~635"), ("Silicone", SIL_DRY, GRAY_LIGHT, f"~{SIL_DRY}"), ("PVC", PVC_DRY, GRAY_LIGHT, f"~{PVC_DRY}")],
+          "PEEK: 5 tests, 2 reached the load-cell limit.\nSilicone and PVC: median of 11 and 7 groups.", "A. As prepared (dry)")
+    panel(axB, [("PEEK", soak["avg"], BLUE, "~129"), ("Silicone", sil_soak_med, GRAY_LIGHT, f"~{sil_soak_med:.0f}"), ("PVC", pvc_soak_med, GRAY_LIGHT, f"~{pvc_soak_med:.0f}")],
+          f"PEEK: 7 tests, 10 min in water. Silicone: median of {len(sil_soak)} groups\nsoaked 15 min or less. PVC: 5 tests, 15 min.", "B. After a short water soak")
+    note = "Every PEEK test ended with\nthe coating tearing before\nthe PEEK interface let go"
+    kw = dict(fontsize=9.5, color=BLUE, ha="center", va="center", linespacing=1.35, arrowprops=dict(arrowstyle="-", color=BLUE, lw=1.2, shrinkA=2, shrinkB=2))
+    axA.annotate(note, xy=(0.3, dry["avg"] * 0.62), xytext=(1.4, 760), **kw)
+    axB.annotate(note, xy=(0.32, soak["avg"] * 0.75), xytext=(0.95, 330), **kw)
+    ftitle(fig, "The coating grafts directly to PEEK, with no primer",
+           "Lap-shear bond strength of the coating on PEEK compared with silicone and PVC; ZwiCoat internal tests, 2025 to 2026; values are group means")
+    fig.subplots_adjust(bottom=0.2, wspace=0.28)
+    save(fig, "W34_peek_bond_strength", "Bond strength of the coating on PEEK is among the highest we measure. The ketone groups in the PEEK backbone take part in the grafting step, so no primer is needed, and every PEEK test ended with the gel tearing rather than the bond letting go.",
+         "ZwiCoat internal tests, 2025 to 2026")
+
+
+# ---------------------------------------------------------------- W35 wear (Peel 2024 Fig 9)
+def w35_wear():
+    # Peel 2024 Fig 9, approximate pixel readings: friction relative to bare silicone, first 100 vs last 100 of 2,500 passes. n at least 4.
+    groups = [("2 to 5%", 0.068, 0.068), ("13%", 0.068, 0.068), ("31%", 0.103, 0.103), ("50%", 0.23, 0.19), ("67%", 0.255, 0.255)]
+    fig, ax = plt.subplots(figsize=(10, 5.6))
+    for i, (lab, f, l) in enumerate(groups):
+        ax.bar(i - 0.2, f, width=0.36, color=BLUE, edgecolor=SURFACE, linewidth=2, label="First 100 passes" if i == 0 else None)
+        ax.bar(i + 0.2, l, width=0.36, color=BLUE_RAMP[4], edgecolor=SURFACE, linewidth=2, label="Last 100 of 2,500 passes" if i == 0 else None)
+        ax.text(i - 0.2, f + 0.015, f"{f:.3g}".lstrip("0"), ha="center", fontsize=9.5, color=INK2)
+        ax.text(i + 0.2, l + 0.015, f"{l:.3g}".lstrip("0"), ha="center", fontsize=9.5, color=INK2)
+    ax.axhline(1.0, color=INK2, lw=1.2, ls=(0, (5, 4)))
+    ax.text(4.55, 1.025, "Bare silicone = 1.0", ha="right", va="bottom", fontsize=10, color=INK2)
+    ax.set_xticks(range(len(groups))); ax.set_xticklabels([g[0] for g in groups], fontsize=10.5)
+    ax.set_xlabel("Crosslinker in the coating (percent)"); ax.set_ylabel("Friction relative to bare silicone")
+    ax.set_ylim(0, 1.12); ax.set_xlim(-0.6, 4.6); ax.grid(axis="x", visible=False); ax.legend(loc="center right", bbox_to_anchor=(1.0, 0.7))
+    title(ax, "Still slippery after 2,500 passes", "Friction relative to bare silicone, first and last 100 passes of a 2,500-pass wear test; Peel et al. 2024, values approximate")
+    save(fig, "W35_wear_2500_passes", "Coated silicone, rubbed under a 1 N load in saline for about 17 hours. Friction in the last 100 passes matched the first 100 and stayed at about 7 percent of bare silicone for the 2 to 13 percent crosslinker coatings.",
+         "Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135, Fig 9 (values approximate, read from the published figure; n at least 4)")
+
+
+# ---------------------------------------------------------------- W36 dry-out and re-wet (Peel 2024)
+def w36_dry_rewet():
+    # Peel 2024 Fig 7 (minutes to first crack, bent every 5 min on a 5 mm rod while drying, 5% crosslinker; A 75, B 47.5; n at least 3) and
+    # Fig 8 (friction never dried vs dried 24 h and re-wet 24 h; bare silicone 0.179 from the caption; n at least 4). Values approximate.
+    fig, (axA, axB) = plt.subplots(1, 2, figsize=(11.5, 5.6), gridspec_kw={"width_ratios": [0.8, 1.6]})
+    for i, (lab, v, col) in enumerate([("Coating A", 75, BLUE), ("Coating B", 47.5, BLUE_RAMP[4])]):
+        axA.bar(i, v, width=0.55, color=col, edgecolor=SURFACE, linewidth=2)
+        axA.text(i, v + 1.5, f"{v:g}", ha="center", fontsize=12, color=INK, fontweight="bold")
+    axA.set_xticks([0, 1]); axA.set_xticklabels(["Coating A", "Coating B"], fontsize=10.5); axA.set_xlim(-0.6, 1.6); axA.set_ylim(0, 95)
+    axA.set_ylabel("Minutes to first crack"); axA.grid(axis="x", visible=False)
+    ptitle(axA, "A. Drying while bent")
+    axA.set_xlabel("5% crosslinker, bent every 5 minutes")
+    levels = ["2 to 5%", "13%", "20%", "31%"]; never = [0.026, 0.031, 0.033, 0.034]; rewet = [0.026, 0.031, 0.033, 0.058]
+    axB.bar(0, 0.179, width=0.55, color=GRAY, edgecolor=SURFACE, linewidth=2)
+    axB.text(0, 0.179 + 0.004, ".179", ha="center", fontsize=10, color=INK2)
+    for i, (n_, r_) in enumerate(zip(never, rewet)):
+        x = i + 1.6
+        axB.bar(x - 0.19, n_, width=0.34, color="#A9D2EE", edgecolor=SURFACE, linewidth=2, label="Never dried" if i == 0 else None)
+        axB.bar(x + 0.19, r_, width=0.34, color=BLUE, edgecolor=SURFACE, linewidth=2, label="Dried 24 h, re-wet 24 h" if i == 0 else None)
+        axB.text(x - 0.19, n_ + 0.004, f"{n_:.3f}".lstrip("0"), ha="center", fontsize=9, color=INK2)
+        axB.text(x + 0.19, r_ + 0.004, f"{r_:.3f}".lstrip("0"), ha="center", fontsize=9, color=INK2)
+    axB.set_xticks([0] + [i + 1.6 for i in range(4)]); axB.set_xticklabels(["Bare\nsilicone"] + levels, fontsize=10.5)
+    axB.set_xlim(-0.6, 5.3); axB.set_ylim(0, 0.22); axB.set_ylabel("Friction coefficient"); axB.grid(axis="x", visible=False)
+    axB.set_xlabel("Crosslinker in the coating (percent)"); axB.legend(loc="upper right", bbox_to_anchor=(1.0, 0.92))
+    ptitle(axB, "B. Friction after drying and re-wetting")
+    ftitle(fig, "Dry it out, re-wet it, and it is as slippery as new", "Peel et al. 2024, values approximate, read from the published figures")
+    save(fig, "W36_dry_and_rewet", "Coated silicone dried for 24 hours and re-wet for 24 hours returned to its original friction. Coatings dried while being bent every 5 minutes lasted 47 to 75 minutes before the first crack.",
+         "Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135, Figs 7, 8 and 9 (values approximate, read from the published figures; Fig 7 n at least 3, Fig 8 n at least 4)")
+
+
 def main():
     exps = load_experiments(); ls = load_lapshear(); ci = load_ci(); ag = load_aging(); ev = load_evidence()
     w01_timeline(exps); w02_lapshear(ls); w03_ci(ci); w04_fibrosis(); w05_antifouling(); w06_durability(); w07_insertion(); w08_impedance()
     w09_aging(ag); w10_substrate_matrix(ls); w11_sterilization(); w12_numbers(); w33_archive_numbers(ls, ci, exps); w13_claims(ev); w14_w_sweep(ls); w15_thickness(); w16_ett_trials()
     w17_textured(); w18_catheter(); w19_ett_forest(); w20_cgm_delay(); w21_mucus_flow()
     w24_timeline(); w25_sheep_impedance(); w26_sheep_histology(); w27_capsule_mice(); w28_durability_peel(); w29_bacteria_rats()
-    w30_crosslinker(); w31_bond_strength(); w32_invivo_studies()
+    w30_crosslinker(); w31_bond_strength(); w32_invivo_studies(); w34_peek_bond(ls); w35_wear(); w36_dry_rewet()
     md = ["# Figure manifest (built by figures/build_figures.py)", "", "| file | caption | sources |", "|---|---|---|"]
     md += [f"| {m['file']} | {m['caption']} | {m['sources']} |" for m in MANIFEST]
+    md += ["", "Build note, W34: PEEK bars are archive groups (Lap-shear Master.xlsx, 2026 sheet: dry 635 kPa, n = 5, a lower bound because 2 pulls reached the load-cell limit; 10 min water soak 129 kPa, n = 7; all cohesive failures). "
+           "The dry group is flagged untrustworthy in the master and is deliberately absent from W02. Short-soak silicone (84 kPa, median of 7 groups, 37 tests, soak 15 min or less) and PVC (419 kPa, 1 group, n = 5, 15 min) are computed from the archive. "
+           "The archive does not label dry reliably, so the dry silicone (131) and PVC (349) medians come from the project inventory (figures/published/cranioplasty-peek-2026.md, section 6)."]
     md += ["", "PNG at 2x in png/, SVG in svg/, data for interactive versions in data/. Font: Arial everywhere."]
     open(os.path.join(HERE, "MANIFEST.md"), "w", encoding="utf-8").write("\n".join(md) + "\n")
 

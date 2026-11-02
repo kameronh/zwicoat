@@ -16,7 +16,7 @@ interface Props {
   description?: string;
   noindex?: boolean;
 }
-const { title, description = 'ZwiGuard is a zwitterionic hydrogel coating, covalently bonded to the device, that keeps protein, cells and bacteria off.', noindex = false } = Astro.props;
+const { title, description = 'ZwiCoat is a zwitterionic hydrogel coating, covalently bonded to the device, that keeps protein, cells and bacteria off.', noindex = false } = Astro.props;
 const fullTitle = title === 'ZwiCoat' ? 'ZwiCoat' : `${title} | ZwiCoat`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---

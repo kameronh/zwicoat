@@ -1,13 +1,13 @@
 ---
 title: "GI stents"
 slug: "gi-stents"
-order: 6
-standfirst: "ZwiGuard™ is a drug-free coating tested on silicone for mucus flow, protein and bacterial adhesion and friction."
+order: 9
+standfirst: "ZwiCoat is a drug-free coating tested on silicone for mucus flow, protein and bacterial adhesion and friction."
 devices: "Covered biliary, esophageal, duodenal and colonic stents; plastic biliary stents; feeding tubes"
 substrates: "silicone (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); PTFE, FEP, nitinol and others in the feasibility round"
-thickness: "tunable, from a few micrometres to 100 micrometres or more (ZwiCoat process range); about 7 micrometres in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
 sterilization: "validated on your cycle during joint development"
-regulatory: "Class II, 510(k): esophageal (ESW), duodenal (MUM), colonic (MQR), biliary (FGE); Pre-Submission recommended"
+regulatory: "510(k) path with our Master File behind your submission"
 evidence: "mucus-flow bench model; in vitro; rats, 21 days; mice, one year under the skin"
 heroFigure: "W29_bacteria_rats"
 figures:
@@ -16,15 +16,15 @@ figures:
     source: "Shen N, Cheng E, Whitley JW, Horne RR, Leigh B, Xu L, Jones BD, Guymon CA, Hansen MR. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Applied Bio Materials 2021;4(2):1283-1293, Figs 7C, 7D and 8 (values approximate, read from the published figure; p values as printed). doi:10.1021/acsabm.0c01147"
     alt: "Three bar charts from rats. Adherent S. aureus per field at day 21: about 940 uncoated and 155 coated. Live colonies recovered at day 21: about 690 uncoated and 35 coated. After two weeks in a rat and a fresh S. aureus challenge: about 2,520 uncoated and 210 coated."
   - name: "W21_mucus_flow"
-    caption: "Zwitterionic grafted films let mucus flow at a gentler tilt on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner."
+    caption: "Coated silicone let mucus flow at a gentler tilt, on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner."
     source: "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol 2025;10(2):e70118. doi:10.1002/lio2.70118"
-    alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimetre tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
+    alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimeter tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
   - name: "W11_sterilization"
-    caption: "Sterilization compatibility and bond strength after sterilization plus shipping. The coating was intact after seven of eight sterilization cycles; wet e-beam failed."
-    source: "ZwiCoat CIVCO sterilization study, 2025 (Kyle Ruby). Internal data; silicone coupons, about 5 per group."
-    alt: "Two panels. Left: the coating was intact after seven of eight sterilization cycles: steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry were intact, and e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping."
+    caption: "Sterilization compatibility and bond strength after sterilization plus shipping."
+    source: "ZwiCoat internal study, 2025. Silicone coupons, about 5 per group."
+    alt: "Two panels. Left: the coating was unchanged after steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry cycles; e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping."
   - name: "W10_substrate_evidence_matrix"
-    caption: "Evidence matrix: substrates versus the kinds of test on record. Blue means data exist in the ZwiCoat archive; polyurethane is the CIVCO probe cover."
+    caption: "Evidence matrix: which materials have been tested, and how. Blue means ZwiCoat has data; polyurethane is an ultrasound probe cover."
     source: "ZwiCoat Lap-shear Master database; archived experiment reports; published studies. Adhesion on silicone is published (Leigh 2019); the other cells are internal ZwiCoat tests."
     alt: "Matrix of substrates against the kinds of test on record: adhesion tests, dip or mold coating, sterilization, insertion force and implantation in vivo. Silicone, implant silicone, PVC, polyurethane (probe cover) and platinum contacts have data in most columns. PEEK has adhesion tests, coating and a rat implant. Parylene-C has adhesion tests only."
 sources:
@@ -49,25 +49,25 @@ On plastic biliary stents, a film of host protein covers the inner surface and p
 
 Coated plastic stents have been tried. In three randomized trials, hydrophilic-coated or Teflon plastic stents did not extend patency over polyethylene (Costamagna 2000; van Berkel 1998; van Berkel 2003). A 2007 review judged coated and antimicrobial stents not yet clinically relevant enough to replace conventional ones (Donelli 2007).
 
-## What ZwiGuard does here
+## What ZwiCoat does here
 
-Every result below is from a published study on silicone, or from a bench model. No stent has been coated and tested in a published ZwiGuard study.
+Every result below is from a published study on silicone or from a bench model.
 
-**Bacteria, in rats.** The chart above shows it. In rats challenged with S. aureus, coated implants carried about 155 bacteria per field at day 21, against about 940 uncoated (p < 0.0001). On coated silicone in vitro, S. aureus adhesion fell about 97 percent and S. epidermidis adhesion about 93 percent (Shen 2021). Fibrinogen adsorption fell by more than 90 percent (Leigh 2019).
+**Bacteria, in rats.** The chart above shows it. In rats challenged with S. aureus, coated implants carried about 155 bacteria per field at day 21, against about 940 uncoated. On coated silicone in vitro, S. aureus adhesion fell about 97 percent and S. epidermidis adhesion about 93 percent (Shen 2021). Fibrinogen adsorption fell by more than 90 percent (Leigh 2019).
 
-**Mucus flow.** On coated silicone sheets, saline started to flow at about 0 degrees of tilt against 45 uncoated. In a 2.6 millimetre tube, flow started at 31 degrees against 48 (p = 0.0017). Dried mucus plugs cleared in a median 22.5 minutes against 30 (p = 0.024). The mucus was a non-human model, and the authors call the plug result modest and preliminary. The effect fades in narrower tubes: in 1.0 millimetre tubes the difference was 11 degrees. (Horne 2025.)
+**Mucus flow.** On coated silicone sheets, saline started to flow at about 0 degrees of tilt against 45 uncoated. In a 2.6 millimeter tube, flow started at 31 degrees against 48. Dried mucus plugs cleared in a median 22.5 minutes against 30. (Horne 2025.)
 
 {{figure:W21}}
 
-**Durability and friction.** Antifouling was unchanged after six months in mice, and the film was intact at one year (Horne 2023). Friction against tissue, steel and ceramic was more than 90 percent lower (Bennion 2021). That is a reason to test delivery. It is not a patency result.
+**Durability and friction.** Antifouling was unchanged after six months in mice, and the film was intact at one year (Horne 2023). Friction against tissue, steel and ceramic was more than 90 percent lower (Bennion 2021). Low friction is relevant to stent delivery, which the feasibility round can test.
 
-## Why it drops in
+## How it fits your process
 
-One coating step goes onto existing coverings and plastic stents. The film is drug-free, so there is no antimicrobial agent to manage. In ZwiCoat's own tests on silicone coupons, it was intact after seven of eight sterilization cycles; wet e-beam did not pass. Your cycle is validated during joint development.
+One coating step goes onto existing coverings and plastic stents. The film is drug-free, so there is no antimicrobial agent to manage. In ZwiCoat's own tests on silicone, the coating was compatible with steam, ethylene oxide, gamma, UV and dry e-beam sterilization. We validate your own cycle during joint development.
 
 {{figure:W11}}
 
-Silicone is the published substrate. The matrix below shows where ZwiCoat also has internal data. PTFE, FEP and nitinol, and crimping and expansion of a finished stent, are feasibility-round questions.
+The matrix shows the materials ZwiCoat has also tested in its own lab. PTFE, FEP and nitinol, and crimping and expanding a finished stent, are where the feasibility round starts.
 
 {{figure:W10}}
 

@@ -6,20 +6,17 @@ import StatTiles from '../components/StatTiles.astro';
 import InteractiveChart from '../components/InteractiveChart.astro';
 import CTABand from '../components/CTABand.astro';
 import numbers from '../../public/data/W12_numbers.json';
-import archive from '../../public/data/W33_archive.json';
 import pubs from '../data/publications.json';
-import { W04, W05, W07, W25, W26, W28, W29, W30, W31 } from '../data/figure-text';
+import { W04, W05, W07, W25, W28, W29, W30, W31 } from '../data/figure-text';
 
 const { papers, theses, patents } = pubs;
 const tiles = numbers;
-const archiveSource = archive[0].source;
 
 const nav = [
-  ['record', 'The record'],
   ['scar', 'Scar tissue'],
-  ['impedance', 'Impedance'],
-  ['insertion-friction', 'Insertion and friction'],
   ['antifouling', 'Protein, cells, bacteria and friction'],
+  ['insertion-friction', 'Insertion and friction'],
+  ['impedance', 'Impedance'],
   ['durability', 'Durability'],
   ['adhesion', 'Adhesion and tuning'],
   ['invivo', 'Every in-vivo result'],
@@ -33,6 +30,19 @@ const nav = [
       <p class="lead">Ten years of published work, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents. The results come from four models: mouse, rat, sheep and the human cadaveric cochlea. This page shows them grouped by what they show, with the source under every chart and the papers linked at the bottom.</p>
     </header>
 
+    <section class="tiles" aria-labelledby="tiles-h">
+      <h2 id="tiles-h" class="visually-hidden">The public record in numbers</h2>
+      <StatTiles items={tiles} columns={4} />
+      <details class="tile-src">
+        <summary class="label">Sources for these numbers</summary>
+        <ul role="list">
+          {tiles.map((t) => (
+            <li><strong>{t.value}</strong> {t.label}. {t.source}.</li>
+          ))}
+        </ul>
+      </details>
+    </section>
+
     <nav class="toc" aria-label="On this page">
       <ol role="list">
         {nav.map(([id, text], i) => (
@@ -42,49 +52,9 @@ const nav = [
     </nav>
 
     <!-- 1 -->
-    <section class="ev" id="record" aria-labelledby="record-h">
-      <div class="ev-head">
-        <p class="label ev-num">01</p>
-        <h2 id="record-h">The record</h2>
-        <p class="ev-text">Ten papers, three dissertations and three issued US patents, 2017 to 2026. Hover or focus a marker to read what it found. Under the tiles, the archive counts show the work behind the papers.</p>
-      </div>
-      <div class="ev-body">
-        <InteractiveChart
-          id="timeline"
-          name="W24_publication_timeline"
-          alt="Timeline of the public record, 2017 to 2026, in three rows. Ten peer-reviewed papers run from 2017 to 2026, three University of Iowa dissertations were completed in 2018 and 2023, and three US patents were issued in 2022, 2023 and 2024."
-          caption="Timeline of the public record, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents."
-          source="Leigh 2017 Biomacromolecules; Leigh 2019 Langmuir; Jensen 2021 ACS Biomaterials Science and Engineering; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2023 (University of Iowa); US patents 11,525,069 (2022), 11,814,526 (2023), 12,116,498 (2024)."
-        />
-        <div class="tiles">
-          <StatTiles items={tiles} columns={4} />
-          <details class="tile-src">
-            <summary class="label">Sources for these numbers</summary>
-            <ul role="list">
-              {tiles.map((t) => (
-                <li><strong>{t.value}</strong> {t.label}. {t.source}.</li>
-              ))}
-            </ul>
-          </details>
-        </div>
-        <div class="tiles archive" id="archive">
-          <p class="label archive-label">And in the archive</p>
-          <StatTiles items={archive} columns={3} />
-          <p class="label archive-src">Source: {archiveSource}.</p>
-        </div>
-        <Figure
-          name="W01_experiment_timeline"
-          alt="Stacked bar chart of archived experiments per year from 2016 to 2026, grouped by what they measured: adhesion and mechanics, coating process, biology, device function, durability, and other. A few experiments a year at the University of Iowa labs from 2016 to 2023, rising to more than 30 a year at ZwiCoat from 2024 to 2026."
-          caption="Every experiment in the ZwiCoat archive by year and by what it measured."
-          source="ZwiCoat Data archive, E-report method tags (built 2026-10-29)."
-        />
-      </div>
-    </section>
-
-    <!-- 2 -->
     <section class="ev" id="scar" aria-labelledby="scar-h">
       <div class="ev-head">
-        <p class="label ev-num">02</p>
+        <p class="label ev-num">01</p>
         <h2 id="scar-h">Scar tissue</h2>
         <p class="ev-text">Capsules were thinner and fibrosis was lower around coated surfaces in mice, rats and sheep. In mice the capsule was 67 percent thinner at six weeks on flat silicone and 62 percent thinner at one year on cochlear implant arrays (Horne 2023). In rats, four coated groups had capsules about 72 to 83 percent thinner at six weeks (Barrera 2026).</p>
       </div>
@@ -92,11 +62,10 @@ const nav = [
         <Figure name={W04.name} alt={W04.alt} caption={W04.caption} source={W04.source} />
         <Figure
           name="W27_capsule_thickness_mice"
-          alt="Capsule thickness in mice. At six weeks on flat silicone the zwitterionic coating gave a capsule 67 percent thinner than uncoated, while a non-zwitterionic hydrogel control did not differ significantly. At one year on human cochlear implant arrays the coated capsule was 62 percent thinner."
-          caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year. A non-zwitterionic hydrogel control did not differ significantly from uncoated."
+          alt="Capsule thickness in mice. At six weeks on flat silicone the zwitterionic coating gave a capsule 67 percent thinner than uncoated. At one year on human cochlear implant arrays the coated capsule was 62 percent thinner."
+          caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
           source="Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
         />
-        <Figure name={W26.name} alt={W26.alt} caption={W26.caption} source={W26.source} />
         <div class="photo-narrow">
           <Photo
             src="/images/histology-sheep.png"
@@ -109,29 +78,29 @@ const nav = [
       </div>
     </section>
 
-    <!-- 3 -->
-    <section class="ev" id="impedance" aria-labelledby="impedance-h">
+    <!-- 2 -->
+    <section class="ev" id="antifouling" aria-labelledby="antifouling-h">
       <div class="ev-head">
-        <p class="label ev-num">03</p>
-        <h2 id="impedance-h">Electrode impedance</h2>
-        <p class="ev-text">Working human cochlear implant arrays read lower impedance when coated, in sheep. Impedance was roughly two thirds lower at implantation and about half lower at four weeks (Ben-Shlomo 2026).</p>
+        <p class="label ev-num">02</p>
+        <h2 id="antifouling-h">Protein, cells, bacteria and friction</h2>
+        <p class="ev-text">Thirty-eight published bench comparisons from eight papers, 2017 to 2026, cover protein adsorption, cell attachment, bacterial adhesion and friction. Every one was lower on the coated surface. The median reduction was 94 percent, and the range was 53 to 99 percent. The interactive chart below shows all 48 comparisons. Below it, a rat study shows the same effect on implants: far fewer Staphylococcus aureus bacteria at day 21 (Shen 2021).</p>
       </div>
       <div class="ev-body">
-        <Figure
-          name="W08_impedance_sheep"
-          alt="Bar chart of total electrode impedance in sheep for coated and uncoated cochlear implant arrays, at implantation and at four weeks. Coated arrays read lower at both times."
-          caption="Electrode impedance of coated versus uncoated cochlear implant arrays in sheep."
-          source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)."
-          width={800}
+        <InteractiveChart
+          id="antifouling"
+          name={W05.name}
+          alt={W05.alt}
+          caption="Protein, cells, bacteria and friction: every published comparison of a coated surface with an uncoated one, as percent reduction. Filter by category, setting or paper, then select a bar to see its values."
+          source={W05.source}
         />
-        <Figure name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} />
+        <Figure name={W29.name} alt={W29.alt} caption={W29.caption} source={W29.source} />
       </div>
     </section>
 
-    <!-- 4 -->
+    <!-- 3 -->
     <section class="ev" id="insertion-friction" aria-labelledby="insertion-friction-h">
       <div class="ev-head">
-        <p class="label ev-num">04</p>
+        <p class="label ev-num">03</p>
         <h2 id="insertion-friction-h">Insertion force and friction</h2>
         <p class="ev-text">In human cadaveric cochleae, coated arrays needed about half the peak insertion force: about 42 percent less in one study (Bennion 2021) and about 50 percent less in another (Peel 2024). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024).</p>
       </div>
@@ -141,31 +110,33 @@ const nav = [
       </div>
     </section>
 
-    <!-- 5 -->
-    <section class="ev" id="antifouling" aria-labelledby="antifouling-h">
+    <!-- 4 -->
+    <section class="ev" id="impedance" aria-labelledby="impedance-h">
       <div class="ev-head">
-        <p class="label ev-num">05</p>
-        <h2 id="antifouling-h">Protein, cells, bacteria and friction</h2>
-        <p class="ev-text">Thirty-eight published bench comparisons from eight papers, 2017 to 2026, cover protein adsorption, cell attachment, bacterial adhesion and friction. Every one was lower on the coated surface. The median reduction was 94 percent, and the range was 53 to 99 percent. The browser below adds ten more variants, 48 in all. In rats challenged with S. aureus, coated implants carried far fewer bacteria at day 21 (Shen 2021).</p>
+        <p class="label ev-num">04</p>
+        <h2 id="impedance-h">Electrode impedance</h2>
+        <p class="ev-text">Working human cochlear implant arrays read lower impedance when coated, in sheep. Impedance was roughly two thirds lower at implantation and about half lower at four weeks (Ben-Shlomo 2026).</p>
       </div>
       <div class="ev-body">
-        <InteractiveChart
-          id="antifouling"
-          name={W05.name}
-          alt={W05.alt}
-          caption="Protein, cells, bacteria and friction: every published comparison of a coated surface with an uncoated one, as percent reduction. Filter by category, chemistry, setting or paper, then hover or focus a bar for the values, n and p. The static chart shows 38 of the 48 comparisons, from 8 papers."
-          source={W05.source}
-        />
-        <Figure name={W29.name} alt={W29.alt} caption={W29.caption} source={W29.source} />
+        <div class="pair">
+          <Figure
+            name="W08_impedance_sheep"
+            alt="Bar chart of total electrode impedance in sheep for coated and uncoated cochlear implant arrays, at implantation and at four weeks. Coated arrays read lower at both times."
+            caption="Electrode impedance of coated versus uncoated cochlear implant arrays in sheep."
+            source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)."
+            width={640}
+          />
+          <Figure name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} />
+        </div>
       </div>
     </section>
 
-    <!-- 6 -->
+    <!-- 5 -->
     <section class="ev" id="durability" aria-labelledby="durability-h">
       <div class="ev-head">
-        <p class="label ev-num">06</p>
+        <p class="label ev-num">05</p>
         <h2 id="durability-h">Durability</h2>
-        <p class="ev-text">Checkpoints run from two weeks in rats to one year in mice. At each one the film was intact or still doing its job. The friction measurements after explant are in <a href="#insertion-friction">section 4</a>.</p>
+        <p class="ev-text">Checkpoints run from two weeks in rats to one year in mice. At each one the film was intact or still doing its job. Friction after three weeks in mice is in <a href="#insertion-friction">section 3</a>, and the full record, with our own tests, is on the <a href="/durability">durability page</a>.</p>
       </div>
       <div class="ev-body">
         <Figure
@@ -174,42 +145,43 @@ const nav = [
           caption="In-vivo durability checkpoints from two weeks to one year."
           source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023."
         />
+        <p class="more"><a href="/durability">See the full durability record</a></p>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="ev" id="adhesion" aria-labelledby="adhesion-h">
+      <div class="ev-head">
+        <p class="label ev-num">06</p>
+        <h2 id="adhesion-h">Adhesion and tuning</h2>
+        <p class="ev-text">Every dot in the chart below is one bond-strength test group, sorted by material. With enough grafting agent, the gel itself gives way before its bond to silicone does (Leigh 2019). Crosslinking tunes the gel: stiffer gels cost some antifouling, and the best balance sits at roughly 5 to 15 percent (Jensen 2021).</p>
+      </div>
+      <div class="ev-body">
+        <Figure name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} />
+        <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} />
+        <InteractiveChart
+          id="lapshear"
+          name="W02_lapshear_database"
+          alt="Dot plot of lap-shear bond strength by substrate, one dot per experimental group, with a median bar for each of seven substrates: silicone, silicone film on glass, implant silicone, PVC, PEEK, parylene-C and polyurethane."
+          caption="Each dot is one bond-strength test group. The black bar marks the median for each material. Filter by material or year, then select a dot to see its values."
+          source="ZwiCoat lap-shear database, 2017 to 2026 (internal data; formulation details withheld)."
+        />
       </div>
     </section>
 
     <!-- 7 -->
-    <section class="ev" id="adhesion" aria-labelledby="adhesion-h">
-      <div class="ev-head">
-        <p class="label ev-num">07</p>
-        <h2 id="adhesion-h">Adhesion and tuning</h2>
-        <p class="ev-text">The explorer shows every lap-shear group in our database, by substrate. With enough grafting agent, the gel fails before its bond to silicone does (Leigh 2019). The cross-linker level trades stiffness against antifouling, and the best balance is at roughly 5 to 15 percent (Jensen 2021).</p>
-      </div>
-      <div class="ev-body">
-        <InteractiveChart
-          id="lapshear"
-          name="W02_lapshear_database"
-          alt="Dot plot of lap-shear bond strength by substrate, one dot per experimental group, with a median bar for each of seven substrates: silicone, silicone film on glass, implant silicone, PVC, PEEK, parylene-C and polyurethane (probe cover)."
-          caption="Each dot is one experimental group (3 to 10 samples); black bar = median. ZwiCoat lap-shear database, 2017 to 2026; formulation details withheld. Filter by substrate, year or failure mode, then hover or focus a dot for the values."
-          source="ZwiCoat lap-shear database, 2017 to 2026 (internal data; formulation details withheld)."
-        />
-        <Figure name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} />
-        <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} />
-      </div>
-    </section>
-
-    <!-- 8 -->
     <section class="ev" id="invivo" aria-labelledby="invivo-h">
       <div class="ev-head">
-        <p class="label ev-num">08</p>
+        <p class="label ev-num">07</p>
         <h2 id="invivo-h">Every in-vivo result</h2>
-        <p class="ev-text">Forty-six comparisons from the published animal and cadaver studies, one marker each. Filter by species and metric, then hover or focus a marker for the paper, n and p value.</p>
+        <p class="ev-text">Every published animal and cadaver comparison, one marker each. Filter by species and measure, then select a marker for the paper and the result.</p>
       </div>
       <div class="ev-body">
         <InteractiveChart
           id="studies"
           name="W04_fibrosis_by_study"
           alt={W04.alt}
-          caption="Each published comparison of a coated surface with an uncoated one. Time is on a log axis, and negative values mean less with the coating. The static chart is the fibrosis summary: 10 measurements in mice, rats and sheep."
+          caption="Each published comparison of a coated surface with an uncoated one."
           source="Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Barrera 2026 ACS Applied Polymer Materials; Ben-Shlomo 2026 Hearing Research (values read from the published figures are marked approximate)."
         />
       </div>
@@ -258,6 +230,7 @@ const nav = [
     </section>
 
     <p class="footnote">Values quoted from published papers were read from the printed figures unless the paper states them in text; treat them as approximate. No coated device has been implanted in a human; human cochlear implant arrays were tested in mice, sheep and cadaveric cochleae.</p>
+    <p class="label archive-src">Archive counts: ZwiCoat Data archive.</p>
   </div>
 
   <CTABand
@@ -268,8 +241,6 @@ const nav = [
 </Base>
 
 <script>
-  import { mount as mountTimeline } from '../scripts/timeline';
-  import type { PubRecord } from '../scripts/timeline';
   import { mount as mountStudies } from '../scripts/studies';
   import type { StudyRow } from '../scripts/studies';
   import { mount as mountAntifouling } from '../scripts/antifouling';
@@ -278,13 +249,11 @@ const nav = [
   import type { LapShearRow } from '../scripts/lapshear';
   import { showFallback } from '../scripts/chart-utils';
   // Inlined into the bundle at build time; nothing is fetched.
-  import publications from '../../public/data/W24_publications.json';
   import studies from '../../public/data/W32_invivo_studies.json';
   import antifouling from '../../public/data/W05_antifouling_all.json';
   import lapshear from '../../public/data/W02_lapshear_public.json';
 
   const jobs: [string, (root: HTMLElement) => void][] = [
-    ['timeline', (root) => mountTimeline(root, publications as PubRecord[])],
     ['antifouling', (root) => mountAntifouling(root, antifouling as AntifoulingRow[])],
     ['studies', (root) => mountStudies(root, studies as StudyRow[])],
     ['lapshear', (root) => mountLapshear(root, lapshear as LapShearRow[])],
@@ -316,9 +285,10 @@ const nav = [
   .ev-text a { color: var(--blue); text-underline-offset: 0.18em; }
   .ev-body { display: grid; gap: var(--space-5); min-width: 0; }
 
-  .tiles { display: grid; gap: var(--space-3); }
-  .archive-label { color: var(--blue-deep); }
-  .archive-src { text-transform: none; letter-spacing: 0.02em; }
+  .tiles { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
+  .archive-src { margin-top: var(--space-3); text-transform: none; letter-spacing: 0.02em; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+  .more a { color: var(--blue); text-underline-offset: 0.18em; font-weight: 600; }
   .tile-src { max-width: var(--measure); }
   .tile-src summary { color: var(--ink-2); padding-block: 0.4rem; }
   .tile-src summary:hover { color: var(--blue); }
@@ -339,6 +309,9 @@ const nav = [
 
   .footnote { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--ink); max-width: var(--measure); color: var(--ink-2); font-size: var(--fs-caption); }
 
+  @media (min-width: 760px) {
+    .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (min-width: 640px) {
     .toc ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }

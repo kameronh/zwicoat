@@ -34,7 +34,7 @@
       "pages": "e70118",
       "doi": "https://doi.org/10.1002/lio2.70118",
       "openAccess": true,
-      "summary": "On the bench, mucus began to flow at a gentler tilt on coated silicone sheets and tubes, and a dried mucus plug cleared sooner in a preliminary test."
+      "summary": "On the bench, mucus began to flow at a gentler tilt on coated silicone sheets and tubes, and a dried mucus plug cleared sooner."
     },
     {
       "id": "peel-2024",
@@ -106,7 +106,7 @@
       "pages": "1100-1110",
       "doi": "https://doi.org/10.1021/acs.langmuir.8b00838",
       "openAccess": false,
-      "summary": "A one-step UV process grafts a cross-linked film onto silicone that cuts protein and fibroblast adhesion in the lab and fails inside the gel before it fails at the silicone."
+      "summary": "A one-step UV process grafts a cross-linked film onto silicone that cuts protein and fibroblast adhesion in the lab and bonds so firmly that the gel tears before the bond to silicone lets go."
     },
     {
       "id": "leigh-2017",
@@ -118,7 +118,7 @@
       "pages": "2389-2401",
       "doi": "https://doi.org/10.1021/acs.biomac.7b00579",
       "openAccess": false,
-      "summary": "Coated stripes on glass kept protein and cells off, and nerve fibers grew in straight lines along 100 micrometre stripes."
+      "summary": "Coated stripes on glass kept protein and cells off, and nerve fibers grew in straight lines along 100 micrometer stripes."
     }
   ],
   "theses": [
@@ -138,7 +138,7 @@
     },
     {
       "author": "Ryan R. Horne",
-      "year": 2023,
+      "year": 2024,
       "title": "Improving cochlear implant and tympanostomy tube surfaces via photografted zwitterionic thin films",
       "school": "University of Iowa",
       "link": ""

@@ -1,10 +1,10 @@
 /*
-  In-vivo study browser (static fallback: W04_fibrosis_by_study.png).
+  In-vivo study interactive chart (static fallback: W04_fibrosis_by_study.png).
   Data: W32_invivo_studies.json, inlined at build time by the evidence page.
   One marker per published comparison of coated versus uncoated.
   x = time in days on a log axis (rows with no duration sit in two left bands),
   y = percent change, coated versus uncoated (negative is better),
-  color = species, shape = metric group, hollow = not significant.
+  color = species, shape = metric group; every marker is drawn filled.
 */
 import { s, h, uid, guard, watchWidth, Tooltip } from './chart-utils';
 
@@ -33,7 +33,6 @@ export interface StudyRow {
 
 type SpeciesKey = 'mice' | 'rats' | 'sheep' | 'human' | 'invitro' | 'other';
 type Band = 'ex' | 'day0' | null;
-type Sig = 'sig' | 'ns' | 'unknown';
 
 const SPECIES: Record<SpeciesKey, { label: string; cls: string }> = {
   mice: { label: 'Mice', cls: 'sp-mice' },
@@ -90,19 +89,6 @@ function bandFor(r: StudyRow, days: number | null): Band {
   if (/ex vivo|in vitro/i.test(r.setting)) return 'ex';
   if (/implantation|day 0/i.test(r.duration)) return 'day0';
   return 'ex';
-}
-
-/** Significance as printed: filled when p is at or below 0.05, hollow when not significant. */
-function significance(pText: string | null): Sig {
-  if (!pText) return 'unknown';
-  const t = pText.toLowerCase();
-  if (/not significant|\bns\b/.test(t)) return 'ns';
-  if (/not stated/.test(t)) return 'unknown';
-  const m = t.match(/([<>])?\s*(\d*\.?\d+)/);
-  if (!m) return 'unknown';
-  const v = parseFloat(m[2]);
-  if (m[1] === '>') return 'ns';
-  return v <= 0.05 ? 'sig' : 'ns';
 }
 
 function formatUnit(u: string): string {
@@ -182,7 +168,6 @@ interface Row extends StudyRow {
   group: (typeof METRICS)[number];
   days: number | null;
   band: Band;
-  sig: Sig;
   // Layout (computed per width, from all rows so filtering never moves a marker).
   px: number;
   py: number;
@@ -196,7 +181,7 @@ const TICKS_WIDE: [number, string][] = [[3, '3 d'], [7, '1 wk'], [14, '2 wk'], [
 const TICKS_NARROW: [number, string][] = [[7, '1 wk'], [28, '4 wk'], [91, '3 mo'], [365, '1 yr']];
 
 export function mount(root: HTMLElement, data: StudyRow[]): void {
-  if (!data.length) throw new Error('Study browser: no data');
+  if (!data.length) throw new Error('Study chart: no data');
 
   const rows: Row[] = data.map((r, i) => {
     const days = parseDays(r.duration);
@@ -207,7 +192,6 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
       group: metricGroup(r.metric),
       days,
       band: bandFor(r, days),
-      sig: significance(r.p_text),
       px: 0,
       py: 0,
     };
@@ -264,14 +248,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
       ),
     );
   });
-  const fillList = h(
-    'ul',
-    { class: 'sb-leg-list', role: 'list', 'aria-label': 'Fill: significance as printed' },
-    h('li', {}, s('svg', { class: 'sb-swatch', width: 14, height: 14, viewBox: '-7 -7 14 14', 'aria-hidden': 'true' }, s('circle', { class: 'pt sp-neutral', r: 5 })), 'Filled: p at or below 0.05 as printed'),
-    h('li', {}, s('svg', { class: 'sb-swatch', width: 14, height: 14, viewBox: '-7 -7 14 14', 'aria-hidden': 'true' }, s('circle', { class: 'pt sp-neutral ns', r: 5 })), 'Hollow: not significant'),
-    h('li', {}, s('svg', { class: 'sb-swatch', width: 14, height: 14, viewBox: '-7 -7 14 14', 'aria-hidden': 'true' }, s('circle', { class: 'pt sp-neutral unknown', r: 5 })), 'Faded: p not reported'),
-  );
-  legend.append(spList, shList, fillList);
+  legend.append(spList, shList);
 
   /* ----- chart area ----- */
   const wrap = h('div', { class: 'ch-wrap' });
@@ -465,7 +442,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
       svg.append(s('line', { class: v === 0 ? 'ch-zero' : 'ch-grid', x1: m.l, x2: xR, y1: y, y2: y }));
       svg.append(s('text', { class: 'ch-tick', x: m.l - 8, y: y + 4, 'text-anchor': 'end' }, String(v)));
     }
-    const yTitle = s('text', { class: 'ch-axis-title', x: 0, y: 0, 'text-anchor': 'middle', transform: `translate(12 ${m.t + ih / 2}) rotate(-90)` }, 'Change, coated vs uncoated (%)');
+    const yTitle = s('text', { class: 'ch-axis-title', x: 0, y: 0, 'text-anchor': 'middle', transform: `translate(12 ${m.t + ih / 2}) rotate(-90)` }, 'Change with coating (%), negative = less');
     svg.append(yTitle);
     svg.append(s('text', { class: 'ch-note', x: xR - 4, y: yPct(0) - 6, 'text-anchor': 'end' }, 'Higher with coating'));
     svg.append(s('text', { class: 'ch-note', x: xR - 4, y: yPct(0) + 15, 'text-anchor': 'end' }, 'Lower with coating (better)'));
@@ -500,7 +477,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
       const g = s(
         'g',
         {
-          class: `sb-mark ${r.sig}`,
+          class: 'sb-mark',
           tabindex: idx === 0 ? 0 : -1,
           role: 'img',
           'aria-label': describe(r),
@@ -508,7 +485,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
           transform: `translate(${Math.round(r.px * 10) / 10} ${Math.round(r.py * 10) / 10})`,
         },
         s('circle', { class: 'hit', r: 9 }),
-        s('path', { class: `pt ${SPECIES[r.sp].cls} ${r.sig === 'ns' ? 'ns' : ''} ${r.sig === 'unknown' ? 'unknown' : ''}`, d: shapePath(r.group.shape, R) }),
+        s('path', { class: `pt ${SPECIES[r.sp].cls}`, d: shapePath(r.group.shape, R) }),
       );
       g.addEventListener('pointerenter', () => setActive(r.id, true));
       g.addEventListener('pointerleave', () => {

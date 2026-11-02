@@ -3,9 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import SpecStrip from '../../components/SpecStrip.astro';
 import Figure from '../../components/Figure.astro';
-import Photo from '../../components/Photo.astro';
-import VideoLoop from '../../components/VideoLoop.astro';
-import Prose from '../../components/Prose.astro';
+import MediaBlocks from '../../components/MediaBlocks.astro';
 import References from '../../components/References.astro';
 import { imageSize } from '../../lib/imagesize';
 
@@ -122,6 +120,17 @@ const photoSize = (f: Fig) => {
   const s = imageSize(`/images/${f.name}.png`);
   return `${s.width}/${s.height}`;
 };
+// Aspect ratios of the chart-entry photographs, keyed by figure name.
+const photoSizes: Record<string, string> = {};
+for (const b of blocks) {
+  const items = b.kind === 'pair' ? b.items : [b];
+  for (const x of items) if (x.kind === 'photo') photoSizes[x.fig.name] = photoSize(x.fig);
+}
+
+// Media placed before the first paragraph of the body is the lead: it renders under the standfirst, above the spec strip.
+const firstText = blocks.findIndex((b) => b.kind === 'html');
+const lead = firstText === -1 ? [] : blocks.slice(0, firstText);
+const body = firstText === -1 ? blocks : blocks.slice(firstText);
 
 const spec = [
   { label: 'Devices', value: d.devices },
@@ -140,6 +149,12 @@ const spec = [
       <p class="lead">{d.standfirst}</p>
     </header>
 
+    {lead.length > 0 && (
+      <div class="lead-media">
+        <MediaBlocks blocks={lead} photos={LAB_PHOTOS} videos={LAB_VIDEOS} credit={CREDIT} photoSize={photoSizes} />
+      </div>
+    )}
+
     <SpecStrip items={spec} />
 
     <div class:list={['hero', { tall: heroTall }]}>
@@ -147,29 +162,7 @@ const spec = [
     </div>
 
     <div class="body">
-      {blocks.map((b) => {
-        if (b.kind === 'html') return <Prose><Fragment set:html={b.html} /></Prose>;
-        if (b.kind === 'figure') {
-          return <div class="fig"><Figure name={b.fig.name} alt={b.fig.alt} caption={b.fig.caption} source={b.fig.source} width={1000} /></div>;
-        }
-        if (b.kind === 'photo') {
-          return <div class="fig"><Photo src={`/images/${b.fig.name}.png`} alt={b.fig.alt} caption={b.fig.caption} credit={b.fig.source} aspect={photoSize(b.fig)} /></div>;
-        }
-        const one = (x: Block) => {
-          if (x.kind === 'video') {
-            const v = LAB_VIDEOS[x.key];
-            return <VideoLoop src={v.src} poster={v.poster} caption={v.caption} alt={v.alt} aspect={v.aspect} credit={CREDIT} />;
-          }
-          if (x.kind === 'labphoto') {
-            const p = LAB_PHOTOS[x.key];
-            return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={p.credit ?? CREDIT} aspect={p.aspect} />;
-          }
-          return null;
-        };
-        if (b.kind === 'video' || b.kind === 'labphoto') return <div class="fig">{one(b)}</div>;
-        if (b.kind === 'pair') return <div class="fig pair">{b.items.map((x) => <div class="pair-item">{one(x)}</div>)}</div>;
-        return null;
-      })}
+      <MediaBlocks blocks={body} photos={LAB_PHOTOS} videos={LAB_VIDEOS} credit={CREDIT} photoSize={photoSizes} />
     </div>
 
     <section class="refs" aria-label="References">
@@ -184,10 +177,9 @@ const spec = [
   .head { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); max-width: 40rem; }
   .hero { margin-top: var(--space-5); max-width: 62rem; }
   .hero.tall { max-width: 44rem; }
+  .lead-media { margin-bottom: var(--space-5); }
+  .lead-media :global(.fig) { margin-block: 0; }
   .body { margin-top: var(--space-5); }
   .body :global(.prose h2:first-child) { margin-top: var(--space-5); }
-  .fig { margin-block: var(--space-5); max-width: 62rem; min-width: 0; }
-  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); align-items: start; max-width: 40rem; }
-  .pair-item { min-width: 0; }
   .refs { margin-top: var(--space-6); }
 </style>

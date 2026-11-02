@@ -1,5 +1,5 @@
 ---
-import { W28, W31 } from '../data/figure-text';
+import { W28a, W31, W35, W36 } from '../data/figure-text';
 import Base from '../layouts/Base.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
@@ -7,7 +7,7 @@ import VideoLoop from '../components/VideoLoop.astro';
 import References from '../components/References.astro';
 import CTABand from '../components/CTABand.astro';
 ---
-<Base title="Durability" description="The ZwiGuard coating is covalently grafted and crosslinked, so it survives implantation, handling and sterilization. The published record and our own tests.">
+<Base title="Durability" description="The ZwiCoat coating is covalently grafted and crosslinked, so it survives implantation, handling and sterilization. The published record and our own tests.">
   <div class="container section">
     <header class="page-head">
       <p class="label">Durability</p>
@@ -17,40 +17,46 @@ import CTABand from '../components/CTABand.astro';
 
     <!-- In the body -->
     <ClaimRow label="In the body" title="The film was still intact at one year in mice.">
-      <p>Checkpoints run from two weeks in rats to one year in mice. At one year in mice, the film was intact (Horne 2023).</p>
-      <p>Four weeks in sheep cochleae showed no delamination (Ben-Shlomo 2026).</p>
+      <p>Studies run from two weeks in rats to one year in mice (Horne 2023).</p>
+      <p>In sheep, the film stayed attached to working cochlear implant arrays for four weeks (Ben-Shlomo 2026).</p>
       <p>A PEG-based control film partly detached at six weeks in mice, and the zwitterionic film did not (Horne 2023, Fig 5).</p>
       <Figure slot="figure" name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
     </ClaimRow>
 
-    <ClaimRow label="After explant" title="Friction was unchanged after three weeks in mice." reverse>
+    <ClaimRow label="In the body" title="Friction stayed about 90 percent lower after three weeks in mice." reverse>
       <p>Coated silicone was implanted in mice for three weeks, then taken out and tested (Peel 2024).</p>
-      <p>It kept about 90 percent lower friction than uncoated silicone. Against five guinea pig tissues and steel, friction was at least 90 percent lower.</p>
-      <Figure slot="figure" name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} width={1000} />
+      <p>It kept about 90 percent lower friction than uncoated silicone. Against steel and a range of animal tissues, friction was at least 90 percent lower.</p>
+      <Figure slot="figure" name={W28a.name} alt={W28a.alt} caption={W28a.caption} source={W28a.source} width={1000} />
+    </ClaimRow>
+
+    <!-- Wear, drying and re-wetting -->
+    <ClaimRow label="Through wear, drying and re-wetting" title="Still slippery after 2,500 passes.">
+      <p>Coated silicone was rubbed 2,500 times under a 1 N load in saline, about 17 hours of continuous wear.</p>
+      <p>Friction in the last 100 passes matched the first 100 and stayed at about 7 percent of bare silicone (Peel 2024).</p>
+      <Figure slot="figure" name={W35.name} alt={W35.alt} caption={W35.caption} source={W35.source} width={1000} />
+    </ClaimRow>
+
+    <ClaimRow label="Through wear, drying and re-wetting" title="Dry it out, re-wet it, and it is as slippery as new." reverse>
+      <p>Coatings dried while being bent every five minutes lasted 47 to 75 minutes before the first crack.</p>
+      <p>After 24 hours dry and 24 hours re-wet, friction came back to its starting level on coatings up to 20 percent crosslinker, and it stayed well below bare silicone on the rest (Peel 2024).</p>
+      <Figure slot="figure" name={W36.name} alt={W36.alt} caption={W36.caption} source={W36.source} width={1000} />
     </ClaimRow>
 
     <!-- Mechanical -->
     <ClaimRow label="Mechanical" title="It takes a hit.">
-      <p>A weighted pendulum strikes a coated tissue expander.</p>
-      <p>The coating showed no visible damage (internal test, 2026).</p>
-      <VideoLoop slot="figure" src="/media/pendulum-loop" poster="/media/pendulum-poster.jpg" aspect="1/1" caption="Pendulum impact test on a coated tissue expander, close-up (left) and wide view (right). No visible damage to the coating." alt="Two synchronized views of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard. The close-up is on the left and the wide view on the right." credit="ZwiCoat, 2026" />
+      <p>A weighted pendulum struck a coated tissue expander, and the coating showed no visible damage (ZwiCoat internal study, 2026).</p>
+      <VideoLoop slot="figure" src="/media/pendulum-loop" poster="/media/pendulum-poster.jpg" aspect="540/1080" caption="Pendulum impact test on a coated tissue expander, close-up. No visible damage to the coating. ZwiCoat internal test, 2026." alt="Close-up of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard." credit="ZwiCoat, 2026" />
     </ClaimRow>
 
     <ClaimRow label="Mechanical" title="The gel tears before the bond lets go." reverse>
-      <p>On silicone, the gel tore before the interface let go (Leigh 2019).</p>
+      <p>On silicone the bond is stronger than the gel itself. Adhesion tests end with the gel tearing, not the film peeling off, once there is enough grafting agent (Leigh 2019).</p>
       <Figure slot="figure" name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} width={900} />
     </ClaimRow>
 
     <!-- Sterilization and shipping -->
-    <ClaimRow label="Sterilization and shipping" title="Seven of eight cycles left the coating intact.">
-      <p>The coating has been tested through common sterilization cycles (steam, EtO, UV and gamma, wet or dry, and dry e-beam); wet e-beam did not pass. Bond strength held after gamma or e-beam plus shipping. We validate on your cycle during joint development.</p>
-      <Figure slot="figure" name="W11_sterilization" alt="Two panels. Left: the coating was intact after seven of eight sterilization cycles: steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry were intact, and e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping. The coating was intact after seven of eight sterilization cycles; wet e-beam failed." source="ZwiCoat CIVCO sterilization study, 2025 (Kyle Ruby). Internal data; silicone coupons, about 5 per group." width={1000} />
-    </ClaimRow>
-
-    <!-- Not shown yet -->
-    <ClaimRow label="What we have not shown yet" title="Aging and shelf life come next." reverse>
-      <p>Long-term aging and shelf life are measured in joint development.</p>
-      <p>Results from studies in preparation are not on this site.</p>
+    <ClaimRow label="Sterilization and shipping" title="Compatible with multiple sterilization methods.">
+      <p>The coating was unchanged after common sterilization cycles: steam, EtO, UV and gamma, wet or dry, and dry e-beam. Wet e-beam did not pass. Bond strength held after gamma or e-beam plus shipping. We validate on your cycle during joint development.</p>
+      <Figure slot="figure" name="W11_sterilization" alt="Two panels. Left: the coating was unchanged after steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry cycles; e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping." source="ZwiCoat internal study, 2025. Silicone coupons, about 5 per group." width={1000} />
     </ClaimRow>
 
     <section class="block refs" aria-label="References">
