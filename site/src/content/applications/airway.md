@@ -2,13 +2,13 @@
 title: "Airway tubes"
 slug: "airway"
 order: 3
-standfirst: "ZwiCoat lowers friction and keeps protein, bacteria and mucus from building on the tube, the three things that lead to airway injury, stenosis and biofilm."
+standfirst: "ZwiCoat is a drug-free coating that enhances mucus flow, resists bacteria and lowers friction, and it has been tested on endotracheal tubes."
 devices: "Endotracheal tubes, tracheostomy tubes"
 substrates: "silicone (published); others measured in the feasibility round"
 thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) path with our Master File behind your submission"
-evidence: "mucus-flow bench model on silicone tubes; rats, 21 days (bacteria); cadaveric cochleae (insertion force); no airway-tube study published"
+evidence: "coated endotracheal tubes in a cadaveric larynx (ZwiCoat internal study, 2026); mucus-flow bench model on silicone tubes; rats, 21 days (bacteria); cadaveric cochleae (insertion force)"
 heroFigure: "W19_silver_ett_forest"
 figures:
   - name: "W19_silver_ett_forest"
@@ -19,6 +19,10 @@ figures:
     caption: "Coated silicone let mucus flow at a gentler tilt, on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner."
     source: "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol 2025;10(2):e70118. doi:10.1002/lio2.70118"
     alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimeter tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
+  - name: "W38_ett_insertion_force"
+    caption: "Two surgeons intubated a cadaveric human larynx on a load cell. Coated endotracheal tubes needed 62 percent (Surgeon 1) and 61 percent (Surgeon 2) less integrated insertion force than the uncoated tube."
+    source: "ZwiCoat internal study, 2026 (1 uncoated and 3 coated tubes per surgeon, 17 uncoated and 43 coated intubations; p < 0.001 for both surgeons together, tube-level model). Raw force data: ZwiCoat Materials Innovations, SBIR Phase 1 Dataset, Zenodo, doi:10.5281/zenodo.10459478 (CC BY 4.0)."
+    alt: "Four panels of endotracheal tube insertion force in a cadaveric human larynx. Top: one typical intubation per tube for each of two surgeons; the coated tube's force trace sits well below the uncoated trace. Bottom: integrated insertion force for every intubation; Surgeon 1, 7.62 newton-seconds uncoated against 2.88 coated, 62 percent lower; Surgeon 2, 1.36 against 0.53, 61 percent lower."
   - name: "W07_insertion_force"
     caption: "Coated cochlear implant arrays needed about half the peak insertion force of uncoated arrays in two human cadaveric studies: about 42 percent less (Bennion 2021) and about 50 percent less (Peel 2024)."
     source: "Bennion DM, Horne R, Peel A, et al. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A and 4B (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156."
@@ -36,8 +40,9 @@ sources:
   - "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35(4):1100-1110."
   - "Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293."
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
-cardStat: "~50%"
-cardStatLabel: "less peak insertion force for coated cochlear implant arrays in human cadaveric cochleae (Bennion 2021, Peel 2024)"
+# Card stat from W38 (figures/build_sbir.py): 62 and 61 percent less integrated insertion force, pooled 60.8 percent.
+cardStat: "~60%"
+cardStatLabel: "less force to intubate with coated endotracheal tubes in a cadaveric larynx (ZwiCoat internal study, 2026)"
 ---
 {{video:cuff}}
 
@@ -53,7 +58,11 @@ Antibacterial tubes address infection only, and only modestly. Silver-coated tub
 
 ## What ZwiCoat does here
 
-The results below come from published studies on silicone and on cochlear implant arrays, the models for mucus flow, friction and insertion force.
+The results below come from our own intubation tests with coated endotracheal tubes, and from published studies on silicone and cochlear implant arrays.
+
+**Insertion force, on endotracheal tubes.** Two surgeons intubated a cadaveric human larynx with coated and uncoated tubes. Coated tubes needed about 60 percent less insertion force, for both surgeons (ZwiCoat internal study, 2026).
+
+{{figure:W38}}
 
 **Mucus flow, in silicone tubes.** In a 2.6 millimeter silicone tube, mucus started to flow at 31 degrees of tilt against 48 uncoated. Dried mucus plugs cleared in a median 22.5 minutes against 30. The effect is largest in wider tubes, such as airway tubes. (Horne 2025.)
 
@@ -61,7 +70,7 @@ The results below come from published studies on silicone and on cochlear implan
 
 **The coated cuff.** Dip coating covers the tube and its cuff. The clip and the photograph at the top show a coated cuff in our lab, inflating and deflating.
 
-**Insertion force, in human cadaveric cochleae.** Coated cochlear implant arrays needed about half the peak force: about 42 percent less, 64.2 against 37.0 millinewtons (Bennion 2021), and about 50 percent less, about 68 against 35 millinewtons (Peel 2024). Coated cochlear implant arrays are the published model for insertion force.
+**Insertion force, in human cadaveric cochleae.** Published work on cochlear implant arrays shows the same effect. Coated arrays needed about half the peak force: about 42 percent less, 64.2 against 37.0 millinewtons (Bennion 2021), and about 50 percent less, about 68 against 35 millinewtons (Peel 2024).
 
 {{figure:W07}}
 

@@ -9,7 +9,7 @@
   "value": "3",
   "label": "PhD dissertations, University of Iowa",
   "takeaway": "Three doctoral theses underpin the chemistry and the process.",
-  "source": "Leigh 2018, Peel 2023, Horne 2023 (University of Iowa)"
+  "source": "Leigh 2018, Peel 2023, Horne 2024 (University of Iowa)"
  },
  {
   "value": "3",
@@ -24,9 +24,9 @@
   "source": "ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,498; AU 2017280359; CN ZL201780049849.X; JP 7005535; MX 388986); Kam Hansen, 2026-10-29"
  },
  {
-  "value": "5",
-  "label": "provisional applications filed",
-  "takeaway": "Five new inventions filed; national applications pending in Canada, Europe and South Africa.",
+  "value": "More",
+  "label": "patent applications pending",
+  "takeaway": "Further patent applications are pending.",
   "source": "ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,498; AU 2017280359; CN ZL201780049849.X; JP 7005535; MX 388986); Kam Hansen, 2026-10-29"
  },
  {
@@ -36,10 +36,10 @@
   "source": "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 7)"
  },
  {
-  "value": "4 weeks",
+  "value": "6 months",
   "label": "functional human arrays in sheep",
   "takeaway": "Works on the real device: lower impedance and less inflammation on a working implant.",
-  "source": "Ben-Shlomo N, et al. Hearing Research 2026;474:109606"
+  "source": "Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (four weeks); six-month sheep cohort, ZwiCoat internal study, 2026"
  },
  {
   "value": "~90%",

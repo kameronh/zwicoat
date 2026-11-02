@@ -38,8 +38,8 @@ sources:
   - "Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293."
   - "Bennion DM, Horne R, Peel A, et al. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otol Neurotol. 2021;42(10):1476-1483."
   - "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol. 2025;10(2):e70118."
-cardStat: "12.5 vs 12.6%"
-cardStatLabel: "symptomatic CAUTI with silver alloy versus standard catheters: the problem a new surface must solve (Pickard 2012)"
+cardStat: "~90%"
+cardStatLabel: "lower friction on coated silicone, still in place after three weeks in mice (Peel 2024)"
 ---
 ## The problem
 

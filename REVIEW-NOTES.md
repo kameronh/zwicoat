@@ -209,3 +209,27 @@ NOT yet done (next session, in this order):
   on neural. Better stereo shots exist only at 1280x720; candidates in
   assets-staging/lab-media/micrographs/CANDIDATES.md.
 - Staging redeployed; committed on v2 (Kam pushes).
+
+## 2026-11-02: round three applied (lead)
+
+Applied: editorial rules in CLAUDE.md; ZwiCoat naming (ZwiGuard retired);
+Public Sans on Blueprint; logo redrawn as "ZwiCoat" SVG; nav Technology,
+Evidence, Durability, Applications, Partner, About; technology page rewrites
+(first and fifth sentences, substrates block, regulatory removed, process
+video hidden); About (near Iowa City, 100 percent founder owned, bios in one
+dropdown, Co-founder titles, timeline moved here); Evidence reordered (scar,
+antifouling, insertion and friction, impedance with W08 at 640, durability,
+adhesion, in-vivo), W26 and archive tiles removed, Horne 2024, "6 months"
+tile; Durability page rebuilt (W06, W28a, W35 wear, W36 dry and rewet,
+pendulum close-up only, W31 with grafting-agent axis, sterilization header
+positive); PEEK page with W34 bond chart and the rat study as "under way";
+neural page leads with histology, adds BCI rationale; airway leads with cuff
+clip, stenosis first; rule-driven copy proposals applied; p values and
+caveats out of body text; US spelling; minimal internal citations.
+New inventories in figures/published: durability-report-2026.md,
+cranioplasty-peek-2026.md, site-materials-2026.md.
+Staging redeployed; committed 388fde5 (Kam pushes).
+
+Awaiting Kam: proposals 1 to 25 (chat), plus sterilization conditions
+question (steam and UV have no E-report; wet e-beam failure was on
+polyurethane only), and the Horne 2023 original micrographs.

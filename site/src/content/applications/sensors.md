@@ -2,7 +2,7 @@
 title: "Sensors"
 slug: "sensors"
 order: 7
-standfirst: "ZwiCoat is a drug-free coating tested for scar capsule thickness on silicone and implant arrays, with sensor response still to be measured on your parts."
+standfirst: "ZwiCoat is a drug-free coating tested for scar capsule thickness on silicone and implant arrays."
 devices: "Continuous glucose monitors, implanted biosensors"
 substrates: "silicone and platinum contacts (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); sensor membranes in the feasibility round"
 thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
@@ -16,13 +16,9 @@ figures:
     source: "McClatchey PM, McClain ES, Williams IM, et al. Fibrotic encapsulation is the dominant source of continuous glucose monitor delays. Diabetes 2019;68(10):1892-1901. doi:10.2337/db19-0229"
     alt: "Bar chart of time to peak signal in mice after a glucose challenge: about 2 minutes for blood glucose and 24 minutes for an implanted continuous glucose monitor."
   - name: "W27_capsule_thickness_mice"
-    caption: "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
+    caption: "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
-    alt: "Two bar charts of scar capsule thickness in mice. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 with the zwitterionic coating. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
-  - name: "W26_sheep_histology"
-    caption: "At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled."
-    source: "Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606"
-    alt: "Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. A line joins each of the three sheep's uncoated and coated values. "
+    alt: "Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
   - name: "W30_crosslinker_tradeoff"
     caption: "More crosslinker makes the gel stiffer and less swollen. Protein, cell and friction benefits are strongest at about 5 to 15 percent crosslinker."
     source: "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (SBMA series; values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, baseline implied by the text, 50-fold rise; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852"
@@ -51,7 +47,6 @@ The results below are from published studies on silicone and on implant arrays.
 
 **Cells and fibrosis, in sheep.** At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled. (Ben-Shlomo 2026.)
 
-{{figure:W26}}
 
 Related work points the same way. A different zwitterionic coating cut glucose sensor error without recalibration from 73 to 17 percent in mice over three days (Xie 2018). ZwiCoat is a thicker, crosslinked, grafted hydrogel.
 

@@ -107,10 +107,20 @@ export const W28a = {
 
 export const W34 = {
   name: 'W34_peek_bond_strength',
-  alt: 'Two bar charts of lap-shear bond strength of the coating on PEEK, silicone and PVC. Panel A, as prepared (dry): PEEK at least 635 kilopascals, silicone about 131 and PVC about 349. Panel B, after a short water soak: PEEK about 129, silicone about 84 and PVC about 419. A note on both panels says every PEEK test ended with the coating tearing before the PEEK interface let go.',
+  alt: 'Two bar charts of lap-shear bond strength of the coating on PEEK, silicone and PVC. Panel A, as prepared (dry): PEEK at least 635 kilopascals, silicone about 131 and PVC about 349; a note on the PEEK bar says the gel tears before the bond lets go. Panel B, after a short water soak: PEEK about 129, silicone about 84 and PVC about 419.',
   caption:
-    'Bond strength of the coating on PEEK is among the highest we measure. The ketone groups in the PEEK backbone take part in the grafting step, so no primer is needed, and every PEEK test ended with the gel tearing rather than the bond letting go.',
+    'Bond strength of the coating on PEEK is among the highest we measure. PEEK takes part in the grafting step, so no primer is needed, and the gel tears before the bond lets go.',
   source: 'ZwiCoat internal tests, 2025 to 2026',
+};
+
+/* W27 (rebuilt 2026-11-02): uncoated against coated only; the PEG-type control bar is gone from the chart. */
+export const W27 = {
+  name: 'W27_capsule_thickness_mice',
+  alt: 'Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated.',
+  caption:
+    'In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year.',
+  source:
+    'Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011',
 };
 
 export const W35 = {

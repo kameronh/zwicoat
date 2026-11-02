@@ -13,13 +13,13 @@
   "stat": "82 to 27 µm",
   "statLabel": "capsule thickness around coated silicone in mice at six weeks (Horne 2023)",
   "image": "/images/lab/expander-inflated-200pct-01.jpg",
-  "alt": "A tissue expander coated in blue hydrogel, inflated to 200 percent of its starting volume, with the blue coating covering the whole shell."
+  "alt": "A tissue expander coated in blue hydrogel, inflated to 300 percent of its rated volume, with the blue coating covering the whole shell."
  },
  {
   "slug": "airway",
   "title": "Airway tubes",
-  "stat": "~50%",
-  "statLabel": "less peak insertion force for coated cochlear implant arrays in human cadaveric cochleae (Bennion 2021, Peel 2024)",
+  "stat": "~60%",
+  "statLabel": "less force to intubate with coated endotracheal tubes in a cadaveric larynx (ZwiCoat internal study, 2026)",
   "image": "/images/lab/ett-cuff-coated.jpg",
   "alt": "The cuff of a coated endotracheal tube, an even blue, hanging against a gray wall."
  },
@@ -34,8 +34,8 @@
  {
   "slug": "indwelling-catheters",
   "title": "Indwelling catheters",
-  "stat": "12.5 vs 12.6%",
-  "statLabel": "symptomatic CAUTI with silver alloy versus standard catheters: the problem a new surface must solve (Pickard 2012)",
+  "stat": "~90%",
+  "statLabel": "lower friction on coated silicone, still in place after three weeks in mice (Peel 2024)",
   "image": null,
   "alt": ""
  },
@@ -43,7 +43,7 @@
   "slug": "peek-and-orthopedic",
   "title": "PEEK and orthopedic",
   "stat": "~635 kPa",
-  "statLabel": "bond strength of the coating on PEEK, dry, with the gel tearing before the bond lets go (ZwiCoat internal tests)",
+  "statLabel": "bond strength of the coating on PEEK, dry (ZwiCoat internal tests)",
   "image": null,
   "alt": ""
  },

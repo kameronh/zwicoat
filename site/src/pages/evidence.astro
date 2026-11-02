@@ -7,7 +7,7 @@ import InteractiveChart from '../components/InteractiveChart.astro';
 import CTABand from '../components/CTABand.astro';
 import numbers from '../../public/data/W12_numbers.json';
 import pubs from '../data/publications.json';
-import { W04, W05, W07, W25, W28, W29, W30, W31 } from '../data/figure-text';
+import { W04, W05, W07, W25, W27, W28, W29, W30, W31 } from '../data/figure-text';
 
 const { papers, theses, patents } = pubs;
 const tiles = numbers;
@@ -60,12 +60,7 @@ const nav = [
       </div>
       <div class="ev-body">
         <Figure name={W04.name} alt={W04.alt} caption={W04.caption} source={W04.source} />
-        <Figure
-          name="W27_capsule_thickness_mice"
-          alt="Capsule thickness in mice. At six weeks on flat silicone the zwitterionic coating gave a capsule 67 percent thinner than uncoated. At one year on human cochlear implant arrays the coated capsule was 62 percent thinner."
-          caption="In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
-          source="Horne R, Ben-Shlomo N, Jensen M, et al. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
-        />
+        <Figure name={W27.name} alt={W27.alt} caption={W27.caption} source={W27.source} />
         <div class="photo-narrow">
           <Photo
             src="/images/histology-sheep.png"
@@ -229,7 +224,7 @@ const nav = [
       </div>
     </section>
 
-    <p class="footnote">Values quoted from published papers were read from the printed figures unless the paper states them in text; treat them as approximate. No coated device has been implanted in a human; human cochlear implant arrays were tested in mice, sheep and cadaveric cochleae.</p>
+    <p class="footnote">Values marked approximate come from the printed figures in the papers; the source line under each chart names the figure. No coated device has been implanted in a human; human cochlear implant arrays were tested in mice, sheep and cadaveric cochleae.</p>
     <p class="label archive-src">Archive counts: ZwiCoat Data archive.</p>
   </div>
 

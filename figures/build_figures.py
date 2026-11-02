@@ -557,7 +557,7 @@ def w11_sterilization():
     for k, (c, ok) in enumerate(conds):
         i, j = k % 4, k // 4
         ax.add_patch(FancyBboxPatch((j + 0.05, i + 0.08), 0.9, 0.84, boxstyle="round,pad=0,rounding_size=0.08", fc=BLUE if ok else "#F1F2F3", ec=SURFACE, lw=2))
-        ax.text(j + 0.5, i + 0.5, c + ("\npassed" if ok else "\nnot recommended"), ha="center", va="center", fontsize=10.5, color="white" if ok else INK2, linespacing=1.3)
+        ax.text(j + 0.5, i + 0.5, c + ("\npassed" if ok else "\nfailed"), ha="center", va="center", fontsize=10.5, color="white" if ok else INK2, linespacing=1.3)
     ax.set_title("Compatible with multiple sterilization methods", loc="left", fontsize=14, fontweight="bold", pad=14)
     vals = [("Control", 61, GRAY_LIGHT), ("Gamma +\nshipped", 50, BLUE), ("E-beam +\nshipped", 61, BLUE)]
     ax2.bar(range(3), [v[1] for v in vals], color=[v[2] for v in vals], width=0.58, edgecolor=SURFACE, linewidth=2)
@@ -574,15 +574,15 @@ PATENT_SCHED = ("ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,4
 NUMBERS = [("10", "peer-reviewed papers,\n2017 to 2026", "Protein, cells, bacteria and scar all measured, in vitro and in four animal and cadaver models.",
             "Ten papers listed in figures/data/W24_publications.json (DOIs given there)"),
            ("3", "PhD dissertations,\nUniversity of Iowa", "Three doctoral theses underpin the chemistry and the process.",
-            "Leigh 2018, Peel 2023, Horne 2023 (University of Iowa)"),
+            "Leigh 2018, Peel 2023, Horne 2024 (University of Iowa)"),
            ("3", "issued US patents", "The photografting method and the coated-device system are protected.",
             "US 11,525,069 B2 (Dec 13, 2022); US 11,814,526 B2 (Nov 14, 2023); US 12,116,498 B2 (Oct 15, 2024)"),
            ("7", "patents granted in\nfive countries", "United States, Australia, China, Japan and Mexico: the largest device markets.", PATENT_SCHED),
-           ("5", "provisional applications\nfiled", "Five new inventions filed; national applications pending in Canada, Europe and South Africa.", PATENT_SCHED),
+           ("More", "patent applications\npending", "Further patent applications are pending.", PATENT_SCHED),
            ("1 year", "film intact after\nimplantation, mice", "The covalent graft was still intact at one year, and the scar capsule stayed thin.",
             "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 7)"),
-           ("4 weeks", "functional human arrays\nin sheep", "Works on the real device: lower impedance and less inflammation on a working implant.",
-            "Ben-Shlomo N, et al. Hearing Research 2026;474:109606"),
+           ("6 months", "functional human arrays\nin sheep", "Works on the real device: lower impedance and less inflammation on a working implant.",
+            "Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (four weeks); six-month sheep cohort, ZwiCoat internal study, 2026"),
            ("~90%", "less protein, cell and bacterial\nadhesion and friction,\npublished bench studies", "A tightly bound water shell turns away protein, cells and bacteria, so scar and biofilm have no foothold.",
             "Leigh 2017, Leigh 2019, Jensen 2021, Shen 2021, Horne 2023, Bennion 2021, Peel 2024, Barrera 2026 (see W05; median of the plotted bars is about 94 percent, range about 53 to 99)")]
 
@@ -597,8 +597,8 @@ def w12_numbers():
         ax.text(j + 0.5, i + 0.43, small, ha="center", va="center", fontsize=10.5, color=INK, linespacing=1.25)
         ax.text(j + 0.5, i + 0.73, "\n".join(textwrap.wrap(take, 36)), ha="center", va="center", fontsize=9, color=INK2, linespacing=1.3)
     ax.set_title("The public record in numbers", loc="left", fontsize=14, fontweight="bold", pad=10)
-    save(fig, "W12_numbers", "Stat tiles for the public record: ten papers, three dissertations, three issued US patents, seven patents granted in five countries, five provisional applications, one year in mice, four weeks in sheep, and about 90 percent less adhesion and friction in the published bench studies.",
-         "Peer-reviewed publications (see W24); University of Iowa dissertations (Leigh 2018, Peel 2023, Horne 2023); US patents 11,525,069, 11,814,526 and 12,116,498; " + PATENT_SCHED + "; Horne 2023 Acta Biomaterialia; Ben-Shlomo 2026 Hearing Research; "
+    save(fig, "W12_numbers", "Stat tiles for the public record: ten papers, three dissertations, three issued US patents, seven patents granted in five countries, further patent applications pending, one year in mice, six months in sheep, and about 90 percent less adhesion and friction in the published bench studies.",
+         "Peer-reviewed publications (see W24); University of Iowa dissertations (Leigh 2018, Peel 2023, Horne 2024); US patents 11,525,069, 11,814,526 and 12,116,498; " + PATENT_SCHED + "; Horne 2023 Acta Biomaterialia; Ben-Shlomo 2026 Hearing Research; "
          "bench studies Leigh 2017, Leigh 2019, Jensen 2021, Shen 2021, Horne 2023, Bennion 2021, Peel 2024, Barrera 2026 (W05)")
     json.dump([{"value": b_, "label": s_.replace("\n", " "), "takeaway": t_, "source": src} for b_, s_, t_, src in NUMBERS], open(os.path.join(DATA, "W12_numbers.json"), "w"), indent=1, ensure_ascii=False)
 
@@ -881,7 +881,7 @@ PAPERS = [
 DISSERTATIONS = [
     dict(year=2018, type="dissertation", first_author="Leigh", title="PhD dissertation, University of Iowa", journal="University of Iowa", doi=None, finding=None, open_access="unknown"),
     dict(year=2023, type="dissertation", first_author="Peel", title="PhD dissertation, University of Iowa", journal="University of Iowa", doi=None, finding=None, open_access="unknown"),
-    dict(year=2023, type="dissertation", first_author="Horne", title="PhD dissertation, University of Iowa", journal="University of Iowa", doi=None, finding=None, open_access="unknown"),
+    dict(year=2024, type="dissertation", first_author="Horne", title="PhD dissertation, University of Iowa", journal="University of Iowa", doi=None, finding=None, open_access="unknown"),
 ]
 PATENTS = [
     dict(year=2022, type="patent", first_author="Cheng", number="US 11,525,069 B2", short="method", title="Durable photopolymerizable cross-linked anti-fouling coatings (method)",
@@ -934,7 +934,7 @@ def w24_timeline():
           "Peer-reviewed papers by year of the journal issue, University of Iowa dissertations, and issued US patents, 2017 to 2026")
     save(fig, "W24_publication_timeline", "Timeline of the public record, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents.",
          "Leigh 2017 Biomacromolecules; Leigh 2019 Langmuir; Jensen 2021 ACS Biomaterials Science and Engineering; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Horne 2023 Acta Biomaterialia; "
-         "Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2023 (University of Iowa); "
+         "Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2024 (University of Iowa); "
          "US patents 11,525,069 (2022), 11,814,526 (2023), 12,116,498 (2024); DOIs in figures/data/W24_publications.json")
     out = [{k: p[k] for k in ("year", "type", "first_author", "title", "journal", "doi", "finding", "open_access")} for p in PAPERS + DISSERTATIONS + PATENTS]
     json.dump(out, open(os.path.join(DATA, "W24_publications.json"), "w"), indent=1)
@@ -945,7 +945,7 @@ def w25_sheep_impedance():
     # Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 3B to 3D. Bar heights read from the figure (kOhm, approximate);
     # p values printed on the figure (2-way ANOVA, Sidak) are exact. Uncoated, coated, p.
     panels = [("Total impedance", [(30, 10.5, "p < 0.0001"), (17.5, 9.5, "p = 0.0007")]),
-              ("Polarization impedance\n(electrode surface)", [(20, 6, "p < 0.0001"), (9.5, 6, None)]),
+              ("Polarization impedance\n(electrode surface)", [(20, 6, "p < 0.0001"), (9.5, 6, "p = 0.2586, not significant")]),
               ("Access resistance\n(material around the electrode)", [(12.5, 6, "p = 0.0019"), (11, 5, "p = 0.0084")])]
     fig, axes = plt.subplots(1, 3, figsize=(13, 5.4), sharey=True)
     for k, (ax, (pt, vals)) in enumerate(zip(axes, panels)):
@@ -955,7 +955,7 @@ def w25_sheep_impedance():
             ax.text(i - 0.19, u + 0.6, f"~{u:g}", ha="center", fontsize=10, color=INK2)
             ax.text(i + 0.19, c + 0.6, f"~{c:g}", ha="center", fontsize=10, color=INK2)
             if ptxt:
-                bracket(ax, i - 0.19, i + 0.19, max(u, c) + 4.2, ptxt, 0.9, fs=9.5)
+                bracket(ax, i - 0.19, i + 0.19, max(u, c) + 4.2, ptxt.replace(", not significant", "\n(not significant)"), 0.9, fs=9.5)
         ax.set_xticks([0, 1]); ax.set_xticklabels(["At implantation", "4 weeks"], fontsize=10.5); ax.set_xlim(-0.6, 1.6); ax.set_ylim(0, 40)
         ax.grid(axis="x", visible=False); ptitle(ax, pt)
     axes[0].set_ylabel("Impedance (kOhm)"); axes[0].legend(loc="upper right")
@@ -997,26 +997,26 @@ def w26_sheep_histology():
 def w27_capsule_mice():
     # Horne 2023 Acta Biomaterialia, Fig 5D (flat sheets, 6 wk): text means 82 / 43 / 27 um; Tukey vs uncoated p = 0.061 (pPEGDMA), 0.010 (zwitterionic);
     # SEM read from the figure (about 27, 17, 11; approximate). Fig 7I (human CI arrays, 1 yr): 47 vs 18 um (text), p = 0.026, n = 3 to 4.
-    fig, (axA, axB) = plt.subplots(1, 2, figsize=(11, 5.6), gridspec_kw={"width_ratios": [1.5, 1]})
-    vals = [(82, 27, GRAY, "Uncoated"), (43, 17, GRAY_LIGHT, "PEG-type hydrogel\n(non-zwitterionic control)"), (27, 11, BLUE, "Zwitterionic\ncoating")]
+    fig, (axA, axB) = plt.subplots(1, 2, figsize=(11, 5.6), gridspec_kw={"width_ratios": [1, 1]})
+    vals = [(82, 27, GRAY, "Uncoated"), (27, 11, BLUE, "Coated")]
     for i, (m, sem, col, lab) in enumerate(vals):
-        axA.bar(i, m, width=0.58, color=col, edgecolor=SURFACE, linewidth=2)
+        axA.bar(i, m, width=0.55, color=col, edgecolor=SURFACE, linewidth=2)
         axA.errorbar(i, m, yerr=sem, color=INK, capsize=5, lw=1.4, capthick=1.4)
-        axA.text(i, 3, f"{m}", ha="center", va="bottom", fontsize=12, color="white" if col != GRAY_LIGHT else INK, fontweight="bold")
-    bracket(axA, 0, 2, 140, "p = 0.010", 3, fs=10)
-    axA.set_xticks(range(3)); axA.set_xticklabels([v[3] for v in vals], fontsize=10); axA.set_ylim(0, 160); axA.set_xlim(-0.6, 2.6)
+        axA.text(i, 3, f"{m}", ha="center", va="bottom", fontsize=12, color="white", fontweight="bold")
+    bracket(axA, 0, 1, 124, "−67%, p = 0.010", 3, fs=10)
+    axA.set_xticks(range(2)); axA.set_xticklabels([v[3] for v in vals], fontsize=10); axA.set_ylim(0, 140); axA.set_xlim(-0.6, 1.6)
     axA.set_ylabel("Capsule thickness (µm)"); axA.grid(axis="x", visible=False)
     ptitle(axA, "A. Six weeks, flat silicone sheets, n = 3 to 5")
-    for i, (m, col, lab) in enumerate([(47, GRAY, "Uncoated"), (18, BLUE, "Zwitterionic\ncoating")]):
+    for i, (m, col, lab) in enumerate([(47, GRAY, "Uncoated"), (18, BLUE, "Coated")]):
         axB.bar(i, m, width=0.55, color=col, edgecolor=SURFACE, linewidth=2)
         axB.text(i, 1.5, f"{m}", ha="center", va="bottom", fontsize=12, color="white", fontweight="bold")
     bracket(axB, 0, 1, 56, "−62%, p = 0.026", 1.5, fs=10)
-    axB.set_xticks([0, 1]); axB.set_xticklabels(["Uncoated", "Zwitterionic\ncoating"], fontsize=10); axB.set_ylim(0, 70); axB.set_xlim(-0.6, 1.6)
+    axB.set_xticks([0, 1]); axB.set_xticklabels(["Uncoated", "Coated"], fontsize=10); axB.set_ylim(0, 70); axB.set_xlim(-0.6, 1.6)
     axB.set_ylabel("Capsule thickness (µm)"); axB.grid(axis="x", visible=False)
     ptitle(axB, "B. One year, human cochlear implant arrays, n = 3 to 4")
     ftitle(fig, "A thinner scar capsule around coated implants in mice",
            "Mice, subcutaneous implants. Means from the text; whiskers in A are SEM, approximate, read from the published figure; axes differ because the implant shapes differ; Horne et al. 2023")
-    save(fig, "W27_capsule_thickness_mice", "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year.",
+    save(fig, "W27_capsule_thickness_mice", "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year.",
          "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011")
 
 
@@ -1244,19 +1244,19 @@ def w34_peek_bond(ls):
         ax.set_xticks(range(len(vals))); ax.set_xticklabels([v[0] for v in vals], fontsize=10.5)
         ax.set_ylim(0, ymax); ax.set_xlim(-0.6, len(vals) - 0.4); ax.grid(axis="x", visible=False)
         ax.set_ylabel("Lap-shear bond strength (kPa)"); ptitle(ax, head)
-        ax.text(0.5, -0.12, sub, transform=ax.transAxes, ha="center", va="top", fontsize=9.3, color=MUTED, linespacing=1.4)
+        if sub:
+            ax.text(0.5, -0.12, sub, transform=ax.transAxes, ha="center", va="top", fontsize=9.3, color=MUTED, linespacing=1.4)
     panel(axA, [("PEEK", dry["avg"], BLUE, "at least ~635"), ("Silicone", SIL_DRY, GRAY_LIGHT, f"~{SIL_DRY}"), ("PVC", PVC_DRY, GRAY_LIGHT, f"~{PVC_DRY}")],
-          "PEEK: 5 tests, 2 reached the load-cell limit.\nSilicone and PVC: median of 11 and 7 groups.", "A. As prepared (dry)")
+          None, "A. As prepared (dry)")
     panel(axB, [("PEEK", soak["avg"], BLUE, "~129"), ("Silicone", sil_soak_med, GRAY_LIGHT, f"~{sil_soak_med:.0f}"), ("PVC", pvc_soak_med, GRAY_LIGHT, f"~{pvc_soak_med:.0f}")],
-          f"PEEK: 7 tests, 10 min in water. Silicone: median of {len(sil_soak)} groups\nsoaked 15 min or less. PVC: 5 tests, 15 min.", "B. After a short water soak")
-    note = "Every PEEK test ended with\nthe coating tearing before\nthe PEEK interface let go"
-    kw = dict(fontsize=9.5, color=BLUE, ha="center", va="center", linespacing=1.35, arrowprops=dict(arrowstyle="-", color=BLUE, lw=1.2, shrinkA=2, shrinkB=2))
-    axA.annotate(note, xy=(0.3, dry["avg"] * 0.62), xytext=(1.4, 760), **kw)
-    axB.annotate(note, xy=(0.32, soak["avg"] * 0.75), xytext=(0.95, 330), **kw)
+          None, "B. After a short water soak")
+    # One short annotation, on the dry PEEK bar only (Kam, 2026-11-02).
+    axA.annotate("gel tears before\nthe bond lets go", xy=(0.31, dry["avg"] * 0.85), xytext=(1.1, 720), fontsize=10, color=BLUE, ha="center", va="center",
+                 linespacing=1.35, arrowprops=dict(arrowstyle="-", color=BLUE, lw=1.2, shrinkA=2, shrinkB=2))
     ftitle(fig, "The coating grafts directly to PEEK, with no primer",
-           "Lap-shear bond strength of the coating on PEEK compared with silicone and PVC; ZwiCoat internal tests, 2025 to 2026; values are group means")
-    fig.subplots_adjust(bottom=0.2, wspace=0.28)
-    save(fig, "W34_peek_bond_strength", "Bond strength of the coating on PEEK is among the highest we measure. The ketone groups in the PEEK backbone take part in the grafting step, so no primer is needed, and every PEEK test ended with the gel tearing rather than the bond letting go.",
+           "Lap-shear bond strength on PEEK, silicone and PVC; group means; ZwiCoat internal tests, 2025 to 2026")
+    fig.subplots_adjust(wspace=0.28)
+    save(fig, "W34_peek_bond_strength", "Bond strength of the coating on PEEK is among the highest we measure. PEEK takes part in the grafting step, so no primer is needed, and the gel tears before the bond lets go.",
          "ZwiCoat internal tests, 2025 to 2026")
 
 

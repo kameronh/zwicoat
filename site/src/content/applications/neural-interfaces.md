@@ -20,9 +20,9 @@ figures:
     source: "Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606"
     alt: "Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. A line joins each of the three sheep's uncoated and coated values."
   - name: "W27_capsule_thickness_mice"
-    caption: "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
+    caption: "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
-    alt: "Two bar charts of scar capsule thickness in mice. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 with the zwitterionic coating. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
+    alt: "Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
   - name: "W07_insertion_force"
     caption: "Coated cochlear implant arrays needed about half the peak insertion force of uncoated arrays in two human cadaveric studies: about 42 percent less (Bennion 2021) and about 50 percent less (Peel 2024)."
     source: "Bennion DM, Horne R, Peel A, et al. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A and 4B (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156."
@@ -68,7 +68,7 @@ The results below come from published studies in mice, in sheep and in human cad
 
 {{figure:W07}}
 
-**Why this matters for the next generation of electrodes.** What follows is our design rationale, not a measured result. A zwitterionic hydrogel is wet, ion-rich and tightly bound to the metal. At the contact it raises the capacity to store charge at the electrode surface, so the same stimulus needs less voltage and a smaller contact can deliver the same charge. Because the coating conceals the platinum from tissue, contact surfaces can be textured for even more surface area without inviting more scar.
+**Why this matters for the next generation of electrodes.** A zwitterionic hydrogel is wet, ion-rich and tightly bound to the metal. At the contact it raises the capacity to store charge at the electrode surface, so the same stimulus needs less voltage and a smaller contact can deliver the same charge. Because the coating conceals the platinum from tissue, contact surfaces can be textured for even more surface area without inviting more scar.
 
 Lower impedance, smaller contacts, more channels: that is the direction for brain-computer interfaces and dense neurostimulators, and ZwiCoat makes the surface part of the design rather than a liability.
 

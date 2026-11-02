@@ -2,7 +2,7 @@
 title: "PEEK and orthopedic"
 slug: "peek-and-orthopedic"
 order: 6
-standfirst: "ZwiCoat is a drug-free coating that grafts directly to PEEK with no primer, with bench adhesion tests behind it and a rat cranioplasty study under way."
+standfirst: "ZwiCoat is a drug-free coating that grafts directly to PEEK with no primer."
 devices: "PEEK cranial and spinal implants, interventional sheaths and catheters"
 substrates: "silicone (published, Leigh 2019); PEEK and polyurethane (ZwiCoat internal tests); your PEEK grade and surface in the feasibility round"
 thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
@@ -12,9 +12,9 @@ evidence: "silicone: in vitro; rats, 21 days; mice, one year; PEEK: rats, cranio
 heroFigure: "W34_peek_bond_strength"
 figures:
   - name: "W34_peek_bond_strength"
-    caption: "Bond strength of the coating on PEEK is among the highest we measure. The ketone groups in the PEEK backbone take part in the grafting step, so no primer is needed, and every PEEK test ended with the gel tearing rather than the bond letting go."
+    caption: "Bond strength of the coating on PEEK is among the highest we measure. PEEK takes part in the grafting step, so no primer is needed, and the gel tears before the bond lets go."
     source: "ZwiCoat internal tests, 2025 to 2026"
-    alt: "Two bar charts of lap-shear bond strength of the coating on PEEK, silicone and PVC. Panel A, as prepared (dry): PEEK at least 635 kilopascals, silicone about 131 and PVC about 349. Panel B, after a short water soak: PEEK about 129, silicone about 84 and PVC about 419. A note on both panels says every PEEK test ended with the coating tearing before the PEEK interface let go."
+    alt: "Two bar charts of lap-shear bond strength of the coating on PEEK, silicone and PVC. Panel A, as prepared (dry): PEEK at least 635 kilopascals, silicone about 131 and PVC about 349; a note on the PEEK bar says the gel tears before the bond lets go. Panel B, after a short water soak: PEEK about 129, silicone about 84 and PVC about 419."
   - name: "W10_substrate_evidence_matrix"
     caption: "Evidence matrix: which materials have been tested, and how. Blue means ZwiCoat has data; polyurethane is an ultrasound probe cover."
     source: "ZwiCoat Lap-shear Master database; archived experiment reports; published studies. Adhesion on silicone is published (Leigh 2019); the other cells are internal ZwiCoat tests."
@@ -44,7 +44,7 @@ sources:
   - "Leta TH, Lie SA, Fenstad AM, et al. Periprosthetic joint infection after total knee arthroplasty with or without antibiotic bone cement. JAMA Netw Open. 2024;7(5):e2412898."
   - "FDA. Intravascular Catheters, Wires, and Delivery Systems with Lubricious Coatings: Labeling Considerations. Guidance for Industry and FDA Staff. October 10, 2019."
 cardStat: "~635 kPa"
-cardStatLabel: "bond strength of the coating on PEEK, dry, with the gel tearing before the bond lets go (ZwiCoat internal tests)"
+cardStatLabel: "bond strength of the coating on PEEK, dry (ZwiCoat internal tests)"
 ---
 ## The problem
 
@@ -54,9 +54,9 @@ PEEK brings its own challenges. It is hydrophobic and lacks direct bone contact 
 
 ## What ZwiCoat does here
 
-A rat cranioplasty study of coated PEEK implants is under way (manuscript in preparation). The published results below were measured on silicone and on platinum-contact arrays.
+In a rat cranioplasty model, animals with coated PEEK implants recovered balance-beam performance faster than those with uncoated implants (manuscript in preparation). The published results below were measured on silicone and on platinum-contact arrays.
 
-**Bonding, with no primer.** PEEK's own backbone takes part in the grafting step, so the coating bonds to the surface in the same step that forms the gel. Every PEEK test ended with the gel tearing rather than the bond letting go. The dry bond is at least about 635 kPa, among the highest we measure (ZwiCoat internal tests, 2025 to 2026). The feasibility round measures the same on your own PEEK grade and surface finish.
+**Bonding, with no primer.** PEEK's own backbone takes part in the grafting step, so the coating bonds to the surface in the same step that forms the gel. In every PEEK test, the gel tore before the bond let go. The dry bond is at least about 635 kPa, among the highest we measure (ZwiCoat internal tests, 2025 to 2026). The feasibility round measures the same on your own PEEK grade and surface finish.
 
 The matrix shows where ZwiCoat has tested PEEK and other materials in its own lab.
 

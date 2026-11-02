@@ -12,9 +12,9 @@ evidence: "mice, six weeks to one year; rats, 21 days; laboratory"
 heroFigure: "W27_capsule_thickness_mice"
 figures:
   - name: "W27_capsule_thickness_mice"
-    caption: "In mice, scar capsules were 67 percent thinner around zwitterionic-coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
+    caption: "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
-    alt: "Two bar charts of scar capsule thickness in mice. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 with the zwitterionic coating. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
+    alt: "Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
   - name: "W04_fibrosis_by_study"
     caption: "Less scar tissue around coated surfaces in mice, rats and sheep: percent reduction in fibrotic capsule or fibrosis, measurement by measurement."
     source: "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Figs 5, 6G, 7I; flat-sheet and one-year values from the text, cylinder value approximate, read from the published figure); Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 3, values approximate, read from the published figure; text states over 60 percent); Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 7F, four coated groups, rats, 6 weeks, means read from the published plot; p < 0.0001 each versus uncoated); Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (Fig 6G round window, p = 0.0101; pooled values approximate, read from the published figure)."
@@ -54,7 +54,7 @@ Smooth implants are now the default. They carry roughly three times the contract
 
 ## What ZwiCoat does here
 
-Every result below comes from published laboratory, mouse, rat and sheep studies.
+The results below come from published laboratory, mouse, rat and sheep studies, and from one ZwiCoat stretch test.
 
 **Scar capsule, in mice at six weeks.** The chart above shows it. Around coated silicone sheets the capsule measured 27 micrometers, against 82 around uncoated sheets. (Horne 2023, Acta Biomaterialia.) Across ten published measurements in mice, rats and sheep, the reduction ranged from about 45 to about 85 percent.
 
@@ -62,13 +62,15 @@ Every result below comes from published laboratory, mouse, rat and sheep studies
 
 **Durability and bacteria.** After six months under the skin of mice, coated silicone still repelled fibroblasts, and the film was intact at one year (Horne 2023). In rats challenged with S. aureus, implants carried about 940 bacteria per field uncoated and about 155 coated at day 21 (Shen 2021).
 
+**Stretch.** A coated expander inflated to 300 percent of its rated volume kept the coating across the whole shell (ZwiCoat internal test, 2026).
+
 ## How it fits your process
 
 ZwiCoat is a coating step on a finished silicone shell. It needs no new mold and no new geometry. One UV step grafts and crosslinks the film, about 7 micrometers thick in the published silicone work. The gel tears before the silicone interface lets go (Leigh 2019).
 
 Expanders get hit and stretched. In an internal pendulum impact test, a coated expander showed no visible damage to the coating. [See the durability record.](/durability)
 
-Whether the film stretches with an inflated expander is measured in the feasibility round on your parts. So is adhesion on your silicone grade. In ZwiCoat's own tests on silicone, the coating was compatible with steam, ethylene oxide, gamma, UV and dry e-beam sterilization.
+Adhesion on your silicone grade is measured in the feasibility round on your parts. In ZwiCoat's own tests on silicone, the coating was compatible with steam, ethylene oxide, gamma, UV and dry e-beam sterilization.
 
 {{figure:W11}}
 
