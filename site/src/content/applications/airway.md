@@ -30,7 +30,12 @@ figures:
 sources:
   - "Brodsky MB, Levy MJ, Jedlanek E, et al. Laryngeal injury and upper airway symptoms after oral endotracheal intubation with mechanical ventilation during critical care: a systematic review. Crit Care Med. 2018;46(12):2010-2017. doi:10.1097/CCM.0000000000003368"
   - "Gil-Perotin S, Ramirez P, Marti V, et al. Implications of endotracheal tube biofilm in ventilator-associated pneumonia response: a state of concept. Crit Care. 2012;16(3):R93. doi:10.1186/cc11357"
-  - "Zimlichman E, et al. Health care-associated infections: a meta-analysis of costs and financial impact on the US health care system. JAMA Intern Med. 2013;173(22):2039-2046."
+  - "Zimlichman E, Henderson D, Tamir O, et al. Health care-associated infections: a meta-analysis of costs and financial impact on the US health care system. JAMA Intern Med. 2013;173(22):2039-2046. doi:10.1001/jamainternmed.2013.9763"
+  - "Dorris ER, Russell J, Murphy M. Post-intubation subglottic stenosis: aetiology at the cellular and molecular level. Eur Respir Rev. 2021;30(159):200218. doi:10.1183/16000617.0218-2020"
+  - "Schweiger C, Marostica PJ, Smith MM, Manica D, Carvalho PR, Kuhl G. Incidence of post-intubation subglottic stenosis in children: prospective study. J Laryngol Otol. 2013;127(4):399-403. doi:10.1017/S002221511300025X"
+  - "Stoler NA, Segada NW, Varghese V, Gowda SH, Mehta DK. Consequences of NICU intubations: incidence, identifications, and interventions. Otolaryngol Head Neck Surg. 2025;172(2):635-641. doi:10.1002/ohn.1004"
+  - "Yin LX, Padula WV, Gadkaree S, et al. Health care costs and cost-effectiveness in laryngotracheal stenosis. Otolaryngol Head Neck Surg. 2019;160(4):679-686. doi:10.1177/0194599818815068"
+  - "Chastre J, Fagon JY. Ventilator-associated pneumonia. Am J Respir Crit Care Med. 2002;165(7):867-903. doi:10.1164/ajrccm.165.7.2105078"
   - "Manica D, Schweiger C, Maróstica PJ, Kuhl G, Carvalho PR. Association between length of intubation and subglottic stenosis in children. Laryngoscope. 2013;123(4):1049-1054. doi:10.1002/lary.23771"
   - "Tokmaji G, Vermeulen H, Muller MC, Kwakman PH, Schultz MJ, Zaat SA. Silver-coated endotracheal tubes for prevention of ventilator-associated pneumonia in critically ill patients. Cochrane Database Syst Rev. 2015;(8):CD009201."
   - "Yang Y, Xiong X, Wang X, Dong Q, Pan L. Prevention of ventilator-associated pneumonia by metal-coated endotracheal tubes: a meta-analysis. Crit Care. 2024;28(1):309."
@@ -50,9 +55,11 @@ cardStatLabel: "less force to intubate with coated endotracheal tubes in a cadav
 
 ## The problem
 
-Stenosis comes first. A rigid tube scrapes the larynx on the way in, and the airway reacts to it for as long as the tube stays. In a review of nine studies, 83 percent of intubated ICU adults had laryngeal injury (Brodsky 2018). In children under 5 in intensive care, each extra five days of intubation raised the risk of subglottic stenosis about 50 percent (Manica 2013).
+Stenosis comes first. A rigid tube scrapes the larynx on the way in, and the airway reacts to it for as long as the tube stays. In a review of nine studies, 83 percent of intubated ICU adults had laryngeal injury (Brodsky 2018).
 
-Pneumonia comes second. Biofilm was found on 95 percent of endotracheal tubes in one prospective ICU study (Gil-Perotin 2012), and each ventilator-associated pneumonia costs about $40,000 (Zimlichman 2013).
+Reported rates of subglottic stenosis after intubation run from 0.3 percent to more than 11 percent, and in one prospective study of children under 5 in intensive care it was about 11 percent (Dorris 2021; Schweiger 2013). In a 2025 cohort of 441 intubated newborns in intensive care, about 3 percent developed subglottic stenosis (Stoler 2025). In children under 5, each extra five days of intubation raised the risk about 50 percent (Manica 2013). In a four-year study of 34 patients, care for stenosis that followed intubation cost about $5,287 per patient per year, against about $2,874 for stenosis with no known cause (Yin 2019).
+
+Pneumonia comes second. Ventilator-associated pneumonia affects 8 to 28 percent of patients on a ventilator (Chastre 2002), and each case costs about $40,000 (Zimlichman 2013). Biofilm was found on 95 percent of endotracheal tubes in one prospective ICU study (Gil-Perotin 2012).
 
 Antibacterial tubes address infection only, and only modestly. Silver-coated tubes lowered ventilator-associated pneumonia in a Cochrane review (risk ratio 0.64), and metal-coated tubes did the same in a meta-analysis of five trials (0.71), with no change in hospital mortality (Tokmaji 2015; Yang 2024). The forest plot above shows the trials. Neither does anything for friction or the foreign body response, and neither stops mucus from plugging a tracheostomy tube.
 

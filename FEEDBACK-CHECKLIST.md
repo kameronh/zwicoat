@@ -10,7 +10,7 @@ Status column: TODO, DONE (verified), or OPEN (needs Kam, with the reason).
 |---|---|---|
 | N1 | Durability report highlights replotted in site style on /durability (W35 wear, W36 dry and re-wet; nothing customer-specific) | DONE |
 | N2 | Cranioplasty: PEEK lap-shear online (W34 on PEEK page); rat result stated in one general sentence (answer 16); paper figures NOT posted | DONE |
-| N3 | Market research and grants: each application page states the key problem and argument with citations (neural, expanders, airway, vascular, indwelling, PEEK, sensors, ENT, GI) using `figures/published/site-materials-2026.md` and `references-resolved.md`; nothing from the do-not-broadcast list | TODO (later worker) |
+| N3 | Market research and grants: each application page states the key problem and argument with citations (neural, expanders, airway, vascular, indwelling, PEEK, sensors, ENT, GI) using `figures/published/site-materials-2026.md` and `references-resolved.md`; nothing from the do-not-broadcast list | DONE (final pass: argument paragraphs with new cited numbers on expanders (Kraenzlin 2022), indwelling (Murray 2022), sensors (Zaharieva 2019, Gough 2010), ENT (Kim 2014, Jirawatnotai 2019); argument-only paragraphs on vascular and GI (no citable new number in the sources); PEEK Li 2017 corrected; airway stenosis and VAP from the ready-to-paste block (Dorris 2021, Schweiger 2013, Stoler 2025, Yin 2019, Chastre 2002); neural 'about 4 removals per 10 implanted (Jones 2022)'. Proof: VERIFY.md, Final pass) |
 | N4 | Provisionals: site says only "further patent applications are pending"; no titles | DONE |
 
 ## Technology page
@@ -44,7 +44,7 @@ Status column: TODO, DONE (verified), or OPEN (needs Kam, with the reason).
 | E8 | Histology photo header reads "Coated", not "CBMA" (image file) | DONE |
 | E9 | Electrode impedance section sits below insertion force and friction | DONE |
 | E10 | W08 rendered at a reasonable size (about 640 px, not full width) | DONE |
-| E11 | Synthetic cochlea insertion-force chart (W37, from the Zenodo dataset) on evidence and neural | OPEN (W37 held: build note says review before publishing; see VERIFY.md) |
+| E11 | Synthetic cochlea insertion-force chart (W37, from the Zenodo dataset) on evidence and neural | DONE (final pass: W37 and W38 on /evidence after W07 as interactive trace viewers with PNG fallback; W37 static on neural after the insertion-force paragraph; sanitized source 'NIH SBIR Phase I dataset, ZwiCoat Materials Innovations, Zenodo, doi:10.5281/zenodo.10459478'. Proof: VERIFY.md, Final pass. Build-note caveat on the 66 vs 38 percent remains for Kam) |
 
 ## Durability page
 
@@ -94,7 +94,7 @@ Status column: TODO, DONE (verified), or OPEN (needs Kam, with the reason).
 | M1 | "prestigious" removed; NSF Graduate Research Fellowship wording | DONE |
 | M2 | Contact form materials list covers common medical elastomers and metals | DONE |
 | M3 | "PEEK: none published" replaced by the rats, cranioplasty wording | DONE |
-| M4 | PEEK page: lap-shear chart (W34, simplified) and a hand-drawn SVG of the grafting pathway on PEEK (ketone in the backbone takes part in the grafting step, no primer); no monomer names, no "benzophenone" | TODO (W34 simplified DONE; grafting-pathway SVG assigned to a later worker) |
+| M4 | PEEK page: lap-shear chart (W34, simplified) and a hand-drawn SVG of the grafting pathway on PEEK (ketone in the backbone takes part in the grafting step, no primer); no monomer names, no "benzophenone" | DONE (final pass: `PeekPathway.astro` inline SVG in 'How it fits your process' via `{{diagram:peek-pathway}}`, labels PEEK backbone, UV light, the ketone in the backbone starts the graft, hydrogel bonded to the surface, no primer. Proof: VERIFY.md, Final pass) |
 | M5 | PEEK page position in the order (sixth) | DONE |
 | M6 | Expander sentence: 300 percent of rated volume (answer 12) | DONE |
 | M7 | Home subhead with "scarring" (answer 1); keep "Every number on this site comes from ..." (2); archive line removed (3); "Friction was unchanged ..." kept (4); "largest device markets" kept (5) | DONE |

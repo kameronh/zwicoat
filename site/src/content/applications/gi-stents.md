@@ -49,6 +49,8 @@ On plastic biliary stents, a film of host protein covers the inner surface and p
 
 Coated plastic stents have been tried. In three randomized trials, hydrophilic-coated or Teflon plastic stents did not extend patency over polyethylene (Costamagna 2000; van Berkel 1998; van Berkel 2003). A 2007 review judged coated and antimicrobial stents not yet clinically relevant enough to replace conventional ones (Donelli 2007).
 
+Almost every one of these failures begins with something settling on the stent: protein, bacteria, sludge or food. We take a different approach from slick plastics and antimicrobials. ZwiCoat holds a layer of water on the surface, so that first film has nothing to grip.
+
 ## What ZwiCoat does here
 
 Every result below is from a published study on silicone or from a bench model.

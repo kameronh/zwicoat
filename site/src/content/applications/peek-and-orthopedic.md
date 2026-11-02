@@ -28,7 +28,7 @@ figures:
     source: "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Figs 5, 6G, 7I; flat-sheet and one-year values from the text, cylinder value approximate, read from the published figure); Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 3, values approximate, read from the published figure; text states over 60 percent); Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 7F, four coated groups, rats, 6 weeks, means read from the published plot); Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (Fig 6G round window; pooled values approximate, read from the published figure)."
     alt: "Horizontal bar chart of 10 measurements of scar capsule or fibrosis around coated surfaces compared with uncoated, in mice, rats and sheep, four weeks to one year, from four papers (Horne 2023, Peel 2024, Barrera 2026, Ben-Shlomo 2026). Reductions run from about 45 to about 85 percent."
 sources:
-  - "Li et al. World Neurosurgery. 2017. US claims database study of complications after cranial reconstruction, 8,275 patients."
+  - "Li A, Azad TD, Veeravagu A, et al. Cranioplasty complications and costs: a national population-level analysis using the MarketScan Longitudinal Database. World Neurosurg. 2017;102:209-220. doi:10.1016/j.wneu.2017.03.022"
   - "Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293."
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
   - "Bennion DM, Horne R, Peel A, et al. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otol Neurotol. 2021;42(10):1476-1483."
@@ -50,7 +50,9 @@ cardStatLabel: "bond strength of the coating on PEEK, dry (ZwiCoat internal test
 
 Infection caused about 25 percent of knee revisions and about 15 percent of hip revisions in US national data (Bozic 2010; Bozic 2009). A two-stage revision for infection costs more than twice an aseptic one (Yao 2021). Staphylococci cause 50 to 60 percent of these infections, and they resist antibiotics once they form a biofilm (Tande 2014; Costerton 1999).
 
-PEEK brings its own challenges. It is hydrophobic and lacks direct bone contact (Walsh 2015). Most bacterial strains tested adhered more to PEEK than to titanium (Sarfraz 2022). In a pooled analysis of 183 PEEK cranioplasties, 15 percent had complications (Punchak 2017). Across all cranial reconstruction, in a US claims database of 8,275 patients, 36.6 percent had a complication within seven years (Li 2017). Antibiotic-loaded bone cement made no measurable difference to one-year revision for infection in registry data on 1.9 million knee replacements (Leta 2024). On interventional devices, FDA has documented lubricious coatings peeling, flaking and shedding (FDA 2019).
+PEEK brings its own challenges. It is hydrophobic and lacks direct bone contact (Walsh 2015). Most bacterial strains tested adhered more to PEEK than to titanium (Sarfraz 2022). In a pooled analysis of 183 PEEK cranioplasties, 15 percent had complications (Punchak 2017). In a US claims database of 8,275 patients who had cranioplasty between 2007 and 2014, 36.6 percent had a complication, and this covers autograft and synthetic implants, not PEEK alone (Li 2017). Antibiotic-loaded bone cement made no measurable difference to one-year revision for infection in registry data on 1.9 million knee replacements (Leta 2024). On interventional devices, FDA has documented lubricious coatings peeling, flaking and shedding (FDA 2019).
+
+Our argument is simple. PEEK's weak points sit at its surface, and the surface is what we change. The coating bonds to PEEK itself, with no primer and no change to the bulk material.
 
 ## What ZwiCoat does here
 
@@ -73,6 +75,10 @@ The matrix shows where ZwiCoat has tested PEEK and other materials in its own la
 **Friction.** Friction against tissue, steel and ceramic was more than 90 percent lower on coated silicone (Bennion 2021).
 
 ## How it fits your process
+
+The diagram shows why no primer is needed: under UV light, the ketone groups in PEEK's own backbone start the graft, and the hydrogel grows from them.
+
+{{diagram:peek-pathway}}
 
 The coating is drug-free, so there is no antimicrobial agent and no combination product. Sterilization is validated on your cycle during joint development.
 

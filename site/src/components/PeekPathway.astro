@@ -1,0 +1,171 @@
+---
+/*
+  PEEK grafting pathway, drawn in the same flat style as the technology page's
+  "How it works" schematic: token colors only, Public Sans labels, no cartoon.
+  A PEEK chain segment (rings joined by ether and ketone links). On the left,
+  UV light reaches a ketone. On the right, the ketone has become the anchor
+  point and the hydrogel network grows from it. No monomer names.
+  Used on the PEEK page through the {{diagram:peek-pathway}} token.
+*/
+const Y = 300; // ring centers
+const R = 20; // ring radius
+const rings = [60, 160, 260, 360, 460, 560];
+const hex = (cx: number, cy: number) =>
+  Array.from({ length: 6 }, (_, k) => {
+    const a = (Math.PI / 3) * k;
+    return `${(cx + R * Math.cos(a)).toFixed(1)},${(cy + R * Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+// Links between neighbouring rings: ketone A (UV), ether, ether, ketone B (graft), ether.
+const ethers = [210, 310, 510];
+const ketA = 110;
+const ketB = 410;
+
+/** A wavy line from (x1, y1) to (x2, y2): the UV light. */
+function wave(x1: number, y1: number, x2: number, y2: number, amp = 6, waves = 5) {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.hypot(dx, dy);
+  const nx = -dy / len;
+  const ny = dx / len;
+  const steps = 60;
+  let d = '';
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    // taper the last part straight so the arrowhead sits cleanly
+    const a = t > 0.85 ? 0 : amp * Math.sin(t * waves * 2 * Math.PI);
+    const x = x1 + dx * t + nx * a;
+    const y = y1 + dy * t + ny * a;
+    d += `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+  return d;
+}
+
+// Hydrogel network growing from the anchor at ketone B: chains (polylines) and crosslinks.
+const anchor = { x: ketB, y: 236 };
+const chains = [
+  [[410, 236], [392, 214], [404, 190], [386, 166], [398, 142], [380, 118], [392, 94]],
+  [[410, 236], [430, 214], [420, 190], [442, 166], [432, 142], [454, 118], [444, 94]],
+  [[392, 214], [370, 200], [376, 174], [362, 150]],
+  [[430, 214], [458, 204], [470, 180], [494, 172], [500, 146], [524, 138], [530, 112], [552, 104]],
+  [[470, 180], [492, 196], [518, 190], [540, 204], [566, 196], [588, 208], [604, 190]],
+  [[500, 146], [520, 120], [512, 96]],
+  [[540, 204], [552, 178], [578, 170], [590, 144], [606, 132]],
+];
+const crosslinks = [
+  [[386, 166], [404, 190]],
+  [[398, 142], [432, 142]],
+  [[442, 166], [470, 180]],
+  [[454, 118], [500, 146]],
+  [[518, 190], [552, 178]],
+  [[530, 112], [578, 170]],
+  [[362, 150], [380, 118]],
+];
+const pairs = [
+  [368, 230], [452, 236], [514, 222], [566, 228], [600, 160], [474, 108], [548, 140], [360, 100],
+];
+const pts = (p: number[][]) => p.map(([x, y]) => `${x},${y}`).join(' ');
+---
+<figure class="peek-path">
+  <svg viewBox="0 0 640 400" role="img" aria-labelledby="pp-t pp-d" class="pp">
+    <title id="pp-t">How the coating grafts to PEEK</title>
+    <desc id="pp-d">A segment of a PEEK chain runs across the bottom: six benzene rings joined by ether oxygen links and by ketone links, each ketone a carbon double-bonded to an oxygen. On the left, wavy UV light reaches a ketone, which is highlighted. On the right, a second ketone in the same backbone has become the anchor point: a bond rises from it into a network of hydrogel chains with crosslinks and charge pairs. Labels: PEEK backbone; UV light; the ketone in the backbone starts the graft; hydrogel bonded to the surface; no primer.</desc>
+    <defs>
+      <marker id="pp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" class="pp-uv-head" />
+      </marker>
+    </defs>
+
+    <!-- UV light -->
+    <text x="20" y="44" class="pp-label pp-uv-text">UV light</text>
+    <path d={wave(34, 62, 100, 236)} class="pp-uv" marker-end="url(#pp-arrow)" />
+    <path d={wave(74, 56, 112, 232, 5, 4)} class="pp-uv" marker-end="url(#pp-arrow)" />
+
+    <!-- Label for the ketone -->
+    <text class="pp-label" x="150" y="128">the ketone in</text>
+    <text class="pp-label" x="150" y="150">the backbone</text>
+    <text class="pp-label" x="150" y="172">starts the graft</text>
+    <line x1="152" y1="182" x2="136" y2="258" class="pp-leader" />
+
+    <!-- Hydrogel network -->
+    <text x="340" y="52" class="pp-label">hydrogel bonded to the surface</text>
+    <rect x="340" y="68" width="282" height="176" rx="6" class="pp-gel" />
+    {crosslinks.map((c) => <polyline points={pts(c)} class="pp-xlink" />)}
+    {chains.map((c) => <polyline points={pts(c)} class="pp-chain" />)}
+    {pairs.map(([x, y]) => <text x={x} y={y} text-anchor="middle" class="pp-pair">+ &#8722;</text>)}
+
+    <!-- The graft bond and its tag -->
+    <line x1={ketB} y1={Y} x2={anchor.x} y2={anchor.y} class="pp-graft" />
+    <rect x="424" y="248" width="92" height="26" rx="3" class="pp-tag" />
+    <text x="470" y="266" text-anchor="middle" class="pp-tag-text">no primer</text>
+
+    <!-- PEEK chain -->
+    <line x1="18" y1={Y} x2={rings[0] - R} y2={Y} class="pp-bond pp-end" />
+    <line x1={rings[5] + R} y1={Y} x2="622" y2={Y} class="pp-bond pp-end" />
+    {rings.slice(0, -1).map((x, i) => {
+      const mid = (x + rings[i + 1]) / 2;
+      const isEther = ethers.includes(mid);
+      return isEther ? (
+        <g>
+          <line x1={x + R} y1={Y} x2={mid - 9} y2={Y} class="pp-bond" />
+          <line x1={mid + 9} y1={Y} x2={rings[i + 1] - R} y2={Y} class="pp-bond" />
+          <text x={mid} y={Y + 6} text-anchor="middle" class="pp-atom">O</text>
+        </g>
+      ) : (
+        <line x1={x + R} y1={Y} x2={rings[i + 1] - R} y2={Y} class="pp-bond" />
+      );
+    })}
+    {rings.map((x) => (
+      <g>
+        <polygon points={hex(x, Y)} class="pp-ring" />
+        <circle cx={x} cy={Y} r="11" class="pp-ring-in" />
+      </g>
+    ))}
+
+    <!-- Ketone A: C=O pointing up, highlighted, where the UV lands -->
+    <circle cx={ketA} cy={Y - 22} r="30" class="pp-halo" />
+    <line x1={ketA - 3.5} y1={Y} x2={ketA - 3.5} y2={Y - 32} class="pp-bond pp-ket" />
+    <line x1={ketA + 3.5} y1={Y} x2={ketA + 3.5} y2={Y - 32} class="pp-bond pp-ket" />
+    <text x={ketA} y={Y - 37} text-anchor="middle" class="pp-atom pp-ket-o">O</text>
+
+    <!-- Ketone B: the same group after UV, now the anchor; its oxygen points down and the graft bond rises -->
+    <circle cx={ketB} cy={Y} r="22" class="pp-halo" />
+    <line x1={ketB} y1={Y} x2={ketB} y2={Y + 30} class="pp-bond pp-ket" />
+    <text x={ketB} y={Y + 48} text-anchor="middle" class="pp-atom pp-ket-o">OH</text>
+    <circle cx={ketB} cy={Y} r="5" class="pp-site" />
+
+    <text x="40" y="372" class="pp-label">PEEK backbone</text>
+  </svg>
+  <figcaption class="pp-cap">
+    <p>Left: UV light reaches a ketone in the PEEK chain. Right: after UV, a ketone becomes the anchor, and the hydrogel network grows from it, bonded to the surface. Schematic, not to scale.</p>
+    <p class="label pp-src">Source: ZwiCoat schematic.</p>
+  </figcaption>
+</figure>
+
+<style>
+  .peek-path { margin: 0; max-width: 46rem; }
+  .pp { display: block; width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+  .pp text { font-family: var(--font-sans); }
+  .pp-label { font-size: 17px; font-weight: 600; fill: var(--ink); }
+  .pp-uv-text { fill: var(--plum); }
+  .pp-uv { fill: none; stroke: var(--plum); stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+  .pp-uv-head { fill: var(--plum); }
+  .pp-leader { stroke: var(--ink-2); stroke-width: 1.25; }
+  .pp-gel { fill: var(--blue-tint); stroke: var(--blue); stroke-width: 1.5; }
+  .pp-chain { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+  .pp-xlink { fill: none; stroke: var(--blue-deep); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .pp-pair { font-size: 13px; font-weight: 700; fill: var(--blue-deep); }
+  .pp-graft { stroke: var(--blue-deep); stroke-width: 3.5; stroke-linecap: round; }
+  .pp-tag { fill: var(--paper); stroke: var(--ink); stroke-width: 1.25; }
+  .pp-tag-text { font-size: 15px; font-weight: 600; fill: var(--ink); }
+  .pp-bond { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+  .pp-end { stroke-dasharray: 3 4; }
+  .pp-ring { fill: var(--paper); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+  .pp-ring-in { fill: none; stroke: var(--ink-2); stroke-width: 1.25; }
+  .pp-atom { font-size: 16px; font-weight: 600; fill: var(--ink); }
+  .pp-ket { stroke: var(--orange); stroke-width: 2.5; }
+  .pp-ket-o { fill: var(--orange); }
+  .pp-halo { fill: var(--orange); fill-opacity: 0.12; stroke: var(--orange); stroke-width: 1.25; stroke-dasharray: 4 3; }
+  .pp-site { fill: var(--orange); stroke: var(--paper); stroke-width: 1.5; }
+  .pp-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .pp-src { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+</style>

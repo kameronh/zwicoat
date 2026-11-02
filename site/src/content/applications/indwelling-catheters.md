@@ -33,6 +33,7 @@ sources:
   - "Morris NS, Stickler DJ, Winters C. Which indwelling urethral catheters resist encrustation by Proteus mirabilis biofilms? Br J Urol. 1997;80:58-63."
   - "Kohler-Ockmore J, Feneley RC. Long-term catheterization of the bladder: prevalence and morbidity. Br J Urol. 1996;77:347-351."
   - "Pickard R, Lam T, MacLennan G, et al. Antimicrobial catheters for reduction of symptomatic urinary tract infection in adults requiring short-term catheterisation in hospital: a multicentre randomised controlled trial (CATHETER). Lancet. 2012;380(9857):1927-1935."
+  - "Murray CJL, Ikuta KS, Sharara F, et al. Global burden of bacterial antimicrobial resistance in 2019: a systematic analysis. Lancet. 2022;399(10325):629-655. doi:10.1016/S0140-6736(21)02724-0"
   - "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35(4):1100-1110."
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
   - "Shen N, Cheng E, Whitley JW, et al. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Appl Bio Mater. 2021;4(2):1283-1293."
@@ -46,6 +47,8 @@ cardStatLabel: "lower friction on coated silicone, still in place after three we
 About 75 percent of hospital urinary tract infections are catheter-associated (CDC 2025). Bacteriuria develops at 3 to 10 percent per day of catheterization (Gould 2010). Blockage is the long-term failure. In a laboratory bladder model, none of 18 catheter types, including hydrogel- and silver-coated ones, resisted encrustation by Proteus (Morris 1997). In a 12-week follow-up of 54 long-term users, 48 percent had a blockage (Kohler-Ockmore 1996).
 
 Silver has not changed the picture. In the CATHETER trial of 7,102 patients, symptomatic infection by six weeks was 12.6 percent with standard catheters and 12.5 percent with silver alloy catheters. A nitrofural catheter reached 10.6 percent (Pickard 2012). The chart above shows the trial.
+
+Antimicrobial catheters also carry a wider cost. Bacterial resistance to antimicrobials was directly responsible for an estimated 1.27 million deaths worldwide in 2019 (Murray 2022). We take a different route. ZwiCoat keeps bacteria and protein from attaching to the catheter in the first place, so it does not rely on killing anything and puts no drug into the patient.
 
 ## What ZwiCoat does here
 

@@ -26,6 +26,7 @@ const findFigure = (token: string): Fig => {
   Lab media, used through tokens in the markdown body:
     {{photo:name}}      one photograph (names below, or a non-chart entry in the page's figures list)
     {{video:name}}      a silent looping clip
+    {{diagram:name}}    an inline SVG diagram component (names in DIAGRAMS below)
   Every lab image carries the same credit line.
 */
 const CREDIT = 'ZwiCoat, 2026';
@@ -70,6 +71,9 @@ const LAB_VIDEOS: Record<string, { src: string; poster: string; caption: string;
   },
 };
 
+// Inline SVG diagrams, rendered by MediaBlocks.
+const DIAGRAMS = ['peek-pathway'];
+
 const hero = findFigure(d.heroFigure);
 // A tall chart (the antifouling bars) would fill the screen at the full hero width, so it gets a narrower column.
 const heroSize = imageSize(`/figures/${hero.name}.png`);
@@ -78,13 +82,14 @@ const heroTall = heroSize.height / heroSize.width > 0.9;
 // Render the markdown to HTML, then split on the media tokens and interleave components.
 const html = entry.rendered?.html ?? '';
 if (!html) throw new Error(`${d.slug}: no rendered body`);
-const pieces = html.split(/<p>\{\{(figure|photo|video):([A-Za-z0-9_-]+)\}\}<\/p>/);
+const pieces = html.split(/<p>\{\{(figure|photo|video|diagram):([A-Za-z0-9_-]+)\}\}<\/p>/);
 type Block =
   | { kind: 'html'; html: string }
   | { kind: 'figure'; fig: Fig }
   | { kind: 'photo'; fig: Fig }
   | { kind: 'labphoto'; key: string; portrait: boolean }
-  | { kind: 'video'; key: string; portrait: boolean };
+  | { kind: 'video'; key: string; portrait: boolean }
+  | { kind: 'diagram'; key: string };
 const raw: Block[] = [];
 for (let i = 0; i < pieces.length; i += 3) {
   if (pieces[i].trim()) raw.push({ kind: 'html', html: pieces[i] });
@@ -95,6 +100,9 @@ for (let i = 0; i < pieces.length; i += 3) {
   else if (type === 'photo') {
     if (LAB_PHOTOS[name]) raw.push({ kind: 'labphoto', key: name, portrait: ratioOf(LAB_PHOTOS[name].aspect) < 0.9 });
     else raw.push({ kind: 'photo', fig: findFigure(name) });
+  } else if (type === 'diagram') {
+    if (!DIAGRAMS.includes(name)) throw new Error(`${d.slug}: unknown diagram ${name}`);
+    raw.push({ kind: 'diagram', key: name });
   } else if (type === 'video') {
     if (!LAB_VIDEOS[name]) throw new Error(`${d.slug}: unknown video ${name}`);
     raw.push({ kind: 'video', key: name, portrait: ratioOf(LAB_VIDEOS[name].aspect) < 0.9 });

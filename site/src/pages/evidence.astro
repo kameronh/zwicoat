@@ -7,7 +7,7 @@ import InteractiveChart from '../components/InteractiveChart.astro';
 import CTABand from '../components/CTABand.astro';
 import numbers from '../../public/data/W12_numbers.json';
 import pubs from '../data/publications.json';
-import { W04, W05, W07, W25, W27, W28, W29, W30, W31 } from '../data/figure-text';
+import { W04, W05, W07, W25, W27, W28, W29, W30, W31, W37, W38 } from '../data/figure-text';
 
 const { papers, theses, patents } = pubs;
 const tiles = numbers;
@@ -97,10 +97,24 @@ const nav = [
       <div class="ev-head">
         <p class="label ev-num">03</p>
         <h2 id="insertion-friction-h">Insertion force and friction</h2>
-        <p class="ev-text">In human cadaveric cochleae, coated arrays needed about half the peak insertion force: about 42 percent less in one study (Bennion 2021) and about 50 percent less in another (Peel 2024). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024).</p>
+        <p class="ev-text">In human cadaveric cochleae, coated arrays needed about half the peak insertion force: about 42 percent less in one study (Bennion 2021) and about 50 percent less in another (Peel 2024). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024). In a synthetic cochlea model, coated arrays inserted with about two thirds less peak force and work of insertion (NIH SBIR Phase I dataset, Zenodo). Coated endotracheal tubes needed about 60 percent less force to intubate a cadaveric human larynx, for both surgeons (ZwiCoat internal study, 2026). Every trace from both studies is drawn below.</p>
       </div>
       <div class="ev-body">
         <Figure name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} />
+        <InteractiveChart
+          id="traces-w37"
+          name={W37.name}
+          alt={W37.alt}
+          caption={`${W37.caption} Each line is one insertion; select a line to see its peak force and work.`}
+          source={W37.source}
+        />
+        <InteractiveChart
+          id="traces-w38"
+          name={W38.name}
+          alt={W38.alt}
+          caption={`${W38.caption} Each line is one intubation, aligned to its start; choose a surgeon, then select a line to see its peak force and integrated force.`}
+          source={W38.source}
+        />
         <Figure name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} />
       </div>
     </section>
@@ -247,12 +261,32 @@ const nav = [
   import studies from '../../public/data/W32_invivo_studies.json';
   import antifouling from '../../public/data/W05_antifouling_all.json';
   import lapshear from '../../public/data/W02_lapshear_public.json';
+  import { mount as mountTraces } from '../scripts/traces';
+  import type { TraceData } from '../scripts/traces';
 
   const jobs: [string, (root: HTMLElement) => void][] = [
     ['antifouling', (root) => mountAntifouling(root, antifouling as AntifoulingRow[])],
     ['studies', (root) => mountStudies(root, studies as StudyRow[])],
     ['lapshear', (root) => mountLapshear(root, lapshear as LapShearRow[])],
   ];
+  // The two trace sets are large (about 300 kB together), so they are fetched from /data rather than inlined.
+  for (const [id, file] of [
+    ['traces-w37', '/data/W37_traces.json'],
+    ['traces-w38', '/data/W38_traces.json'],
+  ] as const) {
+    const root = document.querySelector<HTMLElement>(`[data-chart="${id}"]`);
+    if (!root) continue;
+    fetch(file)
+      .then((r) => {
+        if (!r.ok) throw new Error(`${file}: HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data: TraceData) => mountTraces(root, data))
+      .catch((err) => {
+        console.error(`Chart "${id}" failed to mount; showing the static image.`, err);
+        showFallback(root);
+      });
+  }
   for (const [id, run] of jobs) {
     const root = document.querySelector<HTMLElement>(`[data-chart="${id}"]`);
     if (!root) continue;

@@ -3,7 +3,7 @@ title: "ENT and feeding tubes"
 slug: "ent-tubes"
 order: 8
 standfirst: "ZwiCoat is a drug-free coating that grafts inside a tube, tested on silicone for mucus flow and plug clearance."
-devices: "Tympanostomy tubes, feeding tubes, sinus and ear drains"
+devices: "Tympanostomy tubes, feeding tubes, sinus and ear drains, nasal splints and implants"
 substrates: "silicone (published); others measured in the feasibility round"
 thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
 sterilization: "validated on your cycle during joint development"
@@ -33,12 +33,20 @@ sources:
   - "Hurrell E, Kucerova E, Loughlin M, et al. Neonatal enteral feeding tubes as loci for colonisation by members of the Enterobacteriaceae. BMC Infect Dis. 2009;9:146. doi:10.1186/1471-2334-9-146"
   - "Goldberg E, Barton S, Xanthopoulos MS, Stettler N, Liacouras CA. A descriptive study of complications of gastrostomy tubes in children. J Pediatr Nurs. 2010;25(2):72-80. doi:10.1016/j.pedn.2008.07.008"
   - "Mondorf A, Amini C, Graf C, et al. Risk factors and role of antibiotic prophylaxis for wound infections after percutaneous endoscopic gastrostomy. J Clin Med. 2023;12(9):3175. doi:10.3390/jcm12093175"
+  - "Kim HS, Park SS, Kim MH, et al. Problems associated with alloplastic materials in rhinoplasty. Yonsei Med J. 2014;55(6):1617-1623. doi:10.3349/ymj.2014.55.6.1617"
+  - "Jirawatnotai S, Mahachitsattaya B. Analysis of subclinical infections and biofilm formation in cases of capsular contracture after silicone augmentation rhinoplasty: prevalence and microbiological study. Arch Plast Surg. 2019;46(2):160-166. doi:10.5999/aps.2018.00864"
 cardStat: "~0°"
 cardStatLabel: "tilt to start saline flow on coated silicone sheets, against 45 uncoated (Horne 2025)"
 ---
 ## The problem
 
-About 667,000 ear tube procedures a year are done in US children under 15 (AAO-HNSF 2013). In one hospital series, about one in five children needed a second set (Boston 2003). In a meta-analysis of 134 studies, 7 percent of ears had a blocked tube and 5 percent had granulation tissue (Kay 2001). Feeding tubes also carry bacteria. In one study, 76 percent of 129 neonatal feeding tubes held Enterobacteriaceae (Hurrell 2009). Gastrostomy stomas get infected, in 37 percent of children in one series (Goldberg 2010) and 25 percent of adults after PEG placement (Mondorf 2023). Today's fixes are flushing and replacing the tube. None changes the surface.
+About 667,000 ear tube procedures a year are done in US children under 15 (AAO-HNSF 2013). In one hospital series, about one in five children needed a second set (Boston 2003). In a meta-analysis of 134 studies, 7 percent of ears had a blocked tube and 5 percent had granulation tissue (Kay 2001).
+
+Feeding tubes also carry bacteria. In one study, 76 percent of 129 neonatal feeding tubes held Enterobacteriaceae (Hurrell 2009). Gastrostomy stomas get infected, in 37 percent of children in one series (Goldberg 2010) and 25 percent of adults after PEG placement (Mondorf 2023).
+
+Silicone nasal implants and splints meet the same foreign body response. Complications of silicone nasal implants, including infection, calcification, contracture, extrusion and shift, have been reported in up to 36 percent of cases (Kim 2014). In one series of contracted nasal implants, biofilm was found on 14 of the 19 with the two most severe grades (Jirawatnotai 2019).
+
+Today's fixes are flushing and replacing the tube. None changes the surface. Our argument is that a lumen and a shell that stay wet and slippery give mucus, bacteria and scar much less to hold on to.
 
 ## What ZwiCoat does here
 

@@ -39,6 +39,7 @@ sources:
   - "Zhai P, Wu Y, Yang D. A systematic review and meta-analysis of capsular contracture rate after breast augmentation with textured and smooth breast prostheses. Gland Surg. 2022;11(1):166-174."
   - "Huang J, Yu N, Long X. Tissue expander complications predict permanent implant complications and failure of breast reconstruction. Ann Plast Surg. 2015;75(1):24-28."
   - "Churchill IF, Gallo L, Dunn E. Complications and burden of 2-stage tissue expander to implant-based reconstructive surgery: a single-center retrospective study. Plast Surg (Oakv). 2025."
+  - "Kraenzlin F, Habibi M, Aliu O, et al. Infections after mastectomy and tissue expander placement: a multivariate regression analysis. J Plast Reconstr Aesthet Surg. 2022;75(7):2190-2196. doi:10.1016/j.bjps.2022.01.050"
 cardStat: "82 to 27 µm"
 cardStatLabel: "capsule thickness around coated silicone in mice at six weeks (Horne 2023)"
 ---
@@ -50,7 +51,11 @@ Textured implants were once used to lower contracture. In 2019 the FDA requested
 
 {{figure:W17}}
 
-Smooth implants are now the default. They carry roughly three times the contracture rate of textured ones (Zhai 2022). For expanders, fibrosis restricts filling, and infection is a leading cause of early removal (Huang 2015; Churchill 2025). Antibiotic irrigation, no-touch technique and dermal matrix wraps act downstream. None of them changes the silicone surface.
+Smooth implants are now the default. They carry roughly three times the contracture rate of textured ones (Zhai 2022).
+
+Expanders have a sharper problem. An expander stays only until the skin has stretched, so its capsule does no good, and fibrosis restricts filling. Infection is the bigger risk. Expander reconstruction has reported infection rates of up to 31 percent, against the 1 to 2 percent typical of surgical site infections (Kraenzlin 2022). In that series of 490 breasts, about 14 percent became infected before the second-stage operation. Infection is a leading cause of early removal (Huang 2015; Churchill 2025).
+
+Antibiotic irrigation, no-touch technique and dermal matrix wraps act downstream. None of them changes the silicone surface. That is where we start. A shell that proteins and bacteria cannot grip gives the capsule, and the bacteria, much less to build on.
 
 ## What ZwiCoat does here
 

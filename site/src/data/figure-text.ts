@@ -140,3 +140,20 @@ export const W36 = {
   source:
     'Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135, Figs 7, 8 and 9 (values approximate, read from the published figures; Fig 7 n at least 3, Fig 8 n at least 4). doi:10.1021/acsabm.4c00156',
 };
+
+/* SBIR Phase I charts (figures/build_sbir.py, figures/MANIFEST-sbir.md). Captions without p values; sources sanitized (no robot or sterilization vendor, no initials). */
+export const W37 = {
+  name: 'W37_ci_insertion_synthetic',
+  alt: 'Three panels for a cochlear implant electrode array inserted by robot into a synthetic cochlea. Panel A: force against insertion depth for every insertion, six uncoated in gray and five coated in blue; the coated traces stay below about 21 millinewtons while uncoated traces climb to about 40 to 60. Panel B: mean peak insertion force, 48 millinewtons uncoated and 18 coated, 64 percent lower. Panel C: mean work of insertion, 291 millinewton-millimeters uncoated and 99 coated, 66 percent lower.',
+  caption:
+    'A robot inserted a cochlear implant electrode array into a synthetic cochlea at constant speed. The sterilized coated array reached a 64 percent lower peak insertion force than the uncoated array (mean 17.5 versus 48.3 mN) and needed 66 percent less work of insertion (99 versus 291 mN·mm), measured on the same insertions.',
+  source: 'NIH SBIR Phase I dataset, ZwiCoat Materials Innovations, Zenodo, doi:10.5281/zenodo.10459478',
+};
+
+export const W38 = {
+  name: 'W38_ett_insertion_force',
+  alt: 'Four panels of endotracheal tube insertion force in a cadaveric human larynx. Top: one typical intubation per tube for each of two surgeons; the coated tube\'s force trace sits well below the uncoated trace. Bottom: integrated insertion force for every intubation; Surgeon 1, 7.62 newton-seconds uncoated against 2.88 coated, 62 percent lower; Surgeon 2, 1.36 against 0.53, 61 percent lower.',
+  caption:
+    'Two surgeons intubated a cadaveric human larynx on a load cell. Coated endotracheal tubes needed 62 percent (Surgeon 1) and 61 percent (Surgeon 2) less integrated insertion force than the uncoated tube.',
+  source: 'ZwiCoat internal study, 2026; raw data in the NIH SBIR Phase I dataset, Zenodo',
+};

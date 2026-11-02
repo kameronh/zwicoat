@@ -23,6 +23,10 @@ figures:
     caption: "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
     alt: "Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
+  - name: "W37_ci_insertion_synthetic"
+    caption: "A robot inserted a cochlear implant electrode array into a synthetic cochlea at constant speed. The sterilized coated array reached a 64 percent lower peak insertion force than the uncoated array (mean 17.5 versus 48.3 mN) and needed 66 percent less work of insertion (99 versus 291 mN·mm), measured on the same insertions."
+    source: "NIH SBIR Phase I dataset, ZwiCoat Materials Innovations, Zenodo, doi:10.5281/zenodo.10459478"
+    alt: "Three panels for a cochlear implant electrode array inserted by robot into a synthetic cochlea. Panel A: force against insertion depth for every insertion, six uncoated in gray and five coated in blue; the coated traces stay below about 21 millinewtons while uncoated traces climb to about 40 to 60. Panel B: mean peak insertion force, 48 millinewtons uncoated and 18 coated, 64 percent lower. Panel C: mean work of insertion, 291 millinewton-millimeters uncoated and 99 coated, 66 percent lower."
   - name: "W07_insertion_force"
     caption: "Coated cochlear implant arrays needed about half the peak insertion force of uncoated arrays in two human cadaveric studies: about 42 percent less (Bennion 2021) and about 50 percent less (Peel 2024)."
     source: "Bennion DM, Horne R, Peel A, et al. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A and 4B (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156."
@@ -32,11 +36,12 @@ figures:
     source: "Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 6A to D, CC BY 4.0."
     alt: "Tissue sections from the base of a sheep cochlea at the round window. Left column, uncoated array: a star marks inflammatory tissue in the scala tympani, and the fluorescence panel shows strong red fibrosis and green macrophage staining. Right column, coated array: the space is largely clear and the staining is faint."
 sources:
-  - "Spinal cord stimulator removal for complications including fibrosis, about four in ten implants in an Australian study. doi:10.1097/PTS.0000000000000971"
+  - "Jones CMP, Abdel Shaheed C, Ferreira G, et al. Spinal cord stimulators: an analysis of the adverse events reported to the Australian Therapeutic Goods Administration. J Patient Saf. 2022;18(5):507-511. doi:10.1097/PTS.0000000000000971"
   - "Ben-Shlomo N, Peel A, Etler C, et al. Development of zwitterionic hydrogel thin film coatings of cochlear implant electrode arrays that reduce intracochlear inflammation and electrode impedance. Hear Res. 2026;474:109606."
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
   - "Bennion DM, Horne R, Peel A, et al. Zwitterionic photografted coatings of cochlear implant biomaterials reduce friction and insertion forces. Otol Neurotol. 2021;42(10):1476-1483."
   - "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35(4):1100-1110."
+  - "ZwiCoat Materials Innovations. SBIR Phase I dataset (NIH SBIR grant 1R43DC022208-01). Zenodo. doi:10.5281/zenodo.10459478"
 cardStat: "~50%"
 cardStatLabel: "lower total electrode impedance after four weeks in sheep (Ben-Shlomo 2026)"
 ---
@@ -48,7 +53,7 @@ cardStatLabel: "lower total electrode impedance after four weeks in sheep (Ben-S
 
 A neural electrode works or fails at one place: the interface between the device and tissue. Within seconds of implantation, proteins coat the array, and over the following weeks scar tissue walls it off. That scar sits in the electrical path. It can raise impedance, so stimulation needs more voltage and power, and it can spread current, so channels lose selectivity. Better geometry, softer substrates and steroid elution help at the margins, but none of them changes the surface where the response starts.
 
-The same is true of neurostimulators and brain-computer interfaces. Scar around any electrode is an electrical barrier. It raises impedance and stimulation thresholds, it spreads current, and on a recording array it isolates the contacts from the neurons they are meant to hear. Spinal cord stimulators are removed for complications in roughly four in ten cases (doi:10.1097/PTS.0000000000000971).
+The same is true of neurostimulators and brain-computer interfaces. Scar around any electrode is an electrical barrier. It raises impedance and stimulation thresholds, it spreads current, and on a recording array it isolates the contacts from the neurons they are meant to hear. In Australia, hospital records show about 4 spinal cord stimulator removals for every 10 implanted (Jones 2022).
 
 ## What ZwiCoat does here
 
@@ -67,6 +72,10 @@ The results below come from published studies in mice, in sheep and in human cad
 **About half the insertion force.** Coated arrays needed about half the peak force in human cadaveric cochleae. In two studies it fell about 42 percent, 64.2 against 37.0 millinewtons (Bennion 2021, Otology and Neurotology), and about 50 percent, about 68 against 35 millinewtons (Peel 2024, ACS Applied Bio Materials). Force variation fell about 42 percent in the first study.
 
 {{figure:W07}}
+
+In a synthetic cochlea model, coated arrays inserted with about two thirds less peak force and work of insertion (NIH SBIR Phase I dataset, Zenodo).
+
+{{figure:W37}}
 
 **Why this matters for the next generation of electrodes.** A zwitterionic hydrogel is wet, ion-rich and tightly bound to the metal. At the contact it raises the capacity to store charge at the electrode surface, so the same stimulus needs less voltage and a smaller contact can deliver the same charge. Because the coating conceals the platinum from tissue, contact surfaces can be textured for even more surface area without inviting more scar.
 

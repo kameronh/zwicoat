@@ -3,10 +3,12 @@ import Figure from './Figure.astro';
 import Photo from './Photo.astro';
 import VideoLoop from './VideoLoop.astro';
 import Prose from './Prose.astro';
+import PeekPathway from './PeekPathway.astro';
 
 /*
   Renders the blocks of an application page: prose, charts, photographs and clips.
   Two portrait items in a row arrive already grouped as a pair.
+  Diagrams ({{diagram:name}} in the markdown) are inline SVG components.
 */
 interface LabPhoto { src: string; alt: string; caption: string; aspect: string; credit?: string }
 interface LabVideo { src: string; poster: string; caption: string; alt: string; aspect: string }
@@ -26,6 +28,10 @@ const { blocks, photos, videos, credit, photoSize } = Astro.props;
   }
   if (b.kind === 'photo') {
     return <div class="fig"><Photo src={`/images/${b.fig.name}.png`} alt={b.fig.alt} caption={b.fig.caption} credit={b.fig.source} aspect={photoSize[b.fig.name]} /></div>;
+  }
+  if (b.kind === 'diagram') {
+    if (b.key === 'peek-pathway') return <div class="fig"><PeekPathway /></div>;
+    return null;
   }
   const one = (x: any) => {
     if (x.kind === 'video') {

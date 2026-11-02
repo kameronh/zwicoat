@@ -24,7 +24,9 @@ figures:
     source: "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (SBMA series; values approximate, read from the published figures; stiffness shown relative to the lowest cross-linker, baseline implied by the text, 50-fold rise; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852"
     alt: "Charts against crosslinker percentage for the coating. More crosslinker makes the gel stiffer and less swollen. Protein, cell and friction benefits are strongest at about 5 to 15 percent crosslinker."
 sources:
-  - "McClatchey PM, McClain ES, Williams IM, et al. Fibrotic encapsulation is the dominant source of continuous glucose monitor delays. Diabetes. 2019;68(10):1892-1901."
+  - "McClatchey PM, McClain ES, Williams IM, et al. Fibrotic encapsulation is the dominant source of continuous glucose monitor delays. Diabetes. 2019;68(10):1892-1901. doi:10.2337/db19-0229"
+  - "Zaharieva DP, Turksoy K, McGaugh SM, et al. Lag time remains with newer real-time continuous glucose monitoring technology during aerobic exercise in adults living with type 1 diabetes. Diabetes Technol Ther. 2019;21(6):313-321. doi:10.1089/dia.2018.0364"
+  - "Gough DA, Kumosa LS, Routh TL, et al. Function of an implanted tissue glucose sensor for more than 1 year in animals. Sci Transl Med. 2010;2(42):42ra53. doi:10.1126/scitranslmed.3001148"
   - "Xie X, et al. Zwitterionic pMPC coating of continuous glucose monitor sensors. Nat Biomed Eng. 2018 (as cited in the ZwiCoat sensors deck)."
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
   - "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. Photografted zwitterionic hydrogel coating durability for reduced foreign body response to cochlear implants. ACS Appl Bio Mater. 2024;7(5):3124-3135."
@@ -35,7 +37,11 @@ cardStatLabel: "thinner capsule around implanted arrays at one year in mice (Hor
 ---
 ## The problem
 
-The body's response to a sensor limits its accuracy and its wear life. In mice, an implanted continuous glucose monitor took 24 minutes to reach its peak signal, against 2 minutes for blood glucose. Over 80 percent of that delay came from the fibrous capsule around the sensor (McClatchey 2019). The chart above shows it. The capsule shows up as lag, drift and lost sensitivity. One implantable sensor controls the tissue response with a steroid-eluting collar. That is a finite drug reservoir.
+The body's response to a sensor limits its accuracy and its wear life. In mice, an implanted continuous glucose monitor took 24 minutes to reach its peak signal, against 2 minutes for blood glucose. Over 80 percent of that delay came from the fibrous capsule around the sensor (McClatchey 2019). The chart above shows it.
+
+Lag matters most when glucose moves fast. During exercise, a current CGM trailed fingerstick glucose by about 12 minutes on average (Zaharieva 2019). Even a sensor built to tolerate encapsulation needed a two-week stabilization period after implantation in pigs (Gough 2010). The capsule also shows up as drift and lost sensitivity. One implantable sensor controls the tissue response with a steroid-eluting collar. That is a finite drug reservoir.
+
+Our argument is that the capsule starts at the surface, so the surface is where to stop it. A thin, wet hydrogel keeps proteins and cells off, and that is the first step of encapsulation.
 
 ## What ZwiCoat does here
 

@@ -35,7 +35,7 @@ sources:
   - "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol. 2025;10(2):e70118."
   - "Smith SN, Moureau N, Vaughn VM, et al. Patterns and predictors of peripherally inserted central catheter occlusion: the 3P-O study. J Vasc Interv Radiol. 2017;28(5):749-756.e2."
   - "Lazarus B, Lok CE, Moist L, Polkinghorne KR. Strategies to prevent hemodialysis catheter dysfunction. J Am Soc Nephrol. 2025;36(5):952-966."
-  - "Zimlichman E, et al. Health care-associated infections: a meta-analysis of costs and financial impact on the US health care system. JAMA Intern Med. 2013;173(22):2039-2046."
+  - "Zimlichman E, Henderson D, Tamir O, et al. Health care-associated infections: a meta-analysis of costs and financial impact on the US health care system. JAMA Intern Med. 2013;173(22):2039-2046. doi:10.1001/jamainternmed.2013.9763"
   - "Chopra V, et al. Risk of venous thromboembolism associated with peripherally inserted central catheters: a systematic review and meta-analysis. Lancet. 2013;382:311-325."
   - "Nguyen DB, et al. National Healthcare Safety Network (NHSN) dialysis event surveillance report for 2014. Clin J Am Soc Nephrol. 2017;12:1139-1146."
   - "Lai NM, et al. Catheter impregnation, coating or bonding for reducing central venous catheter-related infections in adults. Cochrane Database Syst Rev. 2016;3(3):CD007878."
@@ -49,6 +49,8 @@ cardStatLabel: "less S. aureus adhesion on coated silicone in vitro (Shen 2021)"
 Within seconds of insertion, plasma protein coats the inside and the outside of a catheter. Inside, the film seeds fibrin sheath and occlusion. Occlusion developed in 12 percent of PICCs in a large multihospital study (Smith 2017). Dysfunction forces removal of up to 20 percent of dialysis catheters (Lazarus 2025). Outside, the film gives thrombus and staphylococci a foothold. One central-line bloodstream infection costs about $46,000, in 2012 dollars (Zimlichman 2013). PICCs carry 2.55 times the odds of deep-vein thrombosis of other central lines (Chopra 2013).
 
 Today's fixes act after the film forms. Antimicrobial catheters cut bloodstream infection by about 2 percent in absolute terms (Lai 2016). In a large PICC trial, neither a hydrophobic nor a chlorhexidine catheter beat a standard polyurethane one on catheter failure (Ullman 2025).
+
+Occlusion, thrombus and infection look like three problems. They share one first step: protein on the catheter wall. Our argument is that the fix belongs at that step, in the surface itself. A wall that stays clean in the first seconds leaves the sheath, the clot and the bacteria far less to build on, and there is no drug to run out.
 
 ## What ZwiCoat does here
 
