@@ -25,8 +25,8 @@
  },
  {
   "value": "~50%",
-  "label": "less insertion force with coated cochlear implants",
-  "takeaway": "Three studies: human cadaver cochleae twice and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset).",
+  "label": "less insertion force with coated cochlear implants and endotracheal tubes",
+  "takeaway": "Cochlear implants in human cadaver cochleae and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset), and endotracheal tubes in a cadaveric larynx, about 60 percent less (ZwiCoat internal study, 2026).",
   "source": "Bennion DM, et al. Otology and Neurotology 2021 (Fig 4A, 42 percent less); Peel A, et al. ACS Applied Bio Materials 2024 (Fig 13A, about 50 percent less); NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478 (64 percent less); see W07"
  },
  {

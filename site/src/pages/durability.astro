@@ -47,8 +47,13 @@ import CTABand from '../components/CTABand.astro';
           <VideoLoop src="/media/pendulum-loop" poster="/media/pendulum-poster.jpg" aspect="540/810" caption="Pendulum impact test on a coated tissue expander, close-up. ZwiCoat internal test, 2026." alt="Close-up of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard." credit="ZwiCoat, 2026" />
         </div>
         <div class="impact-photos">
-          <Photo src="/images/lab/expander-impact-before.jpg" alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell." caption="Before impact" aspect="2000/1000" />
-          <Photo src="/images/lab/expander-impact-after.jpg" alt="The same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches." caption="After impact: no visible damage" aspect="2000/1000" />
+          <div class="impact-quad">
+            <Photo src="/images/lab/expander-impact-front-before.jpg" alt="The front of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell." aspect="2000/1000" />
+            <Photo src="/images/lab/expander-impact-front-after.jpg" alt="The front of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches." aspect="2000/1000" />
+            <Photo src="/images/lab/expander-impact-before.jpg" alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell." aspect="2000/1000" />
+            <Photo src="/images/lab/expander-impact-after.jpg" alt="The back of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches." aspect="2000/1000" />
+          </div>
+          <p class="impact-photos-cap">Before and after a 45 J impact, front (top) and back (bottom). No visible damage.</p>
         </div>
       </div>
     </ClaimRow>
@@ -92,17 +97,19 @@ import CTABand from '../components/CTABand.astro';
 
   <CTABand
     title="Bring us a device with a fouling, scar or friction problem."
-    body="We coat it free, with no cap on quantity, and return it with matched uncoated controls and data."
+    body="We coat it for free and return it with matched uncoated controls and data."
     button={{ text: 'Send us parts', href: '/partner#form' }}
   />
 </Base>
 
 <style>
   .refs { padding-block: var(--space-5); border-top: 1px solid var(--line); }
-  /* Mechanical row: the clip in the middle column, the before and after photographs stacked small on the right. */
+  /* Mechanical row: the clip in the middle column, the before and after photographs as a small 2 x 2 grid on the right (front on top, back below). */
   .impact { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
   .impact-video, .impact-photos { min-width: 0; }
-  .impact-photos { display: grid; gap: var(--space-4); max-width: 20rem; }
+  .impact-photos { display: grid; gap: var(--space-3); max-width: 20rem; }
+  .impact-quad { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+  .impact-photos-cap { margin: 0; font-size: var(--fs-caption); color: var(--ink-2); line-height: 1.45; }
   @media (min-width: 640px) {
     .impact { grid-template-columns: minmax(0, 1fr) minmax(0, 13.75rem); }
   }

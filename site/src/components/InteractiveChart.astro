@@ -13,6 +13,8 @@ interface Props {
   name: string;
   alt: string;
   caption: string;
+  /** Optional small title above the chart (mono label style, like the section eyebrows). */
+  title?: string;
   /** The full source: the record, kept in code. Not displayed when a short source exists. */
   source: string;
   /** The displayed source line. Defaults to the manifest's source_short for the fallback chart. */
@@ -25,13 +27,14 @@ interface Props {
   /** Extra data attributes on the mount element (read by the page script). */
   data?: Record<string, string>;
 }
-const { id, name, alt, caption, source, sourceShort, width = 1000, class: extra, download = true, data = {} } = Astro.props;
+const { id, name, alt, caption, title, source, sourceShort, width = 1000, class: extra, download = true, data = {} } = Astro.props;
 const shown = sourceShort ?? shortSourceFor(name) ?? source;
 const src = `/figures/${name}.png`;
 const size = imageSize(src);
 const height = Math.round((width * size.height) / size.width);
 ---
 <figure class:list={['ichart', extra]}>
+  {title && <p class="ichart-title label">{title}</p>}
   <div
     class="ichart-mount"
     data-chart={id}
@@ -44,7 +47,7 @@ const height = Math.round((width * size.height) / size.width);
     <noscript><img class="ch-fallback-img" src={src} alt={alt} width={width} height={height} decoding="async" /></noscript>
   </div>
   <figcaption class="ichart-cap">
-    <p class="ichart-caption">{caption}</p>
+    {caption && <p class="ichart-caption">{caption}</p>}
     <p class="ichart-source label">Source: {shown}</p>
     {download && <p class="ichart-dl"><a href={src} download>Download the static chart</a> <span class="label">PNG</span></p>}
   </figcaption>
@@ -53,6 +56,7 @@ const height = Math.round((width * size.height) / size.width);
 <style>
   .ichart { margin: 0; }
   .ichart-mount { min-height: 18rem; }
+  .ichart-title { margin: 0 0 var(--space-3); }
   .ichart-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
   .ichart-caption { color: var(--ink); }
   .ichart-source { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }

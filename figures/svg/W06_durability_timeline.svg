@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-02T20:35:44.214919</dc:date>
+    <dc:date>2026-11-03T12:35:03.713498</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -41,12 +41,12 @@ z
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="m578435d6dd" d="M 0 0 
+       <path id="m91b68e8a55" d="M 0 0 
 L 0 3.5 
 " style="stroke: #4a5058; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m578435d6dd" x="79.725" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+       <use xlink:href="#m91b68e8a55" x="79.725" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
@@ -56,7 +56,7 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m578435d6dd" x="225.0375" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+       <use xlink:href="#m91b68e8a55" x="225.0375" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
@@ -66,7 +66,7 @@ L 0 3.5
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m578435d6dd" x="370.35" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+       <use xlink:href="#m91b68e8a55" x="370.35" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
@@ -76,7 +76,7 @@ L 0 3.5
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m578435d6dd" x="515.6625" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+       <use xlink:href="#m91b68e8a55" x="515.6625" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
@@ -86,7 +86,7 @@ L 0 3.5
     <g id="xtick_5">
      <g id="line2d_5">
       <g>
-       <use xlink:href="#m578435d6dd" x="660.975" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
+       <use xlink:href="#m91b68e8a55" x="660.975" y="299.0955" style="fill: #4a5058; stroke: #4a5058; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
@@ -98,7 +98,7 @@ L 0 3.5
    <g id="LineCollection_1">
     <path d="M 79.725 182.6715 
 L 707.475 182.6715 
-" clip-path="url(#p9cb15ddfcc)" style="fill: none; stroke: #c9ced4; stroke-width: 3"/>
+" clip-path="url(#p7ce673e2df)" style="fill: none; stroke: #c9ced4; stroke-width: 3"/>
    </g>
    <g id="patch_3">
     <path d="M 21.6 299.0955 
@@ -107,7 +107,7 @@ L 719.1 299.0955
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="mea2f722d1c" d="M 0 5.91608 
+     <path id="m6dd6a026e3" d="M 0 5.91608 
 C 1.568963 5.91608 3.073876 5.292724 4.1833 4.1833 
 C 5.292724 3.073876 5.91608 1.568963 5.91608 0 
 C 5.91608 -1.568963 5.292724 -3.073876 4.1833 -4.1833 
@@ -119,8 +119,8 @@ C -3.073876 5.292724 -1.568963 5.91608 0 5.91608
 z
 " style="stroke: #fcfcfb; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p9cb15ddfcc)">
-     <use xlink:href="#mea2f722d1c" x="102.019521" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    <g clip-path="url(#p7ce673e2df)">
+     <use xlink:href="#m6dd6a026e3" x="102.019521" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_4">
@@ -134,8 +134,8 @@ Q 93.014064 153.923203 100.225061 176.94301
     <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(56.746875 125.102332)">Shen 2021</text>
    </g>
    <g id="PathCollection_2">
-    <g clip-path="url(#p9cb15ddfcc)">
-     <use xlink:href="#mea2f722d1c" x="113.166781" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    <g clip-path="url(#p7ce673e2df)">
+     <use xlink:href="#m6dd6a026e3" x="113.166781" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_5">
@@ -149,8 +149,8 @@ Q 117.199676 208.955705 114.076568 188.600996
     <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(101.92668 262.494224)">Peel 2024</text>
    </g>
    <g id="PathCollection_3">
-    <g clip-path="url(#p9cb15ddfcc)">
-     <use xlink:href="#mea2f722d1c" x="124.314041" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    <g clip-path="url(#p7ce673e2df)">
+     <use xlink:href="#m6dd6a026e3" x="124.314041" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_6">
@@ -164,8 +164,8 @@ Q 165.055645 154.699655 129.258858 179.276551
     <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(189.920742 125.102332)">Ben-Shlomo 2026</text>
    </g>
    <g id="PathCollection_4">
-    <g clip-path="url(#p9cb15ddfcc)">
-     <use xlink:href="#mea2f722d1c" x="146.608562" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    <g clip-path="url(#p7ce673e2df)">
+     <use xlink:href="#m6dd6a026e3" x="146.608562" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_7">
@@ -179,8 +179,8 @@ Q 187.837869 208.028326 151.718999 185.814518
     <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(226.37707 262.382896)">Barrera 2026</text>
    </g>
    <g id="PathCollection_5">
-    <g clip-path="url(#p9cb15ddfcc)">
-     <use xlink:href="#mea2f722d1c" x="369.553767" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    <g clip-path="url(#p7ce673e2df)">
+     <use xlink:href="#m6dd6a026e3" x="369.553767" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_8">
@@ -194,8 +194,8 @@ Q 381.579649 153.984203 371.873655 177.137492
     <text style="fill: #1b1f24; font: 9.5px 'Arial'" transform="translate(350.559492 125.102332)">Horne 2023, Peel 2024</text>
    </g>
    <g id="PathCollection_6">
-    <g clip-path="url(#p9cb15ddfcc)">
-     <use xlink:href="#mea2f722d1c" x="660.975" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
+    <g clip-path="url(#p7ce673e2df)">
+     <use xlink:href="#m6dd6a026e3" x="660.975" y="182.6715" style="fill: #0e7fc4; stroke: #fcfcfb; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_9">
@@ -217,7 +217,7 @@ Q 644.982186 208.684154 657.832596 187.782688
   </g>
  </g>
  <defs>
-  <clipPath id="p9cb15ddfcc">
+  <clipPath id="p7ce673e2df">
    <rect x="21.6" y="66.2475" width="697.5" height="232.848"/>
   </clipPath>
  </defs>

@@ -1,7 +1,7 @@
 ---
 /*
   The pendulum impact test (R13, R18): the looping clip on the left, the before and after
-  photographs (deck slide 1) stacked on the right, one cited caption for the set.
+  photographs (deck slide 1) as a 2 x 2 grid on the right (front before and after on top, back below), one cited caption for the set.
   Used on /durability (Mechanical) and, through {{block:impact}}, on the tissue expander page.
 */
 import VideoLoop from './VideoLoop.astro';
@@ -27,20 +27,29 @@ const credit = 'ZwiCoat, 2026';
       />
     </div>
     <div class="impact-photos">
-      <Photo
-        src="/images/lab/expander-impact-before.jpg"
-        alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell."
-        caption="Before impact"
-        credit={credit}
-        aspect="2000/1000"
-      />
-      <Photo
-        src="/images/lab/expander-impact-after.jpg"
-        alt="The same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches."
-        caption="After impact: no visible damage"
-        credit={credit}
-        aspect="2000/1000"
-      />
+      <div class="impact-quad">
+        <Photo
+          src="/images/lab/expander-impact-front-before.jpg"
+          alt="The front of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell."
+          aspect="2000/1000"
+        />
+        <Photo
+          src="/images/lab/expander-impact-front-after.jpg"
+          alt="The front of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches."
+          aspect="2000/1000"
+        />
+        <Photo
+          src="/images/lab/expander-impact-before.jpg"
+          alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell."
+          aspect="2000/1000"
+        />
+        <Photo
+          src="/images/lab/expander-impact-after.jpg"
+          alt="The back of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches."
+          aspect="2000/1000"
+        />
+      </div>
+      <p class="impact-photos-cap">Before and after a 45 J impact, front (top) and back (bottom). No visible damage.</p>
     </div>
   </div>
   <figcaption class="impact-cap">
@@ -53,7 +62,9 @@ const credit = 'ZwiCoat, 2026';
   .impact { margin: 0; min-width: 0; max-width: 62rem; }
   .impact-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
   .impact-video { min-width: 0; max-width: 20rem; }
-  .impact-photos { display: grid; gap: var(--space-4); min-width: 0; }
+  .impact-photos { display: grid; gap: var(--space-3); min-width: 0; }
+  .impact-quad { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+  .impact-photos-cap { margin: 0; font-size: var(--fs-caption); color: var(--ink-2); line-height: 1.45; }
   @media (min-width: 640px) {
     .impact:not(.narrow) .impact-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
     .impact:not(.narrow) .impact-video { max-width: none; }

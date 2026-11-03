@@ -9,12 +9,15 @@ import { W04 } from '../data/figure-text';
 
 interface Props {
   caption?: string;
+  /** Small mono title above the chart (home hero). */
+  title?: string;
   /** Home hero: tighter rows and no filters, count line, table or download link (the evidence page keeps them). */
   compact?: boolean;
   width?: number;
 }
 const {
-  caption = 'Less scar tissue around coated surfaces in mice, rats and sheep: percent reduction in fibrotic capsule or fibrosis, measurement by measurement. Filter by species or paper, then select a bar for its values and the paper.',
+  caption = 'Less scar tissue around coated surfaces in mice, rats and sheep: percent reduction in fibrotic capsule or fibrosis. Filter by species or paper, then select a bar for its values and the paper.',
+  title,
   compact = false,
   width = 1000,
 } = Astro.props;
@@ -24,6 +27,7 @@ const {
   name={W04.name}
   alt={W04.alt}
   caption={caption}
+  title={title}
   source={W04.source}
   sourceShort={W04.sourceShort}
   width={width}

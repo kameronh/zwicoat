@@ -333,7 +333,7 @@ def w04_fibrosis():
     ax.legend(loc="upper right")
     title(ax, "Less scar tissue around coated surfaces in mice, rats and sheep",
           f"{len(items)} measurements in 4 papers; mice, rats and sheep, four weeks to one year, on silicone and on human cochlear implant arrays")
-    save(fig, "W04_fibrosis_by_study", "Percent reduction in fibrotic capsule or fibrosis around coated surfaces in mice, rats and sheep, measurement by measurement.",
+    save(fig, "W04_fibrosis_by_study", "Percent reduction in fibrotic capsule or fibrosis around coated surfaces in mice, rats and sheep.",
          "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Figs 5, 6G, 7I; flat-sheet and one-year values from the text, cylinder value approximate, read from the published figure); "
          "Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 3, text states over 60 percent); "
          "Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 7F, four coated groups, rats, 6 weeks, means read from the published plot: uncoated about 210 um, "
@@ -671,7 +671,7 @@ NUMBERS = [("10", "peer-reviewed papers,\n2017 to 2026", "Protein, cells, bacter
            ("3", "issued US patents", "The photografting method and the coated-device system are protected.",
             "US 11,525,069 B2 (Dec 13, 2022); US 11,814,526 B2 (Nov 14, 2023); US 12,116,498 B2 (Oct 15, 2024)"),
            ("7", "patents granted in\nfive countries", "United States, Australia, China, Japan and Mexico: the largest device markets.", PATENT_SCHED),
-           ("~50%", "less insertion force with\ncoated cochlear implants", "Three studies: human cadaver cochleae twice and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset).",
+           ("~50%", "less insertion force with\ncoated cochlear implants and\nendotracheal tubes", "Cochlear implants in human cadaver cochleae and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset), and endotracheal tubes in a cadaveric larynx, about 60 percent less (ZwiCoat internal study, 2026).",
             "Bennion DM, et al. Otology and Neurotology 2021 (Fig 4A, 42 percent less); Peel A, et al. ACS Applied Bio Materials 2024 (Fig 13A, about 50 percent less); NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478 (64 percent less); see W07"),
            ("1 year", "film intact after\nimplantation, mice", "The covalent graft was still intact at one year, and the scar capsule stayed thin.",
             "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 7)"),
@@ -1343,6 +1343,12 @@ def w32_invivo_studies():
     for r in rows:
         if isinstance(r.get("note"), str):
             r["note"] = re.sub(r"^\s*text:\s*", "", r["note"])
+    # Kam, 2026-11-03: drop uncrosslinked controls (0 percent cross-linker). They are not ZwiCoat.
+    zero_xl = re.compile(r"(?<![\d.])0\s*(?:%|percent)\s*cross-?\s*linker", re.I)
+    dropped = [r for r in rows if any(zero_xl.search(str(r.get(k) or "")) for k in ("device_or_substrate", "note", "label"))]
+    rows = [r for r in rows if r not in dropped]
+    for r in dropped:
+        print("W32: dropped 0 percent cross-linker row:", r["paper"], r["year"], r["figure"], "|", r["device_or_substrate"], "|", r["metric"], r["uncoated"], "->", r["coated"], r["unit"])
     json.dump(rows, open(os.path.join(DATA, "W32_invivo_studies.json"), "w"), indent=1)
     print("wrote W32_invivo_studies.json,", len(rows), "rows")
 
