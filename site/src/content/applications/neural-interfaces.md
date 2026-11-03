@@ -5,7 +5,7 @@ order: 1
 standfirst: "ZwiCoat conceals the electrode from the body: a thinner capsule over platinum and silicone alike, about half the impedance on working implants, and a surface the tissue leaves alone."
 devices: "Cochlear implant arrays, deep brain and spinal cord leads, cortical arrays"
 substrates: "silicone and platinum contacts (published); PEEK, parylene-C and polyurethane (ZwiCoat internal tests); others in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 25 micrometers hydrated on sheep arrays (Ben-Shlomo 2026); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers; about 25 micrometers on the sheep arrays (Ben-Shlomo 2026)"
 sterilization: "validated on your cycle during joint development"
 regulatory: "PMA supplement with our Master File behind your submission"
 evidence: "mice, one year; sheep, four weeks (six months in preparation); human cadaveric cochleae"
