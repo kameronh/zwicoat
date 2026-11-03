@@ -7,7 +7,7 @@ import DurabilityChart from '../components/DurabilityChart.astro';
 import InteractiveChart from '../components/InteractiveChart.astro';
 import CTABand from '../components/CTABand.astro';
 import pubs from '../data/publications.json';
-import { W04, W05, W07, W25, W27, W28, W29, W30, W31, W32, W37, W38 } from '../data/figure-text';
+import { W04, W05, W07, W25, W27, W28, W29, W32, W37, W38 } from '../data/figure-text';
 
 const { papers, theses, patents } = pubs;
 
@@ -17,7 +17,6 @@ const nav = [
   ['insertion-friction', 'Insertion and friction'],
   ['impedance', 'Impedance'],
   ['durability', 'Durability'],
-  ['adhesion', 'Adhesion and tuning'],
   ['invivo', 'Every in-vivo result'],
 ];
 ---
@@ -151,29 +150,9 @@ const nav = [
     </section>
 
     <!-- 6 -->
-    <section class="ev" id="adhesion" aria-labelledby="adhesion-h">
-      <div class="ev-head">
-        <p class="label ev-num">06</p>
-        <h2 id="adhesion-h">Adhesion and tuning</h2>
-        <p class="ev-text">Every dot in the chart below is one bond-strength test group, sorted by material. With enough grafting agent, the gel itself gives way before its bond to silicone does (Leigh 2019). Crosslinking tunes the gel: stiffer gels cost some antifouling, and the best balance sits at roughly 5 to 15 percent (Jensen 2021).</p>
-      </div>
-      <div class="ev-body">
-        <Figure name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} />
-        <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} />
-        <InteractiveChart
-          id="lapshear"
-          name="W02_lapshear_database"
-          alt="Dot plot of lap-shear bond strength by substrate, one dot per experimental group, with a median bar for each of seven substrates: silicone, silicone film on glass, implant silicone, PVC, PEEK, parylene-C and polyurethane."
-          caption="Each dot is one bond-strength test group. The black bar marks the median for each material. Filter by material or year, then select a dot to see its values."
-          source="ZwiCoat lap-shear database, 2017 to 2026 (internal data; formulation details withheld)."
-        />
-      </div>
-    </section>
-
-    <!-- 7 -->
     <section class="ev" id="invivo" aria-labelledby="invivo-h">
       <div class="ev-head">
-        <p class="label ev-num">07</p>
+        <p class="label ev-num">06</p>
         <h2 id="invivo-h">Every in-vivo result</h2>
         <p class="ev-text">Every published animal and cadaver comparison, plus the cadaveric larynx and synthetic cochlea insertion tests, one marker each. Filter by species and measure, then select a marker for the paper and the result.</p>
       </div>
@@ -247,20 +226,16 @@ const nav = [
   import type { StudyRow } from '../scripts/studies';
   import { mount as mountAntifouling } from '../scripts/antifouling';
   import type { AntifoulingRow } from '../scripts/antifouling';
-  import { mount as mountLapshear } from '../scripts/lapshear';
-  import type { LapShearRow } from '../scripts/lapshear';
   import { showFallback } from '../scripts/chart-utils';
   // Inlined into the bundle at build time; nothing is fetched.
   import studies from '../../public/data/W32_invivo_studies.json';
   import antifouling from '../../public/data/W05_antifouling_all.json';
-  import lapshear from '../../public/data/W02_lapshear_public.json';
   import { mount as mountTraces } from '../scripts/traces';
   import type { TraceData } from '../scripts/traces';
 
   const jobs: [string, (root: HTMLElement) => void][] = [
     ['antifouling', (root) => mountAntifouling(root, antifouling as AntifoulingRow[])],
     ['studies', (root) => mountStudies(root, studies as StudyRow[])],
-    ['lapshear', (root) => mountLapshear(root, lapshear as LapShearRow[])],
   ];
   // The two trace sets are large (about 300 kB together), so they are fetched from /data rather than inlined.
   for (const [id, file] of [
