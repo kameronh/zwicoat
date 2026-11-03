@@ -241,3 +241,14 @@ Every item of Kam's "New Materials" feedback is in FEEDBACK-CHECKLIST.md
 deployed staging pages independently (all 19 pages 200, zero forbidden
 terms, every spot-check present). Committed. Kam pushes and says go for
 production. Production swap steps are in the 2026-10-30 section above.
+
+## 2026-11-02 night: round five verified on staging (lead)
+
+All 21 items in FEEDBACK-ROUND5.md DONE and re-checked by the lead on
+staging (curl and DOM). Chart subtitles no longer carry "approximate"
+disclaimers (figure scripts rebuilt). Lap-shear database does not support
+"about 200 kPa" on silicone (2025 to 2026 medians about 105 as prepared and
+94 after PBS; the 200 kPa figures are the ionogel series), so the durability
+side panel states today's medians. Pendulum caption uses Kam's 45 J (tape
+label reads about 46 J). Logo options at /logo-options. Committed; Kam
+pushes and says go for production.

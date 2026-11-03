@@ -9,7 +9,7 @@ import { W04 } from '../data/figure-text';
 
 interface Props {
   caption?: string;
-  /** Tighter label column for narrow placements such as the home hero. */
+  /** Home hero: tighter rows and no filters, count line, table or download link (the evidence page keeps them). */
   compact?: boolean;
   width?: number;
 }
@@ -28,6 +28,8 @@ const {
   sourceShort={W04.sourceShort}
   width={width}
   class={compact ? 'compact' : undefined}
+  download={!compact}
+  data={compact ? { 'data-compact': '' } : undefined}
 />
 
 <script>
@@ -39,7 +41,7 @@ const {
 
   document.querySelectorAll<HTMLElement>('[data-chart="fibrosis"]').forEach((root) => {
     try {
-      mount(root, rows as FibrosisRow[]);
+      mount(root, rows as FibrosisRow[], { compact: root.hasAttribute('data-compact') });
     } catch (err) {
       console.error('Chart "fibrosis" failed to mount; showing the static image.', err);
       showFallback(root);

@@ -11,7 +11,7 @@ interface Props {
   /** The displayed source line (citation plus figure numbers). Defaults to the manifest's source_short for this chart. */
   sourceShort?: string;
   width?: number;
-  /** Rendered width cap in CSS pixels. Defaults to the chart's design width (see below). */
+  /** Optional rendered width cap in CSS pixels. Without it the chart fills its column. */
   maxWidth?: number;
   format?: 'png' | 'svg';
 }
@@ -20,18 +20,10 @@ const shown = sourceShort ?? shortSourceFor(name) ?? source;
 const src = `/figures/${name}.${format}`;
 const size = imageSize(src);
 const height = Math.round((width * size.height) / size.width);
-/*
-  Sizing (round five, R19): the PNGs are drawn at 2x, so half the pixel width is the size at which
-  the chart text reads at its intended point size. A chart never renders wider than that (no
-  oversized text), and pages give wide charts a full-width row so they reach it (rendered width at
-  least about 45 percent of the PNG width). Tall charts are capped at 45 percent so they fit a screen.
-*/
-const designWidth = Math.round(size.width * (size.height / size.width > 0.9 ? 0.45 : 0.5));
-const cap = maxWidth ?? designWidth;
 // Theme B draws a title block (figure number and source) above the image. Hidden in every other theme.
 const figId = name.split('_')[0];
 ---
-<figure class="figure" style={`max-width: min(100%, ${cap}px);`} data-design-width={designWidth}>
+<figure class="figure" style={maxWidth ? `max-width: min(100%, ${maxWidth}px);` : undefined}>
   <div class="fig-frame">
     <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">FIG {figId}</span><span class="fig-tag-src">{shown}</span></p>
     <img class="figure-img" src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />

@@ -29,8 +29,7 @@ const dots = [
     <ClaimRow label="How it works" title="A shell of water that nothing can displace.">
       <p>ZwiCoat is a zwitterionic hydrogel that dramatically lowers friction, infection, inflammation and biofouling.</p>
       <p>Each repeat unit carries a strong dipole. The dipole binds tightly to water, creating a hydration barrier between the device and body.</p>
-      <p>Proteins, cells and bacteria cannot displace that hydration barrier, so they do not stick. The barrier is far stronger than the hydrogen-bonded hydration of PEG, the usual hydrophilic polymer.</p>
-      <p>Zwitterionic hydrogels implanted in mice resisted the foreign body reaction in a 2013 study (Zhang et al., Nature Biotechnology).</p>
+      <p>Proteins, cells and bacteria cannot displace that hydration barrier, so they do not stick. The barrier is far stronger than the hydrogen-bonded hydration of PEG, the usual hydrophilic polymer, and zwitterionic hydrogels therefore resist the foreign body response (Zhang et al., Nature Biotechnology).</p>
       <p>One UV step does two jobs. It covalently bonds the coating to the device surface. The same light crosslinks the network.</p>
       <p>The result is a crosslinked hydrogel anchored to the device. It is not a thin tethered brush, an adsorbed layer that can wash off, or an additive blended into the polymer.</p>
       <figure slot="figure" class="schematic">
@@ -66,15 +65,11 @@ const dots = [
           <rect x="30" y="334" width="500" height="56" class="s-slab" />
           <text x="46" y="368" class="s-on">Device surface</text>
         </svg>
-        <figcaption class="fig-cap">
-          <p>A protein, a cell and a bacterium approach the water shell and turn away. Schematic, not to scale.</p>
-          <p class="label src">Source: ZwiCoat schematic. Mechanism after Zhang et al. 2013, Nature Biotechnology 31:553, and the photografting method in US 11,525,069.</p>
-        </figcaption>
       </figure>
     </ClaimRow>
 
     <!-- What it does -->
-    <ClaimRow wide label="Antifouling" title="Protein, cells and bacteria stay off." reverse>
+    <ClaimRow label="Antifouling" title="Protein, cells and bacteria stay off." reverse>
       <p>Across 38 published comparisons of coated and uncoated surfaces, from eight papers, the median reduction was 94 percent.</p>
       <p>Fibrinogen adsorption fell by 91 to 98 percent (Leigh 2017, Leigh 2019, Jensen 2021). Staphylococcus aureus adhesion fell by 97 percent in the lab and by 84 percent on tissue taken from rats (Shen 2021).</p>
       <p>Friction against skin tissue was 94 percent lower (Bennion 2021).</p>
@@ -85,7 +80,7 @@ const dots = [
       </div>
     </ClaimRow>
 
-    <ClaimRow wide label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
+    <ClaimRow label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
       <p>In mice, rats and sheep, from four weeks to one year, the scar around coated silicone and coated cochlear implant arrays was smaller than around uncoated ones.</p>
       <p>The largest reduction, about 85 percent less fibrosis, was in sheep cochleae at four weeks (Ben-Shlomo 2026, Hearing Research).</p>
       <p>In rats, capsules around four coated variants were about 72 to 83 percent thinner at six weeks (Barrera 2026, ACS Applied Polymer Materials).</p>
@@ -97,13 +92,13 @@ const dots = [
       </div>
     </ClaimRow>
 
-    <ClaimRow wide label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about half." reverse>
+    <ClaimRow label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about half." reverse>
       <p>On silicone, friction fell by more than 90 percent against steel, ceramic and dermis (Bennion 2021).</p>
       <p>Coated cochlear implant arrays needed about half the peak force to enter human cadaveric cochleae.</p>
       <Figure slot="figure" name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} width={800} />
     </ClaimRow>
 
-    <ClaimRow wide label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones.">
+    <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones.">
       <p>Working human cochlear implant arrays in sheep read 67 percent lower impedance at implantation and 47 percent lower four weeks later.</p>
       <p>The study used three sheep, each with one coated and one uncoated array (Ben-Shlomo 2026). The coated cochleae also showed less inflammation.</p>
       <div slot="figure" class="stack">
@@ -113,7 +108,7 @@ const dots = [
     </ClaimRow>
 
     <!-- It stays on -->
-    <ClaimRow wide label="It stays on" title="The film was still intact at one year in mice." reverse>
+    <ClaimRow label="It stays on" title="The film was still intact at one year in mice." reverse>
       <p>Checkpoints run from two weeks in rats to one year in mice.</p>
       <p>Friction stayed low after three weeks in mice (Peel 2024), and protein and cell resistance held at six months (Horne 2023, Peel 2024).</p>
       <p>In the same mouse study, a PEG-based film partly detached by six weeks. The ZwiCoat film did not (Horne 2023).</p>
@@ -158,7 +153,10 @@ const dots = [
         <p>Process settings are tuned on your parts during the feasibility round.</p>
         <!-- PENDING APPROVAL: thickness versus cure time (W15) and the 468-sample process database with the jig learning curve (W03). Internal data; not published. -->
       </div>
-      <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} width={1000} />
+      </div>
+      <!-- W30 has four small panels, so it alone takes the full container width (round six). -->
+      <div class="full-row">
+        <Figure name={W30.name} alt={W30.alt} caption={W30.caption} source={W30.source} width={1000} />
       </div>
     </section>
     <!-- ProcessVideo: hidden until the clip exists -->
@@ -243,7 +241,6 @@ const dots = [
   .s-gel { fill: var(--blue); }
   .s-bond { stroke: var(--ink); stroke-width: 2.5; }
   .s-slab { fill: var(--ink-2); }
-  .fig-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
   .src { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
 
   .stack { display: grid; gap: var(--space-4); min-width: 0; }
@@ -260,6 +257,7 @@ const dots = [
   .proc-text { display: grid; gap: var(--space-2); max-width: 36ch; align-content: start; }
   @media (min-width: 720px) { .proc-grid { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); column-gap: var(--space-5); } }
   .block-body { display: grid; gap: var(--space-5); min-width: 0; }
+  .full-row { min-width: 0; }
 
   .table-wrap { overflow-x: auto; }
   .cmp { width: 100%; min-width: 44rem; font-size: var(--fs-caption); }
@@ -278,10 +276,7 @@ const dots = [
   @media (min-width: 900px) {
     .two { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
     .two > .block-head { grid-column: 1 / span 5; }
-    .two > .prose { grid-column: 6 / span 7; }
-    /* Charts in a two-column block take the full width below the text, so their labels stay legible (R19). */
-    .two > .block-body { display: contents; }
-    .two > .block-body > .prose { grid-column: 6 / span 7; grid-row: 1; }
-    .two > .block-body > :global(figure) { grid-column: 1 / -1; }
+    .two > .prose, .two > .block-body { grid-column: 6 / span 7; }
+    .two > .full-row { grid-column: 1 / -1; }
   }
 </style>

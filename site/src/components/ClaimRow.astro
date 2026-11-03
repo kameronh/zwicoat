@@ -3,13 +3,11 @@ interface Props {
   label: string;
   title: string;
   reverse?: boolean;
-  /** Text on top (title left, body right) and the figure full width below, for wide charts that need the room to stay legible. */
-  wide?: boolean;
 }
-const { label, title, reverse = false, wide = false } = Astro.props;
+const { label, title, reverse = false } = Astro.props;
 const hasFigure = Astro.slots.has('figure');
 ---
-<section class:list={['claim', { reverse, wide }]}>
+<section class:list={['claim', { reverse }]}>
   <div class="claim-text">
     <p class="label">{label}</p>
     <h2 class="claim-title">{title}</h2>
@@ -40,9 +38,5 @@ const hasFigure = Astro.slots.has('figure');
     .claim-figure { grid-column: 6 / span 7; }
     .reverse .claim-text { grid-column: 8 / span 5; grid-row: 1; }
     .reverse .claim-figure { grid-column: 1 / span 7; grid-row: 1; }
-    .wide .claim-text, .wide.reverse .claim-text { grid-column: 1 / -1; grid-row: 1; position: static; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-5); }
-    .wide .claim-text > :global(*) { grid-column: 1; }
-    .wide .claim-body { grid-column: 2 !important; grid-row: 1 / span 3; max-width: 60ch; }
-    .wide .claim-figure, .wide.reverse .claim-figure { grid-column: 1 / -1; grid-row: 2; }
   }
 </style>

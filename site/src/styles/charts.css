@@ -327,11 +327,20 @@
   .fb-row .af-label { grid-column: 1 / -1; }
   .fb-axis .af-axis-spacer:first-child { display: none; }
 }
-.ichart.compact .fb-chart, .ichart.compact .fb-axis { --af-cols: minmax(8rem, 17rem) minmax(0, 1fr) 3rem; column-gap: var(--space-2); }
-.ichart.compact .fb-row { padding: 0.2rem 0.5rem; column-gap: var(--space-2); }
+/* Home hero (compact): bars, axis and legend only, held to the height the static W04 chart had there
+   (about 380 px at 1280 px). Each row is two short lines: the measurement, then the paper. */
+.ichart.compact .fb-row { padding: 0.125rem 0.5rem; column-gap: var(--space-2); }
+.ichart.compact .af-label { gap: 0; }
+.ichart.compact .af-assay { font-size: 0.75rem; line-height: 1.2; }
+.ichart.compact .af-meta { font-size: 0.6875rem; line-height: 1.2; }
+.ichart.compact .af-val { font-size: 0.8125rem; }
+.ichart.compact .fb-track { height: 0.9rem; }
 .ichart.compact .fb-axis { padding-inline: 0.5rem; }
-.ichart.compact .af-assay { font-size: 0.8125rem; }
-.ichart.compact .af-meta { font-size: 0.75rem; }
+.ichart.compact .fb-legend { margin-top: var(--space-2); font-size: 0.75rem; }
+.ichart.compact .af-axis-note { margin-inline: 0.5rem; font-size: 0.75rem; }
+@media (min-width: 721px) {
+  .ichart.compact .fb-chart, .ichart.compact .fb-axis { --af-cols: minmax(8rem, 18.5rem) minmax(0, 1fr) 3rem; column-gap: var(--space-2); }
+}
 
 /* Durability timeline (src/scripts/durability.ts). */
 .du-axis { stroke: var(--line); stroke-width: 6; stroke-linecap: round; }

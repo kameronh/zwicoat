@@ -1,14 +1,26 @@
-"""Build five logo alternatives for ZwiCoat into site/public/logo-options/.
+"""Build ten logo alternatives for ZwiCoat into site/public/logo-options/.
 
 Every wordmark is converted to outlines with fontTools, so no SVG depends on
 a font being installed. Shapes use only the brand blues (#0A68A6, #08507F,
 #4FA3D8) and white: no gradients, no shadows.
+
+Round two (owner, 2026-11-02): "spacing between letters is too large in every
+single one". Every wordmark now uses the font's own pair kerning (GPOS 'kern')
+with no added tracking, and the Bold and heavier wordmarks are tightened a
+further 2 percent of the em (optical tightening). The values are in TRACK.
 
   A  Public Sans Bold, the current two-swoosh idea rebalanced
   B  Public Sans SemiBold, one wave that ripples under the "w"
   C  Manrope ExtraBold, "Zwi" blue and "Coat" deep blue over a tapering rule
   D  Coated-device cross-section mark plus Public Sans Bold; square icon too
   E  Bahnschrift SemiBold, lowercase "zwicoat", the dot of the i is a drop
+  F  Hybrid of A and B: B's single tapered wave in deep blue plus a short
+     light-blue swoosh from A rising at the right
+  G  A's two swooshes under Public Sans SemiBold, "Coat" in deep blue
+  H  The "o" of "Coat" drawn as a coated cross-section (core, gap, ring)
+  I  Stacked "Zwi" over "Coat" for square uses, plus a wide version
+  J  Lowercase "zwicoat"; a thin line rises through the counter of the "o"
+     into one short wave at the right
 
 PNGs (1400 px wide, transparent) are rendered with sharp from the site's
 node_modules, so run this from anywhere with Node available:
@@ -298,14 +310,25 @@ ps_semi = load(PUBLIC_SANS, wght=600)
 manrope = load(MANROPE, wght=800)
 bahn = load(BAHNSCHRIFT, wght=600, wdth=100)
 
-# ------------------------------------------------------------ option A ----
-# Current idea, rebalanced: a clearly visible light-blue upper swoosh that
-# rises to the right, and a thinner long wave close under the baseline.
-recs, boxes = layout(ps_bold, "ZwiCoat", track=0.01)
-text = merge(recs)
-W = union(boxes)[2]
-k = W / 700.0
-G = 16  # baseline to the top of the swoosh box
+# ------------------------------------------------------------ tracking ----
+# Added tracking in em, on top of the font's own pair kerning. Round one used
+# +0.01 (A, B, D) and +0.02 (E); the owner found every option too loose.
+# Every wordmark here is a display weight (SemiBold to ExtraBold), so each
+# gets the same optical tightening: -0.02 em. Zero added tracking left B and
+# E (SemiBold) visibly looser than the Bold ones, which is the complaint.
+TIGHT = -0.02
+TRACK = {
+    "A": TIGHT,  # Public Sans Bold
+    "B": TIGHT,  # Public Sans SemiBold
+    "C": TIGHT,  # Manrope ExtraBold
+    "D": TIGHT,  # Public Sans Bold
+    "E": TIGHT,  # Bahnschrift SemiBold
+    "F": TIGHT,  # Public Sans Bold
+    "G": TIGHT,  # Public Sans SemiBold, asked for tight
+    "H": TIGHT,  # Public Sans Bold
+    "I": TIGHT,  # Public Sans Bold
+    "J": TIGHT,  # Public Sans Bold, lowercase
+}
 
 
 def taper(t, a=0.5):
@@ -313,53 +336,116 @@ def taper(t, a=0.5):
     return math.sin(math.pi * min(max(t, 0.0), 1.0)) ** a
 
 
-# upper swoosh: light blue, sweeps up to the right, thick enough to read
-ux = [200 + i * 500 / 40 for i in range(41)]
-uy = [30 - 34 * ((x - 200) / 500) ** 2.2 for x in ux]
-uh = [10.0 * taper((x - 200) / 500, 0.55) ** 1.0 * (1 - 0.35 * (x - 200) / 500) for x in ux]
-upper = ribbon([x * k for x in ux], [y * k + G for y in uy], [h * k for h in uh])
-# long wave: thin, full width, a soft crest on the left and a long low tail
-xs = [i * 700 / 60 for i in range(61)]
-ys = [60 - 9 * math.sin(2 * math.pi * (x / 700) * 0.85 + 0.25) for x in xs]
-half = [4.6 * taper(x / 700, 0.45) for x in xs]
-wave = ribbon([x * k for x in xs], [y * k + G for y in ys], [h * k for h in half])
-write_svg("option-a", "ZwiCoat", [(text, BLUE), (upper, MID), (wave, BLUE)])
+def moved(rec, dx=0.0, dy=0.0, s=1.0):
+    out = RecordingPen()
+    rec.replay(TransformPen(out, (s, 0, 0, s, dx, dy)))
+    return out
+
+
+def a_swooshes(W, G=16):
+    """Option A's pair: a light upper swoosh rising to the right and a long
+    thin wave, laid out on a 700-unit grid and scaled to the word width W."""
+    k = W / 700.0
+    ux = [200 + i * 500 / 40 for i in range(41)]
+    uy = [30 - 34 * ((x - 200) / 500) ** 2.2 for x in ux]
+    uh = [10.0 * taper((x - 200) / 500, 0.55) * (1 - 0.35 * (x - 200) / 500) for x in ux]
+    upper = ribbon([x * k for x in ux], [y * k + G for y in uy], [h * k for h in uh])
+    xs = [i * 700 / 60 for i in range(61)]
+    ys = [60 - 9 * math.sin(2 * math.pi * (x / 700) * 0.85 + 0.25) for x in xs]
+    half = [4.6 * taper(x / 700, 0.45) for x in xs]
+    wave = ribbon([x * k for x in xs], [y * k + G for y in ys], [h * k for h in half])
+    return upper, wave
+
+
+def short_swoosh(x0, x1, y_left, rise, thick, n=40):
+    """A's upper swoosh as a free piece: from x0 to x1, centreline at y_left
+    on the left, rising by `rise` at the right; fuller on the left."""
+    xs = [x0 + (x1 - x0) * i / n for i in range(n + 1)]
+    ts = [(x - x0) / (x1 - x0) for x in xs]
+    ys = [y_left - rise * t ** 2.2 for t in ts]
+    hs = [thick * taper(t, 0.55) * (1 - 0.35 * t) for t in ts]
+    return ribbon(xs, ys, hs)
+
+
+def b_wave(boxes, W, base=24, amp=7.0, thick=4.0):
+    """Option B's single wave: flat under the word, rippling under the "w"
+    (glyph 1) with its troughs under the letter's two points; tapered ends."""
+    wx0, _, wx1, _ = boxes[1]
+    ww = wx1 - wx0
+    v1, v2 = wx0 + 0.25 * ww, wx0 + 0.75 * ww
+    P = v2 - v1
+    lo, hi = v1 - 1.25 * P, v2 + 1.25 * P
+    n = int(W / (P / 16)) + 1
+    xs = [W * i / n for i in range(n + 1)]
+
+    def env(x):
+        if x <= lo or x >= hi:
+            return 0.0
+        return math.sin(math.pi * (x - lo) / (hi - lo)) ** 2
+
+    ys = [base + amp * env(x) * math.cos(2 * math.pi * (x - v1) / P) for x in xs]
+    half = [thick * min(1.0, (x / W) / 0.06) ** 0.6 * min(1.0, (1 - x / W) / 0.2) ** 0.7 + 0.2
+            for x in xs]
+    return ribbon(xs, ys, half)
+
+
+def contours_of(rec):
+    out, cur = [], []
+    for op, args in rec.value:
+        cur.append((op, args))
+        if op in ("closePath", "endPath"):
+            out.append(cur)
+            cur = []
+    return out
+
+
+def cbox(c):
+    r = RecordingPen()
+    r.value = c
+    return bounds_of(r)
+
+
+def square(size):
+    sq = RecordingPen()
+    sq.moveTo((0, 0)); sq.lineTo((size, 0)); sq.lineTo((size, size)); sq.lineTo((0, size))
+    sq.closePath()
+    return sq
+
+
+def spline(pts, per=24):
+    """Sample a Catmull-Rom curve through pts (a centreline for ribbon())."""
+    xs, ys = [], []
+    for i in range(len(pts) - 1):
+        p0 = pts[max(i - 1, 0)]; p1 = pts[i]; p2 = pts[i + 1]; p3 = pts[min(i + 2, len(pts) - 1)]
+        for j in range(per):
+            t = j / per
+            t2, t3 = t * t, t * t * t
+            for arr, a in ((xs, 0), (ys, 1)):
+                arr.append(0.5 * ((2 * p1[a]) + (-p0[a] + p2[a]) * t
+                                  + (2 * p0[a] - 5 * p1[a] + 4 * p2[a] - p3[a]) * t2
+                                  + (-p0[a] + 3 * p1[a] - 3 * p2[a] + p3[a]) * t3))
+    xs.append(pts[-1][0]); ys.append(pts[-1][1])
+    return xs, ys
+
+
+# ------------------------------------------------------------ option A ----
+# Current idea, rebalanced: a clearly visible light-blue upper swoosh that
+# rises to the right, and a thinner long wave close under the baseline.
+recs, boxes = layout(ps_bold, "ZwiCoat", track=TRACK["A"])
+upper, wave = a_swooshes(union(boxes)[2])
+write_svg("option-a", "ZwiCoat", [(merge(recs), BLUE), (upper, MID), (wave, BLUE)])
 
 # ------------------------------------------------------------ option B ----
 # One wave in one colour. Flat under the word, it ripples under the "w" with
 # its two troughs under the two points of the letter, like a water film.
-recs, boxes = layout(ps_semi, "ZwiCoat", track=0.01)
-text = merge(recs)
-W = union(boxes)[2]
-wx0, _, wx1, _ = boxes[1]
-ww = wx1 - wx0
-v1, v2 = wx0 + 0.25 * ww, wx0 + 0.75 * ww  # under the two bottom points
-P = v2 - v1
-base = 24
-amp = 7.0
-lo, hi = v1 - 1.25 * P, v2 + 1.25 * P
-n = int(W / (P / 16)) + 1
-xs = [W * i / n for i in range(n + 1)]
-
-
-def env(x):
-    if x <= lo or x >= hi:
-        return 0.0
-    return math.sin(math.pi * (x - lo) / (hi - lo)) ** 2
-
-
-ys = [base + amp * env(x) * math.cos(2 * math.pi * (x - v1) / P) for x in xs]
-half = []
-for x in xs:
-    t = x / W
-    half.append(4.0 * min(1.0, t / 0.06) ** 0.6 * min(1.0, (1 - t) / 0.2) ** 0.7 + 0.2)
-wave = ribbon(xs, ys, half)
-write_svg("option-b", "ZwiCoat", [(text, BLUE), (wave, BLUE)])
+recs, boxes = layout(ps_semi, "ZwiCoat", track=TRACK["B"])
+wave = b_wave(boxes, union(boxes)[2])
+write_svg("option-b", "ZwiCoat", [(merge(recs), BLUE), (wave, BLUE)])
 
 # ------------------------------------------------------------ option C ----
 # Two blues, no swoosh. A thin rule under the word is the coating: full
 # weight at the left, tapering to a point past the "t" (a taper, not a gradient).
-recs, boxes = layout(manrope, "ZwiCoat", track=0.0)
+recs, boxes = layout(manrope, "ZwiCoat", track=TRACK["C"])
 zwi, coat = merge(recs[:3]), merge(recs[3:])
 W = union(boxes)[2]
 g, t0 = 18, 7.0
@@ -375,14 +461,11 @@ write_svg("option-c", "ZwiCoat", [(zwi, BLUE), (coat, DEEP), (rule, BLUE)])
 # ------------------------------------------------------------ option D ----
 # A cross-section of a coated device: a solid core (the device) inside a thin
 # ring (the coating), then the wordmark. Plus a square icon for the favicon.
-recs, boxes = layout(ps_bold, "ZwiCoat", track=0.01)
+recs, boxes = layout(ps_bold, "ZwiCoat", track=TRACK["D"])
 R = 64           # outer radius of the mark, cap height is 100
 cx, cy = R, -50  # centred on the cap height
 gap_after = 34
-dx = 2 * R + gap_after
-text = RecordingPen()
-tp = TransformPen(text, (1, 0, 0, 1, dx, 0))
-merge(recs).replay(tp)
+text = moved(merge(recs), dx=2 * R + gap_after)
 ring_w, gap_w = 8, 8
 mark_ring = ring(cx, cy, R, R - ring_w)
 mark_core = disc(cx, cy, R - ring_w - gap_w)
@@ -390,13 +473,11 @@ write_svg("option-d", "ZwiCoat",
           [(mark_ring, BLUE, ' fill-rule="evenodd"'), (mark_core, BLUE), (text, BLUE)])
 
 # square icon: white mark on a brand-blue square, 64 units
-sq = RecordingPen()
-sq.moveTo((0, 0)); sq.lineTo((64, 0)); sq.lineTo((64, 64)); sq.lineTo((0, 64)); sq.closePath()
 ir, irw, igw = 25, 4, 4.5
 icon_ring = ring(32, 32, ir, ir - irw)
 icon_core = disc(32, 32, ir - irw - igw)
 write_svg("option-d-icon", "ZwiCoat",
-          [(sq, BLUE), (icon_ring, WHITE, ' fill-rule="evenodd"'), (icon_core, WHITE)],
+          [(square(64), BLUE), (icon_ring, WHITE, ' fill-rule="evenodd"'), (icon_core, WHITE)],
           pad=0, box=(0, 0, 64, 64), png_width=512)
 jobs.append({"svg": str(OUT / "option-d-icon.svg"), "png": str(OUT / "option-d-favicon-64.png"),
              "w": 64, "vbw": 64})
@@ -405,22 +486,8 @@ jobs.append({"svg": str(OUT / "option-d-icon.svg"), "png": str(OUT / "option-d-f
 # Lowercase Bahnschrift SemiBold; the dot of the "i" becomes a water drop.
 cmap = bahn.getBestCmap()
 names = [cmap[ord(c)] for c in "zwicoat"]
-i_recs, _ = layout(bahn, "zwicoat", track=0.02, glyph_names=names)
-# find the dot of the i: the contour with the highest top in glyph 2
-contours, cur = [], []
-for op, args in i_recs[2].value:
-    cur.append((op, args))
-    if op in ("closePath", "endPath"):
-        contours.append(cur)
-        cur = []
-
-
-def cbox(c):
-    r = RecordingPen()
-    r.value = c
-    return bounds_of(r)
-
-
+i_recs, _ = layout(bahn, "zwicoat", track=TRACK["E"], glyph_names=names)
+contours = contours_of(i_recs[2])  # the dot is the contour with the highest top
 dot = min(contours, key=lambda c: cbox(c)[1])
 dx0, dy0, dx1, dy1 = cbox(dot)
 stem = RecordingPen()
@@ -433,6 +500,114 @@ dcx = (dx0 + dx1) / 2
 dcy = dy1 + 0.25 * (stem_top - dy1) - r  # bottom of the drop just below the old dot
 wdrop = drop(dcx, dcy, r, r * 1.95)
 write_svg("option-e", "zwicoat", [(text, BLUE), (wdrop, MID)])
+
+# ------------------------------------------------------------ option F ----
+# Hybrid of A and B. B's single tapered wave, in deep blue, sits lower; A's
+# light-blue upper swoosh comes back short, under "oat", rising at the right.
+recs, boxes = layout(ps_bold, "ZwiCoat", track=TRACK["F"])
+W = union(boxes)[2]
+wave = b_wave(boxes, W, base=38, amp=6.5, thick=4.2)
+sw = short_swoosh(W * 0.56, W * 1.0, y_left=22, rise=17, thick=5.2)
+write_svg("option-f", "ZwiCoat", [(merge(recs), BLUE), (sw, MID), (wave, DEEP)])
+
+# ------------------------------------------------------------ option G ----
+# A's two swooshes under a lighter wordmark: Public Sans SemiBold, "Zwi" in
+# brand blue and "Coat" in deep blue.
+recs, boxes = layout(ps_semi, "ZwiCoat", track=TRACK["G"])
+upper, wave = a_swooshes(union(boxes)[2])
+write_svg("option-g", "ZwiCoat",
+          [(merge(recs[:3]), BLUE), (merge(recs[3:]), DEEP), (upper, MID), (wave, BLUE)])
+
+# ------------------------------------------------------------ option H ----
+# The "o" of "Coat" is a coated cross-section: a solid core, a thin gap and an
+# outer ring, in brand blue. The rest of the word is plain deep blue.
+recs, boxes = layout(ps_bold, "ZwiCoat", track=TRACK["H"])
+ox0, oy0, ox1, oy1 = boxes[4]
+ocx, ocy = (ox0 + ox1) / 2, (oy0 + oy1) / 2
+oR = ((ox1 - ox0) + (oy1 - oy0)) / 4
+stem_w = boxes[2][2] - boxes[2][0]  # the stem of the "i"
+h_ring_w, h_gap_w = 0.55 * stem_w, 0.38 * stem_w
+
+
+def coated_o(cx, cy, R, rw, gw):
+    return ring(cx, cy, R, R - rw), disc(cx, cy, R - rw - gw)
+
+
+h_ring, h_core = coated_o(ocx, ocy, oR, h_ring_w, h_gap_w)
+rest = merge(recs[:4] + recs[5:])
+write_svg("option-h", "ZwiCoat",
+          [(rest, DEEP), (h_ring, BLUE, ' fill-rule="evenodd"'), (h_core, BLUE)])
+# icon: the coated "o" alone, brand blue on transparent, same proportions
+s = 30 / oR
+hi_ring, hi_core = coated_o(32, 32, 30, h_ring_w * s, h_gap_w * s)
+write_svg("option-h-icon", "ZwiCoat",
+          [(hi_ring, BLUE, ' fill-rule="evenodd"'), (hi_core, BLUE)],
+          pad=0, box=(0, 0, 64, 64), png_width=512)
+jobs.append({"svg": str(OUT / "option-h-icon.svg"), "png": str(OUT / "option-h-favicon-64.png"),
+             "w": 64, "vbw": 64})
+
+# ------------------------------------------------------------ option I ----
+# A compact stacked lockup for square uses: "Zwi" over "Coat", left-aligned,
+# tight leading, with A's light-blue swoosh under. Plus the wide version.
+LEAD = 128  # baseline to baseline, cap height is 100
+zr, zb = layout(ps_bold, "Zwi", track=TRACK["I"])
+cr, cb = layout(ps_bold, "Coat", track=TRACK["I"])
+zwi = merge(zr)
+coat = moved(merge(cr), dy=LEAD)
+SW = max(union(zb)[2], union(cb)[2])
+i_sw = short_swoosh(SW * 0.08, SW * 1.0, y_left=LEAD + 24, rise=14, thick=6.5)
+stack = [(zwi, BLUE), (coat, BLUE), (i_sw, MID)]
+write_svg("option-i", "ZwiCoat", stack)
+# wide: the same word on one line, the same swoosh scaled to the word
+recs, boxes = layout(ps_bold, "ZwiCoat", track=TRACK["I"])
+W = union(boxes)[2]
+iw_sw = short_swoosh(W * 0.08, W * 1.0, y_left=24, rise=14, thick=6.5)
+write_svg("option-i-wide", "ZwiCoat", [(merge(recs), BLUE), (iw_sw, MID)])
+# icon: the stacked lockup in white on a brand-blue square
+sb = union([bounds_of(l[0]) for l in stack])
+pad_i = 9
+fit = (64 - 2 * pad_i) / max(sb[2] - sb[0], sb[3] - sb[1])
+offx = (64 - (sb[2] - sb[0]) * fit) / 2 - sb[0] * fit
+offy = (64 - (sb[3] - sb[1]) * fit) / 2 - sb[1] * fit
+write_svg("option-i-icon", "ZwiCoat",
+          [(square(64), BLUE),
+           (moved(zwi, offx, offy, fit), WHITE), (moved(coat, offx, offy, fit), WHITE),
+           (moved(i_sw, offx, offy, fit), MID)],
+          pad=0, box=(0, 0, 64, 64), png_width=512)
+jobs.append({"svg": str(OUT / "option-i-icon.svg"), "png": str(OUT / "option-i-favicon-64.png"),
+             "w": 64, "vbw": 64})
+
+# ------------------------------------------------------------ option J ----
+# Lowercase, restrained. A thin light-blue line starts just below the
+# baseline left of the "o", rises through its counter, runs behind "a" and the
+# stem of the "t", and leaves the right end of the t's crossbar as one short
+# wave. The letters sit on top, so the line shows only in the counter, the
+# narrow gaps and the wave.
+recs, boxes = layout(ps_bold, "zwicoat", track=TRACK["J"])
+W = union(boxes)[2]
+o_cs = contours_of(recs[4])
+inner = min(o_cs, key=lambda c: (cbox(c)[2] - cbox(c)[0]))
+ix0, iy0, ix1, iy1 = cbox(inner)
+ccx, ccy = (ix0 + ix1) / 2, (iy0 + iy1) / 2
+ox0, oy0, ox1, oy1 = boxes[4]
+ow = ox1 - ox0
+t_x0, t_top, t_x1, _ = boxes[6]
+# the t's crossbar: the y range of its outline points near the right edge,
+# upper half only (the hook of the t's foot also reaches the right edge)
+bar = [pt[1] for op, args in recs[6].value for pt in args
+       if pt[0] > t_x1 - 1.5 and pt[1] < t_top / 2]
+ybar = (min(bar) + max(bar)) / 2
+xs, ys = spline([(ox0 - 0.45 * ow, 7), (ccx, ccy + 2), (t_x0, ybar), (t_x1 - 2, ybar)], per=30)
+L, amp, m = 48.0, 8.5, 40
+for i in range(1, m + 1):
+    u = i / m
+    xs.append(t_x1 - 2 + L * u)
+    ys.append(ybar - amp * math.sin(2 * math.pi * u) * math.sin(math.pi * u))
+n = len(xs) - 1
+half = [2.6 * min(1.0, (i / n) / 0.08) ** 0.7 * min(1.0, (1 - i / n) / 0.12) ** 0.8 + 0.15
+        for i in range(n + 1)]
+jline = ribbon(xs, ys, half)
+write_svg("option-j", "zwicoat", [(jline, MID), (merge(recs), BLUE)])
 
 # ----------------------------------------------------------------- png ----
 JS = r"""

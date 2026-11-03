@@ -16,7 +16,7 @@ const tiles = numbers;
 
 const steps = [
   { n: 1, title: 'Feasibility, free', body: 'You send parts. We coat them, with no cap on quantity, and return them with matched uncoated controls and our data.' },
-  { n: 2, title: 'Joint development', body: 'We optimize the coating on your production devices and run ISO 10993, sterilization, aging and an animal model.' },
+  { n: 2, title: 'Joint development', body: 'We optimize the coating on your production devices. We collaborate on the studies your submission needs: ISO 10993, sterilization, aging and an animal model.' },
   { n: 3, title: 'Manufacturing', body: 'We coat for you, on the process we validated together.' },
 ];
 ---
@@ -24,31 +24,31 @@ const steps = [
   <Hero />
 
   <section class="section container" aria-label="What the coating does">
-    <ClaimRow wide label="Less scar" title="A thinner scar capsule around coated implants.">
+    <ClaimRow label="Less scar" title="A thinner scar capsule around coated implants.">
       <p>In mice, the scar capsule was 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year (Horne 2023, Acta Biomaterialia).</p>
       <p>Across mice, rats and sheep, from four weeks to one year, scar was about 45 to 85 percent lower (Horne 2023; Peel 2024; Barrera 2026; Ben-Shlomo 2026). <a href="/evidence#scar">See every scar measurement.</a></p>
       <Figure slot="figure" name={W27.name} alt={W27.alt} caption={W27.caption} source={W27.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow wide label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones." reverse>
+    <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones." reverse>
       <p>Working human cochlear implant arrays in sheep read 67 percent lower total impedance at implantation and 47 percent lower four weeks later. Access resistance was lower too.</p>
       <p>Same sheep study, same arrays: the coated side read lower on every comparison. All results are from animal and laboratory studies.</p>
       <Figure slot="figure" name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow wide label="Easier insertion" title={W07.title}>
+    <ClaimRow label="Easier insertion" title={W07.title}>
       <p>{W07.body}</p>
       <Figure slot="figure" name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow wide label="Fewer bacteria" title="Far fewer bacteria on coated implants in rats." reverse>
+    <ClaimRow label="Fewer bacteria" title="Far fewer bacteria on coated implants in rats." reverse>
       <p>Silicone implants in rats were challenged with Staphylococcus aureus. After 21 days, coated implants carried far fewer bacteria than uncoated ones (Shen 2021, ACS Applied Bio Materials).</p>
       <p>A coating that had spent two weeks in a rat still resisted a fresh challenge.</p>
       <p><a href="/evidence#antifouling">Browse every protein, cell, bacteria and friction comparison on the evidence page.</a></p>
       <Figure slot="figure" name={W29.name} alt={W29.alt} caption={W29.caption} source={W29.source} width={900} />
     </ClaimRow>
 
-    <ClaimRow wide label="It stays on" title="Friction was unchanged after three weeks in mice.">
+    <ClaimRow label="It stays on" title="Friction was unchanged after three weeks in mice.">
       <p>Coated silicone was implanted in mice for three weeks, then taken out and tested. It kept about 90 percent lower friction than uncoated silicone (Peel 2024).</p>
       <p>The hydrogel is covalently grafted, so it is part of the surface rather than a layer on top of it. At one year in mice the film was still intact (Horne 2023).</p>
       <p><a href="/durability">Full durability record</a></p>

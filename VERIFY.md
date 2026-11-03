@@ -1206,3 +1206,101 @@ PASS 54, FAIL 0
 - R14: the clip and poster are the 540 x 810 files placed by the lead; the crop itself was not part of this pass.
 - The capsule panel alt text says "explanted from a mouse" on an implanted array; the panel caption is Kam's wording. The deck slide does not say whether Fig 4 is the one-year cohort, so the alt text does not.
 - The 1.5 MB PNG originals of the slide-3 photos are still in `public/images/lab` (unused); delete them if shipping weight matters.
+
+## Round six (2026-11-02 night): layout and copy reverts
+
+Method: `npm run build` in `site/` (21 pages, no errors or warnings), then `astro preview` on port 4329 (not 4321). Every page was loaded at 1280 x 900 and at 375 px and measured with a script (`getBoundingClientRect` on every `figure img`, `figure video` and interactive mount, and on the text and figure columns of every `section.claim`). Then `bash server/deploy-staging.sh --no-build` and `curl` on https://staging.zwicoat.com (home, technology, durability and partner all 200).
+
+### What changed (source files under `site/src`)
+
+- `ClaimRow.astro`: the round-five `wide` prop and its CSS are removed; every claim row is the two-column layout again (text 5/12 and sticky, chart 7/12). Removed from all 15 rows on home, technology and durability.
+- `Figure.astro`: the round-five design-width cap is removed (it shrank charts below their previous width, for example W31 on the evidence page from 1198 to 788 px). `maxWidth` stays as an opt-in prop (used for W28a at 560 px and for the W17 `width: 640` frontmatter on tissue expanders).
+- `technology.astro`: Substrates and Process blocks put their charts back in the right-hand 7/12 column; only W30 (four small panels) takes the full container, as a `full-row` below the Process text.
+- `applications/[slug].astro`, `MediaBlocks.astro`: hero chart back to 62rem, the tall W05 hero back to its 44rem column; body charts back to the 62rem column, except W30 and W37, which take the full container (`fig-full`).
+- `evidence.astro`: the W08 and W25 impedance pair is side by side again at 760 px and up (as before round five).
+- Home hero: `FibrosisChart compact` now mounts with `{ compact: true }` (`fibrosis.ts` `MountOptions`): bars, axis, legend, note and tooltips only. No species or paper dropdowns, no "9 of 9 measurements" count, no table details. `InteractiveChart` has a `download` prop; the hero passes false, so no "Download the static chart" link. The evidence page instance keeps every control. Compact rows are two short lines (measurement, then paper), sized to the static W04 chart's old box.
+- Technology "How it works": the schematic caption and its source line are removed; the two paragraphs are one, ending "... the usual hydrophilic polymer, and zwitterionic hydrogels therefore resist the foreign body response (Zhang et al., Nature Biotechnology)." Zhang 2013 stays in the References list.
+- Durability: the Mechanical row is text left, the pendulum clip in the middle, the before and after photos stacked small on the right (hairline frames, captions "Before impact" and "After impact: no visible damage"). The bond row is the two-column ClaimRow with W31 on the right and the bond panel as a compact aside under the text, with Kam's copy and the source "ZwiCoat lap-shear database, 2024 to 2026; Leigh 2019". The W28a friction row moved to the bottom, before References, with the chart capped at 560 px. `ImpactBlock.astro` is unchanged (still used by the tissue expander page through `{{block:impact}}`).
+- Partner step 2: "We collaborate on the studies your submission needs". Home step 2 said the same thing in other words ("... and run ISO 10993, sterilization, aging and an animal model"); it now reads "We optimize the coating on your production devices. We collaborate on the studies your submission needs: ISO 10993, sterilization, aging and an animal model."
+- `CapsulePanels.astro`: the four images sit edge to edge (no grid gap or padding), every cell is a fixed 9:8 box with `object-fit: cover`, and the label sits on the image. The Uncoated, Coated and Compare toggle is unchanged.
+
+### Sizing at 1280 px (preview, port 4329)
+
+Claim rows: every `section.claim` on home (5), technology (6) and durability (7) measured a text column of 477 px beside a figure column of 683 px, side by side (no row has the text above the chart). No page scrolls sideways at 375 px (home, technology, durability, evidence, neural, partner).
+
+| Page | Image | Rendered width (px) | Note |
+|---|---|---|---|
+| / | W04 interactive (hero, compact) | 663 x 379 | the static W04 PNG in the same column was 663 x 379 |
+| / | W27_capsule_thickness_mice.png | 681 | claim row |
+| / | W25_sheep_impedance_components.png | 681 | claim row |
+| / | W07_insertion_force.png | 681 | claim row |
+| / | W29_bacteria_rats.png | 681 | claim row |
+| / | W28_durability_peel.png | 681 | claim row |
+| / | W24 interactive timeline | 1200 | full-width section (unchanged) |
+| /technology | W05_antifouling_and_friction.png | 681 | claim row (803 tall) |
+| /technology | W04_fibrosis_by_study.png | 681 | claim row |
+| /technology | W27_capsule_thickness_mice.png | 681 | claim row |
+| /technology | W07_insertion_force.png | 681 | claim row |
+| /technology | W08_impedance_sheep.png | 681 | claim row |
+| /technology | histology-sheep.png | 681 | claim row |
+| /technology | W06 interactive | 683 | claim row |
+| /technology | W28_durability_peel.png | 681 | claim row |
+| /technology | W11_sterilization.png | 681 | claim row |
+| /technology | ci-array-elemental-map.png | 681 | Substrates, right column |
+| /technology | W10_substrate_evidence_matrix.png | 681 | Substrates, right column |
+| /technology | W31_bond_strength_vs_grafting_agent.png | 681 | Substrates, right column |
+| /technology | W30_crosslinker_tradeoff.png | 1198 | full width (kept: four small panels) |
+| /evidence | W04 interactive (filters, count, table, download) | 1200 | unchanged |
+| /evidence | histology-scar-01.jpg | 734 | |
+| /evidence | W27_capsule_thickness_mice.png | 1198 | |
+| /evidence | W29_bacteria_rats.png | 1198 | |
+| /evidence | W28_durability_peel.png | 1198 | |
+| /evidence | W07_insertion_force.png | 1198 | |
+| /evidence | W08_impedance_sheep.png | 578 | pair, side by side again |
+| /evidence | W25_sheep_impedance_components.png | 578 | pair, side by side again |
+| /evidence | histology-sheep.png | 734 | |
+| /evidence | W31_bond_strength_vs_grafting_agent.png | 1198 | as before round five |
+| /evidence | W30_crosslinker_tradeoff.png | 1198 | |
+| /evidence | interactives (antifouling, W37 and W38 traces, durability, lap-shear, in-vivo) | 1200 each | all mounted |
+| /durability | W06 interactive | 683 | claim row |
+| /durability | W35_wear_2500_passes.png | 681 | claim row |
+| /durability | W36_dry_and_rewet.png | 681 | claim row |
+| /durability | pendulum-loop (video) | 437 x 656 | middle column |
+| /durability | expander-impact-before.jpg | 218 | right column, stacked |
+| /durability | expander-impact-after.jpg | 218 | right column, stacked |
+| /durability | W31_bond_strength_vs_grafting_agent.png | 681 | claim row, bond panel under the text |
+| /durability | W11_sterilization.png | 681 | claim row |
+| /durability | W28a_friction_after_explant.png | 558 | last row, capped at 560 |
+| /applications/neural-interfaces | capsule panels, 4 cells | 447 x 397 each | edge to edge: cells meet at x = 481 and y = 917, no gap |
+| /applications/neural-interfaces | W27_capsule_thickness_mice.png | 990 | hero, 62rem |
+| /applications/neural-interfaces | W25_sheep_impedance_components.png | 990 | |
+| /applications/neural-interfaces | W26_sheep_histology.png | 990 | |
+| /applications/neural-interfaces | histology-sheep.png | 990 | |
+| /applications/neural-interfaces | W07_insertion_force.png | 990 | |
+| /applications/neural-interfaces | W37_ci_insertion_synthetic.png | 1198 | full width (kept: three panels) |
+| /applications/neural-interfaces | ci-array-elemental-map.png | 842 | native cap |
+| /applications/neural-interfaces | ci-array-coated-dyed.png | 990 | |
+| /applications/neural-interfaces | ci-proxy-section-blue-ring.jpg | 934 | |
+| /applications/tissue-expanders | W27_capsule_thickness_mice.png | 990 | hero |
+| /applications/tissue-expanders | W17_textured_implants.png | 638 | `width: 640` (R16) |
+| /applications/tissue-expanders | W04_fibrosis_by_study.png | 990 | |
+| /applications/tissue-expanders | expander-deflated.jpg, expander-inflated.jpg | 342, 342 | pair |
+| /applications/tissue-expanders | expander-inflation-100pct.jpg, -300pct.jpg | 486, 486 | pair |
+| /applications/tissue-expanders | W11_sterilization.png | 990 | |
+| /applications/tissue-expanders | pendulum-loop (video) | 385 | ImpactBlock |
+| /applications/tissue-expanders | expander-impact-before.jpg, -after.jpg | 579, 579 | ImpactBlock |
+
+Capsule panel toggle (preview): Coated on the silicone column sets `data-mode="coated"`; the coated image holds the cell and the uncoated image ends at opacity 0, visibility hidden (the preview pane was hidden, so the 0.25 s transition was finished by script to read the end state).
+
+### Staging (https://staging.zwicoat.com, after `deploy-staging.sh --no-build`)
+
+| Status | Page | Check | Proof |
+|---|---|---|---|
+| PASS | / | hero chart is compact | `<figure class="ichart compact">`, the mount carries `data-compact`; the deployed FibrosisChart bundle contains the compact branch |
+| PASS | / | no count, table or download in the hero | the hero section has no `sb-count`, no "9 of 9", no `<details`, no "Download the static chart" (the count line is built only by the non-compact branch) |
+| PASS | / | claim rows two-column | 3 `class="claim"` and 2 `class="claim reverse"`, none `wide` |
+| PASS | /technology | one paragraph | "... the usual hydrophilic polymer, and zwitterionic hydrogels therefore resist the foreign body response (Zhang et al., Nature Biotechnology)." |
+| PASS | /technology | schematic caption gone | 0 hits for "Schematic, not to scale" |
+| PASS | /durability | impact photos and bond panel | "Before impact", "After impact: no visible damage", "Bond strength on silicone today" |
+| PASS | /durability | order | last claim title before References: "Friction was unchanged after three weeks in mice."; W28a figure `max-width: min(100%, 560px)` |
+| PASS | /partner | step 2 | "We collaborate on the studies your submission needs" (also on home step 2) |

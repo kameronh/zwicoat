@@ -32,12 +32,14 @@ GRAY, GRAY_LIGHT, INK, INK2, MUTED, SURFACE, GRID = "#8A929B", "#C9CED4", "#1B1F
 BLUE_RAMP = ["#D6EAF7", "#A9D2EE", "#6FB3E0", "#0E7FC4", "#0A5F94", "#073F63"]
 
 plt.rcParams.update({
-    "font.family": "Arial", "font.size": 11, "axes.titlesize": 13, "axes.labelsize": 11,
+    # Type scale raised about 15 percent (owner, 2026-11-02): charts keep their on-page size but read larger.
+    "font.family": "Arial", "font.size": 12.5, "axes.titlesize": 15, "axes.labelsize": 12.5,
+    "xtick.labelsize": 12, "ytick.labelsize": 12,
     "axes.edgecolor": GRID, "axes.linewidth": 1, "axes.spines.top": False, "axes.spines.right": False,
     "axes.grid": True, "grid.color": GRID, "grid.linewidth": 1, "grid.alpha": 1, "axes.axisbelow": True,
     "xtick.color": INK2, "ytick.color": INK2, "text.color": INK, "axes.labelcolor": INK2,
     "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "savefig.facecolor": SURFACE,
-    "legend.frameon": False, "legend.fontsize": 10, "figure.dpi": 100, "savefig.dpi": 200,
+    "legend.frameon": False, "legend.fontsize": 11.5, "figure.dpi": 100, "savefig.dpi": 200,
     "svg.fonttype": "none",
 })
 MANIFEST = []
@@ -60,22 +62,22 @@ def manifest_rows(rows):
 
 
 def title(ax, text, sub=None):
-    ax.set_title(text, loc="left", fontsize=14, fontweight="bold", color=INK, pad=30 if sub else 14)
+    ax.set_title(text, loc="left", fontsize=16, fontweight="bold", color=INK, pad=(18 + 15 * (sub.count("\n") + 1)) if sub else 14)
     if sub:
-        ax.text(0, 1.025, sub, transform=ax.transAxes, fontsize=10.5, color=MUTED, va="bottom")
+        ax.text(0, 1.025, sub, transform=ax.transAxes, fontsize=12, color=MUTED, va="bottom", linespacing=1.3)
 
 
 def ftitle(fig, text, sub=None, nsub=1):
     """Figure-level title for multi-panel charts: bold left title, muted subtitle (same look as title())."""
     h = fig.get_figheight()
-    fig.text(0.01, 1 - 0.12 / h, text, fontsize=14, fontweight="bold", color=INK, va="top", ha="left")
+    fig.text(0.01, 1 - 0.12 / h, text, fontsize=16, fontweight="bold", color=INK, va="top", ha="left")
     if sub:
-        fig.text(0.01, 1 - 0.50 / h, sub, fontsize=10.5, color=MUTED, va="top", ha="left", linespacing=1.4)
-    fig.subplots_adjust(top=1 - (1.25 + 0.2 * (nsub - 1)) / h)
+        fig.text(0.01, 1 - 0.54 / h, sub, fontsize=12, color=MUTED, va="top", ha="left", linespacing=1.4)
+    fig.subplots_adjust(top=1 - (1.04 + 0.233 * nsub) / h)
 
 
 def ptitle(ax, text):
-    ax.set_title(text, loc="left", fontsize=11.5, fontweight="bold", color=INK, pad=8)
+    ax.set_title(text, loc="left", fontsize=13, fontweight="bold", color=INK, pad=8)
 
 
 def bracket(ax, x1, x2, y, text, h, color=INK2, fs=10.5):
@@ -1121,7 +1123,8 @@ def w27_capsule_mice():
     axB.set_ylabel("Capsule thickness (µm)"); axB.grid(axis="x", visible=False)
     ptitle(axB, "B. One year, human cochlear implant arrays, n = 3 to 4")
     ftitle(fig, "A thinner scar capsule around coated implants in mice",
-           "Mice, subcutaneous implants. Means from the text; whiskers in A are SEM, approximate, read from the published figure; axes differ because the implant shapes differ; Horne et al. 2023")
+           "Mice, subcutaneous implants. Means from the text; whiskers in A are SEM, approximate, read from the published figure\n"
+           "Axes differ because the implant shapes differ; Horne et al. 2023", nsub=2)
     save(fig, "W27_capsule_thickness_mice", "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year.",
          "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011",
          source_short="Horne et al. 2023, Acta Biomaterialia, Figs 5D and 7I")
@@ -1213,7 +1216,8 @@ def w30_crosslinker():
     xsf = [0, 1.6, 4.8, 13, 31.3, 50, 66.7]
     fib = {"SBMA": [v / 11.6 for v in (6.8, 1.5, 1.75, 1.55, 2.3, 3.1, 4.4)],
            "CBMA": [v / 11.6 for v in (3.2, 0.4, 0.15, 0.05, 0.6, 0.2, 0.45)]}
-    sty = {"SBMA": dict(color=BLUE, marker="o", ls="-", mfc=BLUE), "CBMA": dict(color=ORANGE, marker="s", ls="-", mfc=ORANGE)}
+    # Kam (2026-11-02): no orange on W30. SBMA = solid blue circles; CBMA = white circles outlined in blue (dashed line), same convention as W31.
+    sty = {"SBMA": dict(color=BLUE, marker="o", ls="-", mfc=BLUE), "CBMA": dict(color=BLUE, marker="o", ls=(0, (5, 3)), mfc="white")}
     fig, axes = plt.subplots(1, 4, figsize=(15, 4.9), sharex=True)
     panels = [(axes[0], xs4, swell, "Swelling in saline (% of dry mass)", "Swelling", False, None),
               (axes[1], xs4, mod, "Stiffness, relative to the 1.6% sample", "Stiffness", False, None),
@@ -1228,13 +1232,13 @@ def w30_crosslinker():
             ax.set_ylim(0.003 if pt != "Friction" else 0.03, 2)
         else:
             ax.set_ylim(bottom=0)
-        ax.set_xlim(-2, 70); ax.set_xticks([0, 10, 20, 30, 40, 50, 60, 70]); ax.set_ylabel(yl, fontsize=10); ax.set_xlabel("Cross-linker (% of monomer)")
+        ax.set_xlim(-2, 70); ax.set_xticks([0, 10, 20, 30, 40, 50, 60, 70]); ax.set_ylabel(yl); ax.set_xlabel("Cross-linker (% of monomer)")
         ptitle(ax, pt)
-    axes[0].legend(loc="upper right", fontsize=10)
+    axes[0].legend(loc="upper right")
     fig.subplots_adjust(wspace=0.42)
     ftitle(fig, "One chemistry, a tunable window",
-           "Shaded band = the window the paper reports as best for antifouling, about 5 to 15 percent cross-linker (workable from 1 to 50 percent); more cross-linker gives a stiffer, less swollen gel\n"
-           "In vitro, free-standing gels for swelling and stiffnesss; Jensen et al. 2021", nsub=2)
+           "Shaded band = the window the paper reports as best for antifouling, about 5 to 15 percent cross-linker (workable from 1 to 50 percent)\n"
+           "More cross-linker gives a stiffer, less swollen gel. In vitro, free-standing gels for swelling and stiffness; Jensen et al. 2021", nsub=2)
     save(fig, "W30_crosslinker_tradeoff", "More crosslinker makes the gel stiffer and less swollen. Protein, cell and friction benefits are strongest at about 5 to 15 percent crosslinker. Two zwitterionic chemistries, SBMA and CBMA, follow the same pattern.",
          "Jensen MJ, Peel A, Horne R, Chamberlain J, Xu L, Hansen MR, Guymon CA. Antifouling and mechanical properties of photografted zwitterionic hydrogel thin-film coatings depend on the cross-link density. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502, Figs 3G, 4A, 4B, 5B (stiffness shown relative to the lowest cross-linker, with the CBMA 1.6 percent value implied by the text; both the SBMA and the CBMA coatings are plotted; the 5 to 15 percent window is stated in the text). doi:10.1021/acsbiomaterials.1c00852",
          source_short="Jensen et al. 2021, ACS Biomaterials Science and Engineering, Figs 3G, 4A, 4B and 5B")
@@ -1250,14 +1254,15 @@ def w31_bond_strength():
     fig, ax = plt.subplots(figsize=(8.2, 5.4))
     xs = list(range(len(bp)))
     ax.axvspan(thr - 0.5, len(bp) - 0.5, color=BLUE, alpha=0.09, lw=0)
+    # Same marker convention as W30: as prepared = solid blue circles; after swelling = white circles outlined in blue.
     ax.plot(xs, [v * 10 for v in asp], color=BLUE, marker="o", lw=2, ms=7, markeredgecolor=BLUE, label="As prepared")
-    ax.plot(xs, [v * 10 for v in swl], color=BLUE, marker="s", lw=2, ls="--", ms=7, mfc=SURFACE, markeredgecolor=BLUE, markeredgewidth=1.8, label="After 48 h swelling in water")
+    ax.plot(xs, [v * 10 for v in swl], color=BLUE, marker="o", lw=2, ls="--", ms=7, mfc="white", markeredgecolor=BLUE, markeredgewidth=1.8, label="After 48 h swelling in water")
     ax.axvline(thr - 0.5, color=BLUE, lw=1.2)
-    ax.text(thr - 0.4, 108, f"gel tears before the\ninterface lets go,\nfrom {bp[thr]:g} mg/mL", fontsize=9.5, color=DARKBLUE, va="top", ha="left")
-    ax.text(thr - 0.6, 108, "interface fails first", fontsize=9.5, color=INK2, va="top", ha="right")
-    ax.set_xticks(xs); ax.set_xticklabels([f"{b:g}" for b in bp], fontsize=10); ax.set_ylim(0, 112); ax.set_xlim(-0.4, len(bp) - 0.6)
+    ax.text(thr - 0.4, 108, f"gel tears before the\ninterface lets go,\nfrom {bp[thr]:g} mg/mL", fontsize=10.5, color=DARKBLUE, va="top", ha="left")
+    ax.text(thr - 0.6, 108, "interface fails first", fontsize=10.5, color=INK2, va="top", ha="right")
+    ax.set_xticks(xs); ax.set_xticklabels([f"{b:g}" for b in bp]); ax.set_ylim(0, 112); ax.set_xlim(-0.4, len(bp) - 0.6)
     ax.set_xlabel("Grafting agent concentration (mg/mL)"); ax.grid(axis="x", visible=False)
-    ax.set_ylabel("Shear strength at break (kPa)"); ax.legend(loc="upper left", bbox_to_anchor=(0.01, 0.80), fontsize=9.5)
+    ax.set_ylabel("Shear strength at break (kPa)"); ax.legend(loc="upper left", bbox_to_anchor=(0.01, 0.80))
     ftitle(fig, "The bond gets stronger until the gel tears before the interface lets go",
            "Grafted hydrogel films on silicone, pull test, in vitro;\nfailure threshold from the text; Leigh et al. 2019", nsub=2)
     save(fig, "W31_bond_strength_vs_grafting_agent", "Shear bond strength of a zwitterionic film on silicone rises with grafting agent concentration until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL.",
@@ -1494,7 +1499,32 @@ def w39_bond_check(ls):
         f"IQR {s['q1']:.0f} to {s['q3']:.0f}, {s['groups']} groups, {s['tests']} tests. Leigh 2019 Fig 6 plateau (5 to 50 mg/mL grafting agent): as prepared about 61 to 74 kPa (SBMA) and 71 to 100 kPa (CBMA), "
         "swollen about 35 to 62. " + ("Both conditions center near 200 kPa; the chart still needs to be drawn." if near else
                                        "Neither 2025 to 2026 condition centers near 200 kPa, so the chart is not drawn."))
+    W39_NOTE.append(bentec_note(ls))
     return near
+
+
+def bentec_note(ls):
+    """Owner belief (2026-11-02): 'we routinely get about 200 kPa on Bentec' (Bentec = the silicone in Leigh 2019 Fig 6). Check against the
+    lap-shear master: every trusted row whose Substrate string names Bentec ('Bentec', 'Bentec (no BP)', and 'not recorded (Sylgard/Bentec era)'),
+    grouped by sheet year. No formulation fields are read or written. Site wording this supports: 'Bentec silicone: median about 100 kPa,
+    best groups 150 to 195 kPa (2024 to 2026)'."""
+    ben = [r for r in ls if "bentec" in str(r.get("Substrate") or "").lower() and r["avg"] is not None and not r["untrust"]]
+
+    def st(rows):
+        v = [r["avg"] for r in rows]; q1, md, q3 = _quartiles(v)
+        return f"median {md:.0f} kPa (IQR {q1:.0f} to {q3:.0f}, max {max(v):.0f}, {len(v)} groups, {sum(1 for x in v if x >= 150)} at or above 150)"
+    years = [y for y in ("2024", "2025", "2026", "Undated") if any(r["sheet"] == y for r in ben)]
+    per = "; ".join(f"{y}: {st([r for r in ben if r['sheet'] == y])}" for y in years)
+    amb = [r for r in ben if not str(r.get("Substrate") or "").lower().startswith("bentec")]
+    strict = [r for r in ben if str(r.get("Substrate") or "").lower().startswith("bentec")]
+    top = sorted(ben, key=lambda r: -r["avg"])[0]
+    note = (f"Build note, Bentec bond strength (no chart): all trusted Bentec groups in the lap-shear master, {st(ben)}. By sheet: {per}. "
+            f"The Undated sheet rows are one soak-time campaign with no date recorded. {len(amb)} rows are labelled 'not recorded (Sylgard/Bentec era)'; "
+            f"Bentec-only rows give {st(strict)}. The top group ({top['avg']:.0f} kPa, {top['sheet']}) is a surface-roughness group (60 grit). "
+            "So about 200 kPa is the best case, not the routine result; site wording: 'Bentec silicone: median about 100 kPa, best groups 150 to 195 kPa (2024 to 2026)'. "
+            "Leigh 2019 Fig 6 plateau for comparison: about 61 to 74 kPa as prepared (SBMA).")
+    print(note)
+    return note
 
 
 def main():

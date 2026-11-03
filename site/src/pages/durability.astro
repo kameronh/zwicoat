@@ -4,7 +4,8 @@ import Base from '../layouts/Base.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
 import DurabilityChart from '../components/DurabilityChart.astro';
-import ImpactBlock from '../components/ImpactBlock.astro';
+import VideoLoop from '../components/VideoLoop.astro';
+import Photo from '../components/Photo.astro';
 import References from '../components/References.astro';
 import CTABand from '../components/CTABand.astro';
 ---
@@ -24,51 +25,58 @@ import CTABand from '../components/CTABand.astro';
       <div slot="figure"><DurabilityChart /></div>
     </ClaimRow>
 
-    <ClaimRow wide label="In the body" title="Friction was unchanged after three weeks in mice." reverse>
-      <p>Coated silicone was implanted in mice for three weeks, then taken out and tested (Peel 2024).</p>
-      <p>It kept about 90 percent lower friction than uncoated silicone. Against steel and a range of animal tissues, friction was at least 90 percent lower.</p>
-      <Figure slot="figure" name={W28a.name} alt={W28a.alt} caption={W28a.caption} source={W28a.source} width={1000} />
-    </ClaimRow>
-
     <!-- Wear, drying and re-wetting -->
-    <ClaimRow wide label="Through wear, drying and re-wetting" title="Still slippery after 2,500 passes.">
+    <ClaimRow label="Through wear, drying and re-wetting" title="Still slippery after 2,500 passes.">
       <p>Coated silicone was rubbed 2,500 times under a 1 N load in saline, about 17 hours of continuous wear.</p>
       <p>Friction in the last 100 passes matched the first 100 and stayed at about 7 percent of bare silicone (Peel 2024).</p>
       <Figure slot="figure" name={W35.name} alt={W35.alt} caption={W35.caption} source={W35.source} width={1000} />
     </ClaimRow>
 
-    <ClaimRow wide label="Through wear, drying and re-wetting" title="Dry it out, re-wet it, and it is as slippery as new." reverse>
+    <ClaimRow label="Through wear, drying and re-wetting" title="Dry it out, re-wet it, and it is as slippery as new." reverse>
       <p>Coatings dried while being bent every five minutes lasted 47 to 75 minutes before the first crack.</p>
       <p>After 24 hours dry and 24 hours re-wet, friction came back to its starting level on coatings up to 20 percent crosslinker, and it stayed well below bare silicone on the rest (Peel 2024).</p>
       <Figure slot="figure" name={W36.name} alt={W36.alt} caption={W36.caption} source={W36.source} width={1000} />
     </ClaimRow>
 
     <!-- Mechanical -->
-    <ClaimRow wide label="Mechanical" title="It takes a hit.">
+    <ClaimRow label="Mechanical" title="It takes a hit.">
       <p>A 45 J pendulum strike on a coated tissue expander.</p>
       <p>The photographs show the expander before and after the strike. The coating showed no visible damage (ZwiCoat internal test, 2026).</p>
-      <div slot="figure"><ImpactBlock /></div>
+      <div slot="figure" class="impact">
+        <div class="impact-video">
+          <VideoLoop src="/media/pendulum-loop" poster="/media/pendulum-poster.jpg" aspect="540/810" caption="Pendulum impact test on a coated tissue expander, close-up. ZwiCoat internal test, 2026." alt="Close-up of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard." credit="ZwiCoat, 2026" />
+        </div>
+        <div class="impact-photos">
+          <Photo src="/images/lab/expander-impact-before.jpg" alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell." caption="Before impact" aspect="2000/1000" />
+          <Photo src="/images/lab/expander-impact-after.jpg" alt="The same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches." caption="After impact: no visible damage" aspect="2000/1000" />
+        </div>
+      </div>
     </ClaimRow>
 
-    <ClaimRow wide label="Mechanical" title="The gel tears before the bond lets go." reverse>
+    <ClaimRow label="Mechanical" title="The gel tears before the bond lets go." reverse>
       <p>On silicone the bond is stronger than the gel itself. Adhesion tests end with the gel tearing, not the film peeling off, once there is enough grafting agent (Leigh 2019).</p>
       <aside class="bond-panel" aria-labelledby="bond-h">
         <h3 id="bond-h" class="bond-title">Bond strength on silicone today</h3>
         <ul class="bond-list" role="list">
-          <li><span class="bond-val">~105 kPa</span> <span class="bond-lab">median as prepared (36 groups, 123 tests, 2025 to 2026)</span></li>
-          <li><span class="bond-val">~94 kPa</span> <span class="bond-lab">median after soaking in PBS (26 groups, 2025)</span></li>
-          <li><span class="bond-val bond-then">~60 to 100 kPa</span> <span class="bond-lab">2019 published film (Leigh 2019)</span></li>
+          <li>Bentec silicone, the same material as the 2019 study: median <strong>about 100 kPa</strong> across 34 groups (2024 to 2026), best groups <strong>150 to 195 kPa</strong></li>
+          <li>2019 published film: about 60 to 100 kPa (Leigh 2019, Fig 6)</li>
         </ul>
-        <p class="bond-text">The bond is measured by pulling the film off silicone; today's groups sit above the 2019 published values, and the gel still tears first.</p>
-        <p class="bond-src label">Source: ZwiCoat lap-shear database, 2025 to 2026; Leigh 2019, Fig 6</p>
+        <p class="bond-src label">Source: ZwiCoat lap-shear database, 2024 to 2026; Leigh 2019</p>
       </aside>
       <Figure slot="figure" name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} sourceShort={W31.sourceShort} width={900} />
     </ClaimRow>
 
     <!-- Sterilization and shipping -->
-    <ClaimRow wide label="Sterilization and shipping" title="Compatible with multiple sterilization methods.">
+    <ClaimRow label="Sterilization and shipping" title="Compatible with multiple sterilization methods.">
       <p>The coating is compatible with steam, ethylene oxide, gamma, UV and dry e-beam sterilization, and bond strength held after sterilization and shipping. We validate on your own cycle during joint development.</p>
       <Figure slot="figure" name="W11_sterilization" alt="Two panels. Left: the coating was unchanged after steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry cycles; e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping." source="ZwiCoat internal study, 2025. Silicone coupons, about 5 per group." width={1000} />
+    </ClaimRow>
+
+    <!-- In the body, after explant (round six: last on the page, chart at a modest width) -->
+    <ClaimRow label="In the body" title="Friction was unchanged after three weeks in mice." reverse>
+      <p>Coated silicone was implanted in mice for three weeks, then taken out and tested (Peel 2024).</p>
+      <p>It kept about 90 percent lower friction than uncoated silicone. Against steel and a range of animal tissues, friction was at least 90 percent lower.</p>
+      <Figure slot="figure" name={W28a.name} alt={W28a.alt} caption={W28a.caption} source={W28a.source} width={1000} maxWidth={560} />
     </ClaimRow>
 
     <section class="block refs" aria-label="References">
@@ -91,14 +99,17 @@ import CTABand from '../components/CTABand.astro';
 
 <style>
   .refs { padding-block: var(--space-5); border-top: 1px solid var(--line); }
-  /* Side panel in the bond row: current silicone bond strength against the 2019 published film. */
-  .bond-panel { display: grid; gap: var(--space-2); padding: var(--space-3) var(--space-4); border: 1px solid var(--ink); background: var(--paper-2); max-width: 30rem; }
-  .bond-title { font-size: var(--fs-body); font-weight: 700; margin: 0; color: var(--ink); }
-  .bond-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; }
-  .bond-list li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); column-gap: var(--space-3); align-items: baseline; }
-  .bond-val { font-size: 1.375rem; font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .bond-val.bond-then { color: var(--muted); font-size: 1.0625rem; white-space: normal; }
-  .bond-lab { font-size: var(--fs-caption); color: var(--ink-2); line-height: 1.4; }
-  .bond-text { font-size: var(--fs-caption) !important; color: var(--ink); }
+  /* Mechanical row: the clip in the middle column, the before and after photographs stacked small on the right. */
+  .impact { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+  .impact-video, .impact-photos { min-width: 0; }
+  .impact-photos { display: grid; gap: var(--space-4); max-width: 20rem; }
+  @media (min-width: 640px) {
+    .impact { grid-template-columns: minmax(0, 1fr) minmax(0, 13.75rem); }
+  }
+  /* Compact aside under the bond row text: current silicone bond strength against the 2019 published film. */
+  .bond-panel { display: grid; gap: var(--space-2); padding: var(--space-3); border: 1px solid var(--line); background: var(--paper-2); max-width: 26rem; margin-top: var(--space-2); }
+  .bond-title { font-size: var(--fs-caption); font-weight: 700; margin: 0; color: var(--ink); }
+  .bond-list { margin: 0; padding: 0 0 0 1.1em; display: grid; gap: 0.4rem; font-size: var(--fs-caption); color: var(--ink-2); line-height: 1.45; }
+  .bond-list strong { color: var(--ink); }
   .bond-src { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; font-size: var(--fs-label) !important; }
 </style>

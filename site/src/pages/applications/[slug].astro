@@ -133,7 +133,7 @@ const PHOTO_PAIRS: Record<string, { items: string[]; caption?: string; credit?: 
 };
 
 const hero = findFigure(d.heroFigure);
-// A tall chart (the antifouling bars): Figure caps it at 45 percent of its PNG width so it fits a screen.
+// A tall chart (the antifouling bars) would fill the screen at the full hero width, so it gets a narrower column.
 const heroSize = imageSize(`/figures/${hero.name}.png`);
 const heroTall = heroSize.height / heroSize.width > 0.9;
 
@@ -252,7 +252,8 @@ const spec = [
 
 <style>
   .head { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); max-width: 40rem; }
-  .hero { margin-top: var(--space-5); max-width: 75rem; }
+  .hero { margin-top: var(--space-5); max-width: 62rem; }
+  .hero.tall { max-width: 44rem; }
   .lead-media { margin-bottom: var(--space-5); }
   .lead-media :global(.fig) { margin-block: 0; }
   .body { margin-top: var(--space-5); }

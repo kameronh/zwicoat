@@ -85,9 +85,10 @@ const credit = 'Adapted from Horne et al., Acta Biomaterialia 2023';
 <style>
   .cp { margin: 0; min-width: 0; max-width: 56rem; }
   .cp-box { border: var(--frame-border); background: var(--paper); }
-  .cp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding: var(--space-3); }
-  .cp-col { display: grid; gap: var(--space-2); align-content: start; min-width: 0; }
-  .cp-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+  /* Round six: the four images sit edge to edge (no inner margins); every cell has the same aspect and crops to fill. */
+  .cp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; padding: 0; }
+  .cp-col { display: grid; grid-template-rows: auto auto; gap: 0; align-content: start; min-width: 0; }
+  .cp-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
   .cp-title { font-size: var(--fs-body); font-weight: 700; margin: 0; }
   .cp-toggle { display: inline-flex; border: 1px solid var(--ink-2); border-radius: var(--radius); overflow: hidden; }
   .cp-toggle[hidden] { display: none; }
@@ -104,10 +105,11 @@ const credit = 'Adapted from Horne et al., Acta Biomaterialia 2023';
   .cp-toggle button + button { border-left: 1px solid var(--ink-2); }
   .cp-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
   .cp-toggle button:focus-visible { outline: 2px solid var(--blue-deep); outline-offset: -2px; }
-  .cp-stack { display: grid; gap: var(--space-2); }
-  .cp-img { margin: 0; min-width: 0; transition: opacity 0.25s ease; }
-  .cp-img img { display: block; width: 100%; height: auto; background: var(--paper-2); }
-  .cp-label { margin: 0.3rem 0 0; font-size: var(--fs-caption); color: var(--ink-2); }
+  .cp-stack { display: grid; gap: 0; }
+  .cp-img { position: relative; margin: 0; min-width: 0; aspect-ratio: 9 / 8; overflow: hidden; transition: opacity 0.25s ease; }
+  .cp-img img { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--paper-2); }
+  /* The label sits on the image, so it adds no margin between cells. */
+  .cp-label { position: absolute; left: 0; bottom: 0; margin: 0; padding: 0.2rem 0.55rem; font-size: var(--fs-label); font-weight: 600; color: var(--paper); background: color-mix(in srgb, var(--ink) 78%, transparent); }
   /* One image at a time: both share one grid cell, the hidden one fades out. */
   .cp-col:not([data-mode="compare"]) .cp-img { grid-area: 1 / 1; }
   .cp-col[data-mode="uncoated"] .cp-coated,

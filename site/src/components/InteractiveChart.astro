@@ -20,8 +20,12 @@ interface Props {
   width?: number;
   /** Extra class on the figure (layout hooks such as the home hero). */
   class?: string;
+  /** Show the "Download the static chart" link (default true). */
+  download?: boolean;
+  /** Extra data attributes on the mount element (read by the page script). */
+  data?: Record<string, string>;
 }
-const { id, name, alt, caption, source, sourceShort, width = 1000, class: extra } = Astro.props;
+const { id, name, alt, caption, source, sourceShort, width = 1000, class: extra, download = true, data = {} } = Astro.props;
 const shown = sourceShort ?? shortSourceFor(name) ?? source;
 const src = `/figures/${name}.png`;
 const size = imageSize(src);
@@ -35,13 +39,14 @@ const height = Math.round((width * size.height) / size.width);
     data-fallback-alt={alt}
     data-fallback-width={width}
     data-fallback-height={height}
+    {...data}
   >
     <noscript><img class="ch-fallback-img" src={src} alt={alt} width={width} height={height} decoding="async" /></noscript>
   </div>
   <figcaption class="ichart-cap">
     <p class="ichart-caption">{caption}</p>
     <p class="ichart-source label">Source: {shown}</p>
-    <p class="ichart-dl"><a href={src} download>Download the static chart</a> <span class="label">PNG</span></p>
+    {download && <p class="ichart-dl"><a href={src} download>Download the static chart</a> <span class="label">PNG</span></p>}
   </figcaption>
 </figure>
 

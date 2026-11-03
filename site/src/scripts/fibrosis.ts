@@ -64,7 +64,13 @@ interface Row extends FibrosisRow {
   order: number;
 }
 
-export function mount(root: HTMLElement, data: FibrosisRow[]): void {
+export interface MountOptions {
+  /** Hero placement: bars, axis, legend and tooltips only. No filters, count line or table. */
+  compact?: boolean;
+}
+
+export function mount(root: HTMLElement, data: FibrosisRow[], opts: MountOptions = {}): void {
+  const compact = !!opts.compact;
   if (!data.length) throw new Error('Fibrosis chart: no data');
   const rows: Row[] = data.map((r, i) => ({ ...r, id: `fb-${uid('r')}-${i}`, sp: speciesKey(r.species), paperKey: shortPaper(r), order: i }));
   const total = rows.length;
@@ -95,7 +101,7 @@ export function mount(root: HTMLElement, data: FibrosisRow[]): void {
   const titleEl = h(
     'p',
     { class: 'visually-hidden', id: titleId },
-    'Reduction in scar capsule or fibrosis around coated surfaces compared with uncoated, one bar per published measurement, colored by species. Use the up and down arrow keys to move between bars; press Enter to open the paper. A table of the same data is below the chart.',
+    `Reduction in scar capsule or fibrosis around coated surfaces compared with uncoated, one bar per published measurement, colored by species. Use the up and down arrow keys to move between bars; press Enter to open the paper.${compact ? ' Every measurement is also listed as a table on the evidence page.' : ' A table of the same data is below the chart.'}`,
   );
   const axis = h('div', { class: 'fb-axis', 'aria-hidden': 'true' });
   const axTicks = h('span', { class: 'af-axis-ticks' });
@@ -113,7 +119,8 @@ export function mount(root: HTMLElement, data: FibrosisRow[]): void {
   const tableHost = h('div', { class: 'sb-table-wrap' });
   const details = h('details', { class: 'sb-details' }, h('summary', {}, 'View the measurements as a table'), tableHost);
 
-  root.replaceChildren(controls, wrap, details);
+  if (compact) root.replaceChildren(wrap);
+  else root.replaceChildren(controls, wrap, details);
   root.classList.add('is-mounted');
 
   const visible = () =>
@@ -240,7 +247,7 @@ export function mount(root: HTMLElement, data: FibrosisRow[]): void {
   function draw() {
     const shown = visible();
     countEl.textContent = `${shown.length} of ${total} measurements`;
-    renderTable(shown);
+    if (!compact) renderTable(shown);
     marks = [];
     const children: HTMLElement[] = [];
     shown.forEach((r) => {

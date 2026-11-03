@@ -401,8 +401,9 @@ def w38_ett(trials, s):
             axA.fill_between(t["time"][ra] - t0, 0, -t["force"][ra], color=light, alpha=0.55, lw=0, zorder=2)
         axA.axhline(0, color=INK2, lw=0.8, zorder=1)
         axA.set_xlabel("Time from start of intubation (s)")
-        axA.legend(loc="upper left" if op == "MH" else "upper right", title="Shaded area = impulse", title_fontsize=9.5)
-        axA.set_xlim(left=-1); lo, hi = axA.get_ylim(); axA.set_ylim(lo, hi + 0.12 * (hi - lo))
+        axA.legend(loc="upper left" if op == "MH" else "upper right", title="Shaded area = impulse", title_fontsize=11)
+        # extra headroom on the right-hand panel so the larger legend clears the uncoated peak (type scale raised 2026-11-02)
+        axA.set_xlim(left=-1); lo, hi = axA.get_ylim(); axA.set_ylim(lo, hi + (0.12 if op == "MH" else 0.34) * (hi - lo))
         ptitle(axA, f"A{col + 1}. {lab}: one typical intubation each")
         axB = axes[1, col]
         for i, cond in enumerate(("uncoated", "coated")):

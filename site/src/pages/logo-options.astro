@@ -2,6 +2,9 @@
 import Base from '../layouts/Base.astro';
 
 // Logo proposals. Files are built by figures/build_logo_options.py.
+// Round two: every wordmark uses the font's own kerning and -0.02 em tracking.
+const v = '?v=r2';
+const lo = (f: string) => `/logo-options/${f}${v}`;
 const options = [
   {
     letter: 'Now',
@@ -12,34 +15,70 @@ const options = [
   {
     letter: 'A',
     name: 'Two swooshes, refined',
-    src: '/logo-options/option-a.svg',
-    text: 'The current idea in Public Sans Bold, with a light swoosh you can see and a thinner wave close under the word.',
+    src: lo('option-a.svg'),
+    text: 'The current idea in Public Sans Bold, now set tighter, with a light swoosh you can see and a thinner wave close under the word.',
   },
   {
     letter: 'B',
     name: 'One wave',
-    src: '/logo-options/option-b.svg',
-    text: 'One wave in one blue that ripples under the w, like a thin water film, and runs flat under the rest of the word.',
+    src: lo('option-b.svg'),
+    text: 'Public Sans SemiBold, set tighter, over one blue wave that ripples under the w like a thin water film and runs flat under the rest.',
   },
   {
     letter: 'C',
     name: 'Two blues and a rule',
-    src: '/logo-options/option-c.svg',
-    text: 'Manrope ExtraBold with Zwi in brand blue and Coat in deep blue, over a thin rule for the coating that tapers away to the right.',
+    src: lo('option-c.svg'),
+    text: 'Manrope ExtraBold, set tighter, with Zwi in brand blue and Coat in deep blue over a thin rule that tapers away to the right.',
   },
   {
     letter: 'D',
     name: 'Mark and wordmark',
-    src: '/logo-options/option-d.svg',
-    icon: '/logo-options/option-d-icon.svg',
-    favicon: '/logo-options/option-d-favicon-64.png',
-    text: 'A coated device in cross-section, a solid core inside a thin ring, beside the Public Sans Bold wordmark. The mark alone is the favicon.',
+    src: lo('option-d.svg'),
+    icon: lo('option-d-icon.svg'),
+    favicon: lo('option-d-favicon-64.png'),
+    text: 'A coated device in cross-section, a solid core inside a thin ring, beside the tighter Public Sans Bold wordmark. The mark alone is the favicon.',
   },
   {
     letter: 'E',
     name: 'Lowercase with a drop',
-    src: '/logo-options/option-e.svg',
-    text: 'Lowercase Bahnschrift SemiBold. The dot of the i is a small water drop.',
+    src: lo('option-e.svg'),
+    text: 'Lowercase Bahnschrift SemiBold, set tighter. The dot of the i is a small water drop.',
+  },
+  {
+    letter: 'F',
+    name: 'A and B combined',
+    src: lo('option-f.svg'),
+    text: 'Public Sans Bold set tight, over the single tapered wave from B in deep blue, with a short light swoosh from A rising at the right.',
+  },
+  {
+    letter: 'G',
+    name: 'Two swooshes, lighter word',
+    src: lo('option-g.svg'),
+    text: 'The two swooshes from A under Public Sans SemiBold set tight, with Zwi in brand blue and Coat in deep blue.',
+  },
+  {
+    letter: 'H',
+    name: 'Coated o',
+    src: lo('option-h.svg'),
+    icon: lo('option-h-icon.svg'),
+    favicon: lo('option-h-favicon-64.png'),
+    text: 'The o of Coat is a coated cross-section in brand blue: a solid core, a thin gap and an outer ring. The rest of the word is plain deep blue, and the o alone is the favicon.',
+  },
+  {
+    letter: 'I',
+    name: 'Stacked lockup',
+    src: lo('option-i.svg'),
+    nav: lo('option-i-wide.svg'),
+    wide: lo('option-i-wide.svg'),
+    icon: lo('option-i-icon.svg'),
+    favicon: lo('option-i-favicon-64.png'),
+    text: 'Zwi over Coat in Public Sans Bold, set tight, with the light swoosh under, for square uses. The nav bar and the last panel show the wide version.',
+  },
+  {
+    letter: 'J',
+    name: 'Lowercase with a thread',
+    src: lo('option-j.svg'),
+    text: 'Lowercase Public Sans Bold set tight. A thin light-blue line rises through the o, runs behind the a and t, and leaves the crossbar as one short wave.',
   },
 ];
 ---
@@ -49,6 +88,7 @@ const options = [
       <p class="label">Internal</p>
       <h1>Logo options</h1>
       <p class="lead">Each option is shown at 40 px in a nav bar, then at 160 px on the page color and on white. The current logo comes first for comparison.</p>
+      <p class="round"><strong>Round two, owner request: tighter letter spacing.</strong> Options A to E are rebuilt with the font's own kerning and 2 percent of the em less space between letters. Options F to J are new, all set tight.</p>
     </header>
 
     <ol class="opts" role="list">
@@ -63,7 +103,7 @@ const options = [
           </div>
 
           <div class="mock-nav" aria-hidden="true">
-            <img class="logo-40" src={o.src} alt="" />
+            <img class="logo-40" src={o.nav ?? o.src} alt="" />
             <span class="mock-links"><span>Technology</span><span>Evidence</span><span>Applications</span><span>About</span></span>
             <span class="mock-btn">Send us parts</span>
           </div>
@@ -75,12 +115,18 @@ const options = [
             <img class="logo-160" src={o.src} alt={`Option ${o.letter} on white`} />
           </div>
 
+          {o.wide && (
+            <div class="panel white">
+              <img class="logo-160" src={o.wide} alt={`Option ${o.letter} wide version on white`} />
+            </div>
+          )}
+
           {o.icon && (
             <div class="icons">
-              <img src={o.icon} alt="Option D square icon at 160 px" width="160" height="160" />
-              <img src={o.favicon} alt="Option D favicon at 64 px" width="64" height="64" />
-              <img src={o.favicon} alt="Option D favicon at 32 px" width="32" height="32" />
-              <img src={o.favicon} alt="Option D favicon at 16 px" width="16" height="16" />
+              <img src={o.icon} alt={`Option ${o.letter} square icon at 160 px`} width="160" height="160" />
+              <img src={o.favicon} alt={`Option ${o.letter} favicon at 64 px`} width="64" height="64" />
+              <img src={o.favicon} alt={`Option ${o.letter} favicon at 32 px`} width="32" height="32" />
+              <img src={o.favicon} alt={`Option ${o.letter} favicon at 16 px`} width="16" height="16" />
             </div>
           )}
         </li>
@@ -90,6 +136,7 @@ const options = [
 </Base>
 
 <style>
+  .round { max-width: var(--measure); margin-top: var(--space-2); padding: var(--space-2) var(--space-3); border-left: 3px solid var(--blue); color: var(--ink); }
   .opts { display: grid; gap: var(--space-6); margin: 0; padding: 0; list-style: none; }
   .opt { display: grid; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--ink); }
   .opt-head { display: flex; gap: var(--space-3); align-items: baseline; }
