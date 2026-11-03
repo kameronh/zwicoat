@@ -8,7 +8,8 @@ Every wordmark is converted to outlines with fontTools, with the font's own
 GPOS pair kerning on, so no SVG depends on a font being installed. Shapes use
 only the brand blues (#0A68A6 and #4FA3D8): no gradients, no shadows.
 
-  Current  site/public/logo.svg, shown on the page as is (not rebuilt here)
+  Current  site/public/logo-v2-arialblack.svg (the Arial Black logo live before
+           H1 replaced it), shown on the page as is (not rebuilt here)
   A        Public Sans Bold (700), -0.02 em, A's rebalanced swooshes
   H1       Public Sans ExtraBold (800), -0.02 em, Current's swooshes
   H2       Public Sans Bold (700), -0.02 em, Current's swooshes
@@ -20,7 +21,7 @@ only the brand blues (#0A68A6 and #4FA3D8): no gradients, no shadows.
            SemiBold were both tried; S2_FONT holds the pick, Calibri Bold (set
            the S2_FONT environment variable to "bahnschrift" for the other).
 
-"Current's swooshes" are read from site/public/logo.svg. The two swoosh paths
+"Current's swooshes" are read from site/public/logo-v2-arialblack.svg. The two swoosh paths
 keep their exact heights and positions relative to the baseline and the cap
 height, and are stretched horizontally only, by the ratio of the new word
 width to the current word width, so they still start under the Z and end at
@@ -51,7 +52,8 @@ from fontTools.pens.boundsPen import BoundsPen
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 OUT = SITE / "public" / "logo-options"
-CURRENT = SITE / "public" / "logo.svg"
+# The Arial Black logo that was live before H1 replaced it (2026-11-02).
+CURRENT = SITE / "public" / "logo-v2-arialblack.svg"
 FS = SITE / "node_modules" / "@fontsource-variable"
 PUBLIC_SANS = FS / "public-sans" / "files" / "public-sans-latin-wght-normal.woff2"
 WINFONTS = Path(r"C:\Windows\Fonts")
@@ -247,7 +249,7 @@ def a_swooshes(W, G=16):
     return upper, wave
 
 
-# Current's swooshes, read from logo.svg. That file uses the same frame as
+# Current's swooshes, read from logo-v2-arialblack.svg. That file uses the same frame as
 # layout() (cap height 100, baseline y = 0). Its first path is the Arial Black
 # wordmark, then the light upper swoosh and the long deep-blue wave, each
 # written as "M x,y C ... Z" in absolute numbers.
@@ -317,30 +319,33 @@ def build(name, font, track, swooshes, note):
     write_svg(name, "ZwiCoat", [(merge(recs), BLUE), (upper, MID), (wave, BLUE)])
 
 
-ps_semi = load(PUBLIC_SANS, wght=600)
-ps_bold = load(PUBLIC_SANS, wght=700)
-ps_xbold = load(PUBLIC_SANS, wght=800)
-arial_black = load(ARIAL_BLACK)
-segoe_bold = load(SEGOE_BOLD)
+def main():
+    ps_semi = load(PUBLIC_SANS, wght=600)
+    ps_bold = load(PUBLIC_SANS, wght=700)
+    ps_xbold = load(PUBLIC_SANS, wght=800)
+    arial_black = load(ARIAL_BLACK)
+    segoe_bold = load(SEGOE_BOLD)
 
-# S2: both candidates were rendered at 40 px. Calibri Bold holds up there and
-# is the softer of the two: rounded strokes and open, humanist letters.
-# Bahnschrift SemiBold reads squarer and more technical (a DIN design), which
-# is the opposite of the request, so Calibri Bold is the pick.
-S2_FONT = os.environ.get("S2_FONT", "calibri")
-if S2_FONT == "bahnschrift":
-    s2_font, s2_note = load(BAHNSCHRIFT, wght=600, wdth=100), "Bahnschrift SemiBold"
-else:
-    s2_font, s2_note = load(CALIBRI_BOLD), "Calibri Bold"
+    # S2: both candidates were rendered at 40 px. Calibri Bold holds up there and
+    # is the softer of the two: rounded strokes and open, humanist letters.
+    # Bahnschrift SemiBold reads squarer and more technical (a DIN design), which
+    # is the opposite of the request, so Calibri Bold is the pick.
+    S2_FONT = os.environ.get("S2_FONT", "calibri")
+    if S2_FONT == "bahnschrift":
+        s2_font, s2_note = load(BAHNSCHRIFT, wght=600, wdth=100), "Bahnschrift SemiBold"
+    else:
+        s2_font, s2_note = load(CALIBRI_BOLD), "Calibri Bold"
 
-build("option-a", ps_bold, -0.02, a_swooshes, "Public Sans Bold 700, A's swooshes")
-build("option-h1", ps_xbold, -0.02, current_swooshes, "Public Sans ExtraBold 800, Current's swooshes")
-build("option-h2", ps_bold, -0.02, current_swooshes, "Public Sans Bold 700, Current's swooshes")
-build("option-h3", ps_semi, -0.02, current_swooshes, "Public Sans SemiBold 600, Current's swooshes")
-build("option-h4", arial_black, -0.03, a_swooshes, "Arial Black, A's swooshes")
-build("option-h5", ps_bold, -0.01, a_swooshes, "Public Sans Bold 700, A's swooshes")
-build("option-s1", segoe_bold, -0.02, current_swooshes, "Segoe UI Bold, Current's swooshes")
-build("option-s2", s2_font, -0.02, a_swooshes, s2_note + ", A's swooshes")
+    build("option-a", ps_bold, -0.02, a_swooshes, "Public Sans Bold 700, A's swooshes")
+    build("option-h1", ps_xbold, -0.02, current_swooshes, "Public Sans ExtraBold 800, Current's swooshes")
+    build("option-h2", ps_bold, -0.02, current_swooshes, "Public Sans Bold 700, Current's swooshes")
+    build("option-h3", ps_semi, -0.02, current_swooshes, "Public Sans SemiBold 600, Current's swooshes")
+    build("option-h4", arial_black, -0.03, a_swooshes, "Arial Black, A's swooshes")
+    build("option-h5", ps_bold, -0.01, a_swooshes, "Public Sans Bold 700, A's swooshes")
+    build("option-s1", segoe_bold, -0.02, current_swooshes, "Segoe UI Bold, Current's swooshes")
+    build("option-s2", s2_font, -0.02, a_swooshes, s2_note + ", A's swooshes")
+    render_pngs(jobs)
+
 
 # ----------------------------------------------------------------- png ----
 JS = r"""
@@ -354,4 +359,12 @@ const jobs = JSON.parse(require('fs').readFileSync(0, 'utf8'));
   }
 })().catch((e) => { console.error(e); process.exit(1); });
 """
-subprocess.run(["node", "-e", JS], input=json.dumps(jobs).encode(), cwd=str(SITE), check=True)
+
+
+def render_pngs(job_list):
+    """Render each SVG job to a PNG with sharp from the site's node_modules."""
+    subprocess.run(["node", "-e", JS], input=json.dumps(job_list).encode(), cwd=str(SITE), check=True)
+
+
+if __name__ == "__main__":
+    main()
