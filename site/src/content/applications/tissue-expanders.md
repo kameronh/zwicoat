@@ -5,7 +5,7 @@ order: 2
 standfirst: "ZwiCoat is a drug-free coating for finished silicone shells, tested for scar capsule thickness in mice and for bacterial adhesion in the laboratory and in rats."
 devices: "Tissue expanders, smooth silicone breast implants"
 substrates: "silicone (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); others in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) for expanders and PMA supplement for implants, with our Master File behind each submission"
 evidence: "mice, six weeks to one year; rats, 21 days; laboratory"

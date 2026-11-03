@@ -5,7 +5,7 @@ order: 7
 standfirst: "ZwiCoat is a drug-free coating tested for scar capsule thickness on silicone and implant arrays."
 devices: "Continuous glucose monitors, implanted biosensors"
 substrates: "silicone and platinum contacts (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); sensor membranes in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) or PMA supplement path with our Master File behind your submission"
 evidence: "mice, six weeks to one year (silicone and arrays)"

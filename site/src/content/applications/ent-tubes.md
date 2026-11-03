@@ -5,7 +5,7 @@ order: 8
 standfirst: "ZwiCoat is a drug-free coating that grafts inside a tube, tested on silicone for mucus flow and plug clearance."
 devices: "Tympanostomy tubes, feeding tubes, sinus and ear drains, nasal splints and implants"
 substrates: "silicone (published); others measured in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) path with our Master File behind your submission"
 evidence: "mucus-flow bench model (published); in vitro; rats, 21 days"

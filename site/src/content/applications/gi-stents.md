@@ -5,7 +5,7 @@ order: 9
 standfirst: "ZwiCoat is a drug-free coating tested on silicone for mucus flow, protein and bacterial adhesion and friction."
 devices: "Covered biliary, esophageal, duodenal and colonic stents; plastic biliary stents; feeding tubes"
 substrates: "silicone (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); PTFE, FEP, nitinol and others in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) path with our Master File behind your submission"
 evidence: "mucus-flow bench model; in vitro; rats, 21 days; mice, one year under the skin"

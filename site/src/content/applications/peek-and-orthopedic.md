@@ -5,7 +5,7 @@ order: 6
 standfirst: "ZwiCoat is a drug-free coating that grafts directly to PEEK with no primer."
 devices: "PEEK cranial and spinal implants, interventional sheaths and catheters"
 substrates: "silicone (published, Leigh 2019); PEEK and polyurethane (ZwiCoat internal tests); your PEEK grade and surface in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) or PMA supplement path with our Master File behind your submission"
 evidence: "silicone: in vitro; rats, 21 days; mice, one year; PEEK: rats, cranioplasty model (manuscript in preparation); bench adhesion on PEEK"

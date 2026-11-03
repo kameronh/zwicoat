@@ -5,7 +5,7 @@ order: 4
 standfirst: "ZwiCoat is a drug-free coating that grafts inside and outside a catheter in one dip step, tested on silicone for protein, cell and bacterial adhesion."
 devices: "PICCs, central venous catheters, midlines, implanted ports, dialysis catheters"
 substrates: "silicone (published); PVC, PEEK, parylene-C and polyurethane (ZwiCoat internal tests); others in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) path with our Master File behind your submission"
 evidence: "in vitro; rats, up to 21 days; mice, one year under the skin"

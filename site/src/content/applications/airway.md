@@ -5,7 +5,7 @@ order: 3
 standfirst: "ZwiCoat is a drug-free coating that enhances mucus flow, resists bacteria and lowers friction, and it has been tested on endotracheal tubes."
 devices: "Endotracheal tubes, tracheostomy tubes"
 substrates: "silicone (published); others measured in the feasibility round"
-thickness: "tunable, from a few micrometers to 100 micrometers or more (ZwiCoat process range); about 7 micrometers in the published silicone work (Leigh 2019)"
+thickness: "tunable, from a few micrometers to 100+ micrometers"
 sterilization: "validated on your cycle during joint development"
 regulatory: "510(k) path with our Master File behind your submission"
 evidence: "coated endotracheal tubes in a cadaveric larynx (ZwiCoat internal study, 2026); mucus-flow bench model on silicone tubes; rats, 21 days (bacteria); cadaveric cochleae (insertion force)"
