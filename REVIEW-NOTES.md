@@ -252,3 +252,15 @@ disclaimers (figure scripts rebuilt). Lap-shear database does not support
 side panel states today's medians. Pendulum caption uses Kam's 45 J (tape
 label reads about 46 J). Logo options at /logo-options. Committed; Kam
 pushes and says go for production.
+
+## 2026-11-02 late: round six verified (lead)
+
+Figure enlargements reverted (two-column claim rows back), chart type scale
+raised about 15 percent instead; compact hero chart (no controls); technology
+schematic captions removed and paragraph merged; durability mechanical row
+(text, video, small before/after photos), W28a moved to the bottom; capsule
+panels cropped to histology; "collaborate on the studies"; W30 and W31 use
+hollow blue circles for the second series. Bentec lap-shear: 34 groups
+2024 to 2026, median ~100 kPa, best 150 to 195 (not ~200 routinely); stated
+on the durability side panel. Logo options A to J at /logo-options with
+tighter tracking. Committed; Kam pushes.

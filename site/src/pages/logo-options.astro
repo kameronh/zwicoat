@@ -2,83 +2,63 @@
 import Base from '../layouts/Base.astro';
 
 // Logo proposals. Files are built by figures/build_logo_options.py.
-// Round two: every wordmark uses the font's own kerning and -0.02 em tracking.
-const v = '?v=r2';
+// Round three: hybrids of Current and A at varying weight, plus two softer fonts.
+const v = '?v=r3';
 const lo = (f: string) => `/logo-options/${f}${v}`;
 const options = [
   {
     letter: 'Now',
     name: 'Current',
     src: '/logo.svg?v=2',
-    text: 'The logo on the site today: an Arial Black wordmark with a long dark wave and a short light swoosh.',
+    text: 'The logo on the site today: Arial Black (900) with the long deep-blue wave under the word and the light swoosh rising at the right.',
   },
   {
     letter: 'A',
-    name: 'Two swooshes, refined',
+    name: 'A, rebalanced swooshes',
     src: lo('option-a.svg'),
-    text: 'The current idea in Public Sans Bold, now set tighter, with a light swoosh you can see and a thinner wave close under the word.',
+    text: 'Public Sans Bold (700) at -0.02 em, with a thicker light swoosh you can see and a thinner wave close under the word.',
   },
   {
-    letter: 'B',
-    name: 'One wave',
-    src: lo('option-b.svg'),
-    text: 'Public Sans SemiBold, set tighter, over one blue wave that ripples under the w like a thin water film and runs flat under the rest.',
+    letter: 'H1',
+    name: 'Current swooshes, ExtraBold',
+    src: lo('option-h1.svg'),
+    text: 'Public Sans ExtraBold (800) at -0.02 em on the current wave and swoosh.',
   },
   {
-    letter: 'C',
-    name: 'Two blues and a rule',
-    src: lo('option-c.svg'),
-    text: 'Manrope ExtraBold, set tighter, with Zwi in brand blue and Coat in deep blue over a thin rule that tapers away to the right.',
+    letter: 'H2',
+    name: 'Current swooshes, Bold',
+    src: lo('option-h2.svg'),
+    text: 'Public Sans Bold (700) at -0.02 em on the current wave and swoosh.',
   },
   {
-    letter: 'D',
-    name: 'Mark and wordmark',
-    src: lo('option-d.svg'),
-    icon: lo('option-d-icon.svg'),
-    favicon: lo('option-d-favicon-64.png'),
-    text: 'A coated device in cross-section, a solid core inside a thin ring, beside the tighter Public Sans Bold wordmark. The mark alone is the favicon.',
+    letter: 'H3',
+    name: 'Current swooshes, SemiBold',
+    src: lo('option-h3.svg'),
+    text: 'Public Sans SemiBold (600) at -0.02 em on the current wave and swoosh.',
   },
   {
-    letter: 'E',
-    name: 'Lowercase with a drop',
-    src: lo('option-e.svg'),
-    text: 'Lowercase Bahnschrift SemiBold, set tighter. The dot of the i is a small water drop.',
+    letter: 'H4',
+    name: 'Arial Black on A',
+    src: lo('option-h4.svg'),
+    text: 'The current font, Arial Black (900), at -0.03 em on the rebalanced swooshes from A.',
   },
   {
-    letter: 'F',
-    name: 'A and B combined',
-    src: lo('option-f.svg'),
-    text: 'Public Sans Bold set tight, over the single tapered wave from B in deep blue, with a short light swoosh from A rising at the right.',
+    letter: 'H5',
+    name: 'A, slightly looser',
+    src: lo('option-h5.svg'),
+    text: 'Public Sans Bold (700) at -0.01 em, a little looser than A, on the swooshes from A.',
   },
   {
-    letter: 'G',
-    name: 'Two swooshes, lighter word',
-    src: lo('option-g.svg'),
-    text: 'The two swooshes from A under Public Sans SemiBold set tight, with Zwi in brand blue and Coat in deep blue.',
+    letter: 'S1',
+    name: 'Softer: Segoe UI',
+    src: lo('option-s1.svg'),
+    text: 'Segoe UI Bold (700) at -0.02 em on the current wave and swoosh.',
   },
   {
-    letter: 'H',
-    name: 'Coated o',
-    src: lo('option-h.svg'),
-    icon: lo('option-h-icon.svg'),
-    favicon: lo('option-h-favicon-64.png'),
-    text: 'The o of Coat is a coated cross-section in brand blue: a solid core, a thin gap and an outer ring. The rest of the word is plain deep blue, and the o alone is the favicon.',
-  },
-  {
-    letter: 'I',
-    name: 'Stacked lockup',
-    src: lo('option-i.svg'),
-    nav: lo('option-i-wide.svg'),
-    wide: lo('option-i-wide.svg'),
-    icon: lo('option-i-icon.svg'),
-    favicon: lo('option-i-favicon-64.png'),
-    text: 'Zwi over Coat in Public Sans Bold, set tight, with the light swoosh under, for square uses. The nav bar and the last panel show the wide version.',
-  },
-  {
-    letter: 'J',
-    name: 'Lowercase with a thread',
-    src: lo('option-j.svg'),
-    text: 'Lowercase Public Sans Bold set tight. A thin light-blue line rises through the o, runs behind the a and t, and leaves the crossbar as one short wave.',
+    letter: 'S2',
+    name: 'Softer: Calibri',
+    src: lo('option-s2.svg'),
+    text: 'Calibri Bold (700) at -0.02 em on the swooshes from A.',
   },
 ];
 ---
@@ -88,7 +68,7 @@ const options = [
       <p class="label">Internal</p>
       <h1>Logo options</h1>
       <p class="lead">Each option is shown at 40 px in a nav bar, then at 160 px on the page color and on white. The current logo comes first for comparison.</p>
-      <p class="round"><strong>Round two, owner request: tighter letter spacing.</strong> Options A to E are rebuilt with the font's own kerning and 2 percent of the em less space between letters. Options F to J are new, all set tight.</p>
+      <p class="round"><strong>Round three: hybrids of Current and A at varying weight, plus two softer fonts.</strong></p>
     </header>
 
     <ol class="opts" role="list">
@@ -103,7 +83,7 @@ const options = [
           </div>
 
           <div class="mock-nav" aria-hidden="true">
-            <img class="logo-40" src={o.nav ?? o.src} alt="" />
+            <img class="logo-40" src={o.src} alt="" />
             <span class="mock-links"><span>Technology</span><span>Evidence</span><span>Applications</span><span>About</span></span>
             <span class="mock-btn">Send us parts</span>
           </div>
@@ -114,21 +94,6 @@ const options = [
           <div class="panel white">
             <img class="logo-160" src={o.src} alt={`Option ${o.letter} on white`} />
           </div>
-
-          {o.wide && (
-            <div class="panel white">
-              <img class="logo-160" src={o.wide} alt={`Option ${o.letter} wide version on white`} />
-            </div>
-          )}
-
-          {o.icon && (
-            <div class="icons">
-              <img src={o.icon} alt={`Option ${o.letter} square icon at 160 px`} width="160" height="160" />
-              <img src={o.favicon} alt={`Option ${o.letter} favicon at 64 px`} width="64" height="64" />
-              <img src={o.favicon} alt={`Option ${o.letter} favicon at 32 px`} width="32" height="32" />
-              <img src={o.favicon} alt={`Option ${o.letter} favicon at 16 px`} width="16" height="16" />
-            </div>
-          )}
         </li>
       ))}
     </ol>
@@ -162,7 +127,4 @@ const options = [
   .panel.paper { background: var(--paper); }
   .panel.white { background: #FFFFFF; }
   .logo-160 { display: block; height: 160px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; }
-
-  .icons { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4); padding: var(--space-4); background: #FFFFFF; border: 1px solid var(--line); }
-  .icons img { max-width: 100%; height: auto; }
 </style>

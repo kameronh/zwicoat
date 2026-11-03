@@ -1,10 +1,8 @@
 ---
 /*
-  Horne 2023, Fig 4, as four separate images in a 2 x 2 panel (R9): columns Silicone and
-  Platinum, rows uncoated and coated. Without JavaScript all four show (the compare state).
-  With JavaScript each column gets three buttons: Uncoated, Coated (one image, swapped with
-  a short fade) and Compare (both, one above the other). Buttons are real <button>s with
-  aria-pressed, so they work from the keyboard.
+  Horne 2023, Fig 4, as four separate images in a static 2 x 2 grid: silicone row on top,
+  platinum row below; uncoated on the left, coated on the right. No buttons, no JavaScript.
+  Each cell has a hairline frame and a label chip in its top-left corner.
 */
 interface Img { src: string; alt: string; label: string; w: number; h: number }
 interface Col { key: string; title: string; uncoated: Img; coated: Img }
@@ -54,26 +52,12 @@ const credit = 'Adapted from Horne et al., Acta Biomaterialia 2023';
   <div class="cp-box">
     <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">PHOTO</span><span class="fig-tag-src">{credit}</span></p>
     <div class="cp-grid">
-      {cols.map((c) => (
-        <section class="cp-col" data-mode="compare" aria-labelledby={`cp-${c.key}`}>
-          <div class="cp-head">
-            <h3 class="cp-title" id={`cp-${c.key}`}>{c.title}</h3>
-            <div class="cp-toggle" role="group" aria-label={`${c.title}: show uncoated, coated or both`} hidden>
-              <button type="button" data-mode-btn="uncoated" aria-pressed="false">Uncoated</button>
-              <button type="button" data-mode-btn="coated" aria-pressed="false">Coated</button>
-              <button type="button" data-mode-btn="compare" aria-pressed="true">Compare</button>
-            </div>
-          </div>
-          <div class="cp-stack">
-            {(['uncoated', 'coated'] as const).map((k) => (
-              <div class={`cp-img cp-${k}`}>
-                <img src={c[k].src} alt={c[k].alt} width={c[k].w} height={c[k].h} loading="lazy" decoding="async" />
-                <p class="cp-label">{c[k].label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
+      {cols.flatMap((c) => (['uncoated', 'coated'] as const).map((k) => (
+        <div class={`cp-img cp-${c.key}-${k}`}>
+          <img src={c[k].src} alt={c[k].alt} width={c[k].w} height={c[k].h} loading="lazy" decoding="async" />
+          <p class="cp-label">{c[k].label}</p>
+        </div>
+      )))}
     </div>
   </div>
   <figcaption class="cp-cap">
@@ -85,54 +69,30 @@ const credit = 'Adapted from Horne et al., Acta Biomaterialia 2023';
 <style>
   .cp { margin: 0; min-width: 0; max-width: 56rem; }
   .cp-box { border: var(--frame-border); background: var(--paper); }
-  /* Round six: the four images sit edge to edge (no inner margins); every cell has the same aspect and crops to fill. */
-  .cp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; padding: 0; }
-  .cp-col { display: grid; grid-template-rows: auto auto; gap: 0; align-content: start; min-width: 0; }
-  .cp-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
-  .cp-title { font-size: var(--fs-body); font-weight: 700; margin: 0; }
-  .cp-toggle { display: inline-flex; border: 1px solid var(--ink-2); border-radius: var(--radius); overflow: hidden; }
-  .cp-toggle[hidden] { display: none; }
-  .cp-toggle button {
-    min-height: 44px;
-    padding: 0.35rem 0.7rem;
-    border: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font: inherit;
-    font-size: var(--fs-caption);
-    cursor: pointer;
-  }
-  .cp-toggle button + button { border-left: 1px solid var(--ink-2); }
-  .cp-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-  .cp-toggle button:focus-visible { outline: 2px solid var(--blue-deep); outline-offset: -2px; }
-  .cp-stack { display: grid; gap: 0; }
-  .cp-img { position: relative; margin: 0; min-width: 0; aspect-ratio: 9 / 8; overflow: hidden; transition: opacity 0.25s ease; }
+  /* Static 2 x 2: row 1 silicone, row 2 platinum; column 1 uncoated, column 2 coated. Two columns at every width. */
+  .cp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 12px; }
+  .cp-img { position: relative; margin: 0; min-width: 0; aspect-ratio: 9 / 8; overflow: hidden; border: 1px solid var(--line); }
   .cp-img img { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--paper-2); }
-  /* The label sits on the image, so it adds no margin between cells. */
-  .cp-label { position: absolute; left: 0; bottom: 0; margin: 0; padding: 0.2rem 0.55rem; font-size: var(--fs-label); font-weight: 600; color: var(--paper); background: color-mix(in srgb, var(--ink) 78%, transparent); }
-  /* One image at a time: both share one grid cell, the hidden one fades out. */
-  .cp-col:not([data-mode="compare"]) .cp-img { grid-area: 1 / 1; }
-  .cp-col[data-mode="uncoated"] .cp-coated,
-  .cp-col[data-mode="coated"] .cp-uncoated { opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
-  @media (prefers-reduced-motion: reduce) { .cp-img { transition: none !important; } }
-  @media (max-width: 520px) { .cp-grid { grid-template-columns: minmax(0, 1fr); } }
+  /* Label chip on the image, top-left: translucent white, body-size bold text. */
+  .cp-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    margin: 0;
+    padding: 0.2rem 0.5rem;
+    max-width: calc(100% - 1rem);
+    font-size: clamp(0.8125rem, 0.7rem + 0.4vw, 1rem);
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111;
+    background: rgb(255 255 255 / 0.82);
+    border-radius: var(--radius);
+  }
+  @media (max-width: 520px) {
+    .cp-grid { gap: 8px; padding: 8px; }
+    .cp-label { top: 0.3rem; left: 0.3rem; padding: 0.15rem 0.35rem; max-width: calc(100% - 0.6rem); }
+  }
   .cp-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
   .cp-caption { color: var(--ink); }
   .cp-credit { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
 </style>
-
-<script>
-  document.querySelectorAll<HTMLElement>('[data-capsule-panels] .cp-col').forEach((col) => {
-    const group = col.querySelector<HTMLElement>('.cp-toggle');
-    if (!group) return;
-    group.hidden = false;
-    const buttons = [...group.querySelectorAll<HTMLButtonElement>('[data-mode-btn]')];
-    buttons.forEach((b) =>
-      b.addEventListener('click', () => {
-        const mode = b.dataset.modeBtn ?? 'compare';
-        col.dataset.mode = mode;
-        buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      }),
-    );
-  });
-</script>

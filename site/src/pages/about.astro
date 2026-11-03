@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
-import InteractiveChart from '../components/InteractiveChart.astro';
 import team from '../data/team.json';
 ---
 <Base title="About" description="ZwiCoat Materials Innovations is a University of Iowa spin-off, co-founded by the inventors of the ZwiCoat zwitterionic hydrogel coating.">
@@ -33,60 +32,22 @@ import team from '../data/team.json';
             <div class="bio">
               <h3>{m.name}</h3>
               <p class="label role">{m.title}</p>
-              <details>
-                <summary>Bio</summary>
-                <p class="full">{m.fullBio}</p>
-              </details>
+              {m.fullBio.split(/\n\s*\n/).map((para) => <p class="full">{para}</p>)}
             </div>
           </li>
         ))}
       </ul>
     </section>
 
-    <section class="record" id="record" aria-labelledby="record-h">
-      <div class="record-head">
-        <p class="label">The record</p>
-        <h2 id="record-h">Ten years of published work</h2>
-        <p class="record-lead">Ten papers, three dissertations and three US patents, from 2017 to 2026. Select a marker to see what each one found.</p>
-      </div>
-      <InteractiveChart
-        id="timeline"
-        name="W24_publication_timeline"
-        alt="Timeline of the public record, 2017 to 2026, in three rows. Ten peer-reviewed papers run from 2017 to 2026, three University of Iowa dissertations were completed in 2018, 2023 and 2024, and three US patents were issued in 2022, 2023 and 2024."
-        caption="Timeline of the public record, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents."
-        source="Leigh 2017 Biomacromolecules; Leigh 2019 Langmuir; Jensen 2021 ACS Biomaterials Science and Engineering; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Horne 2025 Laryngoscope Investigative Otolaryngology; Ben-Shlomo 2026 Hearing Research; Barrera 2026 ACS Applied Polymer Materials; dissertations Leigh 2018, Peel 2023, Horne 2024 (University of Iowa); US patents 11,525,069 (2022), 11,814,526 (2023), 12,116,498 (2024)."
-      />
-    </section>
   </div>
 
 </Base>
-
-<script>
-  import { mount as mountTimeline } from '../scripts/timeline';
-  import type { PubRecord } from '../scripts/timeline';
-  import { showFallback } from '../scripts/chart-utils';
-  // Inlined into the bundle at build time; nothing is fetched.
-  import publications from '../../public/data/W24_publications.json';
-
-  const root = document.querySelector<HTMLElement>('[data-chart="timeline"]');
-  if (root) {
-    try {
-      mountTimeline(root, publications as PubRecord[]);
-    } catch (err) {
-      console.error('Chart "timeline" failed to mount; showing the static image.', err);
-      showFallback(root);
-    }
-  }
-</script>
 
 <style>
   .company { padding-bottom: var(--space-6); }
   .company .prose { max-width: var(--measure); }
   .collab { padding-top: var(--space-3); border-top: 1px solid var(--line); color: var(--ink-2); }
   .collab .label { display: block; margin-bottom: 0.3rem; }
-  .record { border-top: 1px solid var(--ink); margin-top: var(--space-6); padding-top: var(--space-5); display: grid; gap: var(--space-5); }
-  .record-head { display: grid; gap: var(--space-2); }
-  .record-lead { color: var(--ink-2); max-width: var(--measure); }
   .people { border-top: 1px solid var(--ink); padding-top: var(--space-5); display: grid; gap: var(--space-5); }
   .team { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
   .member { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding-block: var(--space-5); border-top: 1px solid var(--line); }
@@ -94,10 +55,8 @@ import team from '../data/team.json';
   .portrait { max-width: 220px; }
   .bio { display: grid; gap: var(--space-2); align-content: start; max-width: var(--measure); }
   .role { color: var(--blue-deep); }
-  details { margin-top: var(--space-2); }
-  summary { color: var(--blue); font-weight: 600; text-underline-offset: 0.18em; }
-  summary:hover { color: var(--blue-deep); }
-  .full { margin-top: var(--space-3); color: var(--ink-2); }
+  .full { color: var(--ink-2); }
+  .role + .full { margin-top: var(--space-2); }
   @media (min-width: 720px) {
     .member { grid-template-columns: 220px minmax(0, 1fr); column-gap: var(--space-5); }
   }

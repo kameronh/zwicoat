@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZwiCoat">
-  <title>ZwiCoat</title>
-  <path fill="#0A68A6" d="M0 0H64V64H0Z"/>
-  <path fill="#FFFFFF" fill-rule="evenodd" d="M57 32C57 45.81 45.81 57 32 57C18.19 57 7 45.81 7 32C7 18.19 18.19 7 32 7C45.81 7 57 18.19 57 32ZM53 32C53 20.4 43.6 11 32 11C20.4 11 11 20.4 11 32C11 43.6 20.4 53 32 53C43.6 53 53 43.6 53 32Z"/>
-  <path fill="#FFFFFF" d="M48.5 32C48.5 41.11 41.11 48.5 32 48.5C22.89 48.5 15.5 41.11 15.5 32C15.5 22.89 22.89 15.5 32 15.5C41.11 15.5 48.5 22.89 48.5 32Z"/>
-</svg>
