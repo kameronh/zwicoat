@@ -1,75 +1,148 @@
 ---
 /*
-  The pendulum impact test (R13, R18): the looping clip on the left, the before and after
-  photographs (deck slide 1) as a 2 x 2 grid on the right (front before and after on top, back below), one cited caption for the set.
-  Used on /durability (Mechanical) and, through {{block:impact}}, on the tissue expander page.
+  The pendulum impact test (R13, R18): the looping clip plus the four before and after
+  photographs. Each photo is a fixed 2:1 cell (object-fit: cover) with its own bold label chip
+  in the top-left corner, the CapsulePanels pattern: translucent white chip, hairline frame, 12 px gaps.
+
+  layout="column" (/durability, Mechanical row): the clip, then the four photos as one vertical
+    column whose height matches the clip (both sized from --c, the cell width, about 280 px at 1280 px).
+    Below 640 px the clip sits on top and the photos form a 2 x 2 grid.
+  layout="row" (tissue expander page, {{block:impact}}): the clip at a modest width on the left,
+    the four photos in a single row beside it (about 200 to 220 px each at 1280 px). Below 900 px
+    the clip sits on top; below 560 px the photos form a 2 x 2 grid.
 */
 import VideoLoop from './VideoLoop.astro';
-import Photo from './Photo.astro';
 
 interface Props {
-  /** Stack the photos under the clip instead of beside it (for narrow columns). */
-  narrow?: boolean;
+  layout?: 'column' | 'row';
 }
-const { narrow = false } = Astro.props;
+const { layout = 'row' } = Astro.props;
 const credit = 'ZwiCoat, 2026';
+
+interface Shot { src: string; label: string; alt: string; w: number; h: number }
+const shots: Shot[] = [
+  {
+    src: '/images/lab/expander-impact-front-before.jpg',
+    label: 'Front, before',
+    alt: 'The front of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell.',
+    w: 2000,
+    h: 1000,
+  },
+  {
+    src: '/images/lab/expander-impact-front-after.jpg',
+    label: 'Front, after',
+    alt: 'The front of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches.',
+    w: 1469,
+    h: 735,
+  },
+  {
+    src: '/images/lab/expander-impact-before.jpg',
+    label: 'Back, before',
+    alt: 'The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell.',
+    w: 2000,
+    h: 1000,
+  },
+  {
+    src: '/images/lab/expander-impact-after.jpg',
+    label: 'Back, after',
+    alt: 'The back of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches.',
+    w: 2000,
+    h: 1000,
+  },
+];
 ---
-<figure class:list={['impact', { narrow }]}>
-  <div class="impact-grid">
-    <div class="impact-video">
+<div class:list={['ib', `ib-${layout}`]} data-impact-block={layout}>
+  <div class="ib-grid">
+    <div class="ib-video">
       <VideoLoop
         src="/media/pendulum-loop"
         poster="/media/pendulum-poster.jpg"
         aspect="540/810"
-        caption="The pendulum strikes the coated expander, close-up."
+        caption="Pendulum impact test on a coated tissue expander, close-up. ZwiCoat internal test, 2026."
         alt="Close-up of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard."
         credit={credit}
       />
     </div>
-    <div class="impact-photos">
-      <div class="impact-quad">
-        <Photo
-          src="/images/lab/expander-impact-front-before.jpg"
-          alt="The front of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell."
-          aspect="2000/1000"
-        />
-        <Photo
-          src="/images/lab/expander-impact-front-after.jpg"
-          alt="The front of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches."
-          aspect="2000/1000"
-        />
-        <Photo
-          src="/images/lab/expander-impact-before.jpg"
-          alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell."
-          aspect="2000/1000"
-        />
-        <Photo
-          src="/images/lab/expander-impact-after.jpg"
-          alt="The back of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches."
-          aspect="2000/1000"
-        />
+    <figure class="ib-photos">
+      <div class="ib-box">
+        <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">PHOTO</span><span class="fig-tag-src">{credit}</span></p>
+        <div class="ib-cells">
+          {shots.map((s) => (
+            <div class="ib-cell">
+              <img src={s.src} alt={s.alt} width={s.w} height={s.h} loading="lazy" decoding="async" />
+              <p class="ib-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <p class="impact-photos-cap">Before and after a 45 J impact, front (top) and back (bottom). No visible damage.</p>
-    </div>
+      <figcaption class="ib-cap">
+        <p class="ib-caption">A 45 J pendulum strike. No visible damage to the coating.</p>
+        <p class="ib-source label">Source: ZwiCoat internal test, 2026</p>
+      </figcaption>
+    </figure>
   </div>
-  <figcaption class="impact-cap">
-    <p class="impact-caption">A 45 J pendulum strike on a coated tissue expander.</p>
-    <p class="impact-source label">Source: ZwiCoat internal test, 2026</p>
-  </figcaption>
-</figure>
+</div>
 
 <style>
-  .impact { margin: 0; min-width: 0; max-width: 62rem; }
-  .impact-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
-  .impact-video { min-width: 0; max-width: 20rem; }
-  .impact-photos { display: grid; gap: var(--space-3); min-width: 0; }
-  .impact-quad { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
-  .impact-photos-cap { margin: 0; font-size: var(--fs-caption); color: var(--ink-2); line-height: 1.45; }
-  @media (min-width: 640px) {
-    .impact:not(.narrow) .impact-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
-    .impact:not(.narrow) .impact-video { max-width: none; }
+  .ib { margin: 0; min-width: 0; }
+  .ib-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+  .ib-video { min-width: 0; max-width: 20rem; }
+  .ib-photos { margin: 0; min-width: 0; }
+  .ib-box { border: var(--frame-border); background: var(--paper); }
+  /* Default (phones): 2 x 2. */
+  .ib-cells { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 12px; }
+  /* Fixed 2:1 cell; the photo is cropped to it (object-fit: cover), hairline frame. */
+  .ib-cell { position: relative; min-width: 0; aspect-ratio: 2 / 1; overflow: hidden; border: 1px solid var(--line); }
+  .ib-cell img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; background: var(--paper-2); }
+  /* Label chip on the image, top-left: translucent white, bold (same as CapsulePanels). */
+  .ib-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    margin: 0;
+    padding: 0.2rem 0.5rem;
+    max-width: calc(100% - 1rem);
+    font-size: clamp(0.8125rem, 0.7rem + 0.4vw, 1rem);
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111;
+    background: rgb(255 255 255 / 0.82);
+    border-radius: var(--radius);
   }
-  .impact-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
-  .impact-caption { color: var(--ink); }
-  .impact-source { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+  .ib-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .ib-caption { color: var(--ink); }
+  .ib-source { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+  @media (max-width: 520px) {
+    .ib-cells { gap: 8px; padding: 8px; }
+    .ib-label { top: 0.3rem; left: 0.3rem; padding: 0.15rem 0.35rem; max-width: calc(100% - 0.6rem); }
+  }
+
+  /* Column layout (/durability). --c is the photo cell width: 280 px when there is room, less in a
+     narrow figure column. The photo column is 2c + 60 px tall inside its frame (four 2:1 cells,
+     three 12 px gaps, 12 px padding top and bottom), and the clip's frame (inside its 1 px border) is given the same height. */
+  .ib-column { container-type: inline-size; }
+  @media (min-width: 640px) {
+    .ib-column .ib-grid {
+      --c: min(280px, calc((100cqi - 90px) * 3 / 7));
+      grid-template-columns: calc((2 * var(--c) + 60px) * 2 / 3 + 2px) calc(var(--c) + 26px);
+      justify-content: start;
+    }
+    .ib-column .ib-video { max-width: none; }
+    .ib-column .ib-video :global(.vl) { max-width: none; }
+    .ib-column .ib-cells { grid-template-columns: minmax(0, 1fr); }
+    .ib-column .ib-label { font-size: 1rem; }
+  }
+
+  /* Row layout (tissue expander page): clip on top, then one row of four. */
+  @media (min-width: 560px) {
+    .ib-row .ib-cells { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ib-row .ib-label { font-size: 0.875rem; top: 0.375rem; left: 0.375rem; padding: 0.15rem 0.4rem; }
+  }
+  /* Wide screens: clip on the left at about 300 px, the row of four beside it. */
+  @media (min-width: 900px) {
+    .ib-row .ib-grid { grid-template-columns: min(300px, 26%) minmax(0, 1fr); }
+    .ib-row .ib-video { max-width: none; }
+    .ib-row .ib-video :global(.vl) { max-width: none; }
+    .ib-row .ib-photos { max-width: 940px; }
+  }
 </style>

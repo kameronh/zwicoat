@@ -53,7 +53,7 @@ const FULL_WIDTH = new Set(['W30', 'W37']);
     return null;
   }
   if (b.kind === 'block') {
-    if (b.key === 'impact') return <div class="fig"><ImpactBlock /></div>;
+    if (b.key === 'impact') return <div class="fig fig-full"><ImpactBlock layout="row" /></div>;
     return null;
   }
   if (b.kind === 'photopair') {

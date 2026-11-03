@@ -4,8 +4,7 @@ import Base from '../layouts/Base.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
 import DurabilityChart from '../components/DurabilityChart.astro';
-import VideoLoop from '../components/VideoLoop.astro';
-import Photo from '../components/Photo.astro';
+import ImpactBlock from '../components/ImpactBlock.astro';
 import References from '../components/References.astro';
 import CTABand from '../components/CTABand.astro';
 ---
@@ -38,24 +37,11 @@ import CTABand from '../components/CTABand.astro';
       <Figure slot="figure" name={W36.name} alt={W36.alt} caption={W36.caption} source={W36.source} width={1000} />
     </ClaimRow>
 
-    <!-- Mechanical -->
-    <ClaimRow label="Mechanical" title="It takes a hit.">
+    <!-- Mechanical: text, then the clip and a vertical column of the four labeled before and after photos (ImpactBlock layout="column"). -->
+    <ClaimRow label="Mechanical" title="It takes a hit." wide>
       <p>A 45 J pendulum strike on a coated tissue expander.</p>
       <p>The photographs show the expander before and after the strike. The coating showed no visible damage (ZwiCoat internal test, 2026).</p>
-      <div slot="figure" class="impact">
-        <div class="impact-video">
-          <VideoLoop src="/media/pendulum-loop" poster="/media/pendulum-poster.jpg" aspect="540/810" caption="Pendulum impact test on a coated tissue expander, close-up. ZwiCoat internal test, 2026." alt="Close-up of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard." credit="ZwiCoat, 2026" />
-        </div>
-        <div class="impact-photos">
-          <div class="impact-quad">
-            <Photo src="/images/lab/expander-impact-front-before.jpg" alt="The front of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell." aspect="2000/1000" />
-            <Photo src="/images/lab/expander-impact-front-after.jpg" alt="The front of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches." aspect="2000/1000" />
-            <Photo src="/images/lab/expander-impact-before.jpg" alt="The back of a blue-coated tissue expander lying flat on a white surface before the impact test. The coating is even across the shell." aspect="2000/1000" />
-            <Photo src="/images/lab/expander-impact-after.jpg" alt="The back of the same blue-coated tissue expander after the pendulum impact. The coating looks the same as before, with no cracks, peeling or bare patches." aspect="2000/1000" />
-          </div>
-          <p class="impact-photos-cap">Before and after a 45 J impact, front (top) and back (bottom). No visible damage.</p>
-        </div>
-      </div>
+      <div slot="figure"><ImpactBlock layout="column" /></div>
     </ClaimRow>
 
     <ClaimRow label="Mechanical" title="The gel tears before the bond lets go." reverse>
@@ -104,15 +90,6 @@ import CTABand from '../components/CTABand.astro';
 
 <style>
   .refs { padding-block: var(--space-5); border-top: 1px solid var(--line); }
-  /* Mechanical row: the clip in the middle column, the before and after photographs as a small 2 x 2 grid on the right (front on top, back below). */
-  .impact { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
-  .impact-video, .impact-photos { min-width: 0; }
-  .impact-photos { display: grid; gap: var(--space-3); max-width: 20rem; }
-  .impact-quad { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
-  .impact-photos-cap { margin: 0; font-size: var(--fs-caption); color: var(--ink-2); line-height: 1.45; }
-  @media (min-width: 640px) {
-    .impact { grid-template-columns: minmax(0, 1fr) minmax(0, 13.75rem); }
-  }
   /* Compact aside under the bond row text: current silicone bond strength against the 2019 published film. */
   .bond-panel { display: grid; gap: var(--space-2); padding: var(--space-3); border: 1px solid var(--line); background: var(--paper-2); max-width: 26rem; margin-top: var(--space-2); }
   .bond-title { font-size: var(--fs-caption); font-weight: 700; margin: 0; color: var(--ink); }

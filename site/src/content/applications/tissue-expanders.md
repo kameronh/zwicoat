@@ -88,7 +88,7 @@ Adhesion on your silicone grade is measured in the feasibility round on your par
 
 ## Takes a hit
 
-Expanders get hit. A 45 J pendulum strike on a coated expander left no visible damage to the coating (ZwiCoat internal test, 2026). [See the durability record.](/durability)
+A 45 J pendulum strike on a coated expander left no visible damage to the coating (ZwiCoat internal test, 2026). [See the durability record.](/durability)
 
 {{block:impact}}
 
