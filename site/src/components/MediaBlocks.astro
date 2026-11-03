@@ -6,6 +6,8 @@ import Prose from './Prose.astro';
 import PeekPathway from './PeekPathway.astro';
 import DurabilityChart from './DurabilityChart.astro';
 import CapsulePanels from './CapsulePanels.astro';
+import PhotoPanels from './PhotoPanels.astro';
+import { PANEL_SETS } from '../lib/photoPanels';
 import ImpactBlock from './ImpactBlock.astro';
 
 /*
@@ -13,7 +15,7 @@ import ImpactBlock from './ImpactBlock.astro';
   Two portrait items in a row arrive already grouped as a pair.
   Diagrams ({{diagram:name}} in the markdown) are inline SVG components.
   {{interactive:durability}} is the interactive W06 timeline (PNG fallback), {{panels:capsule}}
-  the Horne 2023 capsule panels, {{block:impact}} the pendulum clip with its before and after
+  the Horne 2023 capsule panels, {{panels:expander}} and {{panels:peek}} static photo rows (PhotoPanels), {{block:impact}} the pendulum clip with its before and after
   photographs, and {{photopair:name}} two photographs side by side.
 */
 interface LabPhoto { src: string; alt: string; caption: string; aspect: string; credit?: string; maxWidth?: number }
@@ -47,6 +49,7 @@ const FULL_WIDTH = new Set(['W30', 'W37']);
   }
   if (b.kind === 'panels') {
     if (b.key === 'capsule') return <div class="fig"><CapsulePanels /></div>;
+    if (PANEL_SETS[b.key]) return <div class="fig"><PhotoPanels name={b.key} /></div>;
     return null;
   }
   if (b.kind === 'block') {

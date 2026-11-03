@@ -6,6 +6,7 @@ import Figure from '../../components/Figure.astro';
 import MediaBlocks from '../../components/MediaBlocks.astro';
 import References from '../../components/References.astro';
 import { imageSize } from '../../lib/imagesize';
+import { PANEL_SETS } from '../../lib/photoPanels';
 
 export async function getStaticPaths() {
   const entries = await getCollection('applications');
@@ -29,6 +30,7 @@ const findFigure = (token: string): Fig => {
     {{diagram:name}}    an inline SVG diagram component (names in DIAGRAMS below)
     {{interactive:durability}}  the interactive W06 durability timeline, with its PNG fallback
     {{panels:capsule}}  the Horne 2023 capsule panels (silicone and platinum, uncoated and coated)
+    {{panels:name}}     a static row of lab photographs (sets in src/lib/photoPanels.ts: expander, peek)
     {{block:impact}}    the pendulum clip with the before and after photographs
     {{photopair:name}}  two lab photographs side by side (names in PHOTO_PAIRS below)
   Every lab image carries the same credit line.
@@ -53,19 +55,6 @@ const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; as
     caption: 'Inflated',
     aspect: '447/394',
     maxWidth: 670,
-  },
-  // Deck slide 3, converted to JPEG at 1600 px wide.
-  'expander-100pct': {
-    src: '/images/lab/expander-inflation-100pct.jpg',
-    alt: 'Two photographs of a blue-coated tissue expander on a white bench at the start of the inflation test: a smooth, evenly blue dome.',
-    caption: 'At 100 percent of rated volume',
-    aspect: '1600/806',
-  },
-  'expander-300pct': {
-    src: '/images/lab/expander-inflation-300pct.jpg',
-    alt: 'Two photographs of the same coated expander later in the test, larger and paler blue, with the coating unbroken across the shell.',
-    caption: 'At 300 percent of rated volume',
-    aspect: '1600/809',
   },
   'ci-array-elemental-map': {
     src: '/images/lab/ci-array-elemental-map.png',
@@ -115,7 +104,7 @@ const LAB_VIDEOS: Record<string, { src: string; poster: string; caption: string;
 const DIAGRAMS = ['peek-pathway'];
 // Other named components, rendered by MediaBlocks.
 const INTERACTIVES = ['durability'];
-const PANELS = ['capsule'];
+const PANELS = ['capsule', ...Object.keys(PANEL_SETS)];
 const BLOCKS = ['impact'];
 // Two lab photographs side by side, with one caption.
 const PHOTO_PAIRS: Record<string, { items: string[]; caption?: string; credit?: string; maxWidth?: string }> = {
@@ -124,11 +113,6 @@ const PHOTO_PAIRS: Record<string, { items: string[]; caption?: string; credit?: 
     caption: 'A coated tissue expander in a blue dye bath, deflated and then inflated.',
     credit: 'ZwiCoat, 2026',
     maxWidth: '44rem',
-  },
-  'expander-300': {
-    items: ['expander-100pct', 'expander-300pct'],
-    caption: 'A coated 100 cc expander inflated to 300 cc: no tearing. ZwiCoat internal test, 2026.',
-    credit: 'ZwiCoat, 2026',
   },
 };
 

@@ -76,7 +76,7 @@ The results below come from published laboratory, mouse, rat and sheep studies, 
 
 {{photopair:expander-fill}}
 
-{{photopair:expander-300}}
+{{panels:expander}}
 
 ## How it fits your process
 

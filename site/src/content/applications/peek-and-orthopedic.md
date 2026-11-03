@@ -50,6 +50,8 @@ sources:
 cardStat: "~635 kPa"
 cardStatLabel: "bond strength of the coating on PEEK, dry (ZwiCoat internal tests)"
 ---
+{{panels:peek}}
+
 ## The problem
 
 Infection caused about 25 percent of knee revisions and about 15 percent of hip revisions in US national data (Bozic 2010; Bozic 2009). A two-stage revision for infection costs more than twice an aseptic one (Yao 2021). Staphylococci cause 50 to 60 percent of these infections, and they resist antibiotics once they form a biofilm (Tande 2014; Costerton 1999).
