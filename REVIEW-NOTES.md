@@ -264,3 +264,14 @@ hollow blue circles for the second series. Bentec lap-shear: 34 groups
 2024 to 2026, median ~100 kPa, best 150 to 195 (not ~200 routinely); stated
 on the durability side panel. Logo options A to J at /logo-options with
 tighter tracking. Committed; Kam pushes.
+
+## 2026-11-02: PRODUCTION LAUNCH (lead)
+
+zwicoat.com now serves /home/ubuntu/zwicoat-v2/dist (both vhosts; backups
+of the v1 configs at /etc/apache2/sites-available/*.bak-v1; old site still
+on disk at /home/ubuntu/zwicoat/dist). FallbackResource replaced by
+ErrorDocument 404; /api/contact proxied to the Flask service (still
+DRY_RUN until Kam adds SMTP credentials to /etc/zwicoat-contact.env).
+Logo: H1 with a thinner wave; new cross-section photo. Deploy from now on
+with `bash server/deploy-production.sh` (uploads dist; staging and
+production share it). Commit 63776ff plus the production scripts.
