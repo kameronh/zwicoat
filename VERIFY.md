@@ -919,3 +919,290 @@ Same method as above. Checker: `check_final.py` (the round-three checker with E1
 - W37 build note still applies: over the depth every trace reaches (0 to 14 mm) the work difference is 38 percent (p = 0.14). The site uses the full-trace 66 percent as the lead instructed. Kam should confirm.
 - The evidence page header still says 'The published evidence'; section 3 now also holds the Zenodo dataset (W37) and the internal ETT study (W38), each labeled in its source line.
 - Sensors: the steroid-collar sentence was already on the page without a citation; it carries no number, so it was kept as is.
+
+## Round five (2026-11-02 evening): FEEDBACK-ROUND5.md R1 to R21
+
+Method as above: a script reads the BUILT pages (`site/dist`, after `npm run build`, 21 pages, no errors or warnings), decodes entities, strips the Astro `data-astro-cid` attributes and quotes the matching HTML. The same checks for home, evidence, durability, neural, tissue expanders and logo options were run again against https://staging.zwicoat.com after `bash server/deploy-staging.sh --no-build`. Interaction was checked in a preview server on port 4329 (`astro preview`, not 4321) at 1280 x 900 and 375 px: every interactive chart mounts (none falls back), no page scrolls sideways at 375 px, and the scripted checks below.
+
+### Summary
+
+- Built site: **79 PASS, 0 FAIL**. Staging: **54 PASS, 0 FAIL**.
+- Interaction (preview, scripted): scar chart: 9 bars, count "9 of 9 measurements", species filter Rats gives "4 of 9", tooltip shows paper, year, journal, model, uncoated and coated values with unit, n and an "Open the paper" link (https://doi.org/10.1016/j.actbio.2023.05.011 for the one-year array bar); a click pins the tooltip (`pointer-events: auto`) so the link can be followed; ArrowDown moves focus to the next bar; Enter opens the DOI. Durability timeline: 7 markers (two stacked at 6 months), tooltip "6 weeks, rats / The scar capsule around coated silicone was about 75 percent thinner ... / Barrera et al. 2026, ACS Applied Polymer Materials"; ArrowRight then Enter opened https://doi.org/10.1021/acsabm.4c00156; a click on the 1-year marker opened the Horne 2023 DOI; the list under the chart links every paper. Trace viewers: two panels with titles "Uncoated (6 insertions)" at x = 58 and "Coated (5 insertions)" at x = 665; W38 with Surgeon 2 selected: "Uncoated (10 intubations)" and "Coated (21 intubations)", identical y tick labels in both panels (shared range), focus on a trace draws the highlight and peak dot and shows "Surgeon 2, uncoated tube, intubation 8, Peak force 1.59 N, Integrated force 0.95 N·s". In-vivo browser: count "50 of 50 comparisons shown"; legend Mice, Rats, Sheep, Human cadaveric cochlea, Human cadaveric larynx, Synthetic cochlea. Capsule panels: Coated on the silicone column sets `data-mode="coated"`, the uncoated image goes to opacity 0 and hidden, the coated image stays visible (0.25 s fade; none with reduced motion).
+- Forbidden-term grep over every shipped HTML, JS and CSS file (figure files and `data/` excluded, see below): ZwiGuard, benzophenone, Kyle, Ruby, Reineke, CIVCO, iotaSoft, Andersen, prestigious, "hover or focus", micrometre, millimetre, "device families", "read from the", "plotted", "text states": **0 hits in HTML**. "approximate": one HTML hit, the FCOI policy's required wording ("Approximate dollar value of the SFI"), which is regulation text, not a chart disclaimer; kept. SBMA/CBMA and "p = 0"/"p < 0": **0 hits in HTML**; the evidence bundle still carries them inside the inlined data JSON (the record: `chemistry`, `device_or_substrate`, `note` and `p_text` fields). What the page shows from that data is now cleaned: the in-vivo tooltip and table strip monomer names from the device text (`deviceText()` in `studies.ts`), and the antifouling tooltip no longer shows build caveats ("ratio of plotted bars ... inventory caveat"). One displayed p string remains in an antifouling tooltip "p" row: "0.02 or less; new vs 6-month p = 0.73" (data, not body copy).
+- Tiles: no "dissertations" in the tiles section (checked on the built home page; the evidence page has no tiles).
+
+### What changed (source files, so a rebuild keeps it)
+
+- New: `site/src/scripts/fibrosis.ts` (W04 interactive), `site/src/scripts/durability.ts` (W06 interactive), `site/src/components/FibrosisChart.astro`, `DurabilityChart.astro` (each mounts every instance on a page, PNG fallback through `InteractiveChart`), `CapsulePanels.astro` (R9), `ImpactBlock.astro` (pendulum clip with the before and after photos, R13 and R18), `site/src/data/source-short.ts` (the manifests' `source_short` column, one line per chart).
+- `Figure.astro`, `InteractiveChart.astro`: new `sourceShort` prop; the displayed source is `sourceShort`, else the manifest short source for that chart name, else `source`. The full `source` stays in the code as the record and is not rendered. `Photo.astro`, `VideoLoop.astro`: `sourceShort` shown in place of `credit` when given; `Photo` also takes `maxWidth` (used for the small slide-2 photos and the elemental map). `Figure.astro` caps every chart at its design width (half the 2x PNG width, 45 percent for tall charts) unless `maxWidth` is given.
+- `figure-text.ts`: `sourceShort` on every entry; W07 caption, alt and body for three studies; new W06, W08, W11, W24, W02 and W32 entries; W04 alt says 9 measurements (the chart has 9 bars).
+- Application frontmatter: `sourceShort` added under every figure's `source` (schema: optional `sourceShort` and `width`); W07 caption, alt and full source updated on neural and airway; tissue expanders W17 `width: 640`.
+- `[slug].astro` and `MediaBlocks.astro`: tokens `{{interactive:durability}}`, `{{panels:capsule}}`, `{{block:impact}}`, `{{photopair:name}}` (pairs `expander-fill` and `expander-300`), `{{video:pendulum}}`; ent-tubes, indwelling catheters and vascular access now use `{{interactive:durability}}` in place of the static W06.
+- `studies.ts`: species keys `larynx` (Human cadaveric larynx, darker orange) and `synthetic` (Synthetic cochlea, gray); Insertion force group matches impulse and work; left band labeled "Ex vivo / bench"; "Approximate, read from the plot" badges reworded "Estimated from a published plot". Same rewording in `antifouling.ts`.
+- `traces.ts`: two panels (uncoated left, coated right) on one shared x and y range, group label above each, no overlay; stacks below 520 px.
+- `ClaimRow.astro`: `wide` prop (text on top, figure full width), used for every static-chart row on home, technology and durability (R19). Technology two-column blocks put their charts full width. Evidence impedance pair stacked.
+- Images: `expander-inflation-100pct.jpg` and `-300pct.jpg` (Pillow, 1600 px wide, JPEG q85, 108 and 102 kB); JPEG copies of the four capsule panels, `histology-scar-01`, `expander-deflated` and `expander-inflated` (q88, native size). The PNG originals are left in place.
+- Tiles (R12): `site/public/data/W12_numbers.json` and `figures/data/W12_numbers.json`; `figures/build_figures.py` NUMBERS (the W12 tile data, read only by `w12_numbers`) and the W12 caption and source strings in `w12_numbers`; the W12 row of `figures/MANIFEST.md` to match. The figures script was not re-run (W12 PNG is not used on the site).
+- `logo-options.astro`: the favicon row wraps (it scrolled sideways by 10 px at 375 px).
+- `.claude/launch.json`: a `site-preview` entry on port 4329 for the sizing screen.
+
+### R19 figure sizing screen (1280 px, every `figure img` and every interactive fallback)
+
+Rule: flag rendered width under 480 px when natural is over 1800 (text too small) and over 1000 px when natural is under 1200 (oversized); rule of thumb rendered at least 45 percent of natural for the 2x charts. Natural width from the decoded image. Before this pass every chart in a claim row rendered at 681 px (26 to 38 percent); they now take a full-width row. No image is flagged. W30 (43 percent) and W37 (42 percent) reach the 1200 px container and cannot grow further at this breakpoint.
+
+| Page | Image | Rendered (px) | Natural (px) | Rendered / natural | Flag |
+|---|---|---|---|---|---|
+| / | W27_capsule_thickness_mice.png | 1198 | 2491 | 48% | ok |
+| / | W25_sheep_impedance_components.png | 1198 | 2434 | 49% | ok |
+| / | W07_insertion_force.png | 1198 | 2522 | 48% | ok |
+| / | W29_bacteria_rats.png | 1198 | 2577 | 46% | ok |
+| / | W28_durability_peel.png | 1198 | 2611 | 46% | ok |
+| / | W04_fibrosis_by_study.png (interactive; PNG only without JS) | 663 | 2496 | 27% | ok (HTML chart; fallback only) |
+| / | W24_publication_timeline.png (interactive; PNG only without JS) | 1200 | 2316 | 52% | ok |
+| /technology | W05_antifouling_and_friction.png | 1051 | 2340 | 45% | ok (tall chart, capped at 45%) |
+| /technology | W04_fibrosis_by_study.png | 1198 | 2496 | 48% | ok |
+| /technology | W27_capsule_thickness_mice.png | 1198 | 2491 | 48% | ok |
+| /technology | W07_insertion_force.png | 1198 | 2522 | 48% | ok |
+| /technology | W08_impedance_sheep.png | 709 | 1421 | 50% | ok |
+| /technology | histology-sheep.png | 1066 | 1750 | 61% | ok |
+| /technology | W28_durability_peel.png | 1198 | 2611 | 46% | ok |
+| /technology | W11_sterilization.png | 982 | 1967 | 50% | ok |
+| /technology | ci-array-elemental-map.png | 842 | 844 | 100% | ok (capped at native) |
+| /technology | W10_substrate_evidence_matrix.png | 1057 | 2117 | 50% | ok |
+| /technology | W31_bond_strength_vs_grafting_agent.png | 788 | 1579 | 50% | ok |
+| /technology | W30_crosslinker_tradeoff.png | 1198 | 2807 | 43% | at the 1200 px container limit |
+| /technology | W06_durability_timeline.png (interactive; PNG only without JS) | 1200 | 2057 | 58% | ok |
+| /evidence | histology-scar-01.jpg | 734 | 965 | 76% | ok |
+| /evidence | W27_capsule_thickness_mice.png | 1198 | 2491 | 48% | ok |
+| /evidence | W29_bacteria_rats.png | 1198 | 2577 | 46% | ok |
+| /evidence | W28_durability_peel.png | 1198 | 2611 | 46% | ok |
+| /evidence | W07_insertion_force.png | 1198 | 2522 | 48% | ok |
+| /evidence | W08_impedance_sheep.png | 709 | 1421 | 50% | ok |
+| /evidence | W25_sheep_impedance_components.png | 1198 | 2434 | 49% | ok (was 578, 24%, in a pair) |
+| /evidence | histology-sheep.png | 734 | 1750 | 42% | ok (photo) |
+| /evidence | W31_bond_strength_vs_grafting_agent.png | 788 | 1579 | 50% | ok (was 1198, 76%, oversized) |
+| /evidence | W30_crosslinker_tradeoff.png | 1198 | 2807 | 43% | at the 1200 px container limit |
+| /evidence | W04_fibrosis_by_study.png (interactive) | 1200 | 2496 | 48% | ok |
+| /evidence | W05_antifouling_and_friction.png (interactive) | 1200 | 2340 | 51% | ok |
+| /evidence | W37_ci_insertion_synthetic.png (interactive) | 1200 | 2879 | 42% | ok (HTML chart; fallback only) |
+| /evidence | W38_ett_insertion_force.png (interactive) | 1200 | 2256 | 53% | ok |
+| /evidence | W06_durability_timeline.png (interactive) | 1200 | 2057 | 58% | ok |
+| /evidence | W02_lapshear_database.png (interactive) | 1200 | 2090 | 57% | ok |
+| /evidence | W04_fibrosis_by_study.png (interactive, in-vivo browser) | 1200 | 2496 | 48% | ok |
+| /durability | W28a_friction_after_explant.png | 887 | 1777 | 50% | ok (was 681, 38%) |
+| /durability | W35_wear_2500_passes.png | 887 | 1778 | 50% | ok (was 681, 38%) |
+| /durability | W36_dry_and_rewet.png | 1082 | 2167 | 50% | ok (was 681, 31%) |
+| /durability | expander-impact-before.jpg | 579 | 2000 | 29% | ok (photo) |
+| /durability | expander-impact-after.jpg | 579 | 2000 | 29% | ok (photo) |
+| /durability | W31_bond_strength_vs_grafting_agent.png | 788 | 1579 | 50% | ok |
+| /durability | W11_sterilization.png | 982 | 1967 | 50% | ok (was 681, 35%) |
+| /durability | W06_durability_timeline.png (interactive) | 683 | 2057 | 33% | ok (HTML chart; fallback only) |
+| /durability | pendulum-loop.webm (video) | 385 | 540 | 71% | ok |
+| /applications/neural-interfaces | capsule-pdms-uncoated.jpg | 423 | 1178 | 36% | ok (micrograph; labels about 14 px) |
+| /applications/neural-interfaces | capsule-pdms-coated.jpg | 423 | 1163 | 36% | ok |
+| /applications/neural-interfaces | capsule-pt-uncoated.jpg | 423 | 1169 | 36% | ok |
+| /applications/neural-interfaces | capsule-pt-coated.jpg | 423 | 1179 | 36% | ok |
+| /applications/neural-interfaces | W27_capsule_thickness_mice.png | 1198 | 2491 | 48% | ok (was 990, 40%) |
+| /applications/neural-interfaces | W25_sheep_impedance_components.png | 1198 | 2434 | 49% | ok |
+| /applications/neural-interfaces | W26_sheep_histology.png | 1198 | 2434 | 49% | ok |
+| /applications/neural-interfaces | histology-sheep.png | 990 | 1750 | 57% | ok |
+| /applications/neural-interfaces | W07_insertion_force.png | 1198 | 2522 | 48% | ok |
+| /applications/neural-interfaces | W37_ci_insertion_synthetic.png | 1198 | 2879 | 42% | at the 1200 px container limit |
+| /applications/neural-interfaces | ci-array-elemental-map.png | 842 | 844 | 100% | ok (was 990, upscaled) |
+| /applications/neural-interfaces | ci-array-coated-dyed.png | 990 | 1594 | 62% | ok |
+| /applications/neural-interfaces | ci-proxy-section-blue-ring.jpg | 934 | 2816 | 33% | ok (photo) |
+| /applications/airway | ett-cuff-coated.jpg | 306 | 1080 | 28% | ok (portrait photo) |
+| /applications/airway | W19_silver_ett_forest.png | 1187 | 2378 | 50% | ok |
+| /applications/airway | W38_ett_insertion_force.png | 1126 | 2256 | 50% | ok |
+| /applications/airway | W21_mucus_flow.png | 1039 | 2082 | 50% | ok |
+| /applications/airway | W07_insertion_force.png | 1198 | 2522 | 48% | ok |
+| /applications/airway | cuff-loop.webm (video) | 306 | 540 | 57% | ok |
+| /applications/ent-tubes | W21_mucus_flow.png | 1039 | 2082 | 50% | ok |
+| /applications/ent-tubes | W05_antifouling_and_friction.png | 1051 | 2340 | 45% | ok (tall chart, capped at 45%) |
+| /applications/ent-tubes | W06_durability_timeline.png (interactive) | 1200 | 2057 | 58% | ok |
+| /applications/gi-stents | W29_bacteria_rats.png | 1198 | 2577 | 46% | ok |
+| /applications/gi-stents | W21_mucus_flow.png | 1039 | 2082 | 50% | ok |
+| /applications/gi-stents | W11_sterilization.png | 982 | 1967 | 50% | ok |
+| /applications/gi-stents | W10_substrate_evidence_matrix.png | 1057 | 2117 | 50% | ok |
+| /applications/indwelling-catheters | W18_silver_foley_cauti.png | 647 | 1298 | 50% | ok (was 990, 76%, oversized) |
+| /applications/indwelling-catheters | W29_bacteria_rats.png | 1198 | 2577 | 46% | ok |
+| /applications/indwelling-catheters | W28_durability_peel.png | 1198 | 2611 | 46% | ok |
+| /applications/indwelling-catheters | W06_durability_timeline.png (interactive) | 1200 | 2057 | 58% | ok |
+| /applications/peek-and-orthopedic | W34_peek_bond_strength.png | 1082 | 2167 | 50% | ok |
+| /applications/peek-and-orthopedic | W10_substrate_evidence_matrix.png | 1057 | 2117 | 50% | ok |
+| /applications/peek-and-orthopedic | W05_antifouling_and_friction.png | 1051 | 2340 | 45% | ok (tall chart, capped at 45%) |
+| /applications/peek-and-orthopedic | W04_fibrosis_by_study.png | 1198 | 2496 | 48% | ok |
+| /applications/sensors | W20_cgm_delay.png | 512 | 1143 | 45% | ok (tall chart; was 702, 61%) |
+| /applications/sensors | W27_capsule_thickness_mice.png | 1198 | 2491 | 48% | ok |
+| /applications/sensors | W30_crosslinker_tradeoff.png | 1198 | 2807 | 43% | at the 1200 px container limit |
+| /applications/tissue-expanders | W27_capsule_thickness_mice.png | 1198 | 2491 | 48% | ok |
+| /applications/tissue-expanders | W17_textured_implants.png | 638 | 1236 | 52% | ok (width 640, R16) |
+| /applications/tissue-expanders | W04_fibrosis_by_study.png | 1198 | 2496 | 48% | ok |
+| /applications/tissue-expanders | expander-deflated.jpg | 342 | 364 | 94% | ok (cap 546 = 1.5x) |
+| /applications/tissue-expanders | expander-inflated.jpg | 342 | 447 | 77% | ok (cap 670 = 1.5x) |
+| /applications/tissue-expanders | expander-inflation-100pct.jpg | 486 | 1600 | 30% | ok (photo) |
+| /applications/tissue-expanders | expander-inflation-300pct.jpg | 486 | 1600 | 30% | ok (photo) |
+| /applications/tissue-expanders | W11_sterilization.png | 982 | 1967 | 50% | ok |
+| /applications/tissue-expanders | expander-impact-before.jpg | 579 | 2000 | 29% | ok (photo) |
+| /applications/tissue-expanders | expander-impact-after.jpg | 579 | 2000 | 29% | ok (photo) |
+| /applications/tissue-expanders | pendulum-loop.webm (video) | 385 | 540 | 71% | ok |
+| /applications/vascular-access | W05_antifouling_and_friction.png | 1051 | 2340 | 45% | ok (tall chart, capped at 45%) |
+| /applications/vascular-access | W28_durability_peel.png | 1198 | 2611 | 46% | ok |
+| /applications/vascular-access | W31_bond_strength_vs_grafting_agent.png | 788 | 1579 | 50% | ok |
+| /applications/vascular-access | W06_durability_timeline.png (interactive) | 1200 | 2057 | 58% | ok |
+| /about | W24_publication_timeline.png (interactive) | 1200 | 2316 | 52% | ok |
+
+### Built site checks (site/dist)
+
+| Status | R | Page | Item | Proof |
+|---|---|---|---|---|
+| PASS | R1 | evidence | Section 1 order: interactive W04, histology photo, W27 | positions data-chart="fibrosis"@13767, histology-scar-01\.jpg@15792, /figures/W27_capsule_thickness_mice\.png@16847 |
+| PASS | R1 | evidence | Interactive W04 frame with PNG fallback | <div class="ev-body"><figure class="ichart"><div class="ichart-mount" data-chart="fibrosis" data-fallback-src="/figures/W04_fibrosis_by_study.png" data-fallback-alt="Horizontal bar chart of 9 measurements of scar cap |
+| PASS | R1 | evidence | Histology caption | c"></div></div><figcaption class="photo-cap"><p class="photo-caption">Tissue section after one year in a mouse: a thick capsule on uncoated silicone, a thin quiet interface on coated silicone. Adapted from Horne et al., Acta Biomaterialia 2023.</p><p class="photo-credit label">Adapted from Horne et al., Acta Biom |
+| PASS | R10 | home | Hero holds the interactive W04 (compact) | class="btn-outline" href="/partner#form">Send us parts</a></div></div><div class="hero-figure"><figure class="ichart compact"><div class="ichart-mount" data-chart="fibrosis" data-fallback-src="/figures/W04_fibrosis_by_study.png" data-fallback- |
+| PASS | R10 | home | Hero noscript PNG fallback | ut 85 percent." data-fallback-width="1000" data-fallback-height="572"><noscript><img class="ch-fallback-img" src="/figures/W04_fibrosis_by_study.png" alt="Horizontal bar chart of 9 measurements of scar capsule or fibros |
+| PASS | R10 | home | Two-column hero layout kept | er(`change`,()=>s(!1))}</script><main id="main"><section class="hero"><div class="container hero-grid"><div class="hero-text"><p class="label">Zwitterionic hydrogel coating for medical devices</p> |
+| PASS | R2/R20 | home | 12 displayed source lines, none with a disclaimer | 12 lines checked |
+| PASS | R2/R20 | evidence | 25 displayed source lines, none with a disclaimer | 25 lines checked |
+| PASS | R2/R20 | durability | 16 displayed source lines, none with a disclaimer | 16 lines checked |
+| PASS | R2/R20 | neural | 15 displayed source lines, none with a disclaimer | 15 lines checked |
+| PASS | R2/R20 | tissue-expanders | 12 displayed source lines, none with a disclaimer | 12 lines checked |
+| PASS | R2/R20 | logo-options | 0 displayed source lines, none with a disclaimer | 0 lines checked |
+| PASS | R2/R20 | technology | 24 displayed source lines, none with a disclaimer | 24 lines checked |
+| PASS | R2/R20 | applications | 0 displayed source lines, none with a disclaimer | 0 lines checked |
+| PASS | R2/R20 | ent-tubes | 5 displayed source lines, none with a disclaimer | 5 lines checked |
+| PASS | R2/R20 | indwelling-catheters | 7 displayed source lines, none with a disclaimer | 7 lines checked |
+| PASS | R2/R20 | vascular-access | 7 displayed source lines, none with a disclaimer | 7 lines checked |
+| PASS | R2/R20 | airway | 10 displayed source lines, none with a disclaimer | 10 lines checked |
+| PASS | R2/R20 | peek | 9 displayed source lines, none with a disclaimer | 9 lines checked |
+| PASS | R2/R20 | sensors | 6 displayed source lines, none with a disclaimer | 6 lines checked |
+| PASS | R2/R20 | gi-stents | 8 displayed source lines, none with a disclaimer | 8 lines checked |
+| PASS | R2/R20 | about | 1 displayed source lines, none with a disclaimer | 1 lines checked |
+| PASS | R2 | evidence | W05 short source (citation plus figures) | hen select a bar to see its values.</p><p class="ichart-source label">Source: Leigh et al. 2017, Biomacromolecules, Figs 4, 6E, 7E and 8E; Leigh et al. 2019, Langmuir, Figs 7D and 10D; Jensen et al. 2021, ACS |
+| PASS | R2 | neural | W25 short source on an application page |  at implantation and at four weeks.</p><p class="figure-source label">Source: Ben-Shlomo et al. 2026, Hearing Research, Figs 3B to 3D</p></figcaption></figure></div><div class="prose"> <p><strong>Less inflam |
+| PASS | R3 | evidence | Section 3 order: W28, cochlear viewer, ETT viewer, W07 | positions /figures/W28_durability_peel\.png@22560, data-chart="traces-w37"@23401, data-chart="traces-w38"@25562, /figures/W07_insertion_force\.png@27858 |
+| PASS | R4 | evidence | Viewer captions say uncoated left, coated right |  of insertion (99 versus 291 mN·mm), measured on the same insertions. Uncoated insertions are on the left and coated on the right, on the same scales. Each line is one insertion; select a line to see its peak force and w |
+| PASS | R5 | evidence | W07 caption names three studies |  arrays needed about half the peak insertion force of uncoated arrays in three studies: 42 percent less in human cadaveric cochleae (Bennion 2021), about 50 percent less in human cadaveric cochleae (Peel 2024) and 64 percent less in a synthetic cochlea (NIH SBIR Phase I dataset).</p><p class="figure-source label">Source: |
+| PASS | R5 | neural | Neural page keeps W37 static | H SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478</span></p><img class="figure-img" src="/figures/W37_ci_insertion_synthetic.png" alt="Three panels for a cochlear implant electrode array inserted by  |
+| PASS | R6 | evidence | Interactive W06 with PNG fallback | <div class="ev-body"><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | evidence | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R6 | durability | Interactive W06 with PNG fallback | ="claim-figure"><div><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | durability | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R6 | technology | Interactive W06 with PNG fallback | "><div class="stack"><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | technology | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R6 | ent-tubes | Interactive W06 with PNG fallback | div><div class="fig"><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | ent-tubes | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R6 | indwelling-catheters | Interactive W06 with PNG fallback | div><div class="fig"><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | indwelling-catheters | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R6 | vascular-access | Interactive W06 with PNG fallback | div><div class="fig"><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | vascular-access | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R8 | evidence | No stat tiles on the evidence page | absent: class="tiles|tile-value |
+| PASS | R9 | neural | Capsule panels are the page lead (before the spec strip) |  working implants, and a surface the tissue leaves alone.</p></header><div class="lead-media"><div class="fig"><figure class="cp" data-capsule-panels><div class="cp-box"><p class="fig-tag" aria-hidden="true"><span class |
+| PASS | R9 | neural | Columns Silicone and Platinum | ia-labelledby="cp-silicone"><div class="cp-head"><h3 class="cp-title" id="cp-silicone">Silicone</h3><div class="cp-toggle" role="group" aria-label="Silicone: show uncoated, coated or both" hidden><button type="button" data-mode-btn="uncoated" aria-pressed="false">Uncoated</button><button type="button" data-mode-btn="coated" aria ... |
+| PASS | R9 | neural | Toggle buttons Uncoated / Coated / Compare (aria-pressed) | e="group" aria-label="Silicone: show uncoated, coated or both" hidden><button type="button" data-mode-btn="uncoated" aria-pressed="false">Uncoated</button><button type="button" data-mode-btn="coated" aria-pressed="false">Coated</button><button type="button" data-mode-btn="compare" aria-pressed="true">Compare</button></div></div> ... |
+| PASS | R9 | neural | All four images in the markup (compare state without JS) | lass="cp-stack"><div class="cp-img cp-uncoated"><img src="/images/lab/capsule-pdms-uncoated.jpg" alt="Tissue section next to uncoated silicone (PDMS) on an implanted array, explanted from a mouse. A thick blue-stained band of fibrous capsule runs along the silicone surface, marked by red lines across its width." width="1178" hei ... |
+| PASS | R9 | neural | Caption with 47 to 18 micrometers | , but a thin, quiet interface on coated silicone and coated platinum. Mean capsule thickness on the device fell about 60 percent, 47 to 18 micrometers, with coating.</p><p class="cp-credit label">Adapted from Horne et al., Acta Biomate |
+| PASS | R9 | neural | Credit | nt, 47 to 18 micrometers, with coating.</p><p class="cp-credit label">Adapted from Horne et al., Acta Biomaterialia 2023</p></figcaption></figure><script type="module">document.querySelectorAll( |
+| PASS | R9 | neural | Sheep histology moved lower (after W26) | search, Figs 6E to 6G</span></p><img class="figure-img" src="/figures/W26_sheep_histology.png" alt="Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. A line joins each of the three sh ... |
+| PASS | R11 | home | Applications heading | class="section-head"><p class="label">Applications</p><h2 id="apps-h">Nine places to start. ZwiCoat bonds to the elastomers and plastics most devices are made of.</h2><p class="apps-intro">Each page starts with the clinical problem, |
+| PASS | R11 | home | Intro sentence | mers and plastics most devices are made of.</h2><p class="apps-intro">Each page starts with the clinical problem, then shows what coated devices achieved in published studies.</p></div><ul class="grid" role="list"><li><a class="card" href="/appl |
+| PASS | R11 | home | No "device families" | absent: device families |
+| PASS | R11 | applications | Applications heading | ction"><header class="page-head"><p class="label">Applications</p><h1>Nine places to start. ZwiCoat bonds to the elastomers and plastics most devices are made of.</h1><p class="lead">Each page starts with the clinical problem, then  |
+| PASS | R11 | applications | Intro sentence | elastomers and plastics most devices are made of.</h1><p class="lead">Each page starts with the clinical problem, then shows what coated devices achieved in published studies.</p></header><ul class="grid" role="list"><li><a class="card" href="/a |
+| PASS | R11 | applications | No "device families" | absent: device families |
+| PASS | R12 | home | Tiles below the "Ten years of published work" section | positions id="timeline-h"@24496, id="numbers-h"@26133 |
+| PASS | R12 | home | ~60% tile | ro and in four animal and cadaver models.</span></li><li class="tile"><span class="tile-value">~60%</span><span class="tile-label label">thinner fibrotic capsule around coated implants</span><span class="tile-takeaway">One year in mice, on human cochlear implant arrays, over platinum and silicone alike (Horne 2023).</span></li>< ... |
+| PASS | R12 | home | ~50% tile | n and Mexico: the largest device markets.</span></li><li class="tile"><span class="tile-value">~50%</span><span class="tile-label label">less insertion force with coated cochlear implants</span><span class="tile-takeaway">Three studies: human cadaver cochleae twice and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset). ... |
+| PASS | R12 | home | No dissertations tile | absent: tile-label label">PhD dissertations |
+| PASS | R12 | home | No patents-pending tile | absent: patent applications pending |
+| PASS | R12 | home | No "dissertations" anywhere in the tiles section | absent: dissertation |
+| PASS | R13 | durability | Impact block: clip left, photos right | </p></div></div><div class="claim-figure"><div><figure class="impact"><div class="impact-grid"><div class="impact-video"><figure class="vl" style="--ratio: 0.6667;"><div class="vl-box"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">VIDEO</span><span class="fig-tag-src">ZwiCoat, 2026</span></p><div class="vl-frame ... |
+| PASS | R13 | durability | Photo captions | c"></div></div><figcaption class="photo-cap"><p class="photo-caption">Before impact</p><p class="photo-credit label">ZwiCoat, 2026</p></figcaption></figure><figure class="photo" style="--ratio: 2.0000;"><div class="photo-box"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">PHOTO</span><span class="fig-tag-src">Zwi ... |
+| PASS | R13 | durability | Lead-in and 45 J caption | h2 class="claim-title">It takes a hit.</h2><div class="claim-body"><p>A 45 J pendulum strike on a coated tissue expander.</p><p>The photographs show the expander before and after the strike.  |
+| PASS | R13 | durability | Source line | strike on a coated tissue expander.</p><p class="impact-source label">Source: ZwiCoat internal test, 2026</p></figcaption></figure></div></div></section><section class="claim reve |
+| PASS | R14 | durability | Clip aspect 540/810 and poster | <div class="impact-grid"><div class="impact-video"><figure class="vl" style="--ratio: 0.6667;"><div class="vl-box"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">VIDEO</span><span class="fig-tag-src">ZwiCoat, 2026</span></p><div class="vl-frame" style="aspect-ratio: 540/810;"><video data-loop autoplay muted loop  ... |
+| PASS | R15 | durability | Side panel title | t (Leigh 2019).</p><aside class="bond-panel" aria-labelledby="bond-h"><h3 id="bond-h" class="bond-title">Bond strength on silicone today</h3><ul class="bond-list" role="list"><li><span class="bond-val">~105 kPa< |
+| PASS | R15 | durability | Panel values | oday</h3><ul class="bond-list" role="list"><li><span class="bond-val">~105 kPa</span> <span class="bond-lab">median as prepared (36 groups, 123 tests, 2025 to 2026)</span></li><li><span class="bond-val">~94 kPa</span> <span class="bond-lab">median after soaking in PBS (26 groups, 2025)</span></li><li><span class="bond-val bond-t ... |
+| PASS | R15 | durability | Panel sentence and source | 2019 published film (Leigh 2019)</span></li></ul><p class="bond-text">The bond is measured by pulling the film off silicone; today's groups sit above the 2019 published values, and the gel still tears first.</p><p class="bond-src label">Source: ZwiCoat lap-shear database, 2025 to 2026; Leigh 2019, Fig 6</p></aside></div></div><d ... |
+| PASS | R16 | tissue-expanders | W17 capped at 640 px | ants and expanders, and textured use fell.</p> </div><div class="fig"><figure class="figure" style="max-width: min(100%, 640px);" data-design-width="618"><div class="fig-frame"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">FIG W17</span><span class="fig-tag-src">Matros et al. 2021, Plastic and Reconstructi |
+| PASS | R17 | tissue-expanders | Slide 2 pair after the 300 percent sentence, slide 3 pair beneath | positions inflated to 300 percent of its rated volume kept the coating@17100, expander-deflated\.jpg@17500, expander-inflated\.jpg@17944, expander-inflation-100pct\.jpg@18656, expander-inflation-300pct\.jpg@19166 |
+| PASS | R17 | tissue-expanders | Slide 3 caption | re></div></div><figcaption class="ppair-cap"><p class="ppair-caption">A coated 100 cc expander inflated to 300 cc: no tearing. ZwiCoat internal test, 2026.</p><p class="ppair-credit label">ZwiCoat, 2026</p></figcaption></figu |
+| PASS | R17 | tissue-expanders | Small originals capped at 1.5x (546 and 670 px) | ><div class="pair-item"><figure class="photo" style="--ratio: 0.9529; --max-w: 546px;"><div class="photo-box"><div class="photo-frame fit-contain" style="aspect-ratio: 364/382;"><img src="/images/lab/expander-deflated.jpg" alt="A deflated coated tissue expander lying folded in a glass bowl of blue liquid." loading="lazy" decodin ... |
+| PASS | R18 | tissue-expanders | "Takes a hit" block before "How to start" | positions id="takes-a-hit">Takes a hit</h2>@21297, pendulum-loop@22094, expander-impact-after\.jpg@23911, id="how-to-start"@24536 |
+| PASS | R18 | tissue-expanders | 45 J cited | ="prose"> <h2 id="takes-a-hit">Takes a hit</h2> <p>Expanders get hit. A 45 J pendulum strike on a coated expander left no visible damage to the coating (ZwiCoat internal test, 2026). <a href="/durability">See the durability record.</a></p> </div><div  |
+| PASS | R7 | evidence | W32 data: 50 rows, 2 larynx, 2 synthetic cochlea | 50 rows; larynx ['Intubation impulse (integrated insertion force)', 'Intubation impulse (integrated insertion force)']; synthetic ['Peak insertion force', 'Work of insertion'] |
+| PASS | R7 | evidence bundle | Legend entry: Human cadaveric larynx | uman cadaveric cochlea`,cls:`sp-human`},larynx:{label:`Human cadaveric larynx`,cls:`sp-larynx`},synthetic:{label:`Synthetic cochlea`,cl |
+| PASS | R7 | evidence bundle | Legend entry: Synthetic cochlea | uman cadaveric larynx`,cls:`sp-larynx`},synthetic:{label:`Synthetic cochlea`,cls:`sp-synthetic`},invitro:{label:`In vitro`,cls:`sp-invit |
+| PASS | R7 | evidence bundle | Insertion force group includes impulse and work | nsertion`,label:`Insertion force`,test:/insertion\|force variation\|impulse\|work of/i,shape:`cross`},{key:`other`,label:`Ot |
+| PASS | R21 | logo-options | Current plus five proposals | ption="Now"><div class="opt-head"><span class="letter">Now</span><div><h2>Current</h2><p>The logo on the site today: an Arial Black wordmark with a long dark wave and a short light swoosh.</p></div></div><div class="mock-nav" aria-hidden="true"><img class="logo-40" src="/logo.svg?v=2" alt=""><span class="mock-links"><span>Techno ... |
+
+PASS 79, FAIL 0
+
+### Staging checks (https://staging.zwicoat.com)
+
+| Status | R | Page | Item | Proof |
+|---|---|---|---|---|
+| PASS | R1 | evidence | Section 1 order: interactive W04, histology photo, W27 | positions data-chart="fibrosis"@13767, histology-scar-01\.jpg@15792, /figures/W27_capsule_thickness_mice\.png@16847 |
+| PASS | R1 | evidence | Interactive W04 frame with PNG fallback | <div class="ev-body"><figure class="ichart"><div class="ichart-mount" data-chart="fibrosis" data-fallback-src="/figures/W04_fibrosis_by_study.png" data-fallback-alt="Horizontal bar chart of 9 measurements of scar cap |
+| PASS | R1 | evidence | Histology caption | c"></div></div><figcaption class="photo-cap"><p class="photo-caption">Tissue section after one year in a mouse: a thick capsule on uncoated silicone, a thin quiet interface on coated silicone. Adapted from Horne et al., Acta Biomaterialia 2023.</p><p class="photo-credit label">Adapted from Horne et al., Acta Biom |
+| PASS | R10 | home | Hero holds the interactive W04 (compact) | class="btn-outline" href="/partner#form">Send us parts</a></div></div><div class="hero-figure"><figure class="ichart compact"><div class="ichart-mount" data-chart="fibrosis" data-fallback-src="/figures/W04_fibrosis_by_study.png" data-fallback- |
+| PASS | R10 | home | Hero noscript PNG fallback | ut 85 percent." data-fallback-width="1000" data-fallback-height="572"><noscript><img class="ch-fallback-img" src="/figures/W04_fibrosis_by_study.png" alt="Horizontal bar chart of 9 measurements of scar capsule or fibros |
+| PASS | R10 | home | Two-column hero layout kept | er(`change`,()=>s(!1))}</script><main id="main"><section class="hero"><div class="container hero-grid"><div class="hero-text"><p class="label">Zwitterionic hydrogel coating for medical devices</p> |
+| PASS | R2/R20 | home | 12 displayed source lines, none with a disclaimer | 12 lines checked |
+| PASS | R2/R20 | evidence | 25 displayed source lines, none with a disclaimer | 25 lines checked |
+| PASS | R2/R20 | durability | 16 displayed source lines, none with a disclaimer | 16 lines checked |
+| PASS | R2/R20 | neural | 15 displayed source lines, none with a disclaimer | 15 lines checked |
+| PASS | R2/R20 | tissue-expanders | 12 displayed source lines, none with a disclaimer | 12 lines checked |
+| PASS | R2/R20 | logo-options | 0 displayed source lines, none with a disclaimer | 0 lines checked |
+| PASS | R2 | evidence | W05 short source (citation plus figures) | hen select a bar to see its values.</p><p class="ichart-source label">Source: Leigh et al. 2017, Biomacromolecules, Figs 4, 6E, 7E and 8E; Leigh et al. 2019, Langmuir, Figs 7D and 10D; Jensen et al. 2021, ACS |
+| PASS | R2 | neural | W25 short source on an application page |  at implantation and at four weeks.</p><p class="figure-source label">Source: Ben-Shlomo et al. 2026, Hearing Research, Figs 3B to 3D</p></figcaption></figure></div><div class="prose"> <p><strong>Less inflam |
+| PASS | R3 | evidence | Section 3 order: W28, cochlear viewer, ETT viewer, W07 | positions /figures/W28_durability_peel\.png@22560, data-chart="traces-w37"@23401, data-chart="traces-w38"@25562, /figures/W07_insertion_force\.png@27858 |
+| PASS | R4 | evidence | Viewer captions say uncoated left, coated right |  of insertion (99 versus 291 mN·mm), measured on the same insertions. Uncoated insertions are on the left and coated on the right, on the same scales. Each line is one insertion; select a line to see its peak force and w |
+| PASS | R5 | evidence | W07 caption names three studies |  arrays needed about half the peak insertion force of uncoated arrays in three studies: 42 percent less in human cadaveric cochleae (Bennion 2021), about 50 percent less in human cadaveric cochleae (Peel 2024) and 64 percent less in a synthetic cochlea (NIH SBIR Phase I dataset).</p><p class="figure-source label">Source: |
+| PASS | R5 | neural | Neural page keeps W37 static | H SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478</span></p><img class="figure-img" src="/figures/W37_ci_insertion_synthetic.png" alt="Three panels for a cochlear implant electrode array inserted by  |
+| PASS | R6 | evidence | Interactive W06 with PNG fallback | <div class="ev-body"><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | evidence | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R6 | durability | Interactive W06 with PNG fallback | ="claim-figure"><div><figure class="ichart"><div class="ichart-mount" data-chart="durability" data-fallback-src="/figures/W06_durability_timeline.png" data-fallback-alt="Timeline of in-vivo checkpoints from two weeks to  |
+| PASS | R6 | durability | No static W06 image | absent: <img class="figure-img" src="/figures/W06_durability_timeline |
+| PASS | R8 | evidence | No stat tiles on the evidence page | absent: class="tiles|tile-value |
+| PASS | R9 | neural | Capsule panels are the page lead (before the spec strip) |  working implants, and a surface the tissue leaves alone.</p></header><div class="lead-media"><div class="fig"><figure class="cp" data-capsule-panels><div class="cp-box"><p class="fig-tag" aria-hidden="true"><span class |
+| PASS | R9 | neural | Columns Silicone and Platinum | ia-labelledby="cp-silicone"><div class="cp-head"><h3 class="cp-title" id="cp-silicone">Silicone</h3><div class="cp-toggle" role="group" aria-label="Silicone: show uncoated, coated or both" hidden><button type="button" data-mode-btn="uncoated" aria-pressed="false">Uncoated</button><button type="button" data-mode-btn="coated" aria ... |
+| PASS | R9 | neural | Toggle buttons Uncoated / Coated / Compare (aria-pressed) | e="group" aria-label="Silicone: show uncoated, coated or both" hidden><button type="button" data-mode-btn="uncoated" aria-pressed="false">Uncoated</button><button type="button" data-mode-btn="coated" aria-pressed="false">Coated</button><button type="button" data-mode-btn="compare" aria-pressed="true">Compare</button></div></div> ... |
+| PASS | R9 | neural | All four images in the markup (compare state without JS) | lass="cp-stack"><div class="cp-img cp-uncoated"><img src="/images/lab/capsule-pdms-uncoated.jpg" alt="Tissue section next to uncoated silicone (PDMS) on an implanted array, explanted from a mouse. A thick blue-stained band of fibrous capsule runs along the silicone surface, marked by red lines across its width." width="1178" hei ... |
+| PASS | R9 | neural | Caption with 47 to 18 micrometers | , but a thin, quiet interface on coated silicone and coated platinum. Mean capsule thickness on the device fell about 60 percent, 47 to 18 micrometers, with coating.</p><p class="cp-credit label">Adapted from Horne et al., Acta Biomate |
+| PASS | R9 | neural | Credit | nt, 47 to 18 micrometers, with coating.</p><p class="cp-credit label">Adapted from Horne et al., Acta Biomaterialia 2023</p></figcaption></figure><script type="module">document.querySelectorAll( |
+| PASS | R9 | neural | Sheep histology moved lower (after W26) | search, Figs 6E to 6G</span></p><img class="figure-img" src="/figures/W26_sheep_histology.png" alt="Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. A line joins each of the three sh ... |
+| PASS | R11 | home | Applications heading | class="section-head"><p class="label">Applications</p><h2 id="apps-h">Nine places to start. ZwiCoat bonds to the elastomers and plastics most devices are made of.</h2><p class="apps-intro">Each page starts with the clinical problem, |
+| PASS | R11 | home | Intro sentence | mers and plastics most devices are made of.</h2><p class="apps-intro">Each page starts with the clinical problem, then shows what coated devices achieved in published studies.</p></div><ul class="grid" role="list"><li><a class="card" href="/appl |
+| PASS | R11 | home | No "device families" | absent: device families |
+| PASS | R12 | home | Tiles below the "Ten years of published work" section | positions id="timeline-h"@24496, id="numbers-h"@26133 |
+| PASS | R12 | home | ~60% tile | ro and in four animal and cadaver models.</span></li><li class="tile"><span class="tile-value">~60%</span><span class="tile-label label">thinner fibrotic capsule around coated implants</span><span class="tile-takeaway">One year in mice, on human cochlear implant arrays, over platinum and silicone alike (Horne 2023).</span></li>< ... |
+| PASS | R12 | home | ~50% tile | n and Mexico: the largest device markets.</span></li><li class="tile"><span class="tile-value">~50%</span><span class="tile-label label">less insertion force with coated cochlear implants</span><span class="tile-takeaway">Three studies: human cadaver cochleae twice and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset). ... |
+| PASS | R12 | home | No dissertations tile | absent: tile-label label">PhD dissertations |
+| PASS | R12 | home | No patents-pending tile | absent: patent applications pending |
+| PASS | R12 | home | No "dissertations" anywhere in the tiles section | absent: dissertation |
+| PASS | R13 | durability | Impact block: clip left, photos right | </p></div></div><div class="claim-figure"><div><figure class="impact"><div class="impact-grid"><div class="impact-video"><figure class="vl" style="--ratio: 0.6667;"><div class="vl-box"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">VIDEO</span><span class="fig-tag-src">ZwiCoat, 2026</span></p><div class="vl-frame ... |
+| PASS | R13 | durability | Photo captions | c"></div></div><figcaption class="photo-cap"><p class="photo-caption">Before impact</p><p class="photo-credit label">ZwiCoat, 2026</p></figcaption></figure><figure class="photo" style="--ratio: 2.0000;"><div class="photo-box"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">PHOTO</span><span class="fig-tag-src">Zwi ... |
+| PASS | R13 | durability | Lead-in and 45 J caption | h2 class="claim-title">It takes a hit.</h2><div class="claim-body"><p>A 45 J pendulum strike on a coated tissue expander.</p><p>The photographs show the expander before and after the strike.  |
+| PASS | R13 | durability | Source line | strike on a coated tissue expander.</p><p class="impact-source label">Source: ZwiCoat internal test, 2026</p></figcaption></figure></div></div></section><section class="claim reve |
+| PASS | R14 | durability | Clip aspect 540/810 and poster | <div class="impact-grid"><div class="impact-video"><figure class="vl" style="--ratio: 0.6667;"><div class="vl-box"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">VIDEO</span><span class="fig-tag-src">ZwiCoat, 2026</span></p><div class="vl-frame" style="aspect-ratio: 540/810;"><video data-loop autoplay muted loop  ... |
+| PASS | R15 | durability | Side panel title | t (Leigh 2019).</p><aside class="bond-panel" aria-labelledby="bond-h"><h3 id="bond-h" class="bond-title">Bond strength on silicone today</h3><ul class="bond-list" role="list"><li><span class="bond-val">~105 kPa< |
+| PASS | R15 | durability | Panel values | oday</h3><ul class="bond-list" role="list"><li><span class="bond-val">~105 kPa</span> <span class="bond-lab">median as prepared (36 groups, 123 tests, 2025 to 2026)</span></li><li><span class="bond-val">~94 kPa</span> <span class="bond-lab">median after soaking in PBS (26 groups, 2025)</span></li><li><span class="bond-val bond-t ... |
+| PASS | R15 | durability | Panel sentence and source | 2019 published film (Leigh 2019)</span></li></ul><p class="bond-text">The bond is measured by pulling the film off silicone; today's groups sit above the 2019 published values, and the gel still tears first.</p><p class="bond-src label">Source: ZwiCoat lap-shear database, 2025 to 2026; Leigh 2019, Fig 6</p></aside></div></div><d ... |
+| PASS | R16 | tissue-expanders | W17 capped at 640 px | ants and expanders, and textured use fell.</p> </div><div class="fig"><figure class="figure" style="max-width: min(100%, 640px);" data-design-width="618"><div class="fig-frame"><p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">FIG W17</span><span class="fig-tag-src">Matros et al. 2021, Plastic and Reconstructi |
+| PASS | R17 | tissue-expanders | Slide 2 pair after the 300 percent sentence, slide 3 pair beneath | positions inflated to 300 percent of its rated volume kept the coating@17100, expander-deflated\.jpg@17500, expander-inflated\.jpg@17944, expander-inflation-100pct\.jpg@18656, expander-inflation-300pct\.jpg@19166 |
+| PASS | R17 | tissue-expanders | Slide 3 caption | re></div></div><figcaption class="ppair-cap"><p class="ppair-caption">A coated 100 cc expander inflated to 300 cc: no tearing. ZwiCoat internal test, 2026.</p><p class="ppair-credit label">ZwiCoat, 2026</p></figcaption></figu |
+| PASS | R17 | tissue-expanders | Small originals capped at 1.5x (546 and 670 px) | ><div class="pair-item"><figure class="photo" style="--ratio: 0.9529; --max-w: 546px;"><div class="photo-box"><div class="photo-frame fit-contain" style="aspect-ratio: 364/382;"><img src="/images/lab/expander-deflated.jpg" alt="A deflated coated tissue expander lying folded in a glass bowl of blue liquid." loading="lazy" decodin ... |
+| PASS | R18 | tissue-expanders | "Takes a hit" block before "How to start" | positions id="takes-a-hit">Takes a hit</h2>@21297, pendulum-loop@22094, expander-impact-after\.jpg@23911, id="how-to-start"@24536 |
+| PASS | R18 | tissue-expanders | 45 J cited | ="prose"> <h2 id="takes-a-hit">Takes a hit</h2> <p>Expanders get hit. A 45 J pendulum strike on a coated expander left no visible damage to the coating (ZwiCoat internal test, 2026). <a href="/durability">See the durability record.</a></p> </div><div  |
+| PASS | R21 | logo-options | Current plus five proposals | ption="Now"><div class="opt-head"><span class="letter">Now</span><div><h2>Current</h2><p>The logo on the site today: an Arial Black wordmark with a long dark wave and a short light swoosh.</p></div></div><div class="mock-nav" aria-hidden="true"><img class="logo-40" src="/logo.svg?v=2" alt=""><span class="mock-links"><span>Techno ... |
+
+PASS 54, FAIL 0
+
+### Open points from round five
+
+- Chart images still carry their own subtitle notes, for example W07 "~ = approximate, read from the published figure", W04 and W31. They are PNG text, rebuilt by `figures/build_figures.py`; the HTML source lines are clean. If Kam wants them gone from the images too, the figures worker should drop those subtitles and rebuild.
+- The home hero chart is about 900 px tall at 1280 px (nine bars with filters, legend and caption). The two-column layout is kept; the text column is centered beside it.
+- R14: the clip and poster are the 540 x 810 files placed by the lead; the crop itself was not part of this pass.
+- The capsule panel alt text says "explanted from a mouse" on an implanted array; the panel caption is Kam's wording. The deck slide does not say whether Fig 4 is the one-year cohort, so the alt text does not.
+- The 1.5 MB PNG originals of the slide-3 photos are still in `public/images/lab` (unused); delete them if shipping weight matters.

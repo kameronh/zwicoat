@@ -31,7 +31,7 @@ export interface StudyRow {
 
 /* ---------- classification ---------- */
 
-type SpeciesKey = 'mice' | 'rats' | 'sheep' | 'human' | 'invitro' | 'other';
+type SpeciesKey = 'mice' | 'rats' | 'sheep' | 'human' | 'larynx' | 'synthetic' | 'invitro' | 'other';
 type Band = 'ex' | 'day0' | null;
 
 const SPECIES: Record<SpeciesKey, { label: string; cls: string }> = {
@@ -39,10 +39,12 @@ const SPECIES: Record<SpeciesKey, { label: string; cls: string }> = {
   rats: { label: 'Rats', cls: 'sp-rats' },
   sheep: { label: 'Sheep', cls: 'sp-sheep' },
   human: { label: 'Human cadaveric cochlea', cls: 'sp-human' },
+  larynx: { label: 'Human cadaveric larynx', cls: 'sp-larynx' },
+  synthetic: { label: 'Synthetic cochlea', cls: 'sp-synthetic' },
   invitro: { label: 'In vitro', cls: 'sp-invitro' },
   other: { label: 'Other', cls: 'sp-other' },
 };
-const SPECIES_ORDER: SpeciesKey[] = ['mice', 'rats', 'sheep', 'human', 'invitro', 'other'];
+const SPECIES_ORDER: SpeciesKey[] = ['mice', 'rats', 'sheep', 'human', 'larynx', 'synthetic', 'invitro', 'other'];
 
 /** Metric groups, matched on the metric string, in legend order. Each has a marker shape. */
 const METRICS: { key: string; label: string; test: RegExp; shape: string }[] = [
@@ -53,7 +55,8 @@ const METRICS: { key: string; label: string; test: RegExp; shape: string }[] = [
   { key: 'bacteria', label: 'Bacteria', test: /bacteri|colonies|s\. aureus/i, shape: 'triangleDown' },
   { key: 'impedance', label: 'Impedance', test: /impedance|access resistance/i, shape: 'hexagon' },
   { key: 'friction', label: 'Friction', test: /friction/i, shape: 'plus' },
-  { key: 'insertion', label: 'Insertion force', test: /insertion|force variation/i, shape: 'cross' },
+  // Insertion force covers peak force, force variation, work of insertion and the intubation impulse (integrated force).
+  { key: 'insertion', label: 'Insertion force', test: /insertion|force variation|impulse|work of/i, shape: 'cross' },
   { key: 'other', label: 'Other', test: /.*/, shape: 'pentagon' },
 ];
 
@@ -62,8 +65,10 @@ function metricGroup(metric: string) {
 }
 
 function speciesKey(r: StudyRow): SpeciesKey {
-  if (/in vitro/i.test(r.setting)) return 'invitro';
   const sp = r.species.toLowerCase();
+  if (/synthetic/.test(sp)) return 'synthetic';
+  if (/in vitro/i.test(r.setting)) return 'invitro';
+  if (/larynx/.test(sp)) return 'larynx';
   if (/mice|mouse/.test(sp)) return 'mice';
   if (/\brats?\b/.test(sp)) return 'rats';
   if (/sheep/.test(sp)) return 'sheep';
@@ -89,6 +94,14 @@ function bandFor(r: StudyRow, days: number | null): Band {
   if (/ex vivo|in vitro/i.test(r.setting)) return 'ex';
   if (/implantation|day 0/i.test(r.duration)) return 'day0';
   return 'ex';
+}
+
+/** The device as displayed: no monomer names (the chemistry stays in the data, the record). */
+function deviceText(d: string): string {
+  return d
+    .replace(/,\s*p?(SBMA|CBMA) coating/g, '')
+    .replace(/,\s*p?(SBMA|CBMA)(?=,|$)/g, '')
+    .replace(/p?(SBMA|CBMA)\s+/g, '');
 }
 
 function formatUnit(u: string): string {
@@ -279,7 +292,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
   }
 
   function describe(r: Row): string {
-    return `${r.paper} (${r.year}), ${r.metric}, ${r.species}, ${r.duration}: ${formatNum(r.uncoated)} uncoated, ${formatNum(r.coated)} coated ${formatUnit(r.unit)}, ${r.pct_change} percent. p ${r.p_text ?? 'not stated'}.${r.exact ? '' : ' Approximate, read from the plot.'}`;
+    return `${r.paper} (${r.year}), ${r.metric}, ${r.species}, ${r.duration}: ${formatNum(r.uncoated)} uncoated, ${formatNum(r.coated)} coated ${formatUnit(r.unit)}, ${r.pct_change} percent. p ${r.p_text ?? 'not stated'}.${r.exact ? '' : ' Estimated from a published plot.'}`;
   }
 
   function dl(pairs: [string, string][]): HTMLElement {
@@ -297,14 +310,14 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
       dl([
         ['Species', r.species],
         ['Duration', r.duration],
-        ['Device', r.device_or_substrate],
+        ['Device', deviceText(r.device_or_substrate)],
         ['Uncoated', `${formatNum(r.uncoated)} ${formatUnit(r.unit)}`],
         ['Coated', `${formatNum(r.coated)} ${formatUnit(r.unit)}`],
         ['Change', `${r.pct_change > 0 ? '+' : ''}${r.pct_change} percent`],
         ['n', r.n],
         ['p', r.p_text ?? 'not stated'],
       ]),
-      r.exact ? null : h('p', { class: 'ch-tip-badge ch-tip-approx' }, 'Approximate, read from the plot'),
+      r.exact ? null : h('p', { class: 'ch-tip-badge ch-tip-approx' }, 'Estimated from a published plot'),
     );
   }
 
@@ -325,14 +338,14 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
             h('th', { scope: 'row' }, `${r.paper} ${r.year}`),
             h('td', {}, r.species),
             h('td', {}, r.duration),
-            h('td', {}, r.device_or_substrate),
+            h('td', {}, deviceText(r.device_or_substrate)),
             h('td', {}, r.metric),
             h('td', { class: 'num' }, `${formatNum(r.uncoated)} ${formatUnit(r.unit)}`),
             h('td', { class: 'num' }, `${formatNum(r.coated)} ${formatUnit(r.unit)}`),
             h('td', { class: 'num' }, `${r.pct_change > 0 ? '+' : ''}${r.pct_change}`),
             h('td', {}, r.n),
             h('td', {}, r.p_text ?? 'not stated'),
-            h('td', {}, r.exact ? 'Exact' : 'Approximate'),
+            h('td', {}, r.exact ? 'Exact' : 'Estimated from plot'),
           ),
         ),
       ),
@@ -428,7 +441,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
       s(
         'desc',
         { id: descId },
-        `Scatter chart. Horizontal axis: time in days on a log scale, with two bands at the left for ex vivo tests and for measurements at implantation. Vertical axis: percent change with the coating compared with uncoated; negative is better. ${list.length} of ${total} comparisons are shown. Use the arrow keys to move between markers. A table of the same data is below the chart.`,
+        `Scatter chart. Horizontal axis: time in days on a log scale, with two bands at the left for ex vivo and bench tests and for measurements at implantation. Vertical axis: percent change with the coating compared with uncoated; negative is better. ${list.length} of ${total} comparisons are shown. Use the arrow keys to move between markers. A table of the same data is below the chart.`,
       ),
     );
 
@@ -463,7 +476,7 @@ export function mount(root: HTMLElement, data: StudyRow[]): void {
     const bandLabel = (cx: number, lines: string[]) => {
       lines.forEach((t, i) => svg.append(s('text', { class: 'ch-tick ch-band-label', x: cx, y: yBase + 16 + i * 13, 'text-anchor': 'middle' }, t)));
     };
-    bandLabel(m.l + bw / 2, L.narrow ? ['Ex vivo /', 'in vitro'] : ['Ex vivo /', 'in vitro']);
+    bandLabel(m.l + bw / 2, ['Ex vivo /', 'bench']);
     bandLabel(m.l + bw + bw / 2, ['At', 'implant.']);
 
     if (list.length === 0) {

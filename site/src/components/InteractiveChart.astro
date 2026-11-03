@@ -1,26 +1,33 @@
 ---
 /*
-  Frame for one of the two interactive charts. The page script mounts the chart
+  Frame for an interactive chart. The page script mounts the chart
   into .ichart-mount. Without JavaScript the <noscript> image shows; if mounting
   throws, the script swaps in the same image. A download link is always present.
 */
 import '../styles/charts.css';
 import { imageSize } from '../lib/imagesize';
+import { shortSourceFor } from '../data/source-short';
 
 interface Props {
   id: string;
   name: string;
   alt: string;
   caption: string;
+  /** The full source: the record, kept in code. Not displayed when a short source exists. */
   source: string;
+  /** The displayed source line. Defaults to the manifest's source_short for the fallback chart. */
+  sourceShort?: string;
   width?: number;
+  /** Extra class on the figure (layout hooks such as the home hero). */
+  class?: string;
 }
-const { id, name, alt, caption, source, width = 1000 } = Astro.props;
+const { id, name, alt, caption, source, sourceShort, width = 1000, class: extra } = Astro.props;
+const shown = sourceShort ?? shortSourceFor(name) ?? source;
 const src = `/figures/${name}.png`;
 const size = imageSize(src);
 const height = Math.round((width * size.height) / size.width);
 ---
-<figure class="ichart">
+<figure class:list={['ichart', extra]}>
   <div
     class="ichart-mount"
     data-chart={id}
@@ -33,7 +40,7 @@ const height = Math.round((width * size.height) / size.width);
   </div>
   <figcaption class="ichart-cap">
     <p class="ichart-caption">{caption}</p>
-    <p class="ichart-source label">Source: {source}</p>
+    <p class="ichart-source label">Source: {shown}</p>
     <p class="ichart-dl"><a href={src} download>Download the static chart</a> <span class="label">PNG</span></p>
   </figcaption>
 </figure>

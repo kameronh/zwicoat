@@ -174,7 +174,7 @@ export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
   };
   const axisTop = makeAxis();
   const axis = makeAxis();
-  const axisNote = h('p', { class: 'af-axis-note' }, 'Reduction versus the uncoated surface. The bar is the reduction; the gray track is the uncoated value (100%). ~ means the value is approximate.');
+  const axisNote = h('p', { class: 'af-axis-note' }, 'Reduction versus the uncoated surface. The bar is the reduction; the gray track is the uncoated value (100%). ~ marks a value estimated from a published plot.');
   wrap.append(titleEl, axisTop, list, axis, axisNote);
   const tip = new Tooltip(wrap, tipId);
 
@@ -206,7 +206,7 @@ export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
   const valueText = (r: Row) => `${r.exact ? '' : '~'}${r.pct_reduction}%`;
 
   function describe(r: Row): string {
-    return `${r.assay}, ${r.surface}. ${r.paperKey}, ${r.species_or_setting}. ${formatNum(r.uncoated)} uncoated, ${formatNum(r.coated)} coated ${formatUnit(r.unit)}: ${r.exact ? '' : 'about '}${r.pct_reduction} percent reduction. n ${r.n}. p ${r.p_text ?? 'not stated'}.${r.exact ? '' : ' Approximate.'}`;
+    return `${r.assay}, ${r.surface}. ${r.paperKey}, ${r.species_or_setting}. ${formatNum(r.uncoated)} uncoated, ${formatNum(r.coated)} coated ${formatUnit(r.unit)}: ${r.exact ? '' : 'about '}${r.pct_reduction} percent reduction. n ${r.n}. p ${r.p_text ?? 'not stated'}.${r.exact ? '' : ' Estimated from a published plot.'}`;
   }
 
   function dl(pairs: [string, string][]): HTMLElement {
@@ -232,8 +232,9 @@ export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
       h('p', { class: 'ch-tip-kicker label' }, `${r.paperKey}, ${r.journal}`),
       h('p', { class: 'ch-tip-title' }, r.assay),
       dl(pairs),
-      r.note ? h('p', { class: 'ch-tip-meta' }, r.note) : null,
-      r.exact ? null : h('p', { class: 'ch-tip-badge ch-tip-approx' }, 'Approximate'),
+      // Build caveats (how a value was taken from a plot) stay in the data, not in the tooltip.
+      r.note && !/plotted|inventory|caveat|read from/i.test(r.note) ? h('p', { class: 'ch-tip-meta' }, r.note) : null,
+      r.exact ? null : h('p', { class: 'ch-tip-badge ch-tip-approx' }, 'Estimated from a published plot'),
       r.in_static_chart ? null : h('p', { class: 'ch-tip-meta' }, 'Not drawn in the static chart.'),
     );
   }
@@ -262,7 +263,7 @@ export function mount(root: HTMLElement, data: AntifoulingRow[]): void {
             h('td', { class: 'num' }, String(r.pct_reduction)),
             h('td', {}, r.n),
             h('td', {}, r.p_text ?? 'not stated'),
-            h('td', {}, r.exact ? 'Exact' : 'Approximate'),
+            h('td', {}, r.exact ? 'Exact' : 'Estimated from plot'),
           ),
         ),
       ),

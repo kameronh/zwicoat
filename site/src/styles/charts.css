@@ -270,3 +270,83 @@
 .tr-vgrid { stroke-dasharray: 2 3; }
 .tr-hint { margin: 0; color: var(--muted); }
 .tr-table { min-width: 34rem; }
+
+/* In-vivo study browser: species added in round five. Larynx is the same orange family as the
+   cadaveric cochlea, darker; the synthetic cochlea (a bench model) is gray. */
+.sp-larynx { --c: color-mix(in srgb, var(--orange) 62%, var(--ink)); }
+.sp-synthetic { --c: color-mix(in srgb, var(--muted) 55%, var(--paper)); }
+
+/* Two-panel trace viewer: the group label above each panel. */
+.tr-panel-title { font-size: 13px; font-weight: 700; fill: var(--ink); }
+.tr-coated-title { fill: var(--blue-deep); }
+
+/* Species colors shared by the scar chart (fibrosis.ts) and the durability timeline (durability.ts). */
+.fb-mouse { --c: var(--blue); }
+.fb-rat { --c: var(--plum); }
+.fb-sheep { --c: var(--blue-deep); }
+.fb-other { --c: var(--muted); }
+.fb-legend { margin-top: var(--space-3); font-size: 0.8125rem; color: var(--ink-2); }
+.fb-swatch { display: inline-block; width: 14px; height: 10px; background: var(--c); }
+.fb-swatch.fb-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+/* Scar chart (src/scripts/fibrosis.ts): horizontal bars, built like the antifouling browser. */
+.fb-chart, .fb-axis { --af-cols: minmax(10rem, 20rem) minmax(0, 1fr) 3.25rem; }
+.fb-row {
+  display: grid;
+  grid-template-columns: var(--af-cols);
+  column-gap: var(--space-3);
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  outline: none;
+}
+.fb-row:hover, .fb-row.is-active { background: var(--paper-2); }
+.fb-row:focus-visible { outline: 2px solid var(--blue-deep); outline-offset: -2px; background: var(--blue-tint); }
+.fb-track {
+  display: block;
+  position: relative;
+  height: 1.1rem;
+  background:
+    linear-gradient(to right, var(--line) 1px, transparent 1px) 0 0 / 20% 100% repeat-x,
+    var(--paper-2);
+  border-right: 1px solid var(--line);
+}
+.fb-bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--c, var(--blue)); }
+.fb-row:hover .fb-bar, .fb-row.is-active .fb-bar, .fb-row:focus-visible .fb-bar { box-shadow: inset 0 0 0 2px var(--ink); }
+.fb-axis { display: grid; grid-template-columns: var(--af-cols); column-gap: var(--space-3); padding: 0.35rem 0.75rem 0; }
+.fb-axis[hidden] { display: none; }
+.fb-table { min-width: 48rem; }
+.ch-tip.is-pinned { pointer-events: auto; }
+.ch-tip-link a { color: var(--paper); font-weight: 700; text-underline-offset: 0.18em; }
+.ch-tip-link a:focus-visible { outline: 2px solid var(--blue-tint); outline-offset: 2px; }
+/* Narrow containers (the home hero column) and phones: the label goes above the bar. */
+@media (max-width: 720px) {
+  .fb-chart, .fb-axis { --af-cols: minmax(0, 1fr) 3.25rem; }
+  .fb-row { padding-block: 0.45rem; row-gap: 0.25rem; }
+  .fb-row .af-label { grid-column: 1 / -1; }
+  .fb-axis .af-axis-spacer:first-child { display: none; }
+}
+.ichart.compact .fb-chart, .ichart.compact .fb-axis { --af-cols: minmax(8rem, 17rem) minmax(0, 1fr) 3rem; column-gap: var(--space-2); }
+.ichart.compact .fb-row { padding: 0.2rem 0.5rem; column-gap: var(--space-2); }
+.ichart.compact .fb-axis { padding-inline: 0.5rem; }
+.ichart.compact .af-assay { font-size: 0.8125rem; }
+.ichart.compact .af-meta { font-size: 0.75rem; }
+
+/* Durability timeline (src/scripts/durability.ts). */
+.du-axis { stroke: var(--line); stroke-width: 6; stroke-linecap: round; }
+.du-mark { cursor: pointer; outline: none; }
+.du-mark .hit { fill: transparent; stroke: transparent; stroke-width: 2; }
+.du-mark:focus-visible .hit { stroke: var(--blue-deep); fill: var(--blue-tint); }
+.du-dot { fill: var(--c, var(--blue)); stroke: var(--paper); stroke-width: 2; }
+.du-stem { stroke: var(--c, var(--blue)); stroke-width: 1.5; stroke-opacity: 0.5; }
+.du-mark.is-active .du-dot, .du-mark:focus-visible .du-dot { stroke: var(--ink); stroke-width: 3; }
+.du-mark.is-active .hit { fill: var(--blue-tint); }
+.du-list .tl-year { white-space: nowrap; }
+@media (min-width: 720px) {
+  .du-list .tl-item { grid-template-columns: 5.5rem 4.5rem minmax(0, 1fr); }
+}
+@media (max-width: 719px) {
+  .du-list .tl-item { grid-template-columns: 5.5rem minmax(0, 1fr); }
+}
+.ichart.compact .fb-journal { display: none; }

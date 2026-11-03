@@ -14,26 +14,32 @@ figures:
   - name: "W25_sheep_impedance_components"
     caption: "Total impedance, polarization impedance and access resistance of coated and uncoated human cochlear implant arrays in sheep, at implantation and at four weeks."
     source: "Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 3B to 3D (bar heights approximate, read from the published figure; p values as printed). doi:10.1016/j.heares.2026.109606"
+    sourceShort: "Ben-Shlomo et al. 2026, Hearing Research, Figs 3B to 3D"
     alt: "Three small bar charts of electrode impedance in kilohms for coated and uncoated human cochlear implant arrays in sheep, at implantation and at four weeks. Total impedance is about 30 uncoated against 10.5 coated at implantation, and about 17.5 against 9.5 at four weeks. Access resistance is about 12.5 against 6 at implantation and 11 against 5 at four weeks."
   - name: "W26_sheep_histology"
     caption: "At the round window of the sheep cochlea, coated arrays had fewer cell nuclei, fewer macrophages and less fibrosis than uncoated arrays when the three sheep were pooled."
     source: "Ben-Shlomo N, et al. Hearing Research 2026;474:109606, Fig 6E to 6G (bar and per-sheep values approximate, read from the published figure; pooled p values as printed). doi:10.1016/j.heares.2026.109606"
+    sourceShort: "Ben-Shlomo et al. 2026, Hearing Research, Figs 6E to 6G"
     alt: "Three small charts comparing uncoated and coated arrays at the round window of the sheep cochlea: cell nuclei density, macrophage density and fibrosis. The pooled coated bar is lower in all three. A line joins each of the three sheep's uncoated and coated values."
   - name: "W27_capsule_thickness_mice"
     caption: "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
+    sourceShort: "Horne et al. 2023, Acta Biomaterialia, Figs 5D and 7I"
     alt: "Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
   - name: "W37_ci_insertion_synthetic"
     caption: "A robot inserted a cochlear implant electrode array into a synthetic cochlea at constant speed. The sterilized coated array reached a 64 percent lower peak insertion force than the uncoated array (mean 17.5 versus 48.3 mN) and needed 66 percent less work of insertion (99 versus 291 mN·mm), measured on the same insertions."
     source: "NIH SBIR Phase I dataset, ZwiCoat Materials Innovations, Zenodo, doi:10.5281/zenodo.10459478"
+    sourceShort: "NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478"
     alt: "Three panels for a cochlear implant electrode array inserted by robot into a synthetic cochlea. Panel A: force against insertion depth for every insertion, six uncoated in gray and five coated in blue; the coated traces stay below about 21 millinewtons while uncoated traces climb to about 40 to 60. Panel B: mean peak insertion force, 48 millinewtons uncoated and 18 coated, 64 percent lower. Panel C: mean work of insertion, 291 millinewton-millimeters uncoated and 99 coated, 66 percent lower."
   - name: "W07_insertion_force"
-    caption: "Coated cochlear implant arrays needed about half the peak insertion force of uncoated arrays in two human cadaveric studies: about 42 percent less (Bennion 2021) and about 50 percent less (Peel 2024)."
-    source: "Bennion DM, Horne R, Peel A, et al. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A and 4B (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156."
-    alt: "Three panels of insertion force for uncoated and coated cochlear implant arrays in human cadaveric cochleae, nine per group. Peak insertion force in Bennion 2021 was 64.2 millinewtons uncoated and 37.0 coated, about 42 percent lower. Force variation in the same study was 89.9 millinewtons per second uncoated and 52.1 coated, about 42 percent lower. Peak insertion force in Peel 2024 was about 68 millinewtons uncoated and about 35 coated, about 50 percent lower."
+    caption: "Coated cochlear implant electrode arrays needed about half the peak insertion force of uncoated arrays in three studies: 42 percent less in human cadaveric cochleae (Bennion 2021), about 50 percent less in human cadaveric cochleae (Peel 2024) and 64 percent less in a synthetic cochlea (NIH SBIR Phase I dataset)."
+    source: "Bennion DM, Horne R, Peel A, et al. Otology and Neurotology 2021;42(10):1476-1483, Fig 4A (means and SD from the text), doi:10.1097/MAO.0000000000003288; Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Fig 13A (values approximate, read from the published figure), doi:10.1021/acsabm.4c00156; ZwiCoat Materials Innovations, NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478 (see W37)."
+    sourceShort: "Bennion et al. 2021, Otology and Neurotology, Fig 4A; Peel et al. 2024, ACS Applied Bio Materials, Fig 13A; NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478"
+    alt: "Three bar charts of peak insertion force for uncoated and coated cochlear implant arrays. Panel A, human cadaveric cochleae (Bennion 2021), nine per group: 64.2 millinewtons uncoated and 37.0 coated, 42 percent lower. Panel B, human cadaveric cochleae (Peel 2024), nine per group: about 68 uncoated and about 35 coated, about 50 percent lower. Panel C, synthetic cochlea (NIH SBIR Phase I dataset), six uncoated and five coated insertions: 48.3 uncoated and 17.5 coated, 64 percent lower."
   - name: "histology-sheep"
     caption: "Sheep cochlea at the round window, uncoated array on the left and coated array on the right. Top row: H&E stain. Bottom row: stains for fibrosis (alpha-SMA, red), macrophages (Iba1, green) and nuclei (Hoechst, blue)."
     source: "Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 6A to D, CC BY 4.0."
+    sourceShort: "Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 6A to D, CC BY 4.0."
     alt: "Tissue sections from the base of a sheep cochlea at the round window. Left column, uncoated array: a star marks inflammatory tissue in the scala tympani, and the fluorescence panel shows strong red fibrosis and green macrophage staining. Right column, coated array: the space is largely clear and the staining is faint."
 sources:
   - "Jones CMP, Abdel Shaheed C, Ferreira G, et al. Spinal cord stimulators: an analysis of the adverse events reported to the Australian Therapeutic Goods Administration. J Patient Saf. 2022;18(5):507-511. doi:10.1097/PTS.0000000000000971"
@@ -45,9 +51,7 @@ sources:
 cardStat: "~50%"
 cardStatLabel: "lower total electrode impedance after four weeks in sheep (Ben-Shlomo 2026)"
 ---
-{{photo:histology-sheep}}
-
-<!-- MEDIA: Horne 2023 platinum/silicone capsule micrograph pending Kam -->
+{{panels:capsule}}
 
 ## The problem
 
@@ -68,6 +72,8 @@ The results below come from published studies in mice, in sheep and in human cad
 **Less inflammation at the round window.** Where the array enters the cochlea, coated ears had fewer cells, fewer macrophages and less fibrous tissue after four weeks. (Ben-Shlomo 2026.)
 
 {{figure:W26}}
+
+{{photo:histology-sheep}}
 
 **About half the insertion force.** Coated arrays needed about half the peak force in human cadaveric cochleae. In two studies it fell about 42 percent, 64.2 against 37.0 millinewtons (Bennion 2021, Otology and Neurotology), and about 50 percent, about 68 against 35 millinewtons (Peel 2024, ACS Applied Bio Materials). Force variation fell about 42 percent in the first study.
 

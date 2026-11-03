@@ -4,13 +4,20 @@ import Photo from './Photo.astro';
 import VideoLoop from './VideoLoop.astro';
 import Prose from './Prose.astro';
 import PeekPathway from './PeekPathway.astro';
+import DurabilityChart from './DurabilityChart.astro';
+import CapsulePanels from './CapsulePanels.astro';
+import ImpactBlock from './ImpactBlock.astro';
 
 /*
   Renders the blocks of an application page: prose, charts, photographs and clips.
   Two portrait items in a row arrive already grouped as a pair.
   Diagrams ({{diagram:name}} in the markdown) are inline SVG components.
+  {{interactive:durability}} is the interactive W06 timeline (PNG fallback), {{panels:capsule}}
+  the Horne 2023 capsule panels, {{block:impact}} the pendulum clip with its before and after
+  photographs, and {{photopair:name}} two photographs side by side.
 */
-interface LabPhoto { src: string; alt: string; caption: string; aspect: string; credit?: string }
+interface LabPhoto { src: string; alt: string; caption: string; aspect: string; credit?: string; maxWidth?: number }
+interface PhotoPair { items: string[]; caption?: string; credit?: string; maxWidth?: string }
 interface LabVideo { src: string; poster: string; caption: string; alt: string; aspect: string }
 interface Props {
   blocks: any[];
@@ -18,16 +25,49 @@ interface Props {
   videos: Record<string, LabVideo>;
   credit: string;
   photoSize: Record<string, string>;
+  pairs?: Record<string, PhotoPair>;
 }
-const { blocks, photos, videos, credit, photoSize } = Astro.props;
+const { blocks, photos, videos, credit, photoSize, pairs = {} } = Astro.props;
 ---
 {blocks.map((b) => {
   if (b.kind === 'html') return <Prose><Fragment set:html={b.html} /></Prose>;
   if (b.kind === 'figure') {
-    return <div class="fig"><Figure name={b.fig.name} alt={b.fig.alt} caption={b.fig.caption} source={b.fig.source} width={1000} /></div>;
+    const w = b.fig.width ?? 1000;
+    return <div class="fig"><Figure name={b.fig.name} alt={b.fig.alt} caption={b.fig.caption} source={b.fig.source} sourceShort={b.fig.sourceShort} width={w} maxWidth={b.fig.width} /></div>;
   }
   if (b.kind === 'photo') {
-    return <div class="fig"><Photo src={`/images/${b.fig.name}.png`} alt={b.fig.alt} caption={b.fig.caption} credit={b.fig.source} aspect={photoSize[b.fig.name]} /></div>;
+    return <div class="fig"><Photo src={`/images/${b.fig.name}.png`} alt={b.fig.alt} caption={b.fig.caption} credit={b.fig.source} sourceShort={b.fig.sourceShort} aspect={photoSize[b.fig.name]} /></div>;
+  }
+  if (b.kind === 'interactive') {
+    if (b.key === 'durability') return <div class="fig"><DurabilityChart /></div>;
+    return null;
+  }
+  if (b.kind === 'panels') {
+    if (b.key === 'capsule') return <div class="fig"><CapsulePanels /></div>;
+    return null;
+  }
+  if (b.kind === 'block') {
+    if (b.key === 'impact') return <div class="fig"><ImpactBlock /></div>;
+    return null;
+  }
+  if (b.kind === 'photopair') {
+    const pp = pairs[b.key];
+    return (
+      <figure class="fig ppair" style={pp.maxWidth ? `max-width: ${pp.maxWidth};` : undefined}>
+        <div class="ppair-grid">
+          {pp.items.map((k) => {
+            const p = photos[k];
+            return <div class="pair-item"><Photo src={p.src} alt={p.alt} caption={p.caption} aspect={p.aspect} maxWidth={p.maxWidth} /></div>;
+          })}
+        </div>
+        {(pp.caption || pp.credit) && (
+          <figcaption class="ppair-cap">
+            {pp.caption && <p class="ppair-caption">{pp.caption}</p>}
+            {(pp.credit ?? credit) && <p class="ppair-credit label">{pp.credit ?? credit}</p>}
+          </figcaption>
+        )}
+      </figure>
+    );
   }
   if (b.kind === 'diagram') {
     if (b.key === 'peek-pathway') return <div class="fig"><PeekPathway /></div>;
@@ -40,7 +80,7 @@ const { blocks, photos, videos, credit, photoSize } = Astro.props;
     }
     if (x.kind === 'labphoto') {
       const p = photos[x.key];
-      return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={p.credit ?? credit} aspect={p.aspect} />;
+      return <Photo src={p.src} alt={p.alt} caption={p.caption} credit={p.credit ?? credit} aspect={p.aspect} maxWidth={p.maxWidth} />;
     }
     return null;
   };
@@ -50,7 +90,14 @@ const { blocks, photos, videos, credit, photoSize } = Astro.props;
 })}
 
 <style>
+  /* Charts size themselves (Figure caps each at its design width); photos and clips keep a 62rem column. */
   .fig { margin-block: var(--space-5); max-width: 62rem; min-width: 0; }
+  .fig:has(> :global(.figure)), .fig:has(> :global(.ichart)) { max-width: 75rem; }
   .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); align-items: start; max-width: 40rem; }
   .pair-item { min-width: 0; }
+  .ppair { margin-inline: 0; }
+  .ppair-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); align-items: end; }
+  .ppair-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .ppair-caption { color: var(--ink); }
+  .ppair-credit { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
 </style>

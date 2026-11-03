@@ -21,6 +21,10 @@ const applications = defineCollection({
         name: z.string(),
         caption: z.string(),
         source: z.string(),
+        // The displayed source line (citation plus figure numbers); `source` stays as the full record.
+        sourceShort: z.string().optional(),
+        // Rendered width cap in CSS pixels for a chart that would otherwise fill the column.
+        width: z.number().optional(),
         alt: z.string(),
       }),
     ),

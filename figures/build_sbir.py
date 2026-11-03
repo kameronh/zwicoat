@@ -173,7 +173,8 @@ def w37_ci(trials, s):
          f"(mean ± SD); Welch t-test p = {s['p_welch']:.1e} (Student p = {s['p_student']:.1e}, Mann-Whitney p = {s['p_mannwhitney']:.4f}). "
          "EtO sterilization (Andersen Scientific, 50 C, 16 h) and the iotaSoft insertion robot are stated in the SBIR Phase I close-out and the Phase II research "
          "plans, not in the Zenodo README. The coated trials are repeated insertions of one coated array (SS#4), the uncoated trials of one uncoated array. "
-         "Traces in panel A are 0.04 mm bin means for display; all numbers use the raw samples. Trace data: figures/data/W37_traces.json")
+         "Traces in panel A are 0.04 mm bin means for display; all numbers use the raw samples. Trace data: figures/data/W37_traces.json",
+         source_short="NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478")
 
 
 def w37_json(trials, s):
@@ -436,7 +437,8 @@ def w38_ett(trials, s):
          f"Test: log(impulse) ~ surgeon + coating with a random intercept per tube (REML), pooled reduction {mm['reduction_pct']:.1f}% "
          f"(95% CI {mm['ci95_reduction_pct'][0]:.1f} to {mm['ci95_reduction_pct'][1]:.1f}%), p = {mm['p']:.4f}; with one uncoated tube per surgeon a per-surgeon "
          "p at the tube level is not estimable, so one pooled p is shown. Representative traces = the intubation closest to its group median. "
-         "Trace data: figures/data/W38_traces.json")
+         "Trace data: figures/data/W38_traces.json",
+         source_short="ZwiCoat internal study, 2026; raw data in the NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478")
 
 
 def w38_json(trials, s):
@@ -462,8 +464,7 @@ def main():
     et = load_ett(); verify_ett(et); es = ett_stats(et)
     print("ETT:", json.dumps(es, indent=1, default=float))
     w38_ett(et, es); w38_json(et, es)
-    md = ["# Figure manifest, SBIR Phase I charts (built by figures/build_sbir.py)", "", "| file | caption | sources |", "|---|---|---|"]
-    md += [f"| {m['file']} | {m['caption']} | {m['sources']} |" for m in bf.MANIFEST]
+    md = ["# Figure manifest, SBIR Phase I charts (built by figures/build_sbir.py)", ""] + bf.manifest_rows(bf.MANIFEST)
     md += ["", f"Build note, W37 (review before publishing): the recorded insertion lengths differ by group (coated traces end at "
            f"{min(cs['end_depth_coated']):.1f} to {max(cs['end_depth_coated']):.1f} mm, uncoated at {min(cs['end_depth_uncoated']):.1f} to {max(cs['end_depth_uncoated']):.1f} mm, "
            "depth taken from the sample index as in plot_data.m), and work is integrated over each full trace. Over the depth every trace reaches (0 to 14 mm) "

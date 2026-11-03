@@ -3,8 +3,9 @@
   Data: W37_traces.json (synthetic cochlea, force against insertion depth, 11 insertions) and
   W38_traces.json (cadaveric larynx, force against time from the start of intubation, 60
   intubations). The public copies hold only the traces, trial and group labels and summary
-  statistics. Every trace is drawn thin (uncoated gray, coated blue); hovering or focusing a
-  trace draws it bold on top and shows its label, peak force and work or impulse.
+  statistics. Two panels on one shared x and y range: uncoated traces on the left (gray),
+  coated on the right (blue), no overlay. Hovering or focusing a trace draws it bold on top
+  and shows its label, peak force and work or impulse.
   Vanilla TypeScript, colors only through the tokens applied in charts.css.
 */
 import { s, h, uid, guard, watchWidth, Tooltip } from './chart-utils';
@@ -269,10 +270,14 @@ export function mount(root: HTMLElement, data: TraceData): void {
     lastWidth = width;
     const W = Math.max(280, width);
     const narrow = W < 560;
-    const H = narrow ? 340 : 420;
-    const m = { l: narrow ? 46 : 58, r: 14, t: 12, b: 50 };
-    const iw = W - m.l - m.r;
-    const ih = H - m.t - m.b;
+    // Two panels, uncoated left and coated right, on one shared x and y range. Below 520 px they stack.
+    const stacked = W < 520;
+    const panelH = stacked ? 260 : narrow ? 320 : 380;
+    const m = { l: narrow ? 46 : 58, r: 14, t: 30, b: 50 };
+    const gap = stacked ? 0 : narrow ? 16 : 28;
+    const pw = stacked ? W - m.l - m.r : (W - m.l - m.r - gap - m.l) / 2;
+    const ih = panelH - m.t - m.b;
+    const H = stacked ? panelH * 2 : panelH;
     const list = visible();
     renderSide(list);
 
@@ -285,9 +290,21 @@ export function mount(root: HTMLElement, data: TraceData): void {
     const yHi = Math.ceil(yHiRaw / yStep) * yStep;
     const yLo = yLoRaw;
     const yT = ticks(yLo, yHi, narrow ? 4 : 6);
-    const xT = ticks(xLo, xHi, narrow ? 4 : 8);
-    const X = (v: number) => m.l + ((v - xLo) / (xHi - xLo || 1)) * iw;
-    const Y = (v: number) => m.t + ih - ((v - yLo) / (yHi - yLo || 1)) * ih;
+    const xT = ticks(xLo, xHi, narrow || !stacked ? 4 : 8);
+    const groups: Group[] = ['uncoated', 'coated'];
+    // Panel origin: left edge of the plot area and top of the panel.
+    const origin = (g: Group) => {
+      const i = groups.indexOf(g);
+      return stacked ? { x: m.l, y: i * panelH } : { x: m.l + i * (pw + gap + m.l), y: 0 };
+    };
+    const Xg = (g: Group) => {
+      const o = origin(g);
+      return (v: number) => o.x + ((v - xLo) / (xHi - xLo || 1)) * pw;
+    };
+    const Yg = (g: Group) => {
+      const o = origin(g);
+      return (v: number) => o.y + m.t + ih - ((v - yLo) / (yHi - yLo || 1)) * ih;
+    };
 
     const svg = s('svg', {
       class: 'ch-svg tr-svg',
@@ -303,24 +320,31 @@ export function mount(root: HTMLElement, data: TraceData): void {
       s(
         'desc',
         { id: descId },
-        `Line chart, one line per ${spec.noun}: ${spec.xTitle.toLowerCase()} across, ${spec.yTitle.toLowerCase()} up. Uncoated lines are gray and coated lines are blue. ${list.length} ${spec.noun}s are shown. Use the arrow keys to move from line to line; each line reports its peak force and ${spec.totalName.toLowerCase()}. A table of the same values is below the chart.`,
+        `Two line charts side by side on the same scales, uncoated on the left and coated on the right, one line per ${spec.noun}: ${spec.xTitle.toLowerCase()} across, ${spec.yTitle.toLowerCase()} up. ${list.length} ${spec.noun}s are shown. Use the arrow keys to move from line to line; each line reports its peak force and ${spec.totalName.toLowerCase()}. A table of the same values is below the chart.`,
       ),
     );
 
-    yT.forEach((v) => {
-      const y = Y(v);
-      svg.append(s('line', { class: v === 0 ? 'ch-axis' : 'ch-grid', x1: m.l, x2: W - m.r, y1: y, y2: y }));
-      svg.append(s('text', { class: 'ch-tick', x: m.l - 8, y: y + 4, 'text-anchor': 'end' }, fmt(v, 2)));
+    groups.forEach((g) => {
+      const o = origin(g);
+      const X = Xg(g);
+      const Y = Yg(g);
+      const n = list.filter((t) => t.group === g).length;
+      svg.append(s('text', { class: `tr-panel-title tr-${g}-title`, x: o.x, y: o.y + 16 }, `${GROUP_TEXT[g]} (${n} ${spec.noun}s)`));
+      yT.forEach((v) => {
+        const y = Y(v);
+        svg.append(s('line', { class: v === 0 ? 'ch-axis' : 'ch-grid', x1: o.x, x2: o.x + pw, y1: y, y2: y }));
+        svg.append(s('text', { class: 'ch-tick', x: o.x - 8, y: y + 4, 'text-anchor': 'end' }, fmt(v, 2)));
+      });
+      xT.forEach((v) => {
+        const x = X(v);
+        svg.append(s('line', { class: 'ch-grid tr-vgrid', x1: x, x2: x, y1: o.y + m.t, y2: o.y + m.t + ih }));
+        svg.append(s('text', { class: 'ch-tick', x, y: o.y + m.t + ih + 18, 'text-anchor': 'middle' }, fmt(v, 2)));
+      });
+      svg.append(
+        s('text', { class: 'ch-axis-title', x: o.x + pw / 2, y: o.y + panelH - 8, 'text-anchor': 'middle' }, spec.xTitle),
+        s('text', { class: 'ch-axis-title', x: 0, y: 0, 'text-anchor': 'middle', transform: `translate(${o.x - m.l + 13} ${o.y + m.t + ih / 2}) rotate(-90)` }, spec.yTitle),
+      );
     });
-    xT.forEach((v) => {
-      const x = X(v);
-      svg.append(s('line', { class: 'ch-grid tr-vgrid', x1: x, x2: x, y1: m.t, y2: m.t + ih }));
-      svg.append(s('text', { class: 'ch-tick', x, y: m.t + ih + 18, 'text-anchor': 'middle' }, fmt(v, 2)));
-    });
-    svg.append(
-      s('text', { class: 'ch-axis-title', x: m.l + iw / 2, y: H - 6, 'text-anchor': 'middle' }, spec.xTitle),
-      s('text', { class: 'ch-axis-title', x: 0, y: 0, 'text-anchor': 'middle', transform: `translate(13 ${m.t + ih / 2}) rotate(-90)` }, spec.yTitle),
-    );
 
     // Uncoated first, coated on top; within a group, smallest peak first. The arrow keys follow this order.
     const ordered = [...list].sort((a, b) => (a.group === b.group ? a.peak - b.peak : a.group === 'uncoated' ? -1 : 1));
@@ -328,6 +352,8 @@ export function mount(root: HTMLElement, data: TraceData): void {
     const lines = s('g', { class: 'tr-lines' });
     paths.clear();
     ordered.forEach((t, idx) => {
+      const X = Xg(t.group);
+      const Y = Yg(t.group);
       let d = '';
       let px = X(t.xs[0]);
       let py = Y(t.ys[0]);

@@ -27,6 +27,10 @@ const findFigure = (token: string): Fig => {
     {{photo:name}}      one photograph (names below, or a non-chart entry in the page's figures list)
     {{video:name}}      a silent looping clip
     {{diagram:name}}    an inline SVG diagram component (names in DIAGRAMS below)
+    {{interactive:durability}}  the interactive W06 durability timeline, with its PNG fallback
+    {{panels:capsule}}  the Horne 2023 capsule panels (silicone and platinum, uncoated and coated)
+    {{block:impact}}    the pendulum clip with the before and after photographs
+    {{photopair:name}}  two lab photographs side by side (names in PHOTO_PAIRS below)
   Every lab image carries the same credit line.
 */
 const CREDIT = 'ZwiCoat, 2026';
@@ -34,13 +38,42 @@ const ratioOf = (aspect: string) => {
   const [w, h] = aspect.split('/').map(Number);
   return w / h;
 };
-const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; aspect: string; credit?: string }> = {
+const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; aspect: string; credit?: string; maxWidth?: number }> = {
+  // Deck slide 2: small originals (364 and 447 px wide), so each is capped at 1.5x its native width.
+  'expander-deflated': {
+    src: '/images/lab/expander-deflated.jpg',
+    alt: 'A deflated coated tissue expander lying folded in a glass bowl of blue liquid.',
+    caption: 'Deflated',
+    aspect: '364/382',
+    maxWidth: 546,
+  },
+  'expander-inflated': {
+    src: '/images/lab/expander-inflated.jpg',
+    alt: 'The same coated tissue expander inflated into a rounded dome, held up in the glass bowl by a gloved hand.',
+    caption: 'Inflated',
+    aspect: '447/394',
+    maxWidth: 670,
+  },
+  // Deck slide 3, converted to JPEG at 1600 px wide.
+  'expander-100pct': {
+    src: '/images/lab/expander-inflation-100pct.jpg',
+    alt: 'Two photographs of a blue-coated tissue expander on a white bench at the start of the inflation test: a smooth, evenly blue dome.',
+    caption: 'At 100 percent of rated volume',
+    aspect: '1600/806',
+  },
+  'expander-300pct': {
+    src: '/images/lab/expander-inflation-300pct.jpg',
+    alt: 'Two photographs of the same coated expander later in the test, larger and paler blue, with the coating unbroken across the shell.',
+    caption: 'At 300 percent of rated volume',
+    aspect: '1600/809',
+  },
   'ci-array-elemental-map': {
     src: '/images/lab/ci-array-elemental-map.png',
     alt: 'Cross-section of a coated cochlear implant array imaged by elemental mapping. The silicone carrier is a round cyan disc holding a ring of small electrode wires and one larger rectangular insert. The hydrogel film is the thin pink and violet layer around the silicone.',
     caption: 'Cross-section of a coated cochlear implant array: elemental map showing the hydrogel film on the silicone carrier. ZwiCoat.',
     aspect: '844/575',
     credit: 'ZwiCoat',
+    maxWidth: 844,
   },
   'ci-array-coated-dyed': {
     src: '/images/lab/ci-array-coated-dyed.png',
@@ -62,6 +95,13 @@ const LAB_PHOTOS: Record<string, { src: string; alt: string; caption: string; as
   },
 };
 const LAB_VIDEOS: Record<string, { src: string; poster: string; caption: string; alt: string; aspect: string }> = {
+  pendulum: {
+    src: '/media/pendulum-loop',
+    poster: '/media/pendulum-poster.jpg',
+    caption: 'A 45 J pendulum strike on a coated tissue expander. ZwiCoat internal test, 2026.',
+    alt: 'Close-up of a weighted pendulum striking a blue-coated tissue expander mounted on a backboard.',
+    aspect: '540/810',
+  },
   cuff: {
     src: '/media/cuff-loop',
     poster: '/media/cuff-poster.jpg',
@@ -73,23 +113,45 @@ const LAB_VIDEOS: Record<string, { src: string; poster: string; caption: string;
 
 // Inline SVG diagrams, rendered by MediaBlocks.
 const DIAGRAMS = ['peek-pathway'];
+// Other named components, rendered by MediaBlocks.
+const INTERACTIVES = ['durability'];
+const PANELS = ['capsule'];
+const BLOCKS = ['impact'];
+// Two lab photographs side by side, with one caption.
+const PHOTO_PAIRS: Record<string, { items: string[]; caption?: string; credit?: string; maxWidth?: string }> = {
+  'expander-fill': {
+    items: ['expander-deflated', 'expander-inflated'],
+    caption: 'A coated tissue expander in a blue dye bath, deflated and then inflated.',
+    credit: 'ZwiCoat, 2026',
+    maxWidth: '44rem',
+  },
+  'expander-300': {
+    items: ['expander-100pct', 'expander-300pct'],
+    caption: 'A coated 100 cc expander inflated to 300 cc: no tearing. ZwiCoat internal test, 2026.',
+    credit: 'ZwiCoat, 2026',
+  },
+};
 
 const hero = findFigure(d.heroFigure);
-// A tall chart (the antifouling bars) would fill the screen at the full hero width, so it gets a narrower column.
+// A tall chart (the antifouling bars): Figure caps it at 45 percent of its PNG width so it fits a screen.
 const heroSize = imageSize(`/figures/${hero.name}.png`);
 const heroTall = heroSize.height / heroSize.width > 0.9;
 
 // Render the markdown to HTML, then split on the media tokens and interleave components.
 const html = entry.rendered?.html ?? '';
 if (!html) throw new Error(`${d.slug}: no rendered body`);
-const pieces = html.split(/<p>\{\{(figure|photo|video|diagram):([A-Za-z0-9_-]+)\}\}<\/p>/);
+const pieces = html.split(/<p>\{\{(figure|photo|video|diagram|interactive|panels|block|photopair):([A-Za-z0-9_-]+)\}\}<\/p>/);
 type Block =
   | { kind: 'html'; html: string }
   | { kind: 'figure'; fig: Fig }
   | { kind: 'photo'; fig: Fig }
   | { kind: 'labphoto'; key: string; portrait: boolean }
   | { kind: 'video'; key: string; portrait: boolean }
-  | { kind: 'diagram'; key: string };
+  | { kind: 'diagram'; key: string }
+  | { kind: 'interactive'; key: string }
+  | { kind: 'panels'; key: string }
+  | { kind: 'block'; key: string }
+  | { kind: 'photopair'; key: string };
 const raw: Block[] = [];
 for (let i = 0; i < pieces.length; i += 3) {
   if (pieces[i].trim()) raw.push({ kind: 'html', html: pieces[i] });
@@ -103,6 +165,13 @@ for (let i = 0; i < pieces.length; i += 3) {
   } else if (type === 'diagram') {
     if (!DIAGRAMS.includes(name)) throw new Error(`${d.slug}: unknown diagram ${name}`);
     raw.push({ kind: 'diagram', key: name });
+  } else if (type === 'interactive' || type === 'panels' || type === 'block') {
+    const known = type === 'interactive' ? INTERACTIVES : type === 'panels' ? PANELS : BLOCKS;
+    if (!known.includes(name)) throw new Error(`${d.slug}: unknown ${type} ${name}`);
+    raw.push({ kind: type, key: name });
+  } else if (type === 'photopair') {
+    if (!PHOTO_PAIRS[name]) throw new Error(`${d.slug}: unknown photo pair ${name}`);
+    raw.push({ kind: 'photopair', key: name });
   } else if (type === 'video') {
     if (!LAB_VIDEOS[name]) throw new Error(`${d.slug}: unknown video ${name}`);
     raw.push({ kind: 'video', key: name, portrait: ratioOf(LAB_VIDEOS[name].aspect) < 0.9 });
@@ -159,18 +228,18 @@ const spec = [
 
     {lead.length > 0 && (
       <div class="lead-media">
-        <MediaBlocks blocks={lead} photos={LAB_PHOTOS} videos={LAB_VIDEOS} credit={CREDIT} photoSize={photoSizes} />
+        <MediaBlocks blocks={lead} photos={LAB_PHOTOS} videos={LAB_VIDEOS} credit={CREDIT} photoSize={photoSizes} pairs={PHOTO_PAIRS} />
       </div>
     )}
 
     <SpecStrip items={spec} />
 
     <div class:list={['hero', { tall: heroTall }]}>
-      <Figure name={hero.name} alt={hero.alt} caption={hero.caption} source={hero.source} width={1000} />
+      <Figure name={hero.name} alt={hero.alt} caption={hero.caption} source={hero.source} sourceShort={hero.sourceShort} width={1000} />
     </div>
 
     <div class="body">
-      <MediaBlocks blocks={body} photos={LAB_PHOTOS} videos={LAB_VIDEOS} credit={CREDIT} photoSize={photoSizes} />
+      <MediaBlocks blocks={body} photos={LAB_PHOTOS} videos={LAB_VIDEOS} credit={CREDIT} photoSize={photoSizes} pairs={PHOTO_PAIRS} />
     </div>
 
     <section class="refs" aria-label="References">
@@ -183,8 +252,7 @@ const spec = [
 
 <style>
   .head { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); max-width: 40rem; }
-  .hero { margin-top: var(--space-5); max-width: 62rem; }
-  .hero.tall { max-width: 44rem; }
+  .hero { margin-top: var(--space-5); max-width: 75rem; }
   .lead-media { margin-bottom: var(--space-5); }
   .lead-media :global(.fig) { margin-block: 0; }
   .body { margin-top: var(--space-5); }

@@ -1,0 +1,48 @@
+---
+/*
+  The interactive scar-tissue chart (R1, R10): bars of percent reduction from W04_fibrosis.json,
+  with the W04 PNG as the no-JavaScript and on-error fallback. Used on the home hero and the
+  evidence page. Every instance on a page is mounted by the one script below.
+*/
+import InteractiveChart from './InteractiveChart.astro';
+import { W04 } from '../data/figure-text';
+
+interface Props {
+  caption?: string;
+  /** Tighter label column for narrow placements such as the home hero. */
+  compact?: boolean;
+  width?: number;
+}
+const {
+  caption = 'Less scar tissue around coated surfaces in mice, rats and sheep: percent reduction in fibrotic capsule or fibrosis, measurement by measurement. Filter by species or paper, then select a bar for its values and the paper.',
+  compact = false,
+  width = 1000,
+} = Astro.props;
+---
+<InteractiveChart
+  id="fibrosis"
+  name={W04.name}
+  alt={W04.alt}
+  caption={caption}
+  source={W04.source}
+  sourceShort={W04.sourceShort}
+  width={width}
+  class={compact ? 'compact' : undefined}
+/>
+
+<script>
+  import { mount } from '../scripts/fibrosis';
+  import type { FibrosisRow } from '../scripts/fibrosis';
+  import { showFallback } from '../scripts/chart-utils';
+  // Inlined into the bundle at build time; nothing is fetched.
+  import rows from '../../public/data/W04_fibrosis.json';
+
+  document.querySelectorAll<HTMLElement>('[data-chart="fibrosis"]').forEach((root) => {
+    try {
+      mount(root, rows as FibrosisRow[]);
+    } catch (err) {
+      console.error('Chart "fibrosis" failed to mount; showing the static image.', err);
+      showFallback(root);
+    }
+  });
+</script>

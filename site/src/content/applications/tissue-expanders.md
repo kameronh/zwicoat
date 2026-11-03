@@ -14,18 +14,23 @@ figures:
   - name: "W27_capsule_thickness_mice"
     caption: "In mice, scar capsules were 67 percent thinner around coated silicone at six weeks and 62 percent thinner around coated human cochlear implant arrays at one year."
     source: "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomaterialia 2023;166:212-223, Figs 5D and 7I (means and p values from the text; SEM whiskers approximate, read from the published figure). doi:10.1016/j.actbio.2023.05.011"
+    sourceShort: "Horne et al. 2023, Acta Biomaterialia, Figs 5D and 7I"
     alt: "Two bar charts of scar capsule thickness in mice, uncoated against coated. Panel A, six weeks on flat silicone sheets: 82 micrometers uncoated and 27 coated. Panel B, one year on human cochlear implant arrays: 47 micrometers uncoated and 18 coated."
   - name: "W04_fibrosis_by_study"
     caption: "Less scar tissue around coated surfaces in mice, rats and sheep: percent reduction in fibrotic capsule or fibrosis, measurement by measurement."
     source: "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Figs 5, 6G, 7I; flat-sheet and one-year values from the text, cylinder value approximate, read from the published figure); Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 3, values approximate, read from the published figure; text states over 60 percent); Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 7F, four coated groups, rats, 6 weeks, means read from the published plot; p < 0.0001 each versus uncoated); Ben-Shlomo N, et al. Hearing Research 2026;474:109606 (Fig 6G round window, p = 0.0101; pooled values approximate, read from the published figure)."
-    alt: "Horizontal bar chart of 10 measurements of scar capsule or fibrosis around coated surfaces compared with uncoated, in mice, rats and sheep, four weeks to one year, from four papers (Horne 2023, Peel 2024, Barrera 2026, Ben-Shlomo 2026). Reductions run from about 45 to about 85 percent."
+    sourceShort: "Horne et al. 2023, Acta Biomaterialia, Figs 5, 6G and 7I; Peel et al. 2024, ACS Applied Bio Materials, Fig 3; Barrera et al. 2026, ACS Applied Polymer Materials, Fig 7F; Ben-Shlomo et al. 2026, Hearing Research, Fig 6G"
+    alt: "Horizontal bar chart of 9 measurements of scar capsule or fibrosis around coated surfaces compared with uncoated, in mice, rats and sheep, four weeks to one year, from four papers (Horne 2023, Peel 2024, Barrera 2026, Ben-Shlomo 2026). Reductions run from about 45 to about 85 percent."
   - name: "W17_textured_implants"
+    width: 640
     caption: "Textured breast implant use fell from 18 to 2 percent of cosmetic cases and from 41 to 8 percent of reconstructive cases between 2016 and 2019."
     source: "Matros E, Shamsunder MG, Rubenstein RN, et al. Textured and smooth implant use reported in the TOPS database: epidemiologic implications for BIA-ALCL. Plast Reconstr Surg Glob Open 2021;9(3):e3499. doi:10.1097/GOX.0000000000003499"
+    sourceShort: "Matros et al. 2021, Plastic and Reconstructive Surgery Global Open"
     alt: "Bar chart of the share of US breast implant cases that used a textured device. Cosmetic cases fell from 18 percent in 2016 to 2 percent in 2019. Reconstructive cases fell from 41 percent to 8 percent."
   - name: "W11_sterilization"
     caption: "Sterilization compatibility and bond strength after sterilization plus shipping."
     source: "ZwiCoat internal study, 2025. Silicone coupons, about 5 per group."
+    sourceShort: "ZwiCoat internal study, 2025"
     alt: "Two panels. Left: the coating was unchanged after steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry cycles; e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping."
 sources:
   - "Horne R, Ben-Shlomo N, Jensen M, et al. Reducing the foreign body response on human cochlear implants and their materials in vivo with photografted zwitterionic hydrogel coatings. Acta Biomater. 2023;166:212-223."
@@ -61,7 +66,7 @@ Antibiotic irrigation, no-touch technique and dermal matrix wraps act downstream
 
 The results below come from published laboratory, mouse, rat and sheep studies, and from one ZwiCoat stretch test.
 
-**Scar capsule, in mice at six weeks.** The chart above shows it. Around coated silicone sheets the capsule measured 27 micrometers, against 82 around uncoated sheets. (Horne 2023, Acta Biomaterialia.) Across ten published measurements in mice, rats and sheep, the reduction ranged from about 45 to about 85 percent.
+**Scar capsule, in mice at six weeks.** The chart above shows it. Around coated silicone sheets the capsule measured 27 micrometers, against 82 around uncoated sheets. (Horne 2023, Acta Biomaterialia.) Across nine published measurements in mice, rats and sheep, the reduction ranged from about 45 to about 85 percent.
 
 {{figure:W04}}
 
@@ -69,15 +74,23 @@ The results below come from published laboratory, mouse, rat and sheep studies, 
 
 **Stretch.** A coated expander inflated to 300 percent of its rated volume kept the coating across the whole shell (ZwiCoat internal test, 2026).
 
+{{photopair:expander-fill}}
+
+{{photopair:expander-300}}
+
 ## How it fits your process
 
 ZwiCoat is a coating step on a finished silicone shell. It needs no new mold and no new geometry. One UV step grafts and crosslinks the film, about 7 micrometers thick in the published silicone work. The gel tears before the silicone interface lets go (Leigh 2019).
 
-Expanders get hit and stretched. In an internal pendulum impact test, a coated expander showed no visible damage to the coating. [See the durability record.](/durability)
-
 Adhesion on your silicone grade is measured in the feasibility round on your parts. In ZwiCoat's own tests on silicone, the coating was compatible with steam, ethylene oxide, gamma, UV and dry e-beam sterilization.
 
 {{figure:W11}}
+
+## Takes a hit
+
+Expanders get hit. A 45 J pendulum strike on a coated expander left no visible damage to the coating (ZwiCoat internal test, 2026). [See the durability record.](/durability)
+
+{{block:impact}}
 
 ## How to start
 

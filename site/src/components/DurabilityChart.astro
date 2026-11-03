@@ -1,0 +1,37 @@
+---
+/*
+  The interactive durability timeline (R6): one marker per in-vivo checkpoint from
+  W06_durability.json, with the W06 PNG as the no-JavaScript and on-error fallback.
+  Used on the evidence, durability and technology pages and, through the
+  {{interactive:durability}} token, on application pages.
+*/
+import InteractiveChart from './InteractiveChart.astro';
+import { W06 } from '../data/figure-text';
+
+interface Props {
+  caption?: string;
+  width?: number;
+}
+const {
+  caption = 'In-vivo durability checkpoints from two weeks to one year, in rats, mice and sheep. Select a marker for the finding; click it to open the paper.',
+  width = 1000,
+} = Astro.props;
+---
+<InteractiveChart id="durability" name={W06.name} alt={W06.alt} caption={caption} source={W06.source} sourceShort={W06.sourceShort} width={width} />
+
+<script>
+  import { mount } from '../scripts/durability';
+  import type { DurabilityRow } from '../scripts/durability';
+  import { showFallback } from '../scripts/chart-utils';
+  // Inlined into the bundle at build time; nothing is fetched.
+  import rows from '../../public/data/W06_durability.json';
+
+  document.querySelectorAll<HTMLElement>('[data-chart="durability"]').forEach((root) => {
+    try {
+      mount(root, rows as DurabilityRow[]);
+    } catch (err) {
+      console.error('Chart "durability" failed to mount; showing the static image.', err);
+      showFallback(root);
+    }
+  });
+</script>

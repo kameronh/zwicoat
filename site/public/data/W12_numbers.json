@@ -6,10 +6,10 @@
   "source": "Ten papers listed in figures/data/W24_publications.json (DOIs given there)"
  },
  {
-  "value": "3",
-  "label": "PhD dissertations, University of Iowa",
-  "takeaway": "Three doctoral theses underpin the chemistry and the process.",
-  "source": "Leigh 2018, Peel 2023, Horne 2024 (University of Iowa)"
+  "value": "~60%",
+  "label": "thinner fibrotic capsule around coated implants",
+  "takeaway": "One year in mice, on human cochlear implant arrays, over platinum and silicone alike (Horne 2023).",
+  "source": "Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 7I: 47 versus 18 micrometers, about 62 percent thinner, one year in mice)"
  },
  {
   "value": "3",
@@ -24,10 +24,10 @@
   "source": "ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,498; AU 2017280359; CN ZL201780049849.X; JP 7005535; MX 388986); Kam Hansen, 2026-10-29"
  },
  {
-  "value": "More",
-  "label": "patent applications pending",
-  "takeaway": "Further patent applications are pending.",
-  "source": "ZCMI patent schedule, 2025 (US 11,525,069; 11,814,526; 12,116,498; AU 2017280359; CN ZL201780049849.X; JP 7005535; MX 388986); Kam Hansen, 2026-10-29"
+  "value": "~50%",
+  "label": "less insertion force with coated cochlear implants",
+  "takeaway": "Three studies: human cadaver cochleae twice and a synthetic cochlea (Bennion 2021, Peel 2024, SBIR dataset).",
+  "source": "Bennion DM, et al. Otology and Neurotology 2021 (Fig 4A, 42 percent less); Peel A, et al. ACS Applied Bio Materials 2024 (Fig 13A, about 50 percent less); NIH SBIR Phase I dataset, Zenodo, doi:10.5281/zenodo.10459478 (64 percent less); see W07"
  },
  {
   "value": "1 year",

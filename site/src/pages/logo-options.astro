@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Logo proposals. Files are built by figures/build_logo_options.py.
+const options = [
+  {
+    letter: 'Now',
+    name: 'Current',
+    src: '/logo.svg?v=2',
+    text: 'The logo on the site today: an Arial Black wordmark with a long dark wave and a short light swoosh.',
+  },
+  {
+    letter: 'A',
+    name: 'Two swooshes, refined',
+    src: '/logo-options/option-a.svg',
+    text: 'The current idea in Public Sans Bold, with a light swoosh you can see and a thinner wave close under the word.',
+  },
+  {
+    letter: 'B',
+    name: 'One wave',
+    src: '/logo-options/option-b.svg',
+    text: 'One wave in one blue that ripples under the w, like a thin water film, and runs flat under the rest of the word.',
+  },
+  {
+    letter: 'C',
+    name: 'Two blues and a rule',
+    src: '/logo-options/option-c.svg',
+    text: 'Manrope ExtraBold with Zwi in brand blue and Coat in deep blue, over a thin rule for the coating that tapers away to the right.',
+  },
+  {
+    letter: 'D',
+    name: 'Mark and wordmark',
+    src: '/logo-options/option-d.svg',
+    icon: '/logo-options/option-d-icon.svg',
+    favicon: '/logo-options/option-d-favicon-64.png',
+    text: 'A coated device in cross-section, a solid core inside a thin ring, beside the Public Sans Bold wordmark. The mark alone is the favicon.',
+  },
+  {
+    letter: 'E',
+    name: 'Lowercase with a drop',
+    src: '/logo-options/option-e.svg',
+    text: 'Lowercase Bahnschrift SemiBold. The dot of the i is a small water drop.',
+  },
+];
+---
+<Base title="Logo options" description="Logo proposals for ZwiCoat, side by side." noindex>
+  <div class="container section">
+    <header class="page-head">
+      <p class="label">Internal</p>
+      <h1>Logo options</h1>
+      <p class="lead">Each option is shown at 40 px in a nav bar, then at 160 px on the page color and on white. The current logo comes first for comparison.</p>
+    </header>
+
+    <ol class="opts" role="list">
+      {options.map((o) => (
+        <li class="opt" data-option={o.letter}>
+          <div class="opt-head">
+            <span class="letter">{o.letter}</span>
+            <div>
+              <h2>{o.name}</h2>
+              <p>{o.text}</p>
+            </div>
+          </div>
+
+          <div class="mock-nav" aria-hidden="true">
+            <img class="logo-40" src={o.src} alt="" />
+            <span class="mock-links"><span>Technology</span><span>Evidence</span><span>Applications</span><span>About</span></span>
+            <span class="mock-btn">Send us parts</span>
+          </div>
+
+          <div class="panel paper">
+            <img class="logo-160" src={o.src} alt={`Option ${o.letter} on the page color`} />
+          </div>
+          <div class="panel white">
+            <img class="logo-160" src={o.src} alt={`Option ${o.letter} on white`} />
+          </div>
+
+          {o.icon && (
+            <div class="icons">
+              <img src={o.icon} alt="Option D square icon at 160 px" width="160" height="160" />
+              <img src={o.favicon} alt="Option D favicon at 64 px" width="64" height="64" />
+              <img src={o.favicon} alt="Option D favicon at 32 px" width="32" height="32" />
+              <img src={o.favicon} alt="Option D favicon at 16 px" width="16" height="16" />
+            </div>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .opts { display: grid; gap: var(--space-6); margin: 0; padding: 0; list-style: none; }
+  .opt { display: grid; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--ink); }
+  .opt-head { display: flex; gap: var(--space-3); align-items: baseline; }
+  .letter {
+    flex: none; min-width: 3.25rem; padding: 0.15rem 0.5rem; text-align: center;
+    font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: var(--tracking-label);
+    text-transform: uppercase; color: var(--on-blue); background: var(--blue);
+  }
+  .opt h2 { font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.75rem); }
+  .opt p { max-width: var(--measure); color: var(--ink-2); margin-top: var(--space-1); }
+
+  .mock-nav {
+    display: flex; align-items: center; gap: var(--space-4);
+    height: var(--nav-h); padding-inline: var(--space-4);
+    background: var(--paper); border: 1px solid var(--line);
+  }
+  .logo-40 { height: 40px; width: auto; flex: none; }
+  .mock-links { display: flex; gap: var(--space-4); margin-left: auto; color: var(--ink-2); font-size: 0.9375rem; }
+  .mock-btn { padding: 0.45rem 0.9rem; background: var(--blue); color: var(--on-blue); font-size: 0.9375rem; }
+  @media (max-width: 760px) { .mock-links, .mock-btn { display: none; } }
+
+  .panel { padding: var(--space-5) var(--space-4); border: 1px solid var(--line); overflow: hidden; }
+  .panel.paper { background: var(--paper); }
+  .panel.white { background: #FFFFFF; }
+  .logo-160 { display: block; height: 160px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; }
+
+  .icons { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4); padding: var(--space-4); background: #FFFFFF; border: 1px solid var(--line); }
+  .icons img { max-width: 100%; height: auto; }
+</style>

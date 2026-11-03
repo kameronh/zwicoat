@@ -2,15 +2,14 @@
 import Base from '../layouts/Base.astro';
 import Figure from '../components/Figure.astro';
 import Photo from '../components/Photo.astro';
-import StatTiles from '../components/StatTiles.astro';
+import FibrosisChart from '../components/FibrosisChart.astro';
+import DurabilityChart from '../components/DurabilityChart.astro';
 import InteractiveChart from '../components/InteractiveChart.astro';
 import CTABand from '../components/CTABand.astro';
-import numbers from '../../public/data/W12_numbers.json';
 import pubs from '../data/publications.json';
-import { W04, W05, W07, W25, W27, W28, W29, W30, W31, W37, W38 } from '../data/figure-text';
+import { W04, W05, W07, W25, W27, W28, W29, W30, W31, W32, W37, W38 } from '../data/figure-text';
 
 const { papers, theses, patents } = pubs;
-const tiles = numbers;
 
 const nav = [
   ['scar', 'Scar tissue'],
@@ -30,19 +29,6 @@ const nav = [
       <p class="lead">Ten years of published work, 2017 to 2026: ten peer-reviewed papers, three PhD dissertations and three issued US patents. The results come from four models: mouse, rat, sheep and the human cadaveric cochlea. This page shows them grouped by what they show, with the source under every chart and the papers linked at the bottom.</p>
     </header>
 
-    <section class="tiles" aria-labelledby="tiles-h">
-      <h2 id="tiles-h" class="visually-hidden">The public record in numbers</h2>
-      <StatTiles items={tiles} columns={4} />
-      <details class="tile-src">
-        <summary class="label">Sources for these numbers</summary>
-        <ul role="list">
-          {tiles.map((t) => (
-            <li><strong>{t.value}</strong> {t.label}. {t.source}.</li>
-          ))}
-        </ul>
-      </details>
-    </section>
-
     <nav class="toc" aria-label="On this page">
       <ol role="list">
         {nav.map(([id, text], i) => (
@@ -59,17 +45,17 @@ const nav = [
         <p class="ev-text">Capsules were thinner and fibrosis was lower around coated surfaces in mice, rats and sheep. In mice the capsule was 67 percent thinner at six weeks on flat silicone and 62 percent thinner at one year on cochlear implant arrays (Horne 2023). In rats, four coated groups had capsules about 72 to 83 percent thinner at six weeks (Barrera 2026).</p>
       </div>
       <div class="ev-body">
-        <Figure name={W04.name} alt={W04.alt} caption={W04.caption} source={W04.source} />
-        <Figure name={W27.name} alt={W27.alt} caption={W27.caption} source={W27.source} />
+        <FibrosisChart />
         <div class="photo-narrow">
           <Photo
-            src="/images/histology-sheep.png"
-            alt="Four tissue sections of a sheep cochlea. The top row is stained pink and purple, uncoated on the left and coated on the right. The bottom row is fluorescence on a black background, uncoated on the left and coated on the right, with red, green and blue labels."
-            caption="Sheep cochlea sections four weeks after implantation, uncoated array on the left (A, C) and coated array on the right (B, D). The top row is stained with H and E. The bottom row labels smooth muscle actin (red), macrophages (IBA-1, green) and cell nuclei (blue)."
-            credit="Ben-Shlomo et al. 2026, Hearing Research, CC BY 4.0"
-            aspect="1750/1150"
+            src="/images/lab/histology-scar-01.jpg"
+            alt="Stained tissue section around a silicone (PDMS) sheet that is coated on one half. A yellow dashed line outlines the capsule. Over the uncoated half on the left the capsule is a thick purple band; over the coated half on the right the pink coating sits against the tissue with only a thin layer beyond it. Scale bar 200 micrometers."
+            caption="Tissue section after one year in a mouse: a thick capsule on uncoated silicone, a thin quiet interface on coated silicone. Adapted from Horne et al., Acta Biomaterialia 2023."
+            credit="Adapted from Horne et al., Acta Biomaterialia 2023"
+            aspect="965/523"
           />
         </div>
+        <Figure name={W27.name} alt={W27.alt} caption={W27.caption} source={W27.source} sourceShort={W27.sourceShort} />
       </div>
     </section>
 
@@ -97,25 +83,27 @@ const nav = [
       <div class="ev-head">
         <p class="label ev-num">03</p>
         <h2 id="insertion-friction-h">Insertion force and friction</h2>
-        <p class="ev-text">In human cadaveric cochleae, coated arrays needed about half the peak insertion force: about 42 percent less in one study (Bennion 2021) and about 50 percent less in another (Peel 2024). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024). In a synthetic cochlea model, coated arrays inserted with about two thirds less peak force and work of insertion (NIH SBIR Phase I dataset, Zenodo). Coated endotracheal tubes needed about 60 percent less force to intubate a cadaveric human larynx, for both surgeons (ZwiCoat internal study, 2026). Every trace from both studies is drawn below.</p>
+        <p class="ev-text">Coated cochlear implant arrays needed about half the peak insertion force in three studies: 42 percent less in human cadaveric cochleae (Bennion 2021), about 50 percent less in another cadaver study (Peel 2024) and 64 percent less in a synthetic cochlea (NIH SBIR Phase I dataset, Zenodo). Friction on coated silicone was more than 90 percent lower, and stayed about 90 percent lower after three weeks in mice (Bennion 2021, Peel 2024). In the synthetic cochlea, work of insertion was about two thirds lower too. Coated endotracheal tubes needed about 60 percent less force to intubate a cadaveric human larynx, for both surgeons (ZwiCoat internal study, 2026). Every trace from both studies is drawn below.</p>
       </div>
       <div class="ev-body">
-        <Figure name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} />
+        <Figure name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} sourceShort={W28.sourceShort} />
         <InteractiveChart
           id="traces-w37"
           name={W37.name}
           alt={W37.alt}
-          caption={`${W37.caption} Each line is one insertion; select a line to see its peak force and work.`}
+          caption={`${W37.caption} Uncoated insertions are on the left and coated on the right, on the same scales. Each line is one insertion; select a line to see its peak force and work.`}
           source={W37.source}
+          sourceShort={W37.sourceShort}
         />
         <InteractiveChart
           id="traces-w38"
           name={W38.name}
           alt={W38.alt}
-          caption={`${W38.caption} Each line is one intubation, aligned to its start; choose a surgeon, then select a line to see its peak force and integrated force.`}
+          caption={`${W38.caption} Uncoated intubations are on the left and coated on the right, on the same scales. Each line is one intubation, aligned to its start; choose a surgeon, then select a line to see its peak force and integrated force.`}
           source={W38.source}
+          sourceShort={W38.sourceShort}
         />
-        <Figure name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} />
+        <Figure name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} sourceShort={W07.sourceShort} />
       </div>
     </section>
 
@@ -124,7 +112,7 @@ const nav = [
       <div class="ev-head">
         <p class="label ev-num">04</p>
         <h2 id="impedance-h">Electrode impedance</h2>
-        <p class="ev-text">Working human cochlear implant arrays read lower impedance when coated, in sheep. Impedance was roughly two thirds lower at implantation and about half lower at four weeks (Ben-Shlomo 2026).</p>
+        <p class="ev-text">Working human cochlear implant arrays read lower impedance when coated, in sheep. Impedance was roughly two thirds lower at implantation and about half lower at four weeks (Ben-Shlomo 2026). The same coated arrays left less inflammation in the cochlea.</p>
       </div>
       <div class="ev-body">
         <div class="pair">
@@ -135,7 +123,16 @@ const nav = [
             source="Ben-Shlomo et al. 2026, Hearing Research 474:109606, Fig 3B (values read from the figure)."
             width={640}
           />
-          <Figure name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} />
+          <Figure name={W25.name} alt={W25.alt} caption={W25.caption} source={W25.source} sourceShort={W25.sourceShort} />
+        </div>
+        <div class="photo-narrow">
+          <Photo
+            src="/images/histology-sheep.png"
+            alt="Four tissue sections of a sheep cochlea. The top row is stained pink and purple, uncoated on the left and coated on the right. The bottom row is fluorescence on a black background, uncoated on the left and coated on the right, with red, green and blue labels."
+            caption="Sheep cochlea sections four weeks after implantation, uncoated array on the left (A, C) and coated array on the right (B, D). The top row is stained with H and E. The bottom row labels smooth muscle actin (red), macrophages (IBA-1, green) and cell nuclei (blue)."
+            credit="Ben-Shlomo et al. 2026, Hearing Research, CC BY 4.0"
+            aspect="1750/1150"
+          />
         </div>
       </div>
     </section>
@@ -148,12 +145,7 @@ const nav = [
         <p class="ev-text">Checkpoints run from two weeks in rats to one year in mice. At each one the film was intact or still doing its job. Friction after three weeks in mice is in <a href="#insertion-friction">section 3</a>, and the full record, with our own tests, is on the <a href="/durability">durability page</a>.</p>
       </div>
       <div class="ev-body">
-        <Figure
-          name="W06_durability_timeline"
-          alt="Timeline of in-vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner."
-          caption="In-vivo durability checkpoints from two weeks to one year."
-          source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023."
-        />
+        <DurabilityChart />
         <p class="more"><a href="/durability">See the full durability record</a></p>
       </div>
     </section>
@@ -183,7 +175,7 @@ const nav = [
       <div class="ev-head">
         <p class="label ev-num">07</p>
         <h2 id="invivo-h">Every in-vivo result</h2>
-        <p class="ev-text">Every published animal and cadaver comparison, one marker each. Filter by species and measure, then select a marker for the paper and the result.</p>
+        <p class="ev-text">Every published animal and cadaver comparison, plus the cadaveric larynx and synthetic cochlea insertion tests, one marker each. Filter by species and measure, then select a marker for the paper and the result.</p>
       </div>
       <div class="ev-body">
         <InteractiveChart
@@ -191,7 +183,8 @@ const nav = [
           name="W04_fibrosis_by_study"
           alt={W04.alt}
           caption="Each published comparison of a coated surface with an uncoated one."
-          source="Horne 2023 Acta Biomaterialia; Peel 2024 ACS Applied Bio Materials; Shen 2021 ACS Applied Bio Materials; Bennion 2021 Otology and Neurotology; Barrera 2026 ACS Applied Polymer Materials; Ben-Shlomo 2026 Hearing Research (values read from the published figures are marked approximate)."
+          source={W32.source}
+          sourceShort={W32.sourceShort}
         />
       </div>
     </section>
@@ -238,7 +231,7 @@ const nav = [
       </div>
     </section>
 
-    <p class="footnote">Values marked approximate come from the printed figures in the papers; the source line under each chart names the figure. No coated device has been implanted in a human; human cochlear implant arrays were tested in mice, sheep and cadaveric cochleae.</p>
+    <p class="footnote">Values marked ~ are estimated from the published figures; the source line under each chart names the figure. No coated device has been implanted in a human; human cochlear implant arrays were tested in mice, sheep and cadaveric cochleae.</p>
     <p class="label archive-src">Archive counts: ZwiCoat Data archive.</p>
   </div>
 
@@ -314,15 +307,9 @@ const nav = [
   .ev-text a { color: var(--blue); text-underline-offset: 0.18em; }
   .ev-body { display: grid; gap: var(--space-5); min-width: 0; }
 
-  .tiles { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
   .archive-src { margin-top: var(--space-3); text-transform: none; letter-spacing: 0.02em; }
   .pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); align-items: start; }
   .more a { color: var(--blue); text-underline-offset: 0.18em; font-weight: 600; }
-  .tile-src { max-width: var(--measure); }
-  .tile-src summary { color: var(--ink-2); padding-block: 0.4rem; }
-  .tile-src summary:hover { color: var(--blue); }
-  .tile-src ul { margin: var(--space-2) 0 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; font-size: var(--fs-caption); color: var(--ink-2); }
-  .tile-src strong { color: var(--ink); }
 
   .photo-narrow { max-width: 46rem; }
 
@@ -338,9 +325,6 @@ const nav = [
 
   .footnote { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--ink); max-width: var(--measure); color: var(--ink-2); font-size: var(--fs-caption); }
 
-  @media (min-width: 760px) {
-    .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
   @media (min-width: 640px) {
     .toc ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }

@@ -14,18 +14,22 @@ figures:
   - name: "W18_silver_foley_cauti"
     caption: "In the CATHETER trial, silver alloy urinary catheters did not lower symptomatic catheter-associated urinary tract infection (12.5 percent) compared with standard catheters (12.6 percent)."
     source: "Pickard R, Lam T, MacLennan G, et al. Antimicrobial catheters for reduction of symptomatic urinary tract infection in adults requiring short-term catheterisation in hospital: a multicentre randomised controlled trial (CATHETER). Lancet 2012;380(9857):1927-1935. doi:10.1016/S0140-6736(12)61380-4"
+    sourceShort: "Pickard et al. 2012, The Lancet (CATHETER trial)"
     alt: "Bar chart of symptomatic catheter-associated urinary tract infection by six weeks in the CATHETER trial: 12.6 percent with standard catheters, 12.5 percent with silver alloy catheters and 10.6 percent with nitrofural catheters."
   - name: "W29_bacteria_rats"
     caption: "In rats challenged with S. aureus, coated silicone implants carried far fewer bacteria and live colonies at day 21, and a coating kept in a rat for two weeks still resisted a fresh S. aureus challenge."
     source: "Shen N, Cheng E, Whitley JW, Horne RR, Leigh B, Xu L, Jones BD, Guymon CA, Hansen MR. Photograftable zwitterionic coatings prevent Staphylococcus aureus and Staphylococcus epidermidis adhesion to PDMS surfaces. ACS Applied Bio Materials 2021;4(2):1283-1293, Figs 7C, 7D and 8 (values approximate, read from the published figure; p values as printed). doi:10.1021/acsabm.0c01147"
+    sourceShort: "Shen et al. 2021, ACS Applied Bio Materials, Figs 7C, 7D and 8"
     alt: "Three bar charts from rats. Adherent S. aureus per field at day 21: about 940 uncoated and 155 coated. Live colonies recovered at day 21: about 690 uncoated and 35 coated. After two weeks in a rat and a fresh S. aureus challenge: about 2,520 uncoated and 210 coated."
   - name: "W28_durability_peel"
     caption: "Friction of uncoated vs coated silicone, before and after three weeks in mice (panel A). Coated silicone kept about 90 percent lower friction after three weeks in mice, and at least 90 percent lower against steel and five animal tissues."
     source: "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156"
+    sourceShort: "Peel et al. 2024, ACS Applied Bio Materials, Figs 4 and 5A"
     alt: "Friction of coated and uncoated silicone. Panel A: uncoated vs coated, before and after three weeks in mice; coated silicone kept about 90 percent lower friction. Panel B: against steel and five animal tissues, coated silicone had at least 90 percent lower friction."
   - name: "W06_durability_timeline"
     caption: "In-vivo durability checkpoints from two weeks to one year."
     source: "Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023"
+    sourceShort: "Shen et al. 2021, ACS Applied Bio Materials, Fig 8; Peel et al. 2024, ACS Applied Bio Materials, Figs 2 and 4; Ben-Shlomo et al. 2026, Hearing Research; Barrera et al. 2026, ACS Applied Polymer Materials, Fig 7; Horne et al. 2023, Acta Biomaterialia, Figs 2, 3F and 7"
     alt: "Timeline of in-vivo checkpoints. Two weeks in rats: the coating still repels S. aureus. Three weeks in mice: friction unchanged. Four weeks in a sheep cochlea: no delamination and all arrays working. Six months in mice: antifouling unchanged and films intact. One year in mice: film intact and capsule about 60 percent thinner."
 sources:
   - "Centers for Disease Control and Prevention. Catheter-associated Urinary Tract Infection (CAUTI) Basics. Page dated June 27, 2025. cdc.gov/uti/about/cauti-basics.html"
@@ -66,7 +70,7 @@ Every result below is from a published study on silicone.
 
 **Durability.** Antifouling was unchanged after six months in mice, and the film was intact at one year (Horne 2023).
 
-{{figure:W06}}
+{{interactive:durability}}
 
 The feasibility round measures adhesion and friction on your catheter, and your team can run bladder-model and urine tests on the coated parts.
 

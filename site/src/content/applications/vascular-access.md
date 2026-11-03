@@ -14,18 +14,22 @@ figures:
   - name: "W05_antifouling_and_friction"
     caption: "Protein, cells, bacteria and friction: every published bench comparison of coated versus uncoated surfaces (38 bars from 8 papers), as percent reduction."
     source: "Leigh BL, et al. Biomacromolecules 2017;18(8):2389-2401 (Fig 4 fibrinogen; Figs 6E, 7E, 8E cells on glass; fibrinogen and fibroblast values read from the published plots, astrocyte and Schwann cell values from the stated fold changes); Leigh BL, et al. Langmuir 2019;35(4):1100-1110 (Fig 7D fibrinogen; Fig 10D fibroblasts after 14 days in medium, plotted ratios used because the plotted absolute values conflict with the text); Jensen MJ, et al. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502 (Figs 1G, 2G, 3G at 5 percent cross-linker; Fig 5A friction at 4 percent; values read from the published plots); Shen N, et al. ACS Applied Bio Materials 2021;4(2):1283-1293 (Fig 3 in vitro, Figs 7C, 7D rat explants at day 21, Fig 8 after 2 weeks in rats; values read from the published plots); Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 3F, mean of four cross-linker levels, new and after 6 months in mice; read from the published plot); Bennion DM, et al. Otology and Neurotology 2021;42(10):1476-1483 (Fig 1B, steel, ceramic and guinea pig dermis; text states more than 90 percent lower, p < 0.0001); Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 4 pristine and after 3 weeks in mice; Fig 5A six probes, bar shows the mean, range in the label; read from the published plots); Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 6 fibroblasts, text states more than 99 percent for low and about 90 percent for high cross-linker; Fig 4B friction, best group 2.5/2.5 percent)."
+    sourceShort: "Leigh et al. 2017, Biomacromolecules, Figs 4, 6E, 7E and 8E; Leigh et al. 2019, Langmuir, Figs 7D and 10D; Jensen et al. 2021, ACS Biomaterials Science and Engineering, Figs 1G, 2G, 3G and 5A; Shen et al. 2021, ACS Applied Bio Materials, Figs 3, 7C, 7D and 8; Horne et al. 2023, Acta Biomaterialia, Fig 3F; Bennion et al. 2021, Otology and Neurotology, Fig 1B; Peel et al. 2024, ACS Applied Bio Materials, Figs 4 and 5A; Barrera et al. 2026, ACS Applied Polymer Materials, Figs 4B and 6"
     alt: "Horizontal bar chart of 38 comparisons of coated versus uncoated surfaces from eight papers, grouped into four bands, as percent reduction. Protein: six bars, 91 to 98 percent. Cells: 16 bars, 53 to 99 percent. Bacteria: seven bars, 84 to 97 percent. Friction: nine bars, 84 to 96 percent. The median reduction is 94 percent."
   - name: "W28_durability_peel"
     caption: "Friction of uncoated vs coated silicone, before and after three weeks in mice (panel A). Coated silicone kept about 90 percent lower friction after three weeks in mice, and at least 90 percent lower against steel and five animal tissues."
     source: "Peel A, Bennion D, Horne R, Hansen MR, Guymon CA. ACS Applied Bio Materials 2024;7:3124-3135, Figs 4 and 5A (values approximate, read from the published figure; the at-least-90-percent statement is from the text). doi:10.1021/acsabm.4c00156"
+    sourceShort: "Peel et al. 2024, ACS Applied Bio Materials, Figs 4 and 5A"
     alt: "Friction of coated and uncoated silicone. Panel A: uncoated vs coated, before and after three weeks in mice; coated silicone kept about 90 percent lower friction. Panel B: against steel and five animal tissues, coated silicone had at least 90 percent lower friction."
   - name: "W06_durability_timeline"
     caption: "In-vivo durability checkpoints from two weeks to one year."
     source: "Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023"
+    sourceShort: "Shen et al. 2021, ACS Applied Bio Materials, Fig 8; Peel et al. 2024, ACS Applied Bio Materials, Figs 2 and 4; Ben-Shlomo et al. 2026, Hearing Research; Barrera et al. 2026, ACS Applied Polymer Materials, Fig 7; Horne et al. 2023, Acta Biomaterialia, Figs 2, 3F and 7"
     alt: "Timeline of in-vivo checkpoints. Two weeks in rats: the coating still repels S. aureus. Three weeks in mice: friction unchanged. Four weeks in a sheep cochlea: no delamination and all arrays working. Six months in mice: antifouling unchanged and films intact. One year in mice: film intact and capsule about 60 percent thinner."
   - name: "W31_bond_strength_vs_grafting_agent"
     caption: "Shear bond strength of the zwitterionic film on silicone rises with grafting agent concentration until failure moves from the silicone interface into the gel itself, at 2.5 mg/mL."
     source: "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Langmuir 2019;35(4):1100-1110, Fig 6 (values approximate, read from the published figure and converted from N/m2 x 10^4 to kPa; failure thresholds from the text). doi:10.1021/acs.langmuir.8b00838"
+    sourceShort: "Leigh et al. 2019, Langmuir, Fig 6"
     alt: "Shear bond strength of the zwitterionic film on silicone against grafting agent concentration. Strength rises until failure moves from the silicone interface into the gel, at 2.5 mg per mL."
 sources:
   - "Leigh BL, Cheng E, Xu L, Derk A, Hansen MR, Guymon CA. Antifouling photograftable zwitterionic coatings on PDMS substrates. Langmuir. 2019;35(4):1100-1110."
@@ -64,7 +68,7 @@ Every result below is from a published study on silicone, in the laboratory or u
 
 **Durability.** Antifouling was unchanged after six months in mice, and the film was intact at one year (Horne 2023). In rats, a coating kept two weeks under the skin still resisted a fresh S. aureus challenge (Shen 2021).
 
-{{figure:W06}}
+{{interactive:durability}}
 
 ## How it fits your process
 

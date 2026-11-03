@@ -1,0 +1,72 @@
+[
+ {
+  "days": 14,
+  "label": "2 weeks",
+  "species": "rats",
+  "what_was_shown": "A coating kept under the skin of rats for two weeks still repelled S. aureus in a fresh challenge.",
+  "paper": "Shen et al.",
+  "year": 2021,
+  "journal": "ACS Applied Bio Materials",
+  "doi": "https://doi.org/10.1021/acsabm.0c01147"
+ },
+ {
+  "days": 21,
+  "label": "3 weeks",
+  "species": "mice",
+  "what_was_shown": "Coated silicone kept its low friction after three weeks in mice.",
+  "paper": "Peel et al.",
+  "year": 2024,
+  "journal": "ACS Applied Bio Materials",
+  "doi": "https://doi.org/10.1021/acsabm.4c00156"
+ },
+ {
+  "days": 28,
+  "label": "4 weeks",
+  "species": "sheep",
+  "what_was_shown": "Coated human cochlear implant arrays showed no delamination after four weeks in a sheep cochlea, and every array kept working.",
+  "paper": "Ben-Shlomo et al.",
+  "year": 2026,
+  "journal": "Hearing Research",
+  "doi": "https://doi.org/10.1016/j.heares.2026.109606"
+ },
+ {
+  "days": 42,
+  "label": "6 weeks",
+  "species": "rats",
+  "what_was_shown": "The scar capsule around coated silicone was about 75 percent thinner than around uncoated silicone after six weeks in rats.",
+  "paper": "Barrera et al.",
+  "year": 2026,
+  "journal": "ACS Applied Polymer Materials",
+  "doi": "https://doi.org/10.1021/acsapm.6c02510"
+ },
+ {
+  "days": 182,
+  "label": "6 months",
+  "species": "mice",
+  "what_was_shown": "Coated silicone still turned away fibroblasts after six months in mice, and the film was still in place.",
+  "paper": "Horne et al.",
+  "year": 2023,
+  "journal": "Acta Biomaterialia",
+  "doi": "https://doi.org/10.1016/j.actbio.2023.05.011"
+ },
+ {
+  "days": 182,
+  "label": "6 months",
+  "species": "mice",
+  "what_was_shown": "Coated silicone films were intact, with little to no delamination, after six months in mice.",
+  "paper": "Peel et al.",
+  "year": 2024,
+  "journal": "ACS Applied Bio Materials",
+  "doi": "https://doi.org/10.1021/acsabm.4c00156"
+ },
+ {
+  "days": 365,
+  "label": "1 year",
+  "species": "mice",
+  "what_was_shown": "On human cochlear implant arrays kept for one year in mice, the film was intact and the scar capsule was about 60 percent thinner.",
+  "paper": "Horne et al.",
+  "year": 2023,
+  "journal": "Acta Biomaterialia",
+  "doi": "https://doi.org/10.1016/j.actbio.2023.05.011"
+ }
+]

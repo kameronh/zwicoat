@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-02T10:35:16.469145</dc:date>
+    <dc:date>2026-11-02T18:39:13.646319</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,7 +40,7 @@ Q 28.854 217.254857 28.854 208.107257
 L 28.854 58.086617 
 Q 28.854 48.939017 37.9215 48.939017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 219.2715 48.939017 
@@ -53,7 +53,7 @@ Q 210.204 217.254857 210.204 208.107257
 L 210.204 58.086617 
 Q 210.204 48.939017 219.2715 48.939017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 400.6215 48.939017 
@@ -66,7 +66,7 @@ Q 391.554 217.254857 391.554 208.107257
 L 391.554 58.086617 
 Q 391.554 48.939017 400.6215 48.939017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 581.9715 48.939017 
@@ -79,7 +79,7 @@ Q 572.904 217.254857 572.904 208.107257
 L 572.904 58.086617 
 Q 572.904 48.939017 581.9715 48.939017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 37.9215 231.891017 
@@ -92,7 +92,7 @@ Q 28.854 400.206857 28.854 391.059257
 L 28.854 241.038617 
 Q 28.854 231.891017 37.9215 231.891017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 219.2715 231.891017 
@@ -105,7 +105,7 @@ Q 210.204 400.206857 210.204 391.059257
 L 210.204 241.038617 
 Q 210.204 231.891017 219.2715 231.891017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
     <path d="M 400.6215 231.891017 
@@ -118,7 +118,7 @@ Q 391.554 400.206857 391.554 391.059257
 L 391.554 241.038617 
 Q 391.554 231.891017 400.6215 231.891017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 581.9715 231.891017 
@@ -131,7 +131,7 @@ Q 572.904 400.206857 572.904 391.059257
 L 572.904 241.038617 
 Q 572.904 231.891017 581.9715 231.891017 
 z
-" clip-path="url(#pbcc11d71cc)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p286e89b214)" style="fill: #f1f6fa; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="112.275" y="90.165377" transform="rotate(-0 112.275 90.165377)">10</text>
@@ -146,15 +146,16 @@ z
     <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(55.998281 187.665929)">animal and cadaver models.</text>
    </g>
    <g id="text_4">
-    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="293.625" y="90.165377" transform="rotate(-0 293.625 90.165377)">3</text>
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="293.625" y="90.165377" transform="rotate(-0 293.625 90.165377)">~60%</text>
    </g>
    <g id="text_5">
-    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(251.024531 117.122456)">PhD dissertations,</text>
-    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(252.195938 128.763921)">University of Iowa</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(241.100391 117.327944)">thinner fibrotic capsule</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(239.052891 128.809448)">around coated implants</text>
    </g>
    <g id="text_6">
-    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(223.837031 172.368108)">Three doctoral theses underpin the</text>
-    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(239.854922 182.531499)">chemistry and the process.</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(218.842031 167.167304)">One year in mice, on human cochlear</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(227.098828 177.436163)">implant arrays, over platinum and</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(239.101172 187.847616)">silicone alike (Horne 2023).</text>
    </g>
    <g id="text_7">
     <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="474.975" y="90.165377" transform="rotate(-0 474.975 90.165377)">3</text>
@@ -179,15 +180,17 @@ z
     <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(639.073125 187.718663)">markets.</text>
    </g>
    <g id="text_13">
-    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="112.275" y="273.117377" transform="rotate(-0 112.275 273.117377)">More</text>
+    <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="112.275" y="273.117377" transform="rotate(-0 112.275 273.117377)">~50%</text>
    </g>
    <g id="text_14">
-    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(68.496563 300.154436)">patent applications</text>
-    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(93.591563 311.63594)">pending</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(57.714375 300.21596)">less insertion force with</text>
+    <text style="fill: #1b1f24; font: 10.5px 'Arial'" transform="translate(54.205898 311.697464)">coated cochlear implants</text>
    </g>
    <g id="text_15">
-    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(51.244453 355.320108)">Further patent applications are</text>
-    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(95.010469 365.483499)">pending.</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(51.496875 344.908655)">Three studies: human cadaver</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(51.243047 355.072046)">cochleae twice and a synthetic</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(42.226875 365.483499)">cochlea (Bennion 2021, Peel 2024,</text>
+    <text style="fill: #4a5058; font: 9px 'Arial'" transform="translate(83.013047 375.894952)">SBIR dataset).</text>
    </g>
    <g id="text_16">
     <text style="fill: #0e7fc4; font: 700 32px 'Arial'; text-anchor: middle" x="293.625" y="272.954877" transform="rotate(-0 293.625 272.954877)">1 year</text>
@@ -232,7 +235,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pbcc11d71cc">
+  <clipPath id="p286e89b214">
    <rect x="21.6" y="41.620937" width="725.4" height="365.904"/>
   </clipPath>
  </defs>

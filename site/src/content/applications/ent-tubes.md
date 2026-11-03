@@ -14,14 +14,17 @@ figures:
   - name: "W21_mucus_flow"
     caption: "Coated silicone let mucus flow at a gentler tilt, on sheets and in a 2.6 mm tube, and cleared dried mucus plugs sooner."
     source: "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol 2025;10(2):e70118. doi:10.1002/lio2.70118"
+    sourceShort: "Horne et al. 2025, Laryngoscope Investigative Otolaryngology"
     alt: "Two bar charts. Left: the tilt in degrees needed for mucus to start flowing, uncoated against coated. Saline on sheets, 45 against 0. Ten percent mucus on sheets, 30 against 10 or less. Twenty percent mucus on sheets, 35 against 20. Five percent mucus in a 2.6 millimeter tube, 48 against 31. Right: median time to clear a dried mucus plug, 30 minutes uncoated and 22.5 minutes coated."
   - name: "W05_antifouling_and_friction"
     caption: "Protein, cells, bacteria and friction: every published bench comparison of coated versus uncoated surfaces (38 bars from 8 papers), as percent reduction."
     source: "Leigh BL, et al. Biomacromolecules 2017;18(8):2389-2401 (Fig 4 fibrinogen; Figs 6E, 7E, 8E cells on glass; fibrinogen and fibroblast values read from the published plots, astrocyte and Schwann cell values from the stated fold changes); Leigh BL, et al. Langmuir 2019;35(4):1100-1110 (Fig 7D fibrinogen; Fig 10D fibroblasts after 14 days in medium, plotted ratios used because the plotted absolute values conflict with the text); Jensen MJ, et al. ACS Biomaterials Science and Engineering 2021;7(9):4494-4502 (Figs 1G, 2G, 3G at 5 percent cross-linker; Fig 5A friction at 4 percent; values read from the published plots); Shen N, et al. ACS Applied Bio Materials 2021;4(2):1283-1293 (Fig 3 in vitro, Figs 7C, 7D rat explants at day 21, Fig 8 after 2 weeks in rats; values read from the published plots); Horne R, et al. Acta Biomaterialia 2023;166:212-223 (Fig 3F, mean of four cross-linker levels, new and after 6 months in mice; read from the published plot); Bennion DM, et al. Otology and Neurotology 2021;42(10):1476-1483 (Fig 1B, steel, ceramic and guinea pig dermis; text states more than 90 percent lower, p < 0.0001); Peel A, et al. ACS Applied Bio Materials 2024;7:3124-3135 (Fig 4 pristine and after 3 weeks in mice; Fig 5A six probes, bar shows the mean, range in the label; read from the published plots); Barrera G, et al. ACS Applied Polymer Materials 2026;8(18):16328-16338, doi:10.1021/acsapm.6c02510 (Fig 6 fibroblasts, text states more than 99 percent for low and about 90 percent for high cross-linker; Fig 4B friction, best group 2.5/2.5 percent)."
+    sourceShort: "Leigh et al. 2017, Biomacromolecules, Figs 4, 6E, 7E and 8E; Leigh et al. 2019, Langmuir, Figs 7D and 10D; Jensen et al. 2021, ACS Biomaterials Science and Engineering, Figs 1G, 2G, 3G and 5A; Shen et al. 2021, ACS Applied Bio Materials, Figs 3, 7C, 7D and 8; Horne et al. 2023, Acta Biomaterialia, Fig 3F; Bennion et al. 2021, Otology and Neurotology, Fig 1B; Peel et al. 2024, ACS Applied Bio Materials, Figs 4 and 5A; Barrera et al. 2026, ACS Applied Polymer Materials, Figs 4B and 6"
     alt: "Horizontal bar chart of 38 comparisons of coated versus uncoated surfaces from eight papers, grouped into four bands, as percent reduction. Protein: six bars, 91 to 98 percent. Cells: 16 bars, 53 to 99 percent. Bacteria: seven bars, 84 to 97 percent. Friction: nine bars, 84 to 96 percent. The median reduction is 94 percent."
   - name: "W06_durability_timeline"
     caption: "In-vivo durability checkpoints from two weeks to one year."
     source: "Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023"
+    sourceShort: "Shen et al. 2021, ACS Applied Bio Materials, Fig 8; Peel et al. 2024, ACS Applied Bio Materials, Figs 2 and 4; Ben-Shlomo et al. 2026, Hearing Research; Barrera et al. 2026, ACS Applied Polymer Materials, Fig 7; Horne et al. 2023, Acta Biomaterialia, Figs 2, 3F and 7"
     alt: "Timeline of in-vivo checkpoints. Two weeks in rats: the coating still repels S. aureus. Three weeks in mice: friction unchanged. Four weeks in a sheep cochlea: no delamination and all arrays working. Six months in mice: antifouling unchanged and films intact. One year in mice: film intact and capsule about 60 percent thinner."
 sources:
   - "Horne R, Escudero C, Ellerman M, Guymon CA, Hansen M. Enhancing mucus flow and clearance by grafting zwitterionic hydrogel films to luminal surfaces. Laryngoscope Investig Otolaryngol. 2025;10(2):e70118."
@@ -64,7 +67,7 @@ Every result below is from a published bench model or laboratory study on silico
 
 **Durability.** Antifouling was unchanged after six months in mice, and the film was intact at one year (Horne 2023).
 
-{{figure:W06}}
+{{interactive:durability}}
 
 ## How it fits your process
 

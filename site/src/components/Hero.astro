@@ -1,9 +1,7 @@
 ---
-import Figure from './Figure.astro';
-import { W04 } from '../data/figure-text';
+import FibrosisChart from './FibrosisChart.astro';
 
-// The hero figure is one line to swap. Alt, caption and source live in src/data/figure-text.ts.
-const fig = { name: W04.name, alt: W04.alt, caption: W04.caption, source: W04.sourceShort };
+// The hero figure is the interactive scar chart (W04 PNG fallback). Alt, caption and source live in src/data/figure-text.ts.
 // Dimension callouts, set like the notes on an engineering sheet. Values are cited on the pages they link to.
 const dims = [
   { tag: 'Thickness', value: 'a few micrometers to 100 or more, tunable' },
@@ -25,7 +23,7 @@ const dims = [
       </div>
     </div>
     <div class="hero-figure">
-      <Figure name={fig.name} alt={fig.alt} caption={fig.caption} source={fig.source} width={1000} />
+      <FibrosisChart compact caption="Less scar tissue around coated surfaces in mice, rats and sheep: percent reduction in fibrotic capsule or fibrosis, measurement by measurement. Select a bar for its values and the paper." />
     </div>
     <ul class="dims" role="list" aria-label="Key dimensions">
       {dims.map((d, i) => (

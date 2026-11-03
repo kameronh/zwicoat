@@ -3,6 +3,7 @@ import { W04, W05, W07, W27, W28, W30, W31 } from '../data/figure-text';
 import Base from '../layouts/Base.astro';
 import ClaimRow from '../components/ClaimRow.astro';
 import Figure from '../components/Figure.astro';
+import DurabilityChart from '../components/DurabilityChart.astro';
 import Photo from '../components/Photo.astro';
 import References from '../components/References.astro';
 import CTABand from '../components/CTABand.astro';
@@ -73,7 +74,7 @@ const dots = [
     </ClaimRow>
 
     <!-- What it does -->
-    <ClaimRow label="Antifouling" title="Protein, cells and bacteria stay off." reverse>
+    <ClaimRow wide label="Antifouling" title="Protein, cells and bacteria stay off." reverse>
       <p>Across 38 published comparisons of coated and uncoated surfaces, from eight papers, the median reduction was 94 percent.</p>
       <p>Fibrinogen adsorption fell by 91 to 98 percent (Leigh 2017, Leigh 2019, Jensen 2021). Staphylococcus aureus adhesion fell by 97 percent in the lab and by 84 percent on tissue taken from rats (Shen 2021).</p>
       <p>Friction against skin tissue was 94 percent lower (Bennion 2021).</p>
@@ -84,7 +85,7 @@ const dots = [
       </div>
     </ClaimRow>
 
-    <ClaimRow label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
+    <ClaimRow wide label="Less scar" title="Scar tissue was about 45 to 85 percent lower around coated surfaces.">
       <p>In mice, rats and sheep, from four weeks to one year, the scar around coated silicone and coated cochlear implant arrays was smaller than around uncoated ones.</p>
       <p>The largest reduction, about 85 percent less fibrosis, was in sheep cochleae at four weeks (Ben-Shlomo 2026, Hearing Research).</p>
       <p>In rats, capsules around four coated variants were about 72 to 83 percent thinner at six weeks (Barrera 2026, ACS Applied Polymer Materials).</p>
@@ -96,13 +97,13 @@ const dots = [
       </div>
     </ClaimRow>
 
-    <ClaimRow label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about half." reverse>
+    <ClaimRow wide label="Less friction, easier insertion" title="Friction fell by more than 90 percent. Insertion force fell by about half." reverse>
       <p>On silicone, friction fell by more than 90 percent against steel, ceramic and dermis (Bennion 2021).</p>
       <p>Coated cochlear implant arrays needed about half the peak force to enter human cadaveric cochleae.</p>
       <Figure slot="figure" name={W07.name} alt={W07.alt} caption={W07.caption} source={W07.source} width={800} />
     </ClaimRow>
 
-    <ClaimRow label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones.">
+    <ClaimRow wide label="Lower impedance" title="Coated implant arrays read about half the impedance of uncoated ones.">
       <p>Working human cochlear implant arrays in sheep read 67 percent lower impedance at implantation and 47 percent lower four weeks later.</p>
       <p>The study used three sheep, each with one coated and one uncoated array (Ben-Shlomo 2026). The coated cochleae also showed less inflammation.</p>
       <div slot="figure" class="stack">
@@ -112,7 +113,7 @@ const dots = [
     </ClaimRow>
 
     <!-- It stays on -->
-    <ClaimRow label="It stays on" title="The film was still intact at one year in mice." reverse>
+    <ClaimRow wide label="It stays on" title="The film was still intact at one year in mice." reverse>
       <p>Checkpoints run from two weeks in rats to one year in mice.</p>
       <p>Friction stayed low after three weeks in mice (Peel 2024), and protein and cell resistance held at six months (Horne 2023, Peel 2024).</p>
       <p>In the same mouse study, a PEG-based film partly detached by six weeks. The ZwiCoat film did not (Horne 2023).</p>
@@ -121,7 +122,7 @@ const dots = [
       <p><a href="/durability">Full durability record</a></p>
       <!-- PENDING APPROVAL: accelerated aging chart (W09). Internal study; not published. -->
       <div slot="figure" class="stack">
-        <Figure name="W06_durability_timeline" alt="Timeline of in vivo checkpoints. At two weeks in rats the coating still repelled S. aureus. At three weeks in mice friction was unchanged. At four weeks in a sheep cochlea there was no delamination. At six months in mice antifouling was unchanged. At one year in mice the film was intact and the capsule about 60 percent thinner." caption="In-vivo durability checkpoints from two weeks to one year." source="Shen 2021; Peel 2024; Ben-Shlomo 2026; Horne 2023." width={1000} />
+        <DurabilityChart />
         <Figure name={W28.name} alt={W28.alt} caption={W28.caption} source={W28.source} width={1000} />
         <Figure name="W11_sterilization" alt="Two panels. Left: the coating was unchanged after steam wet, gamma wet, EtO dry, gamma dry, UV wet, UV dry and e-beam dry cycles; e-beam wet failed. Right: lap-shear bond strength on silicone coupons, about 5 per group, was about 61 kPa for the control, about 50 kPa after gamma plus shipping and about 61 kPa after e-beam plus shipping." caption="Sterilization compatibility and bond strength after sterilization plus shipping." source="ZwiCoat internal study, 2025. Silicone coupons, about 5 per group." width={1000} />
       </div>
@@ -137,7 +138,7 @@ const dots = [
       <div class="prose">
         <p>ZwiCoat has been grafted to silicone, PVC, PEEK, parylene-C and polyurethane, and across platinum contacts. On silicone the bond is stronger than the gel itself: in pull tests the film tears before the interface lets go (Leigh 2019). Every plastic and elastomer we have tried has taken the coating. If your device uses something else, the feasibility round answers that on your parts.</p>
       </div>
-      <Photo src="/images/lab/ci-array-elemental-map.png" alt="Cross-section of a coated cochlear implant array imaged by elemental mapping. The silicone carrier is a round cyan disc holding a ring of small electrode wires and one larger rectangular insert. The hydrogel film is the thin pink and violet layer around the silicone." caption="Cross-section of a coated cochlear implant array: elemental map showing the hydrogel film on the silicone carrier. ZwiCoat." credit="ZwiCoat" aspect="844/575" />
+      <Photo maxWidth={844} src="/images/lab/ci-array-elemental-map.png" alt="Cross-section of a coated cochlear implant array imaged by elemental mapping. The silicone carrier is a round cyan disc holding a ring of small electrode wires and one larger rectangular insert. The hydrogel film is the thin pink and violet layer around the silicone." caption="Cross-section of a coated cochlear implant array: elemental map showing the hydrogel film on the silicone carrier. ZwiCoat." credit="ZwiCoat" aspect="844/575" />
       <Figure name="W10_substrate_evidence_matrix" alt="Matrix of substrates against the kinds of test on record: adhesion tests, dip or mold coating, sterilization, insertion force and implantation in vivo. Silicone, implant silicone, PVC, polyurethane and platinum contacts have data in most columns. PEEK has adhesion tests, coating and a rat implant. Parylene-C has adhesion tests only." caption="Evidence matrix: which materials have been tested, and how. Blue means ZwiCoat has data; polyurethane is an ultrasound probe cover." source="ZwiCoat Lap-shear Master database; archived experiment reports; published studies. Adhesion on silicone is published (Leigh 2019); the other cells are internal ZwiCoat tests." width={1000} />
       <Figure name={W31.name} alt={W31.alt} caption={W31.caption} source={W31.source} width={900} />
       </div>
@@ -277,6 +278,10 @@ const dots = [
   @media (min-width: 900px) {
     .two { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
     .two > .block-head { grid-column: 1 / span 5; }
-    .two > .prose, .two > .block-body { grid-column: 6 / span 7; }
+    .two > .prose { grid-column: 6 / span 7; }
+    /* Charts in a two-column block take the full width below the text, so their labels stay legible (R19). */
+    .two > .block-body { display: contents; }
+    .two > .block-body > .prose { grid-column: 6 / span 7; grid-row: 1; }
+    .two > .block-body > :global(figure) { grid-column: 1 / -1; }
   }
 </style>

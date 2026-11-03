@@ -1,0 +1,136 @@
+---
+/*
+  Horne 2023, Fig 4, as four separate images in a 2 x 2 panel (R9): columns Silicone and
+  Platinum, rows uncoated and coated. Without JavaScript all four show (the compare state).
+  With JavaScript each column gets three buttons: Uncoated, Coated (one image, swapped with
+  a short fade) and Compare (both, one above the other). Buttons are real <button>s with
+  aria-pressed, so they work from the keyboard.
+*/
+interface Img { src: string; alt: string; label: string; w: number; h: number }
+interface Col { key: string; title: string; uncoated: Img; coated: Img }
+const cols: Col[] = [
+  {
+    key: 'silicone',
+    title: 'Silicone',
+    uncoated: {
+      src: '/images/lab/capsule-pdms-uncoated.jpg',
+      alt: 'Tissue section next to uncoated silicone (PDMS) on an implanted array, explanted from a mouse. A thick blue-stained band of fibrous capsule runs along the silicone surface, marked by red lines across its width.',
+      label: 'Uncoated silicone',
+      w: 1178,
+      h: 1034,
+    },
+    coated: {
+      src: '/images/lab/capsule-pdms-coated.jpg',
+      alt: 'Tissue section next to coated silicone (PDMS) on an implanted array, explanted from a mouse. The pink hydrogel coating lies on the silicone, and the blue capsule beyond it is a thin line, marked by short red lines.',
+      label: 'Coated silicone',
+      w: 1163,
+      h: 1034,
+    },
+  },
+  {
+    key: 'platinum',
+    title: 'Platinum',
+    uncoated: {
+      src: '/images/lab/capsule-pt-uncoated.jpg',
+      alt: 'Tissue section next to an uncoated platinum contact on an implanted array, explanted from a mouse. A wide wedge of fibrous capsule, outlined with a red dashed line and labeled Capsule, sits against the black platinum. Scale bar 100 micrometers.',
+      label: 'Uncoated platinum',
+      w: 1169,
+      h: 1058,
+    },
+    coated: {
+      src: '/images/lab/capsule-pt-coated.jpg',
+      alt: 'Tissue section next to a coated platinum contact on an implanted array, explanted from a mouse. The pink hydrogel coating lies on the black platinum, and red arrows point to a thin capsule line beyond it, next to normal fat tissue.',
+      label: 'Coated platinum',
+      w: 1179,
+      h: 1058,
+    },
+  },
+];
+const caption =
+  'Reduced capsule at silicone and platinum interfaces on an implanted array. Explanted sections show a thick fibrotic capsule on uncoated silicone and uncoated platinum, but a thin, quiet interface on coated silicone and coated platinum. Mean capsule thickness on the device fell about 60 percent, 47 to 18 micrometers, with coating.';
+const credit = 'Adapted from Horne et al., Acta Biomaterialia 2023';
+---
+<figure class="cp" data-capsule-panels>
+  <div class="cp-box">
+    <p class="fig-tag" aria-hidden="true"><span class="fig-tag-id">PHOTO</span><span class="fig-tag-src">{credit}</span></p>
+    <div class="cp-grid">
+      {cols.map((c) => (
+        <section class="cp-col" data-mode="compare" aria-labelledby={`cp-${c.key}`}>
+          <div class="cp-head">
+            <h3 class="cp-title" id={`cp-${c.key}`}>{c.title}</h3>
+            <div class="cp-toggle" role="group" aria-label={`${c.title}: show uncoated, coated or both`} hidden>
+              <button type="button" data-mode-btn="uncoated" aria-pressed="false">Uncoated</button>
+              <button type="button" data-mode-btn="coated" aria-pressed="false">Coated</button>
+              <button type="button" data-mode-btn="compare" aria-pressed="true">Compare</button>
+            </div>
+          </div>
+          <div class="cp-stack">
+            {(['uncoated', 'coated'] as const).map((k) => (
+              <div class={`cp-img cp-${k}`}>
+                <img src={c[k].src} alt={c[k].alt} width={c[k].w} height={c[k].h} loading="lazy" decoding="async" />
+                <p class="cp-label">{c[k].label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+  <figcaption class="cp-cap">
+    <p class="cp-caption">{caption}</p>
+    <p class="cp-credit label">{credit}</p>
+  </figcaption>
+</figure>
+
+<style>
+  .cp { margin: 0; min-width: 0; max-width: 56rem; }
+  .cp-box { border: var(--frame-border); background: var(--paper); }
+  .cp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding: var(--space-3); }
+  .cp-col { display: grid; gap: var(--space-2); align-content: start; min-width: 0; }
+  .cp-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+  .cp-title { font-size: var(--fs-body); font-weight: 700; margin: 0; }
+  .cp-toggle { display: inline-flex; border: 1px solid var(--ink-2); border-radius: var(--radius); overflow: hidden; }
+  .cp-toggle[hidden] { display: none; }
+  .cp-toggle button {
+    min-height: 44px;
+    padding: 0.35rem 0.7rem;
+    border: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-size: var(--fs-caption);
+    cursor: pointer;
+  }
+  .cp-toggle button + button { border-left: 1px solid var(--ink-2); }
+  .cp-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .cp-toggle button:focus-visible { outline: 2px solid var(--blue-deep); outline-offset: -2px; }
+  .cp-stack { display: grid; gap: var(--space-2); }
+  .cp-img { margin: 0; min-width: 0; transition: opacity 0.25s ease; }
+  .cp-img img { display: block; width: 100%; height: auto; background: var(--paper-2); }
+  .cp-label { margin: 0.3rem 0 0; font-size: var(--fs-caption); color: var(--ink-2); }
+  /* One image at a time: both share one grid cell, the hidden one fades out. */
+  .cp-col:not([data-mode="compare"]) .cp-img { grid-area: 1 / 1; }
+  .cp-col[data-mode="uncoated"] .cp-coated,
+  .cp-col[data-mode="coated"] .cp-uncoated { opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
+  @media (prefers-reduced-motion: reduce) { .cp-img { transition: none !important; } }
+  @media (max-width: 520px) { .cp-grid { grid-template-columns: minmax(0, 1fr); } }
+  .cp-cap { margin-top: var(--space-3); display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .cp-caption { color: var(--ink); }
+  .cp-credit { text-transform: none; letter-spacing: 0.02em; line-height: 1.5; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-capsule-panels] .cp-col').forEach((col) => {
+    const group = col.querySelector<HTMLElement>('.cp-toggle');
+    if (!group) return;
+    group.hidden = false;
+    const buttons = [...group.querySelectorAll<HTMLButtonElement>('[data-mode-btn]')];
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => {
+        const mode = b.dataset.modeBtn ?? 'compare';
+        col.dataset.mode = mode;
+        buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      }),
+    );
+  });
+</script>

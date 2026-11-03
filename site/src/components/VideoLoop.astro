@@ -11,13 +11,16 @@ interface Props {
   poster: string;
   caption: string;
   credit?: string;
+  /** Displayed instead of credit when given (the short citation); credit stays as the record. */
+  sourceShort?: string;
   /** width/height of the clip, written "w/h" */
   aspect?: string;
   alt?: string;
   /** set false when no .webm exists */
   webm?: boolean;
 }
-const { src, poster, caption, credit, aspect = '1/1', alt = caption, webm = true } = Astro.props;
+const { src, poster, caption, credit: creditFull, sourceShort, aspect = '1/1', alt = caption, webm = true } = Astro.props;
+const credit = sourceShort ?? creditFull;
 const base = src.replace(/\.(mp4|webm)$/, '');
 const [aw, ah] = aspect.split('/').map(Number);
 const ratio = aw && ah ? aw / ah : 1;

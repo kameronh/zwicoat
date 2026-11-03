@@ -233,3 +233,11 @@ Staging redeployed; committed 388fde5 (Kam pushes).
 Awaiting Kam: proposals 1 to 25 (chat), plus sterilization conditions
 question (steam and UV have no E-report; wet e-beam failure was on
 polyurethane only), and the Horne 2023 original micrographs.
+
+## 2026-11-02 evening: round four, verified on staging (lead)
+
+Every item of Kam's "New Materials" feedback is in FEEDBACK-CHECKLIST.md
+(59 of 59 DONE) with proving snippets in VERIFY.md; the lead re-checked the
+deployed staging pages independently (all 19 pages 200, zero forbidden
+terms, every spot-check present). Committed. Kam pushes and says go for
+production. Production swap steps are in the 2026-10-30 section above.
